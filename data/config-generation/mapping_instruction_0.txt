@@ -1,0 +1,300 @@
+Instruction how to produce a mapping for entity.
+Entity
+Here is an example entity. 
+{
+  "tender_entity": {
+    "name": "string",
+    "types": [
+      "string"
+    ],
+    "contactUser": "string",
+    "systemAccount": true,
+    "date": "string",
+    "deadlineDate": "string",
+    "deadlineLengthDays": 0,
+    "category": "string",
+    "awardedValue": 0.0,
+    "purchaser": "string",
+    "notices": [
+      {
+        "name": "string",
+        "id": "string",
+        "sid": "string",
+        "date": "string",
+        "type": "string",
+        "srcId": "string",
+        "srcUrl": "string",
+        "data": "string"
+      }
+    ]
+  }
+}
+
+Input
+Here is example data source response which will be used as our input.
+{
+  "name": "Construction of New Office Building",
+  "types": [
+    "Construction",
+    "Development"
+  ],
+  "contactUser": "John Doe",
+  "systemAccount": true,
+  "date": "2024-03-28",
+  "deadlineDate": "2024-04-30",
+  "deadlineLengthDays": 33,
+  "category": "Construction Services",
+  "awardedValue": 185000,
+  "purchaser": "ABC Corporation",
+  "notices": [
+    {
+      "name": "Pre-Bid Conference",
+      "id": "NW20240328002",
+      "sid": "S003",
+      "date": "2024-03-28",
+      "type": "Conference",
+      "srcId": "SRC003",
+      "srcUrl": "https://example.com/notice/NW20240328002",
+      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+    },
+    {
+      "name": "Bid Cancellation Notice",
+      "id": "NW20240315001",
+      "sid": "S004",
+      "date": "2024-03-15",
+      "type": "Cancellation",
+      "srcId": "SRC004",
+      "srcUrl": "https://example.com/notice/NW20240315001",
+      "data": "Due to unforeseen circumstances, the bid for Construction of New Office Building has been canceled."
+    },
+    {
+      "name": "Bid Opening Announcement",
+      "id": "NW20240430001",
+      "sid": "S005",
+      "date": "2024-04-30",
+      "type": "Bid Opening",
+      "srcId": "SRC005",
+      "srcUrl": "https://example.com/notice/NW20240430001",
+      "data": "Bid opening scheduled on April 30th, 2024 at 9:30 AM. All interested parties invited to attend."
+    }
+  ]
+}
+
+
+Let's map the input to the entity.
+We should map attributes from the input to the entity.
+Attributes of the input and the entity which are similar should be added as entityMappings.columns.
+For example input attribute "name" (srcColumnPath) is mapped to entity attribute "name" (dstCyodaColumnPath).
+Transformers should be specified to each column, and they are the same.
+Map more advanced relations like arrays with a script ("script").
+It is javascript nashorn script that maps complex relations between input and output.
+In out example notices of input were mapped to notices of entity via script and not via colums.
+
+Expected output:
+```
+{
+    "@bean": "com.cyoda.plugins.mapping.core.dtos.DataMappingConfigDto",
+    "id": "c784c270-f0fe-11ee-9561-ee157423307a",
+    "name": "tender",
+    "lastUpdated": 1712069164720,
+    "dataType": "JSON",
+    "description": "",
+    "entityMappings": [
+        {
+            "id": {
+                "id": "c77e59d0-f0fe-11ee-9561-ee157423307a"
+            },
+            "name": "tender",
+            "entityClass": "net.cyoda.saas.model.TenderEntity",
+            "entityRelationConfigs": [
+                {
+                    "srcRelativeRootPath": "root:/"
+                }
+            ],
+            "columns": [
+                {
+                    "srcColumnPath": "name",
+                    "dstCyodaColumnPath": "name",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "srcColumnPath": "contactUser",
+                    "dstCyodaColumnPath": "contactUser",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "srcColumnPath": "systemAccount",
+                    "dstCyodaColumnPath": "systemAccount",
+                    "dstCyodaColumnPathType": "java.lang.Boolean",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": []
+                    }
+                },
+                {
+                    "srcColumnPath": "date",
+                    "dstCyodaColumnPath": "date",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "srcColumnPath": "deadlineDate",
+                    "dstCyodaColumnPath": "deadlineDate",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "srcColumnPath": "deadlineLengthDays",
+                    "dstCyodaColumnPath": "deadlineLengthDays",
+                    "dstCyodaColumnPathType": "java.lang.Integer",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": []
+                    }
+                },
+                {
+                    "srcColumnPath": "category",
+                    "dstCyodaColumnPath": "category",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "srcColumnPath": "purchaser",
+                    "dstCyodaColumnPath": "purchaser",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+                {
+                    "srcColumnPath": "awardedValue",
+                    "dstCyodaColumnPath": "awardedValue",
+                    "dstCyodaColumnPathType": "java.lang.Double",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": []
+                    }
+                }
+            ],
+            "functionalMappings": [],
+            "columnPathsForUniqueCheck": [],
+            "metadata": [],
+            "cobiCoreMetadata": [],
+            "script": {
+                "body": "var notices = [];\nvar Notice = Java.type('net.cyoda.saas.model.Notice');\n\n// Add notices from input\nfor (var i = 0; i < input.notices.length; i++) {\n    var notice = new Notice();\n    notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);\n    notice.setDate(input.notices[i].date != null ? input.notices[i].date : \"00-00-00\");\n    notice.setType(input.notices[i].type != null ? input.notices[i].type : \"Unknown type\");\n    notices.push(notice);\n}\nentity.setNotices(notices);\n",
+                "inputSrcPaths": [
+                    "notices/*/name",
+                    "notices/*/id",
+                    "notices/*/sid",
+                    "notices/*/date",
+                    "notices/*/type",
+                    "notices/*/srcId",
+                    "notices/*/srcUrl",
+                    "notices/*/data"
+                ],
+                "inputMetaPaths": [],
+                "reusableScripts": []
+            },
+            "entityFilter": {
+                "@bean": "com.cyoda.core.conditions.GroupCondition",
+                "operator": "AND",
+                "conditions": []
+            }
+        }
+    ]
+}
+```
+There can be variations in input and entity. Just try to find any relations and map them with a script.
