@@ -1,0 +1,61 @@
+{
+    "id": "1",
+    "date": "2019-07-16",
+    "deadline": {
+        "date": "2019-07-25",
+        "length_days": "9"
+    },
+    "title": "Sustitución de duchas de los baños del pasillo C y D de la Residencia Juvenil Baltasar Gracian",
+    "category": "constructions",
+    "source": {
+        "url": "https",
+        "final_url": "https"
+    },
+    "award": {
+        "value": "20252.00",
+        "currency": "EUR",
+        "awarded_date": "2019-08-07",
+        "awardees": [
+            {
+                "id": "1",
+                "name": "GESTIMAX, Gestión y Servicios, S.L.",
+                "slug": "gestimax-gestion-y-servicios-s-l"
+            }
+        ],
+        "offers_count": {
+            "total": 2,
+            "data": {
+                "2": {
+                    "count": 1,
+                    "value": "20252.00"
+                }
+            }
+        },
+        "value_per_offer": {
+            "1": 0,
+            "2": 20252,
+            "3": 20252
+        }
+    },
+    "purchaser": {
+        "id": "1",
+        "name": null
+    },
+    "type": {
+        "id": "minor-contract",
+        "name": "Minor contract",
+        "slug": "minor-contract"
+    },
+    "notices": [
+        {
+            "id": null,
+            "date": "2019-08-30",
+            "type": "Anuncio de Adjudicación"
+        },
+        {
+            "id": null,
+            "date": "2019-07-16",
+            "type": "Anuncio de Licitación"
+        }
+    ]
+}

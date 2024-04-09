@@ -1,0 +1,52 @@
+{
+  "id": "CNT12345",
+  "title": "Construction Contract for New Office Building",
+  "description": "This contract is for the construction of a new office building.",
+  "start_date": "2024-05-01",
+  "end_date": "2025-05-01",
+  "value": {
+    "amount": 5000000,
+    "currency": "USD"
+  },
+  "parties": {
+    "buyer": {
+      "name": "ABC Corporation",
+      "address": "123 Main St, Cityville, USA",
+      "contact": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1234567890"
+      }
+    },
+    "seller": {
+      "name": "Construction Company XYZ",
+      "address": "456 Oak St, Townsville, USA",
+      "contact": {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "phone": "+10987654321"
+      }
+    }
+  },
+  "status": "Active",
+  "terms": [
+    {
+      "name": "Payment Schedule",
+      "description": "Payment will be made in installments as per the agreed schedule."
+    },
+    {
+      "name": "Construction Timeline",
+      "description": "Construction work should be completed within 12 months from the start date."
+    }
+  ],
+  "attachments": [
+    {
+      "name": "Blueprints",
+      "url": "https://example.com/blueprints"
+    },
+    {
+      "name": "Contract Agreement",
+      "url": "https://example.com/contract"
+    }
+  ]
+}

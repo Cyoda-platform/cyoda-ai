@@ -1,0 +1,19 @@
+{
+  "$id": "https://cyoda.com/cloud/event/common/DataPayload.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataPayload",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Payload type."
+    },
+    "data": {
+      "type": "any",
+      "description": "Payload data."
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

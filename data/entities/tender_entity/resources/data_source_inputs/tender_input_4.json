@@ -1,0 +1,37 @@
+{
+  "name": "Construction of New Bridge Project",
+  "types": [
+    "Infrastructure",
+    "Construction"
+  ],
+  "contactUser": "John Doe",
+  "systemAccount": true,
+  "date": "2024-03-28",
+  "deadlineDate": "2024-05-15",
+  "deadlineLengthDays": 48,
+  "category": "Public Works",
+  "awardedValue": 250000.00,
+  "purchaser": "Department of Transportation",
+  "notices": [
+    {
+      "name": "Notice of Award",
+      "id": "NW20240328001",
+      "sid": "S001",
+      "date": "2024-03-28",
+      "type": "Award",
+      "srcId": "SRC001",
+      "srcUrl": "https://example.com/notice/NW20240328001",
+      "data": "Awarded the contract for the Construction of New Bridge Project to XYZ Construction Company."
+    },
+    {
+      "name": "Invitation to Bid",
+      "id": "NW20240301001",
+      "sid": "S002",
+      "date": "2024-03-01",
+      "type": "Bid",
+      "srcId": "SRC002",
+      "srcUrl": "https://example.com/notice/NW20240301001",
+      "data": "Inviting bids for the Construction of New Bridge Project. Deadline for submission is April 15, 2024."
+    }
+  ]
+}

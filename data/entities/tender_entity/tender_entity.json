@@ -1,0 +1,28 @@
+{
+    "tender_entity": {
+      "name": "string",
+      "types": [
+        "string"
+      ],
+      "contactUser": "string",
+      "systemAccount": true,
+      "date": "string",
+      "deadlineDate": "string",
+      "deadlineLengthDays": 0,
+      "category": "string",
+      "awardedValue": 0.0,
+      "purchaser": "string",
+      "notices": [
+        {
+          "name": "string",
+          "id": "string",
+          "sid": "string",
+          "date": "string",
+          "type": "string",
+          "srcId": "string",
+          "srcUrl": "string",
+          "data": "string"
+        }
+      ]
+    }
+  }

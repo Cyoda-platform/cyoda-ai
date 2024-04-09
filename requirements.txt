@@ -1,0 +1,9 @@
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+chromadb==0.4.15
+tiktoken
+sentence-transformers
+jq
+unstructured

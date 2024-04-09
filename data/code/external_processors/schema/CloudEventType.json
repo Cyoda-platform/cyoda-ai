@@ -1,0 +1,13 @@
+{
+  "$id": "https://cyoda.com/cloud/event/CloudEventType.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CloudEventType",
+  "type": "string",
+  "enum": [
+    "BaseEvent",
+    "CalculationMemberJoinEvent",
+    "CalculationMemberGreetEvent",
+    "EntityProcessorCalculationRequest",
+    "EntityProcessorCalculationResponse"
+  ]
+}

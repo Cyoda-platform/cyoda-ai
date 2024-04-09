@@ -1,0 +1,9 @@
+{
+  "$id": "https://cyoda.com/cloud/event/ErrorCode.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorCode",
+  "type": "string",
+  "enum": [
+    "SERVER_ERROR"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$id": "https://cyoda.com/cloud/event/processing/CalculationMemberJoinEvent.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CalculationMemberJoinEvent",
+  "type": "object",
+  "extends": {
+    "$ref": "BaseEvent.json"
+  },
+  "properties": {
+    "tags": {
+      "type": "array",
+      "description": "Member tags. Could be used to filter applicability.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

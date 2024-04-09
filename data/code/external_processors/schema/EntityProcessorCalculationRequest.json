@@ -1,0 +1,36 @@
+{
+  "$id": "https://cyoda.com/cloud/event/processing/EntityProcessorCalculationRequest.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EntityProcessorCalculationRequest",
+  "type": "object",
+  "extends": {
+    "$ref": "BaseEvent.json"
+  },
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Request ID."
+    },
+    "entityId": {
+      "type": "string",
+      "description": "Entity ID."
+    },
+    "processorId": {
+      "type": "string",
+      "description": "Processor ID."
+    },
+    "processorName": {
+      "type": "string",
+      "description": "Processor name."
+    },
+    "payload": {
+      "$ref": "DataPayload.json"
+    }
+  },
+  "required": [
+    "requestId",
+    "entityId",
+    "processorId",
+    "processorName"
+  ]
+}

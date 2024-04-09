@@ -1,0 +1,81 @@
+{
+  "id": "2",
+  "date": "2020-02-28",
+  "deadline_date": "2020-03-10",
+  "deadline_length_days": "10",
+  "title": "Renovation of the main lobby area in Building B",
+  "category": "renovation",
+  "sid": "8745123",
+  "src_url": "http://example.com",
+  "src_final_url": "http://example.com/final",
+  "awarded_value": "45000.00",
+  "awarded_currency": "USD",
+  "purchaser": {
+    "id": "2",
+    "sid": null,
+    "name": "Construction Management, Inc."
+  },
+  "type": {
+    "id": "major-contract",
+    "name": "Major contract",
+    "slug": "major-contract"
+  },
+  "notices": [
+    {
+      "id": null,
+      "sid": null,
+      "date": "2020-04-15",
+      "type": {},
+      "src_id": null,
+      "src_url": null,
+      "data": {
+        "date": "2020-04-15",
+        "type": "Award Announcement"
+      },
+      "sections": []
+    },
+    {
+      "id": null,
+      "sid": null,
+      "date": "2020-02-28",
+      "type": {},
+      "src_id": null,
+      "src_url": null,
+      "data": {
+        "date": "2020-02-28",
+        "type": "Bid Invitation"
+      },
+      "sections": []
+    }
+  ],
+  "awarded": [
+    {
+      "date": "2020-03-15",
+      "suppliers_id": "2",
+      "count": "1",
+      "value": "45000.00",
+      "suppliers_name": "Builder's Alliance LLC",
+      "suppliers": [
+        {
+          "id": "2",
+          "slug": "builders-alliance-llc",
+          "name": "Builder's Alliance LLC"
+        }
+      ],
+      "offers_count": 3,
+      "offers_count_data": {
+        "1": {
+          "count": 2,
+          "value": "43000.00"
+        },
+        "2": {
+          "count": 1,
+          "value": "45000.00"
+        }
+      },
+      "value_for_one": 0,
+      "value_for_two": 45000,
+      "value_for_three": 43000
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$id": "https://cyoda.com/cloud/event/common/BaseEvent.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BaseEvent",
+  "type": "object",
+  "properties": {
+    "owner": {
+      "type": "string",
+      "description": "Tenant name."
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Flag indicates whether this message relates to some failure.",
+      "default": true
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details (if present).",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Error code."
+        },
+        "message": {
+          "type": "string",
+          "description": "Error message."
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      }
+    }
+  },
+  "required": [
+    "owner"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "CNT789",
+  "title": "Service Agreement for IT Support",
+  "start_date": "2023-08-15",
+  "value": {
+    "amount": 75000,
+    "currency": "EUR"
+  },
+  "parties": {
+    "buyer": {
+      "name": "Tech Solutions Inc.",
+      "contact": {
+        "email": "info@techsolutions.com",
+        "phone": "+1234567890"
+      }
+    },
+    "seller": {
+      "name": "IT Services Company",
+      "address": "789 Elm St, Tech City, USA"
+    }
+  },
+  "status": "Pending",
+  "attachments": [
+    {
+      "name": "Service Level Agreement",
+      "url": "https://example.com/sla"
+    },
+    {
+      "name": "Proposal Document",
+      "url": "https://example.com/proposal"
+    }
+  ]
+}

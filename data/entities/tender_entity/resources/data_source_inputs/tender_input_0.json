@@ -1,0 +1,47 @@
+{
+  "name": "Construction of New Office Building",
+  "types": [
+    "Construction",
+    "Development"
+  ],
+  "contactUser": "John Doe",
+  "systemAccount": true,
+  "date": "2024-03-28",
+  "deadlineDate": "2024-04-30",
+  "deadlineLengthDays": 33,
+  "category": "Construction Services",
+  "awardedValue": 185000,
+  "purchaser": "ABC Corporation",
+  "notices": [
+    {
+      "name": "Pre-Bid Conference",
+      "id": "NW20240328002",
+      "sid": "S003",
+      "date": "2024-03-28",
+      "type": "Conference",
+      "srcId": "SRC003",
+      "srcUrl": "https://example.com/notice/NW20240328002",
+      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+    },
+    {
+      "name": "Bid Cancellation Notice",
+      "id": "NW20240315001",
+      "sid": "S004",
+      "date": "2024-03-15",
+      "type": "Cancellation",
+      "srcId": "SRC004",
+      "srcUrl": "https://example.com/notice/NW20240315001",
+      "data": "Due to unforeseen circumstances, the bid for Construction of New Office Building has been canceled."
+    },
+    {
+      "name": "Bid Opening Announcement",
+      "id": "NW20240430001",
+      "sid": "S005",
+      "date": "2024-04-30",
+      "type": "Bid Opening",
+      "srcId": "SRC005",
+      "srcUrl": "https://example.com/notice/NW20240430001",
+      "data": "Bid opening scheduled on April 30th, 2024 at 9:30 AM. All interested parties invited to attend."
+    }
+  ]
+}

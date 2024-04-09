@@ -1,0 +1,18 @@
+{
+  "$id": "https://cyoda.com/cloud/event/processing/CalculationMemberGreetEvent.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CalculationMemberGreetEvent",
+  "type": "object",
+  "extends": {
+    "$ref": "BaseEvent.json"
+  },
+  "properties": {
+    "memberId": {
+      "type": "string",
+      "description": "Assigned member ID."
+    }
+  },
+  "required": [
+    "memberId"
+  ]
+}
