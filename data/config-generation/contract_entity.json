@@ -1,0 +1,46 @@
+{
+  "contract_entity": {
+    "id": "string",
+    "title": "string",
+    "description": "string",
+    "start_date": "string (ISO 8601 date format)",
+    "end_date": "string (ISO 8601 date format)",
+    "value": {
+      "amount": "number",
+      "currency": "string"
+    },
+    "parties": {
+      "buyer": {
+        "name": "string",
+        "address": "string",
+        "contact": {
+          "name": "string",
+          "email": "string",
+          "phone": "string"
+        }
+      },
+      "seller": {
+        "name": "string",
+        "address": "string",
+        "contact": {
+          "name": "string",
+          "email": "string",
+          "phone": "string"
+        }
+      }
+    },
+    "status": "string",
+    "terms": [
+      {
+        "name": "string",
+        "description": "string"
+      }
+    ],
+    "attachments": [
+      {
+        "name": "string",
+        "url": "string"
+      }
+    ]
+  }
+}

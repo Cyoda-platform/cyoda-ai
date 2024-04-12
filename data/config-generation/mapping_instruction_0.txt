@@ -1,6 +1,6 @@
-Instruction how to produce a mapping for entity.
+Instruction how to produce a mapping for a target entity.
 Entity
-Here is an example entity. 
+Here is an example target entity. 
 {
   "tender_entity": {
     "name": "string",
@@ -56,26 +56,6 @@ Here is example data source response which will be used as our input.
       "srcId": "SRC003",
       "srcUrl": "https://example.com/notice/NW20240328002",
       "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
-    },
-    {
-      "name": "Bid Cancellation Notice",
-      "id": "NW20240315001",
-      "sid": "S004",
-      "date": "2024-03-15",
-      "type": "Cancellation",
-      "srcId": "SRC004",
-      "srcUrl": "https://example.com/notice/NW20240315001",
-      "data": "Due to unforeseen circumstances, the bid for Construction of New Office Building has been canceled."
-    },
-    {
-      "name": "Bid Opening Announcement",
-      "id": "NW20240430001",
-      "sid": "S005",
-      "date": "2024-04-30",
-      "type": "Bid Opening",
-      "srcId": "SRC005",
-      "srcUrl": "https://example.com/notice/NW20240430001",
-      "data": "Bid opening scheduled on April 30th, 2024 at 9:30 AM. All interested parties invited to attend."
     }
   ]
 }
@@ -88,9 +68,98 @@ For example input attribute "name" (srcColumnPath) is mapped to entity attribute
 Transformers should be specified to each column, and they are the same.
 Map more advanced relations like arrays with a script ("script").
 It is javascript nashorn script that maps complex relations between input and output.
-In out example notices of input were mapped to notices of entity via script and not via colums.
+In our example notices of input were mapped to notices of entity via script and not via columns.
 
-Expected output:
+Also provide a unique timeuuid for DataMappingConfigDto id , give it a random unique name as well.
+If the input is JSON dataType should be also JSON.
+"srcRelativeRootPath": "root:/" is always like this
+Columns is what you will have to adjust fot each input. Use columns for simple mappings and script for complex mappings.
+This is how you should do mappings:
+For example json input has name attrinbute ( "name": "Construction of New Office Building") and Tender Entity has name attribute as well.
+First let's find all attributes pairs that are semantically close
+name - name
+types - types
+and so on.
+So you need to add a column mapping for name:
+{
+                    "srcColumnPath": "name",
+                    "dstCyodaColumnPath": "name",
+                    "dstCyodaColumnPathType": "java.lang.String",
+                    "dstCollectionElementSetModes": [],
+                    "transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+                },
+Transformers should always be the same for string values. If you don't know what transformer to use - add this transformer:
+ "transformer": {
+                        "type": "COMPOSITE",
+                        "children": []
+                    }
+
+You should use script for any complex mappings like arrays. Here notices are mapped with a Javascript Nashorn script like this:
+
+"script": {
+                "body": "var notices = [];\nvar Notice = Java.type('net.cyoda.saas.model.Notice');\n\n// Add notices from input\nfor (var i = 0; i < input.notices.length; i++) {\n    var notice = new Notice();\n    notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);\n    notice.setDate(input.notices[i].date != null ? input.notices[i].date : \"00-00-00\");\n    notice.setType(input.notices[i].type != null ? input.notices[i].type : \"Unknown type\");\n    notices.push(notice);\n}\nentity.setNotices(notices);\n",
+                "inputSrcPaths": [
+                    "notices/*/name",
+                    "notices/*/id",
+                    "notices/*/sid",
+                    "notices/*/date",
+                    "notices/*/type",
+                    "notices/*/srcId",
+                    "notices/*/srcUrl",
+                    "notices/*/data"
+                ],
+                "inputMetaPaths": [],
+                "reusableScripts": []
+            }
+
+You should adjust everything depending on the input and target entity. Use this instruction only to learn the logic how to do it. Both entity and input can be different each time.
+For example it can be product entity with different schema and product input. 
+Always make sure you know the target entity and the data source input.
+
+
+Here is instruction for column mappings.
+In order to produce column mappings from input to entity, first find all semantically close attributes of the input and the entity, which have
+the same hierarchy level in the json object and should have the same data type.
+For example. Let's produce column mappings from this input to this entity
+
+Column mappings
+First let's find all attributes pairs that are semantically close
+name - name
+types - types
+contactUser - contact_User
+systemAccount - systemAcc
+and so on.
+
+For these and all other combinations you need to provide column mappings in the following form:
+```
+{
+                    "srcColumnPath": "name", // input attribute 
+                    "dstCyodaColumnPath": "name", // entity attribute 
+                    "dstCyodaColumnPathType": "java.lang.String", // entity datatype
+                    "dstCollectionElementSetModes": [], // leave the same as here
+                    "transformer": { //leave as here
+                        "type": "COMPOSITE",
+                        "children": [
+                        ]
+                    }
+                }
+```
+
+Example output need to be modified for the custom input and entity:
 ```
 {
     "@bean": "com.cyoda.plugins.mapping.core.dtos.DataMappingConfigDto",
