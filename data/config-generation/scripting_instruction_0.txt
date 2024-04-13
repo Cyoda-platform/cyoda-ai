@@ -1,5 +1,5 @@
 Instruction
-Here's an example of how to map an input to an entity with a JS Nashorn script:
+Here's an example of how to map an input to an entity with a Javascript Nashorn script:
 
 First, find an entity {tender_entity}.
 
@@ -74,10 +74,11 @@ Example tender_entity:
   }
 }
 
-Then look for all the fields that are semantically close between input and entity.
-For example, input and entity have date, deadlineDate, notices in common and other fields.
+Then, identify all fields that are semantically similar between the input and the entity.
+For instance, the input and entity share common fields such as date, deadlineDate, notices, and others.
 
-Let's write Javascript Nashorn script to map input to tender_entity entity
+Let's write a JavaScript Nashorn script to map the input to the tender_entity entity.
+
 Expected output:
 ```Javascript
 entity.setDate(input.date);
@@ -101,4 +102,4 @@ for (var i = 0; i < input.notices.length; i++) {
 
 entity.setNotices(notices);
 ```
-There can be variations in input and entity. Just try to find any relations and map them with a script.
+There can be variations in the input and the entity. Just try to find any relations and map them with a script.

@@ -1,8 +1,8 @@
-Here is instruction for column mappings.
-In order to produce column mappings from input to entity, first find all semantically close attributes of the input and the entity, which have
-the same hierarchy level in the json object and should have the same data type.
-For example. Let's produce column mappings from this input to this entity
+Here are the instructions for column mappings:
 
+To generate column mappings from the input to the entity, begin by identifying all semantically related attributes between the input and the entity. 
+These attributes should reside at the same hierarchy level in the JSON object and possess identical data types.
+For instance, let's create column mappings from this input to the provided entity:
 Input
 ```
 {
@@ -17,11 +17,11 @@ Entity
     "companyStatus": "string",
   }
 ```
-First let's find all attributes pairs that are semantically close
+First, let's find all attribute pairs that are semantically close:
 name - name
 status - companyStatus
 
-For these and all other combinations you need to provide column mappings in the following form:
+For these and all other combinations, you need to provide column mappings in the following form:
 ```
 {
                     "srcColumnPath": "name", // input attribute 
@@ -35,9 +35,9 @@ For these and all other combinations you need to provide column mappings in the 
                     }
                 }
 ```
-Let's do a similar example for status - status
+Let's do a similar example for status - status.
 
-Expected column mapping
+Expected column mapping:
 ```
 {
                     "srcColumnPath": "status", // input attribute 
@@ -51,8 +51,7 @@ Expected column mapping
                     }
                 }
 ```
-You will be provided with {input_file} and {target_entity}. 
-You will need to produce column mappings from {input_file} to {target_entity}.
+You will be provided with {input_file} and {target_entity}. You will need to produce column mappings from {input_file} to {target_entity}.
 
 ```
 {

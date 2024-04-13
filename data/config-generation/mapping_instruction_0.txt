@@ -1,6 +1,6 @@
 Instruction how to produce a mapping for a target entity.
 Entity
-Here is an example target entity. 
+Here is an example target entity:
 {
   "tender_entity": {
     "name": "string",
@@ -31,7 +31,7 @@ Here is an example target entity.
 }
 
 Input
-Here is example data source response which will be used as our input.
+Here is an example data source response which will be used as our input.
 {
   "name": "Construction of New Office Building",
   "types": [
@@ -60,27 +60,26 @@ Here is example data source response which will be used as our input.
   ]
 }
 
-
 Let's map the input to the entity.
 We should map attributes from the input to the entity.
-Attributes of the input and the entity which are similar should be added as entityMappings.columns.
-For example input attribute "name" (srcColumnPath) is mapped to entity attribute "name" (dstCyodaColumnPath).
-Transformers should be specified to each column, and they are the same.
+Attributes of the input and the entity, which are similar, should be added as entityMappings.columns.
+For example, the input attribute "name" (srcColumnPath) is mapped to the entity attribute "name" (dstCyodaColumnPath).
+Transformers should be specified for each column, and they should be the same.
 Map more advanced relations like arrays with a script ("script").
-It is javascript nashorn script that maps complex relations between input and output.
-In our example notices of input were mapped to notices of entity via script and not via columns.
+It is a JavaScript Nashorn script that maps complex relations between input and output.
+In our example, notices from the input were mapped to notices of the entity via script and not via columns.
 
-Also provide a unique timeuuid for DataMappingConfigDto id , give it a random unique name as well.
-If the input is JSON dataType should be also JSON.
-"srcRelativeRootPath": "root:/" is always like this
-Columns is what you will have to adjust fot each input. Use columns for simple mappings and script for complex mappings.
+Also, provide a unique timeuuid for DataMappingConfigDto id; give it a randomly unique name as well.
+If the input is JSON, dataType should also be JSON.
+"srcRelativeRootPath": "root:/" is always like this.
+Columns are what you will have to adjust for each input. Use columns for simple mappings and script for complex mappings.
 This is how you should do mappings:
-For example json input has name attrinbute ( "name": "Construction of New Office Building") and Tender Entity has name attribute as well.
-First let's find all attributes pairs that are semantically close
+For example, a JSON input has a name attribute ("name": "Construction of New Office Building") and the Tender Entity has a name attribute as well.
+First, let's find all attribute pairs that are semantically close:
 name - name
 types - types
 and so on.
-So you need to add a column mapping for name:
+So, you need to add a column mapping for name:
 {
                     "srcColumnPath": "name",
                     "dstCyodaColumnPath": "name",
@@ -126,15 +125,13 @@ You should use script for any complex mappings like arrays. Here notices are map
                 "reusableScripts": []
             }
 
-You should adjust everything depending on the input and target entity. Use this instruction only to learn the logic how to do it. Both entity and input can be different each time.
-For example it can be product entity with different schema and product input. 
-Always make sure you know the target entity and the data source input.
+You should adjust everything depending on the input and target entity. Use this instruction only to understand the logic of how to do it. Both the entity and input can vary each time.
+For example, it could be a product entity with a different schema and product input.
+Always ensure you understand the target entity and the data source input.
 
-
-Here is instruction for column mappings.
-In order to produce column mappings from input to entity, first find all semantically close attributes of the input and the entity, which have
-the same hierarchy level in the json object and should have the same data type.
-For example. Let's produce column mappings from this input to this entity
+Here are the instructions for column mappings:
+To generate column mappings from input to entity, first identify all semantically similar attributes between the input and the entity, which have the same hierarchy level in the JSON object and should have the same data type.
+For example, let's create column mappings from this input to this entity:
 
 Column mappings
 First let's find all attributes pairs that are semantically close
@@ -366,4 +363,4 @@ Example output need to be modified for the custom input and entity:
     ]
 }
 ```
-There can be variations in input and entity. Just try to find any relations and map them with a script.
+There can be variations in the input and the entity. Just try to find any relations and map them.
