@@ -1,5 +1,5 @@
 {
-    "tender_entity": {
+    "net.cyoda.saas.model.TenderEntity": {
       "name": "string",
       "types": [
         "string"
