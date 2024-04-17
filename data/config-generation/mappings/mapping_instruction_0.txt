@@ -108,7 +108,7 @@ Transformers should always be the same for string values. If you don't know what
                     }
 
 You should use script for any complex mappings like arrays. Here notices are mapped with a Javascript Nashorn script like this:
-
+#inputSrcPaths: 
 "script": {
                 "body": "var notices = [];\nvar Notice = Java.type('net.cyoda.saas.model.Notice');\n\n// Add notices from input\nfor (var i = 0; i < input.notices.length; i++) {\n    var notice = new Notice();\n    notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);\n    notice.setDate(input.notices[i].date != null ? input.notices[i].date : \"00-00-00\");\n    notice.setType(input.notices[i].type != null ? input.notices[i].type : \"Unknown type\");\n    notices.push(notice);\n}\nentity.setNotices(notices);\n",
                 "inputSrcPaths": [
@@ -124,6 +124,26 @@ You should use script for any complex mappings like arrays. Here notices are map
                 "inputMetaPaths": [],
                 "reusableScripts": []
             }
+
+As for inputSrcPaths you should list all paths of input parameters that are used. Also take into account that cyoda inputSrcPaths use a different json path.
+#inputSrcPaths for nested objects:
+If for example there is input {"purchaser": {"name":"Jim"}} then the inputSrcPaths will be "purchaser/name" and NOT "purchaser.name".
+For arrays use wildcrds like notices/*/data.
+
+
+###inputSrcPaths for nested objects. The correct format for inputSrcPaths for nested objects should be "parentObject/childObject/attribute".
+For example, if we have an input object like this:
+
+```json
+
+{
+  "purchaser": {
+    "name": "ABC Corporation"
+  }
+}
+
+```
+The inputSrcPath for the "name" attribute of the "purchaser" object would be "purchaser/name".
 
 You should adjust everything depending on the input and target entity. Use this instruction only to understand the logic of how to do it. Both the entity and input can vary each time.
 For example, it could be a product entity with a different schema and product input.

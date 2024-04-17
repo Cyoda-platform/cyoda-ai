@@ -1,0 +1,21 @@
+#inputSrcPaths
+As for inputSrcPaths you should list all paths of input parameters that are used. Also take into account that cyoda inputSrcPaths use a different json path.
+#inputSrcPaths for nested objects:
+If for example there is input {"purchaser": {"name":"Jim"}} then the inputSrcPaths will be "purchaser/name" and NOT "purchaser.name".
+For arrays use wildcrds like notices/*/data.
+
+###inputSrcPaths for nested objects. The correct format for inputSrcPaths for nested objects should be "parentObject/childObject/attribute".
+For example, if we have an input object like this:
+
+```json
+
+{
+  "purchaser": {
+    "name": "ABC Corporation"
+  }
+}
+
+```
+The inputSrcPath for the "name" attribute of the "purchaser" object would be "purchaser/name".
+
+There can be variations in the input and the entity. Just try to find any relations and map them with a script.

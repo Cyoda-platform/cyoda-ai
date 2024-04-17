@@ -78,9 +78,20 @@ Then, identify all fields that are semantically similar between the input and th
 For instance, the input and entity share common fields such as date, deadlineDate, notices, and others.
 
 Let's write a JavaScript Nashorn script to map the input to the tender_entity entity.
+entity is a predefined object, do NOT initialize "entity".
+Pay attention at how arrays are handled. If it is a different object, like Notice in the example.
+First you need to initialize Notice.
+this is the correct format to initialize a cyoda object.
+```Javascript Nashorn
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+var notice = new Notice();
+```
+package net.cyoda.saas.model is the same for all classes you do not know.
 
+So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
 Expected output:
-```Javascript
+```Javascript Nashorn
+
 entity.setDate(input.date);
 entity.setDeadlineDate(input.deadlineDate);
 entity.setDeadlineLengthDays(input.deadlineLengthDays);
@@ -88,7 +99,9 @@ entity.setName(input.title);
 entity.setCategory(input.category);
 entity.setAwardedValue(input.awardedValue);
 
-var notices = [];
+var ArrayList = Java.type("java.util.ArrayList");
+var notices = new ArrayList();
+
 var Notice = Java.type('net.cyoda.saas.model.Notice');
 
 // Add notices from input
@@ -97,9 +110,29 @@ for (var i = 0; i < input.notices.length; i++) {
     notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);
     notice.setDate(input.notices[i].date != null ? input.notices[i].date : "00-00-00");
     notice.setType(input.notices[i].type != null ? input.notices[i].type : "Unknown type");
-    notices.push(notice);
+    notices.add(notice);
 }
 
 entity.setNotices(notices);
 ```
+#inputSrcPaths
+As for inputSrcPaths you should list all paths of input parameters that are used. Also take into account that cyoda inputSrcPaths use a different json path.
+#inputSrcPaths for nested objects:
+If for example there is input {"purchaser": {"name":"Jim"}} then the inputSrcPaths will be "purchaser/name" and NOT "purchaser.name".
+For arrays use wildcrds like notices/*/data.
+
+###inputSrcPaths for nested objects. The correct format for inputSrcPaths for nested objects should be "parentObject/childObject/attribute".
+For example, if we have an input object like this:
+
+```json
+
+{
+  "purchaser": {
+    "name": "ABC Corporation"
+  }
+}
+
+```
+The inputSrcPath for the "name" attribute of the "purchaser" object would be "purchaser/name".
+
 There can be variations in the input and the entity. Just try to find any relations and map them with a script.
