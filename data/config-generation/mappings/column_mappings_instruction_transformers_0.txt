@@ -1,5 +1,6 @@
 How to add transformers to column mappings.
 
+High level transformer is always COMPOSITE!!!
 Now that you know how to ass column mappings let's check how to add transformers. 
 If you don't know what transformers to use - use the DEFAULT ONE: "COMPOSITE"
 

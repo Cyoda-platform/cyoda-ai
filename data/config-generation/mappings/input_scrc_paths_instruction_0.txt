@@ -4,6 +4,15 @@ As for inputSrcPaths you should list all paths of input parameters that are used
 If for example there is input {"purchaser": {"name":"Jim"}} then the inputSrcPaths will be "purchaser/name" and NOT "purchaser.name".
 For arrays use wildcrds like notices/*/data.
 
+For example the correct inputSrcPath for arrays is:
+
+```
+"notices/*/date",
+      "notices/*/type",
+      "awarded/*/date",
+      "awarded/*/suppliers/*/name"
+```
+
 ###inputSrcPaths for nested objects. The correct format for inputSrcPaths for nested objects should be "parentObject/childObject/attribute".
 For example, if we have an input object like this:
 
