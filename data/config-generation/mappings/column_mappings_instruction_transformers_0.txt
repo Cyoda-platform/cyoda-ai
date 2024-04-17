@@ -1,0 +1,33 @@
+How to add transformers to column mappings.
+
+Now that you know how to ass column mappings let's check how to add transformers. 
+If you don't know what transformers to use - use the DEFAULT ONE: "COMPOSITE"
+
+```JSON
+"transformer": { //leave as here
+                        "type": "COMPOSITE",
+                        "children": [
+                        ]
+                    }
+
+```
+
+For destination data type string you can use:
+
+```JSON
+"transformer": {
+                        "type": "COMPOSITE",
+                        "children": [
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                "parameters": []
+                            },
+                            {
+                                "type": "SINGLE",
+                                "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                "parameters": []
+                            }
+                        ]
+                    }
+```
