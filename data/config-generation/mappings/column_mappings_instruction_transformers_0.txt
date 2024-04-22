@@ -13,7 +13,7 @@ If you don't know what transformers to use - use the DEFAULT ONE: "COMPOSITE"
 
 ```
 
-For destination data type string you can use:
+For destination data type string you should use:
 
 ```JSON
 "transformer": {
@@ -33,8 +33,37 @@ For destination data type string you can use:
                     }
 ```
 
+For destination data type double you should use:
+
+```JSON
+  "transformer": {
+    "type": "COMPOSITE",
+    "children": [
+      {
+        "type": "SINGLE",
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble",
+        "parameters": []
+      }
+    ]
+  }
+```
+For destination data type boolean you should use:
+
+```JSON
+{
+  "type": "COMPOSITE",
+  "children": [
+    {
+      "type": "SINGLE",
+      "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBoolean",
+      "parameters": []
+    }
+  ]
+}
+```
+
 You can refer to a list of rtansformers to avoid data type mismatch between source attributes and destination attributes.
-In this example we apply com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble to map "srcColumnPath": "awardedValue" (data type - number) to "dstCyodaColumnPath": "awardedValue" (double).
+In this example we apply com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble to map "awardedValue": 185000 (data type - number) to "dstCyodaColumnPath": "awardedValue" (double).
 ```JSON
 {
   "srcColumnPath": "awardedValue",
