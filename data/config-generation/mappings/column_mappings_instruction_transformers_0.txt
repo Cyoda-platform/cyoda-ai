@@ -32,3 +32,24 @@ For destination data type string you can use:
                         ]
                     }
 ```
+
+You can refer to a list of rtansformers to avoid data type mismatch between source attributes and destination attributes.
+In this example we apply com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble to map "srcColumnPath": "awardedValue" (data type - number) to "dstCyodaColumnPath": "awardedValue" (double).
+```JSON
+{
+  "srcColumnPath": "awardedValue",
+  "dstCyodaColumnPath": "awardedValue",
+  "dstCyodaColumnPathType": "java.lang.Double",
+  "dstCollectionElementSetModes": [],
+  "transformer": {
+    "type": "COMPOSITE",
+    "children": [
+      {
+        "type": "SINGLE",
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble",
+        "parameters": []
+      }
+    ]
+  }
+}
+```

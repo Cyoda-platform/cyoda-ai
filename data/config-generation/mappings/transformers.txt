@@ -1,0 +1,1098 @@
+Here you can find a list of transformers for column mappings with scr type "inType" and dst type "outType". 
+Apply this transformers when src attribute data type is different from dst attribute data type:
+```JSON
+[
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Padding",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Adds padding text before, after or around the provided input.",
+        "requiredParameters": [
+            {
+                "name": "padding.text",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    },
+                    {
+                        "type": "STR_MAX_LEN",
+                        "parameter": 1
+                    }
+                ]
+            },
+            {
+                "name": "final.length",
+                "type": "java.lang.Integer",
+                "restrictions": []
+            },
+            {
+                "name": "padding.side",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "left",
+                            "center",
+                            "right"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$Pow",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Integer",
+        "description": "Transformer with two inputs: \"value\" and \"second.argument\" , returns value^ secod.argument  ( value to the power of second argument).",
+        "requiredParameters": [
+            {
+                "name": "second.argument",
+                "type": "java.lang.Integer",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToClass",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Class",
+        "description": "Transformer of String into Class using class for name.\nReturns the Class object associated with the class or interface with the given string name.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToFloat",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Float",
+        "description": "Transformer of Object into Float using default",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLocalDatePredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.time.LocalDate",
+        "description": "Transformer of String into LocalDate using predefined format.\nThose predefined patterns can be one of the following:\n\"yyyy-MM-dd\", // default\n \"yyyy.MM.dd\",\n\"yyyy.MMM.dd\",\n\"yyyy-MMM-dd\",\n\"MM/dd/yyyy\",\n\"yyyy-MM-dd'T'HH:mm:ssXXX\"",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "defaultValue": "yyyy-MM-dd",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "yyyy-MM-dd",
+                            "yyyy.MM.dd",
+                            "yyyy.MMM.dd",
+                            "yyyy-MMM-dd",
+                            "MM/dd/yyyy",
+                            "yyyy-MM-dd'T'HH:mm:ssXXX"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToFloat",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Float",
+        "description": "Transformer of Integer into Float using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToDouble",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Double",
+        "description": "Transformer of Integer into Double using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.tdb.logic.DataType",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.tdb.logic.DataType",
+        "description": "Transformer of String into DataType",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$Abc",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Integer",
+        "description": "Transform Integer to the absolute value of the given integer, so if the input is positive integer, the same integer is returned, if the input is negative integer, the positve number of that integer is returned.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$EncodeAsBigInteger",
+        "inType": "java.lang.String",
+        "outType": "java.math.BigInteger",
+        "description": "Encodes a String into a BigInteger. Booleans and Numbers are converted directly. Strings are converted to a byte array as UTF_8 character set. The BigInteger is a range field and therefore automatically indexed.\nThis transformer is useful, for example to take a set of input fields, convert them to strings, concatenate them and encode.\nThe resultant BigInteger can be marked for unique check. This way, you will create an composite key that is automatically indexed.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$HardCodeValue",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Transformer of String into String using hardcode value from parameter",
+        "requiredParameters": [
+            {
+                "name": "harcode.value",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Double",
+        "description": "Transformer of Object into Double using, input can be of types Boolean, Number, String:\nif Boolean, 1.0 is returend in case of true, 0.0 is returned otherwise. \nif Number, Returns the value of the specified number as a double, which may involve rounding\nIf String, a new double initialized to the value represented by the specified String.\n",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToBigInteger",
+        "inType": "java.lang.String",
+        "outType": "java.math.BigInteger",
+        "description": "Transformer of String into BigInteger, BigInteger, bigInteger class allows representation of and calculations on arbitrarily large integers (whole numbers)\nIt's important to note that \"arbitrary\" precision or number of digits does not mean \"unlimited\": it means that the number of digits in a number or number of digits of precision in a calculation is limited by memory and/or defined limits to precision that we specify.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToFloat",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.Float",
+        "description": "Transformer of Double into Float using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToInt",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.Integer",
+        "description": "Transformer of Double into Integer using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToShort",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Short",
+        "description": "Transformer of String into Short.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToHexString",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.String",
+        "description": "Transformer of Integer into hexadecimal string representation.\nReturns a string representation of the integer argument as an unsigned integer in base 16.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.mapping.core.model.functional.expressions.ConstantSource",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.mapping.core.model.functional.expressions.ConstantSource",
+        "description": "Transformer of String into ConstantSource",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.core.consistency.TransactionLog$Status",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.core.consistency.TransactionLog$Status",
+        "description": "Transformer of String into TransactionLog.Status",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToBigDecimal",
+        "inType": "java.lang.String",
+        "outType": "java.math.BigDecimal",
+        "description": "Transformer of  the string representation of a BigDecimal into a BigDecimal.The string representation consists of an optional sign, '+'  or '-' ,followed by a sequence of zero or more decimal digits (\"the integer\"), optionally followed by a fraction,optionally followed by an exponent.\nThe fraction consists of a decimal point followed by zero or more decimal digits.The string must contain at least one digit in either the integer or the fraction.The number formed by the sign, the integer and the fraction is referred to as the significand.\nThe exponent consists of the character 'e' or 'E'  followed by one or more decimal digits.The value of the exponent must lie between -Integer.MAX_VALUE (Integer.MIN_VALUE+1) and Integer.MAX_VALUE, inclusive.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Split",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Splits the provided String into an array, separators and index specified.returns string element specified by index, default index is 0\nInput: \"Owner.Car.House.Name\"\ndelimiter: \".\"\nindex: 2\nreturns: House",
+        "requiredParameters": [
+            {
+                "name": "delimiter",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            },
+            {
+                "name": "index",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectHardCodeTransformer$ToHardCodeFloat",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Float",
+        "description": "Transformer of Object into Float using hard coded value from parameter",
+        "requiredParameters": [
+            {
+                "name": "harcode.value",
+                "type": "java.lang.Float",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToByte",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Byte",
+        "description": "Transformer of String into Byte,\nParses the string argument as a signed decimal byte.\nThe characters in the string must all be decimal digits,\nexcept that the first character may be an ASCII minus sign '-' to indicate a negative value or an ASCII plus sign '+' to indicate a positive value.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBigDecimal",
+        "inType": "java.lang.Object",
+        "outType": "java.math.BigDecimal",
+        "description": "Transformer of Object into BigDecimal,\nBigDecimal  allows precise representation of any real number that can be represented precisely in decimal notation, \nand allows calculations on non-integers with arbitrary precision.\nIt's important to note that \"arbitrary\" precision or number of digits does not mean \"unlimited\":it means that the number of digits in a number or number of digits of precision in a calculation is limited by memory and/or defined limits to precision that we specify.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToByte",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Byte",
+        "description": "Transformer of Integer into Byte, input range is -128 to 127, and  if 128 is provided as input then -128 will be returned,\n 129 -> -127 \n130 -> -126, so it goes like circular counting",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.ValueTransformer$NoTransform",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Object",
+        "description": "Transformer of Object into Object using no transformation",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ReplaceWith",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Transformer that replaces all occurrences of a String within another String.Examples:  replaceWith(text, searchString, replacement)       replaceWith(\"\", *, *)          = \"\"\n       replaceWith(\"any\", null, *)    = \"any\"\n       replaceWith(\"any\", *, null)    = \"any\"\n       replaceWith(\"any\", \"\", *)      = \"any\"\n       replaceWith(\"aba\", \"a\", null)  = \"aba\"\n       replaceWith(\"aba\", \"a\", \"\")    = \"b\"\n       replaceWith(\"aba\", \"a\", \"z\")   = \"zbz\"",
+        "requiredParameters": [
+            {
+                "name": "text",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 0
+                    }
+                ]
+            },
+            {
+                "name": "search.string",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLongByPredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Long",
+        "description": "Transformer of String into Long using predefined pattern specified by parameter,\nThese predefined patterns can be one of the following:\n\"0.###E0\",\n\"##0.#####E0\",\n\"###,###.###\"",
+        "requiredParameters": [
+            {
+                "name": "pattern",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "0.###E0",
+                            "##0.#####E0",
+                            "###,###.###"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLocalTimeArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.time.LocalTime",
+        "description": "Transformer of String into LocalTime using arbitrary format specified by parameter",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToByte",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Byte",
+        "description": "Transformer of Object into Byte, input can be of types boolean, number, string\nif boolean, 1 returned in case of true, 0 returned in case of false\nif number, returns the value of the specified number as a byte, which may involve rounding or truncation.\nif string,Parses the string argument as a signed decimal byte.The characters in the string must all be decimal digits,except that the first character may be an ASCII minus sign '-' to indicate a negative valueor an ASCII plus sign '+' to indicate a positive value. ",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToInt",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Integer",
+        "description": "Transformer of String into Int.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBigInteger",
+        "inType": "java.lang.Object",
+        "outType": "java.math.BigInteger",
+        "description": "Transformer of Object into BigInteger,bigInteger allows representation of and calculations on arbitrarily large integers (whole numbers)\nIt's important to note that \"arbitrary\" precision or number of digits does not mean \"unlimited\":it means that the number of digits in a number or number of digits of precision in a calculation is limited by memory and/or defined limits to precision that we specify.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLocalTimePredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.time.LocalTime",
+        "description": "Transformer of String into LocalTime using predefined format specified by parameter,\nThese predefined patterns can be one of the following:\n\"HH:mm:ss\", // default\n\"HH/mm/ss\",\n\"HH-mm-ss\"",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "defaultValue": "HH:mm:ss",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "HH:mm:ss",
+                            "HH/mm/ss",
+                            "HH-mm-ss"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.datasource.entity.endpoint.HttpEndpoint$Method",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.datasource.entity.endpoint.HttpEndpoint$Method",
+        "description": "Transformer of String into HttpEndpoint.Method",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.datasource.entity.connection.AuthType",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.datasource.entity.connection.AuthType",
+        "description": "Transformer of String into AuthType",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToString",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.String",
+        "description": "Returns the string representation of the Integer argument.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "net.cyoda.saas.model.logic.BooleanValueTransformer$ToBooleanString",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Boolean",
+        "description": "Transformer of Object into Boolean, input can be boolean, String, Number \nin case of Number, returns true if input is 1, false otherwise \nin case of String ,The boolean returned represents the value true if the string argument is not null and is equal, ignoring case, to the string \"true\".",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBoolean",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Boolean",
+        "description": "Transformer of Object into Boolean, input can be boolean, String, Number \nin case of Number, returns true if input is 1, false otherwise \nin case of String ,The boolean returned represents the value true if the string argument is not null and is equal, ignoring case, to the string \"true\".",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToBinaryString",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.String",
+        "description": "Transformer of Integer into the binary representation of this string. \nReturns a string representation of the integer argument as an unsigned integer in base 2.\nThe unsigned integer value is the argument plus 232 if the argument is negative; otherwise it is equal to the argument. This value is converted to a string of ASCII digits in binary (base 2) with no extra leading 0s.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.datasource.entity.connection.cache.CacheContent$Type",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.datasource.entity.connection.cache.CacheContent$Type",
+        "description": "Transformer of String into CacheContent.Type",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToBigDecimalByPredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.math.BigDecimal",
+        "description": "Transformer of String into BigDecimal using predefined pattern specified by parameter, those predefined patterns would show as a list the user would choose from.\nBigDecimal allows precise representation of any real number that can be represented precisely in decimal notation, and allows calculations on non-integers with arbitrary precision.",
+        "requiredParameters": [
+            {
+                "name": "pattern",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "0.###E0",
+                            "##0.#####E0",
+                            "###,###.###"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToHexString",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.String",
+        "description": "Transformer of Double into a hexadecimal string representation of the double argument. All characters are ASCII\nExample: \n1.0 -> 0x1.0p0\n3.0 -> 0x1.8p1",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToBigInteger",
+        "inType": "java.lang.Double",
+        "outType": "java.math.BigInteger",
+        "description": "Transformer of Double into BigInteger, bigInteger class allows representation of and calculations on arbitrarily large integers (whole numbers)\nIt's important to note that \"arbitrary\" precision or number of digits does not mean \"unlimited\": it means that the number of digits in a number or number of digits of precision in a calculation is limited by memory and/or defined limits to precision that we specify.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToOctalString",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.String",
+        "description": "Returns a string representation of the integer argument as an unsigned integer in base 8.\nThe unsigned integer value is the argument plus 2^32 ( 2 to the power of 32)  if the argument is negative;\n otherwise, it is equal to the argument.\nThis value is converted to a string of ASCII digits in octal (base 8) with no extra leading 0s.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToBoolean",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Boolean",
+        "description": "Transformer of String into Boolean,\nThe boolean returned represents the value true if the string argument is not null and is equal, ignoring case, to the string \"true\", otherwise returns false.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToBigDecimal",
+        "inType": "java.lang.Integer",
+        "outType": "java.math.BigDecimal",
+        "description": "Transformer of Integer into BigDecimal, BigDecimal  allows precise representation of any real number that can be represented precisely in decimal notation, and allows calculations on non-integers with arbitrary precision.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToString",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.String",
+        "description": "Transformer of Double into String using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToDoubleByArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Double",
+        "description": "Transformer of String into Double using arbitrary pattern specified by parameterthis arbitrary format represents the input string's format to be parsed.",
+        "requiredParameters": [
+            {
+                "name": "pattern",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLongByArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Long",
+        "description": "Transformer of String into Long using arbitrary pattern specified by parameter",
+        "requiredParameters": [
+            {
+                "name": "pattern",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToBigInteger",
+        "inType": "java.lang.Integer",
+        "outType": "java.math.BigInteger",
+        "description": "Transformer of Integer into BigInteger, bigInteger class allows representation of and calculations on arbitrarily large integers (whole numbers)\nIt's important to note that \"arbitrary\" precision or number of digits does not mean \"unlimited\": it means that the number of digits in a number or number of digits of precision in a calculation is limited by memory and/or defined limits to precision that we specify.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.datasource.entity.endpoint.HttpParameter$ParameterType",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.datasource.entity.endpoint.HttpParameter$ParameterType",
+        "description": "Transformer of String into HttpParameter.ParameterType",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLocalDateTimeArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.time.LocalDateTime",
+        "description": "Transformer of String into LocalDateTime using arbitrary format specified by parameter",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLong",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Long",
+        "description": "Transformer of String into Long.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToBigDecimal",
+        "inType": "java.lang.Double",
+        "outType": "java.math.BigDecimal",
+        "description": "Transformer of Double into BigDecimal, BigDecimal  allows precise representation of any real number that can be represented precisely in decimal notation, and allows calculations on non-integers with arbitrary precision.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ApplyRegex",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Returns the input subsequence matched by the provided regular expression and index.\nindex is an optional parameter that specifies which occurrence to return if there are multiple matches for the provided regex\nExample:\ninput: abcAD915.,gs24\nregex: [0-9]+\nindex: 1 \nreturns: 24\n",
+        "requiredParameters": [
+            {
+                "name": "regex",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            },
+            {
+                "name": "index",
+                "type": "java.lang.Integer",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToByte",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.Byte",
+        "description": "Transformer of Double into Byte using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Transformer of String into String using trim method",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToShort",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Short",
+        "description": "Returns the value of this Integer as a short after a narrowing primitive conversion.\nA narrowing primitive conversion may lose information about the overall magnitude of a numeric value and may also lose precision and range. ",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToSubString",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Transformer of String into String using substring(from, to) method.\nReturns a string that is a substring of this string.The substring begins at the specified from and extends to the character at index to - 1.Thus the length of the substring is from-to.",
+        "requiredParameters": [
+            {
+                "name": "from.index",
+                "type": "java.lang.Integer",
+                "defaultValue": 0,
+                "restrictions": [
+                    {
+                        "type": "INT_GTE",
+                        "parameter": 0
+                    }
+                ]
+            },
+            {
+                "name": "to.index",
+                "type": "java.lang.Integer",
+                "defaultValue": 1000,
+                "restrictions": [
+                    {
+                        "type": "INT_GTE",
+                        "parameter": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.String",
+        "description": "Transformer of Object into String using default",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToDateArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.util.Date",
+        "description": "Transformer of String into Date using arbitrary format specified by parameter,\nThis arbitrary format represents the input string's format to be parsed.",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.BytesValueTransformer$ToChunks",
+        "inType": "[B",
+        "outType": "java.util.List",
+        "description": "Transforms bytes array (byte[]) to list of chunks (List<byte[]>)",
+        "requiredParameters": [
+            {
+                "name": "chunk.size",
+                "type": "java.lang.Integer",
+                "defaultValue": 65536,
+                "restrictions": [
+                    {
+                        "type": "INT_GTE",
+                        "parameter": 1024
+                    },
+                    {
+                        "type": "INT_LTE",
+                        "parameter": 1048576
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.core.consistency.Isolation",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.core.consistency.Isolation",
+        "description": "Transformer of String into Isolation",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToShort",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Short",
+        "description": "Transformer of Object into Short using default",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToInt",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Integer",
+        "description": "Transformer of Object into Integer, input can be of types Boolean, Number, String:\nif Boolean, 1  is returend in case of true, 0  is returned otherwise. \nif Number, Returns the value of the specified number as a Integer, which may involve rounding or truncation\nIf String, parses the string argument as a signed decimal integer.The characters in the string must all be decimal digits, except that the first character may be an ASCII minus sign '-'; to indicate a negative value or an ASCII plus sign '+';to indicate a positive value\n",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.mapping.core.model.functional.FunctionalStatementConfig$Type",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.mapping.core.model.functional.FunctionalStatementConfig$Type",
+        "description": "Transformer of String into FunctionalStatementConfig.Type",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.datasource.entity.endpoint.SqlType",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.datasource.entity.endpoint.SqlType",
+        "description": "Transformer of String into SqlType",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$Multiply",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Integer",
+        "description": "Transformer used to perform multiply operation on a given Integer, returns the result of multiplying given input with a paramter provided by the user.",
+        "requiredParameters": [
+            {
+                "name": "second.argument",
+                "type": "java.lang.Integer",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ReplaceAllWithObject",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Replaces each substring of this string that matches the given regular expression with the given replacement.\n Note that backslashes (\\) and dollar signs ($) in the replacement string may cause the results to be different\n than if it were being treated as a literal replacement string.\nExample:\ninput: hello|there|how|are|you\nregex: \"\\\\|\"\nreplacement: \"\\\\\\\\|\" \nreturns: hello\\|there\\|how\\|are\\|you\n",
+        "requiredParameters": [
+            {
+                "name": "regex",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            },
+            {
+                "name": "replacement",
+                "type": "java.lang.Object",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBytes",
+        "inType": "java.lang.Object",
+        "outType": "[B",
+        "description": "Transformer of Object into byte[] using default",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToBigDecimalByArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.math.BigDecimal",
+        "description": "Transformer of String into BigDecimal using arbitrary pattern specified by parameter, this pattern is for the provided string input to help mapper to deal with the string input.\nThis is to be used when the string input format can't be recognised as a predefined format using : ToBigDecimalByPredefinedFormat transformer.\nBigDecimal allows precise representation of any real number that can be represented precisely in decimal notation, and allows calculations on non-integers with arbitrary precision.",
+        "requiredParameters": [
+            {
+                "name": "pattern",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.core.model.scheduling.ScheduledTask$Status",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.core.model.scheduling.ScheduledTask$Status",
+        "description": "Transformer of String into ScheduledTask.Status",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLocalDateArbitraryFormat",
+        "inType": "java.lang.String",
+        "outType": "java.time.LocalDate",
+        "description": "Transformer of String into LocalDate using arbitrary format specified by parameter,\nThis arbitrary format represents the input string's format to be parsed.\n",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLocalDateTimePredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.time.LocalDateTime",
+        "description": "Transformer of String into LocalDateTime using predefined format specified by parameter,\nThese predefined patterns can be one of the following:\n\"yyyy-MM-dd'T'HH:mm:ss\",\n\"yyyy-MM-dd'T'HH:mm:ssXXX\",\n\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\",\n\"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\"",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "defaultValue": "yyyy-MM-dd'T'HH:mm:ss",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "yyyy-MM-dd'T'HH:mm:ss",
+                            "yyyy-MM-dd'T'HH:mm:ssXXX",
+                            "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+                            "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectHardCodeTransformer$ToHardCodeString",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.String",
+        "description": "Transformer of Object into String using hard coded value from parameter",
+        "requiredParameters": [
+            {
+                "name": "harcode.value",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToLong",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.Long",
+        "description": "Transformer of Double into Long using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$Add",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Integer",
+        "description": "Transformer used to perform add operation on a given Integer, returns the result of adding two numbers",
+        "requiredParameters": [
+            {
+                "name": "second.argument",
+                "type": "java.lang.Integer",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.mapping.core.model.DataMappingConfig$DataType",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.mapping.core.model.DataMappingConfig$DataType",
+        "description": "Transformer of String into DataMappingConfig.DataType",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToFloat",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Float",
+        "description": "Transformer of String into Float.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToDouble",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Double",
+        "description": "Transformer of String into Double.\nReturns a new double initialized to the value represented by the specified String",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToBoolean",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Boolean",
+        "description": "Transformer of Integer into Boolean, if the input is 1 returns true otherwise,o returns false ",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$EncodeAsBigInteger",
+        "inType": "java.lang.Object",
+        "outType": "java.math.BigInteger",
+        "description": "Transformer of Object into BigInteger. Booleans and Numbers are converted directly. Strings are converted to a byte array as UTF_8 character set. The BigInteger is a range field and therefore automatically indexed.\nThis transformer is useful, for example to take a set of input fields, convert them to strings, concatenate them and encode.\nThe resultant BigInteger can be marked for unique check. This way, you will create an composite key that is automatically indexed.",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToDoubleByPredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.lang.Double",
+        "description": "Transformer of String into Double using predefined pattern specified by parameter,\nThose predefined patterns can be one of the following:\n\"0.###E0\",\n\"##0.#####E0\",\n\"###,###.###\"",
+        "requiredParameters": [
+            {
+                "name": "pattern",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "0.###E0",
+                            "##0.#####E0",
+                            "###,###.###"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToLowerCase",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Converts all of the characters in this String to lower case using the rules of the default locale",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToDatePredefinedFormat",
+        "inType": "java.lang.String",
+        "outType": "java.util.Date",
+        "description": "Transformer of String into Date using predefined format specified by parameter",
+        "requiredParameters": [
+            {
+                "name": "format",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_CHOICE",
+                        "parameter": [
+                            "yyyy.MM.dd",
+                            "yyyy.MMM.dd",
+                            "yyyy-MM-dd",
+                            "yyyy-MMM-dd",
+                            "MM/dd/yyyy",
+                            "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
+                            "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.mapping.core.model.CollectionElementSetModeConfig$Type",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.mapping.core.model.CollectionElementSetModeConfig$Type",
+        "description": "Transformer of String into CollectionElementSetModeConfig.Type",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.BytesValueTransformer$ToHexString",
+        "inType": "[B",
+        "outType": "java.lang.String",
+        "description": "Transformer of byte[] into String using toHex function",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.DoubleValueTransformer$ToShort",
+        "inType": "java.lang.Double",
+        "outType": "java.lang.Short",
+        "description": "Transformer of Double into Short using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToUuid",
+        "inType": "java.lang.String",
+        "outType": "java.util.UUID",
+        "description": "Transformer of String into UUID using from string",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-com.cyoda.plugins.datasource.entity.archive.ArchiveType",
+        "inType": "java.lang.String",
+        "outType": "com.cyoda.plugins.datasource.entity.archive.ArchiveType",
+        "description": "Transformer of String into ArchiveType",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectHardCodeTransformer$ToHardCodeInt",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Integer",
+        "description": "Transformer of Object into Integer using hard coded value from parameter",
+        "requiredParameters": [
+            {
+                "name": "harcode.value",
+                "type": "java.lang.Integer",
+                "restrictions": []
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToLong",
+        "inType": "java.lang.Object",
+        "outType": "java.lang.Long",
+        "description": "Transformer of Object into Long, input can be of types Boolean, Number, String:\nif Boolean, 1L is returend in case of true, 0L  is returned otherwise. \nif Number, Returns the value of the specified number as a Long, which may involve rounding or truncation\nIf String, parses the string argument as a signed decimal long.The characters in the string must all be decimal digits, except that the first character may be an ASCII minus sign '-';to indicate a negative value or an ASCII plus sign '+' to indicate a positive value\n",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.BytesValueTransformer$ToBase64String",
+        "inType": "[B",
+        "outType": "java.lang.String",
+        "description": "Transformer of byte[] into String using base64 function",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.IntValueTransformer$ToLong",
+        "inType": "java.lang.Integer",
+        "outType": "java.lang.Long",
+        "description": "Transformer of Integer into Long using cast",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ToUpperCase",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Transformer of String into String using upper case method",
+        "requiredParameters": []
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$ReplaceAll",
+        "inType": "java.lang.String",
+        "outType": "java.lang.String",
+        "description": "Replaces each substring of this string that matches the given regular expression with the given replacement.\n Note that backslashes (\\) and dollar signs ($) in the replacement string may cause the results to be different\n than if it were being treated as a literal replacement string.\nExample:\ninput: hello|there|how|are|you\nregex: \"\\\\|\"\nreplacement: \"\\\\\\\\|\" \nreturns: hello\\|there\\|how\\|are\\|you\n",
+        "requiredParameters": [
+            {
+                "name": "regex",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            },
+            {
+                "name": "replacement",
+                "type": "java.lang.String",
+                "restrictions": [
+                    {
+                        "type": "STR_MIN_LEN",
+                        "parameter": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.EnumValueTransformerto-org.springframework.http.HttpStatus",
+        "inType": "java.lang.String",
+        "outType": "org.springframework.http.HttpStatus",
+        "description": "Transformer of String into HttpStatus",
+        "requiredParameters": []
+    }
+]
+```
