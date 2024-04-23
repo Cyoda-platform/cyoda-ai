@@ -1,66 +1,77 @@
-Instruction
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
 Here's an example of how to map an input to an entity with a Javascript Nashorn script:
 
-First, find an entity {tender_entity}.
-
 Example input:
- {
-        "input": {
-            "name": "Construction of New Bridge Project",
-            "types": [
-                "Infrastructure",
-                "Construction"
-            ],
-            "contactUser": "John Doe",
-            "systemAccount": true,
-            "date": "2024-03-28",
-            "deadlineDate": "2024-05-15",
-            "deadlineLengthDays": 48,
-            "category": "Public Works",
-            "awardedValue": 250000.00,
-            "purchaser": "Department of Transportation",
-            "notices": [
-                {
-                    "name": "Notice of Award",
-                    "id": "NW20240328001",
-                    "sid": "S001",
-                    "date": "2024-03-28",
-                    "type": "Award",
-                    "srcId": "SRC001",
-                    "srcUrl": "https://example.com/notice/NW20240328001",
-                    "data": "Awarded the contract for the Construction of New Bridge Project to XYZ Construction Company."
-                },
-                {
-                    "name": "Invitation to Bid",
-                    "id": "NW20240301001",
-                    "sid": "S002",
-                    "date": "2024-03-01",
-                    "type": "Bid",
-                    "srcId": "SRC002",
-                    "srcUrl": "https://example.com/notice/NW20240301001",
-                    "data": "Inviting bids for the Construction of New Bridge Project. Deadline for submission is April 15, 2024."
-                }
-            ]
-        }
-    }
-
-Example tender_entity:
 {
-  "tender_entity": {
-    "name": "string",
-    "types": [
-      "string"
-    ],
-    "contactUser": "string",
-    "systemAccount": true,
-    "date": "string",
-    "deadlineDate": "string",
-    "deadlineLengthDays": 0,
-    "category": "string",
-    "awardedValue": 0.0,
-    "purchaser": "string",
-    "notices": [
-      {
+  "name": "Construction of New Office Building",
+  "types": [
+    "Construction",
+    "Development"
+  ],
+  "contactUser": "John Doe",
+  "systemAccount": true,
+  "date": "2024-03-28",
+  "deadlineDate": "2024-04-30",
+  "deadlineLengthDays": 33,
+  "category": "Construction Services",
+  "awardedValue": 185000,
+  "purchaser": "ABC Corporation",
+  "notices": [
+    {
+      "name": "Pre-Bid Conference",
+      "id": "NW20240328002",
+      "sid": "S003",
+      "date": "2024-03-28",
+      "type": "Conference",
+      "srcId": "SRC003",
+      "srcUrl": "https://example.com/notice/NW20240328002",
+      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+    },
+    {
+      "name": "Pre-Bid Conference",
+      "id": "NW20240328002",
+      "sid": "S003",
+      "date": "2024-03-28",
+      "type": "Conference",
+      "srcId": "SRC003",
+      "srcUrl": "https://example.com/notice/NW20240328002",
+      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+    }
+  ]
+}
+
+Example entity net.cyoda.saas.model.TenderEntity:
+{
+    "net.cyoda.saas.model.TenderEntity": {
+      "name": "string",
+      "types": [
+        "string"
+      ],
+      "contactUser": "string",
+      "systemAccount": true,
+      "date": "string",
+      "deadlineDate": "string",
+      "deadlineLengthDays": 0,
+      "category": "string",
+      "awardedValue": 0.0,
+      "purchaser": "string",
+      "notices": [
+        {
+          "name": "string",
+          "id": "string",
+          "sid": "string",
+          "date": "string",
+          "type": "string",
+          "srcId": "string",
+          "srcUrl": "string",
+          "data": "string"
+        }
+      ]
+    }
+  },
+
+  {
+    "net.cyoda.saas.model.Notice": {
         "name": "string",
         "id": "string",
         "sid": "string",
@@ -69,29 +80,29 @@ Example tender_entity:
         "srcId": "string",
         "srcUrl": "string",
         "data": "string"
-      }
-    ]
-  }
+    }
 }
 
-Then, identify all fields that are semantically similar between the input and the entity.
-For instance, the input and entity share common fields such as date, deadlineDate, notices, and others.
+Example object initialization. Always initialize Java objects similar way or according to the docs:
+package net.cyoda.saas.model is the same for all classes you do not know.
 
-Let's write a JavaScript Nashorn script to map the input to the tender_entity entity.
-entity is a predefined object, do NOT initialize "entity".
-Pay attention at how arrays are handled. If it is a different object, like Notice in the example.
-First you need to initialize Notice.
-this is the correct format to initialize a cyoda object.
 ```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
 var Notice = Java.type('net.cyoda.saas.model.Notice');
 var notice = new Notice();
 ```
-package net.cyoda.saas.model is the same for all classes you do not know.
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var entity = Java.type('net.cyoda.saas.model.TenderEntity');
+var entity = new TenderEntity();
+```
+
+Do NOT initialize target entity (net.cyoda.saas.model.TenderEntity in this case)
 
 So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
-Expected output:
+Expected code output:
 ```Javascript Nashorn
-
+//Do NOT initialize entity (net.cyoda.saas.model.TenderEntity in this case)
 entity.setDate(input.date);
 entity.setDeadlineDate(input.deadlineDate);
 entity.setDeadlineLengthDays(input.deadlineLengthDays);
@@ -115,10 +126,40 @@ for (var i = 0; i < input.notices.length; i++) {
 
 entity.setNotices(notices);
 ```
+
+
+Expected script output:
+```JSON
+              "script": {
+                "body": "var ArrayList = Java.type(\"java.util.ArrayList\");\nvar notices = new ArrayList();\nvar Notice = Java.type(\"net.cyoda.saas.model.Notice\");\n\nfor (var i = 0; i < input.notices.length; i++) {\n    var notice = new Notice();\n    notice.setName(input.notices[i].name);\n    notice.setId(input.notices[i].id);\n    notice.setSid(input.notices[i].sid);\n    notice.setDate(input.notices[i].date);\n    notice.setType(input.notices[i].type);\n    notice.setSrcId(input.notices[i].srcId);\n    notice.setSrcUrl(input.notices[i].srcUrl);\n    notice.setData(input.notices[i].data);\n    notices.add(notice);\n}\nentity.setNotices(notices);\nentity.setPurchaser(input.purchaser);\n\nentity.setName(input.name);\nentity.setContactUser(input.contactUser);\nentity.setSystemAccount(input.systemAccount);\nentity.setDate(input.date);\nentity.setDeadlineDate(input.deadlineDate);\nentity.setDeadlineLengthDays(input.deadlineLengthDays);\nentity.setCategory(input.category);\nentity.setAwardedValue(input.awardedValue);\nentity.setTypes(input.types);\n",
+                "inputSrcPaths": [
+                    "name",
+                    "contactUser",
+                    "systemAccount",
+                    "date",
+                    "deadlineDate",
+                    "deadlineLengthDays",
+                    "category",
+                    "awardedValue",
+                    "purchaser",
+                    "notices/*/name",  // USE A WILDCARD, not element index!
+                    "notices/*/id", // USE A WILDCARD, not element index!
+                    "notices/*/sid", // USE A WILDCARD, not element index!
+                    "notices/*/date", // USE A WILDCARD, not element index!
+                    "notices/*/type", // USE A WILDCARD, not element index!
+                    "notices/*/srcId", // USE A WILDCARD, not element index!
+                    "notices/*/srcUrl", // USE A WILDCARD, not element index!
+                    "notices/*/data", // USE A WILDCARD, not element index!
+                    "types/*"
+                ],
+                "inputMetaPaths": [],
+                "reusableScripts": []
+            }
+```
 #inputSrcPaths
 As for inputSrcPaths you should list all paths of input parameters that are used. Also take into account that cyoda inputSrcPaths use a different json path.
 #inputSrcPaths for nested objects:
-If for example there is input {"purchaser": {"name":"Jim"}} then the inputSrcPaths will be "purchaser/name" and NOT "purchaser.name".
+If for example there is input {"person": {"name":"Jim"}} then the inputSrcPaths will be "person/name" and NOT "person.name".
 For arrays use wildcrds like notices/*/data.
 
 ###inputSrcPaths for nested objects. The correct format for inputSrcPaths for nested objects should be "parentObject/childObject/attribute".
@@ -127,12 +168,75 @@ For example, if we have an input object like this:
 ```json
 
 {
-  "purchaser": {
+  "person": {
     "name": "ABC Corporation"
   }
 }
 
 ```
-The inputSrcPath for the "name" attribute of the "purchaser" object would be "purchaser/name".
+The inputSrcPath for the "name" attribute of the "person" object would be "person/name".
+
+Another example is an array of primitives
+```json
+ "cars": [
+        "string"
+      ]
+```
+!!!IMPORTANT
+inputSrcPath should be passed as "cars/*" and NOT simply "cars"
 
 There can be variations in the input and the entity. Just try to find any relations and map them with a script.
+
+
+
+
+#inputSrcPaths 
+
+The `inputSrcPaths` are representing the paths of input parameters used in your system. In the context of Cyoda, these paths are formatted differently compared to standard JSON paths.
+
+## Nested Objects
+
+When dealing with nested objects, it's important to use the correct format. For instance, if you have an input object like `{"person": {"name":"Jim"}}`, the `inputSrcPaths` for the "name" attribute of the "person" object would be `"person/name"`, not `"person.name"`.
+
+For arrays, wildcards can be used. For example, `"persons/*/date"` would represent all "date" attributes of all objects within the "persons" array.
+
+Here's an example of how `inputSrcPaths` for arrays should be formatted:
+
+```json
+"persons/*/date",
+"persons/*/type",
+"persons/*/date",
+"persons/*/jobs/*/name"
+```
+
+## Correct Format for Nested Objects
+
+The correct format for `inputSrcPaths` for nested objects is "parentObject/childObject/attribute". For instance, if you have an input object like this:
+
+```json
+{
+  "person": {
+    "name": "ABC Corporation"
+  }
+}
+```
+
+The `inputSrcPaths` for the "name" attribute of the "person" object would be `"person/name"`, not "person.name".
+
+## Variations in Input and Entity
+
+In the face of variations in the input and the entity, it's crucial to find any relations and map them with a script. This allows for a flexible and adaptable data processing workflow.
+
+## Important Note on Arrays
+
+When dealing with arrays of primitives, it's important to use the wildcard `*`. For example, if you have an array of strings like this:
+
+```json
+ "pets": [
+        "string"
+      ]
+```
+
+The `inputSrcPath` should be passed as `"pets/*"`, not simply `"pets"`.
+
+In conclusion, understanding and correctly formatting `inputSrcPaths` is crucial for your data processing workflow. It allows for a flexible and adaptable data processing workflow, ensuring that any variations in the input and the entity are correctly mapped.

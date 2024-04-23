@@ -1,0 +1,294 @@
+Here you can see an example how to do mappings and Javascript Nashorn script.
+
+Pay attention to the fact that only attributes from the target entity matter.
+We look for semantically similar attrinutes in the input. And map input attributes to entity attributes.
+
+*Target entity*
+```
+{
+    "net.cyoda.saas.model.TenderEntity": {
+      "name": "string",
+      "types": [
+        "string"
+      ],
+      "contactUser": "string",
+      "systemAccount": true,
+      "date": "string",
+      "deadlineDate": "string",
+      "deadlineLengthDays": 0,
+      "category": "string",
+      "awardedValue": 0.0,
+      "purchaser": "string",
+      "notices": [
+        {
+          "name": "string",
+          "id": "string",
+          "sid": "string",
+          "date": "string",
+          "type": "string",
+          "srcId": "string",
+          "srcUrl": "string",
+          "data": "string"
+        }
+      ]
+    }
+  },
+
+  {
+    "net.cyoda.saas.model.Notice": {
+        "name": "string",
+        "id": "string",
+        "sid": "string",
+        "date": "string",
+        "type": "string",
+        "srcId": "string",
+        "srcUrl": "string",
+        "data": "string"
+    }
+}
+
+```
+
+*Input*
+```
+{
+  "id": "1",
+  "date": "2019-07-16",
+  "deadline_date": "2019-07-25",
+  "deadline_length_days": "9",
+  "title": "Sustitucin de duchas de los baos del pasillo C y D de la Residencia Juvenil Baltasar Gracian",
+  "category": "constructions",
+  "sid": "3996914",
+  "src_url": "https",
+  "src_final_url": "https",
+  "awarded_value": "20252.00",
+  "awarded_currency": "EUR",
+  "purchaser": {
+    "id": "1",
+    "sid": null,
+    "name": null
+  },
+  "type": {
+    "id": "minor-contract",
+    "name": "Minor contract",
+    "slug": "minor-contract"
+  },
+  "notices": [
+    {
+      "id": null,
+      "sid": null,
+      "date": "2019-08-30",
+      "type": {},
+      "src_id": null,
+      "src_url": null,
+      "data": {
+        "date": "2019-08-30",
+        "type": "Anuncio de Adjudicacin"
+      },
+      "sections": []
+    },
+    {
+      "id": null,
+      "sid": null,
+      "date": "2019-07-16",
+      "type": {},
+      "src_id": null,
+      "src_url": null,
+      "data": {
+        "date": "2019-07-16",
+        "type": "Anuncio de Licitacin"
+      },
+      "sections": []
+    }
+  ],
+  "awarded": [
+    {
+      "date": "2019-08-07",
+      "suppliers_id": "1",
+      "count": "1",
+      "value": "20252.00",
+      "suppliers_name": "GESTIMAX, Gestin y Servicios, S.L.",
+      "suppliers": [
+        {
+          "id": "1",
+          "slug": "gestimax-gestion-y-servicios-s-l",
+          "name": "GESTIMAX, Gestin y Servicios, S.L."
+        }
+      ],
+      "offers_count": 2,
+      "offers_count_data": {
+        "2": {
+          "count": 1,
+          "value": "20252.00"
+        }
+      },
+      "value_for_one": 0,
+      "value_for_two": 20252,
+      "value_for_three": 20252
+    }
+  ]
+}
+```
+
+*Expected column mappings*
+```
+[
+    {
+        "srcColumnPath": "id",
+        "dstCyodaColumnPath": "id",
+        "dstCyodaColumnPathType": "java.lang.String",
+        "dstCollectionElementSetModes": [],
+        "transformer": {
+            "type": "COMPOSITE",
+            "children": [
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                    "parameters": []
+                }
+            ]
+        }
+    },
+    {
+        "srcColumnPath": "date",
+        "dstCyodaColumnPath": "date",
+        "dstCyodaColumnPathType": "java.lang.String",
+        "dstCollectionElementSetModes": [],
+        "transformer": {
+            "type": "COMPOSITE",
+            "children": [
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                    "parameters": []
+                }
+            ]
+        }
+    },
+    {
+        "srcColumnPath": "deadline_date",
+        "dstCyodaColumnPath": "deadlineDate",
+        "dstCyodaColumnPathType": "java.lang.String",
+        "dstCollectionElementSetModes": [],
+        "transformer": {
+            "type": "COMPOSITE",
+            "children": [
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                    "parameters": []
+                }
+            ]
+        }
+    },
+    {
+        "srcColumnPath": "deadline_length_days",
+        "dstCyodaColumnPath": "deadlineLengthDays",
+        "dstCyodaColumnPathType": "java.lang.Integer",
+        "dstCollectionElementSetModes": [],
+        "transformer": {
+            "type": "COMPOSITE",
+            "children": [
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToInt",
+                    "parameters": []
+                }
+            ]
+        }
+    },
+    {
+        "srcColumnPath": "category",
+        "dstCyodaColumnPath": "category",
+        "dstCyodaColumnPathType": "java.lang.String",
+        "dstCollectionElementSetModes": [],
+        "transformer": {
+            "type": "COMPOSITE",
+            "children": [
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                    "parameters": []
+                }
+            ]
+        }
+    },
+    {
+        "srcColumnPath": "title",
+        "dstCyodaColumnPath": "name",
+        "dstCyodaColumnPathType": "java.lang.String",
+        "dstCollectionElementSetModes": [],
+        "transformer": {
+            "type": "COMPOSITE",
+            "children": [
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                    "parameters": []
+                },
+                {
+                    "type": "SINGLE",
+                    "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                    "parameters": []
+                }
+            ]
+        }
+    }
+]
+```
+
+*Expected JavaScript Nashorn code*
+```JavaScript Nashorn
+entity.setDate(input.date);
+entity.setDeadlineDate(input.deadline_date);
+entity.setDeadlineLengthDays(parseInt(input.deadline_length_days));
+entity.setName(input.title);
+entity.setCategory(input.category);
+entity.setAwardedValue(parseFloat(input.awarded_value));
+
+var ArrayList = Java.type("java.util.ArrayList");
+var notices = new ArrayList();
+
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+
+for (var i = 0; i < input.notices.length; i++) {
+  var noticeInput = input.notices[i];
+  var notice = new Notice();
+  notice.setSid(noticeInput.sid);
+  notice.setSrcUrl(noticeInput.src_url);
+  notices.add(notice);
+}
+
+entity.setNotices(notices);
+
+```
+
+*Expected JavaScript Nashorn script*
+```
+{
+    "script":{
+        
+    "body": "entity.setDate(input.date);\nentity.setDeadlineDate(input.deadline_date);\nentity.setDeadlineLengthDays(parseInt(input.deadline_length_days));\nentity.setName(input.title);\nentity.setCategory(input.category);\nentity.setAwardedValue(parseFloat(input.awarded_value));\n\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar notices = new ArrayList();\n\nvar Notice = Java.type('net.cyoda.saas.model.Notice');\n\nfor (var i = 0; i < input.notices.length; i++) {\n  var noticeInput = input.notices[i];\n  var notice = new Notice();\n  notice.setSid(noticeInput.sid);\n  notice.setSrcUrl(noticeInput.src_url);\n  notices.add(notice);\n}\n\nentity.setNotices(notices);\n",
+    "inputSrcPaths": [
+        "id",
+        "date",
+        "deadline_date",
+        "deadline_length_days",
+        "title",
+        "category",
+        "sid",
+        "src_url",
+        "src_final_url",
+        "awarded_value",
+        "awarded_currency",
+        "purchaser/id",
+        "type/id",
+        "notices/*/sid",
+        "notices/*/src_url"
+    ],
+    "inputMetaPaths": [],
+    "reusableScripts": []
+}
+    
+}
+```
