@@ -8,23 +8,33 @@ To generate column mappings from the input to the entity, follow these steps:
 
 2. **Create Column Mappings:** For each pair of semantically related attributes, create a column mapping with the following structure:
 
+3. Specify an action - add or delete
 ```json
-{
-  "srcColumnPath": "input_attribute_name", // Input attribute name
-  "dstCyodaColumnPath": "entity_attribute_name", // Entity attribute name
-  "dstCyodaColumnPathType": "entity_datatype", // Entity data type
-  "dstCollectionElementSetModes": [], // Leave this as is
-  "transformer": { // Transformer from the transformers list
-    "type": "COMPOSITE",
-    "children": [
-      {
-        "type": "SINGLE",
-        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$To<get a matching value from a list below>",
-        "parameters": []
-      }
-    ]
-  }
-}
+[
+   {
+      "column":{
+         "srcColumnPath":"input_attribute_name",
+         "dstCyodaColumnPath":"entity_attribute_name",
+         "dstCyodaColumnPathType":"entity_datatype",
+         "dstCollectionElementSetModes":[
+            
+         ],
+         "transformer":{
+            "type":"COMPOSITE",
+            "children":[
+               {
+                  "type":"SINGLE",
+                  "transformerKey":"com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$To<get a matching value from a list below>",
+                  "parameters":[
+                     
+                  ]
+               }
+            ]
+         }
+      },
+      "action":"add"
+   }
+]
 ```
 Replace `input_attribute_name` with the name of the attribute from the input, `entity_attribute_name` with the corresponding attribute name in the entity, and `entity_datatype` with the data type of the attribute in the entity.
 For a list of available transformers look up column mappings transformers list.

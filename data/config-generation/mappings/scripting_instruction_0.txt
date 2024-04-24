@@ -83,6 +83,8 @@ Example entity net.cyoda.saas.model.TenderEntity:
     }
 }
 
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+
 Example object initialization. Always initialize Java objects similar way or according to the docs:
 package net.cyoda.saas.model is the same for all classes you do not know.
 
@@ -240,3 +242,4 @@ When dealing with arrays of primitives, it's important to use the wildcard `*`. 
 The `inputSrcPath` should be passed as `"pets/*"`, not simply `"pets"`.
 
 In conclusion, understanding and correctly formatting `inputSrcPaths` is crucial for your data processing workflow. It allows for a flexible and adaptable data processing workflow, ensuring that any variations in the input and the entity are correctly mapped.
+
