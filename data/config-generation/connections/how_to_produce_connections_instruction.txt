@@ -1,0 +1,43 @@
+#Connections
+This is instruction on how to write/produce/generate connections endpoint json objects.
+
+Connection json objects are a json representation of external APIs.
+APIs can be submitted in Open API format or in arbitary format. Do your best to analyse the requirement.
+Let's take an examle.
+This is a API Documentation for Cats API. 
+
+Input:
+## cats api start
+API Documentation
+Base URL for all endpoints https://cat-fact.herokuapp.com
+
+The response time will likely be a few seconds long on the first request, because this app is running on a free Heroku dyno. Subsequent requests will behave as normal.
+
+Endpoints
+/facts Retrieve and query facts
+
+Models
+Fact An animal fact
+
+User A user of the Cat Facts site
+## cats api ends
+
+Based on this document let's produce connection json objects.
+
+First, let's get the endpoint. From the document we know that there is one endpoint "/facts". Its URL is  https://cat-fact.herokuapp.com , path = /facts and method is GET as nothing else specified.
+
+So, we can generate the following connection object.
+
+Expected endpoint output: 
+```JSON
+        {
+            "operation": "facts",
+            "query": "/facts",
+            "method": "GET",
+            "parameters": [],
+            "bodyTemplate": "",
+            "connectionTimeout": 300,
+            "readWriteTimeout": 300
+        }
+```
+
