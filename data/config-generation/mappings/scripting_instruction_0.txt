@@ -114,7 +114,7 @@ entity.setAwardedValue(input.awardedValue);
 
 var ArrayList = Java.type("java.util.ArrayList");
 var notices = new ArrayList();
-
+//this is how you should initialize objects with javascript
 var Notice = Java.type('net.cyoda.saas.model.Notice');
 
 // Add notices from input

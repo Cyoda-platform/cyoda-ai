@@ -1,28 +1,28 @@
 {
-  "contract_entity": {
+  "net.cyoda.saas.model.ContractEntity": {
     "id": "string",
     "title": "string",
     "description": "string",
-    "start_date": "string (ISO 8601 date format)",
-    "end_date": "string (ISO 8601 date format)",
-    "value": {
+    "startDate": "string (ISO 8601 date format)",
+    "endDate": "string (ISO 8601 date format)",
+    "net.cyoda.saas.model.Value": {
       "amount": "number",
       "currency": "string"
     },
-    "parties": {
-      "buyer": {
+    "net.cyoda.saas.model.Parties": {
+      "net.cyoda.saas.model.Buyer": {
         "name": "string",
         "address": "string",
-        "contact": {
+        "net.cyoda.saas.model.Contact": {
           "name": "string",
           "email": "string",
           "phone": "string"
         }
       },
-      "seller": {
+      "net.cyoda.saas.model.Seller": {
         "name": "string",
         "address": "string",
-        "contact": {
+        "net.cyoda.saas.model.Contact": {
           "name": "string",
           "email": "string",
           "phone": "string"
@@ -30,13 +30,13 @@
       }
     },
     "status": "string",
-    "terms": [
+    "net.cyoda.saas.model.Term": [
       {
         "name": "string",
         "description": "string"
       }
     ],
-    "attachments": [
+    "net.cyoda.saas.model.Attachment": [
       {
         "name": "string",
         "url": "string"
