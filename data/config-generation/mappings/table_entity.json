@@ -1,5 +1,5 @@
 {
-    "properties": {
+    "com.cyoda.plugins.tasks.model.AlertData": {
         "strings": {
             "existingJavaType": "java.util.Map<String,String>",
             "type": "object"
