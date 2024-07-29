@@ -1,5 +1,5 @@
 {
-    "com.cyoda.plugins.tasks.model.AlertData": {
+    "com.cyoda.plugins.tasks.model.AlertTask": {
         "strings": {
             "existingJavaType": "java.util.Map<String,String>",
             "type": "object"
