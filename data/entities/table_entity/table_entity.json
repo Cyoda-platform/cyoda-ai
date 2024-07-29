@@ -1,6 +1,6 @@
 {
     "properties": {
-        "string": {
+        "strings": {
             "existingJavaType": "java.util.Map<String,String>",
             "type": "object"
         }
