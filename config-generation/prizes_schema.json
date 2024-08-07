@@ -21,7 +21,8 @@
                         "motivation": "\"for the development of a method for genome editing\"",
                         "share": "2"
                     }
-                ]
+                ],
+                "summary": "test"
             },
             {
                 "year": "2019",
@@ -77,6 +78,7 @@
                     }
                 ]
             }
-        ]
+        ],
+        "summary": "test"
     }
 }
