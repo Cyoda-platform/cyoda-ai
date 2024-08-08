@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+  description: An example API with enum and arrays
+
+servers:
+  - url: https://api.example.com/v1
+
+paths:
+  /products:
+    get:
+      summary: Get products by category
+      parameters:
+        - name: category
+          in: query
+          description: Filter products by category
+          required: true
+          schema:
+            type: string
+            enum: [electronics, clothing, books, sports]
+
+      responses:
+        '200':
+          description: List of products retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    price:
+                      type: number
+                    inStock:
+                      type: boolean
+                    tags:
+                      type: array
+                      items:
+                        type: string
