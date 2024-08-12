@@ -1,0 +1,117 @@
+{
+    "@bean": "com.cyoda.plugins.datasource.dtos.DataSourceConfigDto",
+    "id": "a77f8150-15b1-11ee-bcbd-cecea7851880",
+    "name": "mockoon auth soap testing config",
+    "lastUpdated": 1722258157945,
+    "description": "works!!",
+    "connections": [
+        {
+            "@bean": "com.cyoda.plugins.datasource.dtos.connection.HttpConnectionDetailsDto",
+            "name": "HTTP connection",
+            "baseUrl": "http://mockoon.kube.cyoda.org",
+            "headers": {},
+            "authType": "X_AUTH_TOKEN",
+            "authConfig": {
+                "name": "get token",
+                "authOperationConfigs": [
+                    {
+                        "authService": "com.cyoda.plugins.datasource.service.handler.auth.SoapUiAuthService",
+                        "authServiceName": "soap-ui-auth-service",
+                        "baseUrl": "http://mockoon.kube.cyoda.org",
+                        "query": "/companies/file/testsoap.xml",
+                        "method": "GET",
+                        "bodyTemplate": "",
+                        "headers": {},
+                        "parameters": [],
+                        "dataSourceAuthRespConfig": {
+                            "responseParser": "com.cyoda.plugins.datasource.service.handler.auth.resp.XmlDefaultResponseParser",
+                            "responseParserName": "xml-default-response-parser",
+                            "responseParamToPathMap": {
+                                "token": {
+                                    "@bean": "com.cyoda.plugins.datasource.dtos.connection.auth.resp.XmlRespSourcePathDto",
+                                    "path": "/Author/@EMailID"
+                                }
+                            }
+                        },
+                        "connectionTimeout": 0,
+                        "readWriteTimeout": 0
+                    }
+                ],
+                "numOfRetries": 2,
+                "cacheConfig": {
+                    "ttl": 1000000,
+                    "persistCache": false
+                }
+            }
+        }
+    ],
+    "endpoints": [
+        {
+            "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+            "consumerConfig": {
+                "consumerType": "COBI_MAPPER",
+                "configId": "4f476ed0-7a2a-11ed-bc08-7085c2ba41e4"
+            },
+            "chainings": [],
+            "operation": "test1",
+            "cache": {
+                "parameters": [],
+                "ttl": 1000000000000
+            },
+            "connectionIndex": 0,
+            "type": "123",
+            "query": "/json/people/${doc_id}",
+            "method": "GET",
+            "parameters": [
+                {
+                    "name": "doc_id",
+                    "defaultValue": "111",
+                    "secure": false,
+                    "required": true,
+                    "template": false,
+                    "templateValue": "",
+                    "excludeFromCacheKey": false,
+                    "type": "PATH_VARIABLE",
+                    "optionValues": []
+                }
+            ],
+            "bodyTemplate": "{\"username\":\"robert\", \"password\":\"stardust\"}",
+            "connectionTimeout": 1,
+            "readWriteTimeout": 1
+        },
+        {
+            "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+            "consumerConfig": {
+                "consumerType": "COBI_MAPPER",
+                "configId": "4f476ed0-7a2a-11ed-bc08-7085c2ba41e4"
+            },
+            "chainings": [],
+            "operation": "test2",
+            "cache": {
+                "parameters": [],
+                "ttl": 0
+            },
+            "connectionIndex": 0,
+            "type": "2",
+            "query": "/json/people/${doc_id2}",
+            "method": "GET",
+            "parameters": [
+                {
+                    "name": "doc_id2",
+                    "defaultValue": "222",
+                    "secure": false,
+                    "required": false,
+                    "template": false,
+                    "templateValue": "",
+                    "excludeFromCacheKey": false,
+                    "type": "PATH_VARIABLE",
+                    "optionValues": []
+                }
+            ],
+            "bodyTemplate": "",
+            "connectionTimeout": 1,
+            "readWriteTimeout": 1
+        }
+    ],
+    "active": true
+}
