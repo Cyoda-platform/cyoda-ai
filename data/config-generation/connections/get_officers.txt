@@ -1,0 +1,29 @@
+## Example: Connection Endpoint with Path variables
+Let's construct HttpEndpointDto.java object based on the API:
+### Input API Description
+
+Get tender details
+Get extended set of data for a tender.
+
+GET http://mockoon.kube.cyoda.org/company/${number}/officers
+Request Parameters
+Param|	Type|	Description|	Default Value
+number|	Integer|	Company number|	
+
+### Expected JSON Output
+
+```json
+{
+  "operation": "getOfficers",
+  "type": "Get extended set of data for a tender.",
+  "query": "/company/${number}/officers",
+  "method": "GET",
+  "parameters": [
+    {		defaultValue: "11067898"excludeFromCacheKey: falsename: "number"optionValues: []required: truesecure: falsetemplate: falsetemplateValue: ""type: "PATH_VARIABLE"
+
+    }
+  ],
+  "bodyTemplate": "",
+  "connectionTimeout": 0,
+  "readWriteTimeout": 0
+}
