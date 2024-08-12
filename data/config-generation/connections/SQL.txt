@@ -1,0 +1,88 @@
+{@bean: "com.cyoda.plugins.datasource.dtos.DataSourceConfigDto",…}
+@bean
+: 
+"com.cyoda.plugins.datasource.dtos.DataSourceConfigDto"
+active
+: 
+true
+connections
+: 
+[{@bean: "com.cyoda.plugins.datasource.dtos.connection.SqlConnectionDetailsDto", name: "SQL",…}]
+0
+: 
+{@bean: "com.cyoda.plugins.datasource.dtos.connection.SqlConnectionDetailsDto", name: "SQL",…}
+@bean
+: 
+"com.cyoda.plugins.datasource.dtos.connection.SqlConnectionDetailsDto"
+connectionProperties
+: 
+{}
+driverClassName
+: 
+"com.mysql.jdbc.Driver"
+jdbcUrl
+: 
+"jdbc:mysql://10.0.1.14:30306/testdb"
+name
+: 
+"SQL"
+password
+: 
+"password"
+username
+: 
+"root"
+description
+: 
+""
+endpoints
+: 
+[{@bean: "com.cyoda.plugins.datasource.dtos.endpoint.SqlEndpointDto",…}]
+0
+: 
+{@bean: "com.cyoda.plugins.datasource.dtos.endpoint.SqlEndpointDto",…}
+@bean
+: 
+"com.cyoda.plugins.datasource.dtos.endpoint.SqlEndpointDto"
+cache
+: 
+{parameters: [], ttl: 0}
+parameters
+: 
+[]
+ttl
+: 
+0
+chainings
+: 
+[]
+connectionIndex
+: 
+0
+consumerConfig
+: 
+{consumerType: "COBI_MAPPER", configId: "a6b0aed0-ecb7-11ec-b5ad-901b0ea4aa73"}
+configId
+: 
+"a6b0aed0-ecb7-11ec-b5ad-901b0ea4aa73"
+consumerType
+: 
+"COBI_MAPPER"
+operation
+: 
+"test"
+parameters
+: 
+[]
+query
+: 
+"SELECT * FROM test"
+id
+: 
+"dd1650f0-0f58-11ee-8b80-0e78ffa4e466"
+lastUpdated
+: 
+1720462038997
+name
+: 
+"SQL test"
