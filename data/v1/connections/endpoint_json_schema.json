@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "@bean": {
+      "type": "string",
+      "enum": ["com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto"]
+    },
+    "consumerConfig": {
+      "type": "object",
+      "properties": {
+        "consumerType": {
+          "type": "string",
+          "enum": ["COBI_MAPPER"]
+        },
+        "configId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": ["consumerType", "configId"],
+      "additionalProperties": false
+    },
+    "chainings": {
+      "type": "array",
+      "items": {}
+    },
+    "operation": {
+      "type": "string"
+    },
+    "cache": {
+      "type": "object",
+      "properties": {
+        "parameters": {
+          "type": "array",
+          "items": {}
+        },
+        "ttl": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["parameters", "ttl"],
+      "additionalProperties": false
+    },
+    "connectionIndex": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "query": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string",
+      "enum": ["GET", "POST_FORM", "POST_BODY"]
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "defaultValue": {
+            "type": "string"
+          },
+          "secure": {
+            "type": "boolean"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "template": {
+            "type": "boolean",
+            "enum": [false]
+          },
+          "templateValue": {
+            "type": "string",
+            "enum": [""]
+          },
+          "excludeFromCacheKey": {
+            "type": "boolean",
+            "enum": [false]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PATH_VARIABLE", 
+              "REQUEST_BODY_VARIABLE",
+              "REQUEST_PARAM", 
+              "HEADER_PARAM",
+              "TEMPLATE_VARIABLE", 
+              "CUSTOM_PARAM"
+            ]
+          },
+          "optionValues": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "name", 
+          "defaultValue", 
+          "secure", 
+          "required", 
+          "template", 
+          "templateValue", 
+          "excludeFromCacheKey", 
+          "type", 
+          "optionValues"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "bodyTemplate": {
+      "type": "string"
+    },
+    "connectionTimeout": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "readWriteTimeout": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "@bean", 
+    "consumerConfig", 
+    "chainings", 
+    "operation", 
+    "cache", 
+    "connectionIndex", 
+    "type", 
+    "query", 
+    "method", 
+    "parameters", 
+    "bodyTemplate", 
+    "connectionTimeout", 
+    "readWriteTimeout"
+  ],
+  "additionalProperties": false
+}

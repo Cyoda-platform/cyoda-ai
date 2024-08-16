@@ -7,45 +7,8 @@
             "lastUpdated": 1723486844219,
             "description": "",
             "connections": [
-                {
-                    "@bean": "com.cyoda.plugins.datasource.dtos.connection.HttpConnectionDetailsDto",
-                    "name": "<Write connection name here>",
-                    "baseUrl": "<Write base url here>",
-                    "headers": {},
-                    "authType": "NONE",
-                    "authConfig": {
-                        "name": "",
-                        "authOperationConfigs": [],
-                        "numOfRetries": 1,
-                        "cacheConfig": {
-                            "ttl": 0,
-                            "persistCache": false
-                        }
-                    }
-                }
             ],
             "endpoints": [
-                {
-                    "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
-                    "consumerConfig": {
-                        "consumerType": "COBI_MAPPER",
-                        "configId": "7e93e7d0-58d7-11ef-82bb-1e5f513defed"
-                    },
-                    "chainings": [],
-                    "operation": "<Write operation (endpoint) name here>",
-                    "cache": {
-                        "parameters": [],
-                        "ttl": 0
-                    },
-                    "connectionIndex": 0,
-                    "type": "test",
-                    "query": "<Write endpoint path here>",
-                    "method": "<Write method here: GET or POST>",
-                    "parameters": [],
-                    "bodyTemplate": "",
-                    "connectionTimeout": 300,
-                    "readWriteTimeout": 300
-                }
             ],
             "active": true
         }

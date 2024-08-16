@@ -1,0 +1,40 @@
+## Column Mappings for AI Ingestion
+
+**Important Note:** Never generate column mappings for lists, arrays, or dictionaries. These data structures are not supported in the current version of AI ingestion.
+
+To generate column mappings from the input to the entity, follow these steps:
+
+1. **Identify Semantically Related Attributes:** Begin by identifying all attributes in the target entity that have a corresponding attribute in the input. These attributes should be at the same level in the JSON object and have the same data type.
+
+2. **Create Column Mappings:** For each pair of semantically related attributes, create a column mapping with the following structure:
+
+3. Specify an action - add or delete
+```json
+[
+   {
+      "column":{
+         "srcColumnPath":"input_attribute_name",
+         "dstCyodaColumnPath":"entity_attribute_name",
+         "dstCyodaColumnPathType":"entity_datatype",
+         "dstCollectionElementSetModes":[
+            
+         ],
+         "transformer":{
+            "type":"COMPOSITE",
+            "children":[
+               {
+                  "type":"SINGLE",
+                  "transformerKey":"com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$To<get a matching value from a list below>",
+                  "parameters":[
+                     
+                  ]
+               }
+            ]
+         }
+      },
+      "action":"add"
+   }
+]
+```
+Replace `input_attribute_name` with the name of the attribute from the input, `entity_attribute_name` with the corresponding attribute name in the entity, and `entity_datatype` with the data type of the attribute in the entity.
+For a list of available transformers look up column mappings transformers list.

@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "@bean": {
+        "type": "string",
+        "enum": ["com.cyoda.plugins.datasource.dtos.connection.HttpConnectionDetailsDto"]
+      },
+      "name": {
+        "type": "string"
+      },
+      "baseUrl": {
+        "type": "string"
+      },
+      "headers": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "authType": {
+        "type": "string",
+        "enum": ["NONE"]
+      },
+      "authConfig": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "authOperationConfigs": {
+            "type": "array",
+            "items": {}
+          },
+          "numOfRetries": {
+            "type": "integer"
+          },
+          "cacheConfig": {
+            "type": "object",
+            "properties": {
+              "ttl": {
+                "type": "integer"
+              },
+              "persistCache": {
+                "type": "boolean"
+              }
+            },
+            "required": ["ttl", "persistCache"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["name", "authOperationConfigs", "numOfRetries", "cacheConfig"],
+        "additionalProperties": false
+      }
+    },
+    "required": ["@bean", "name", "baseUrl", "headers", "authType", "authConfig"],
+    "additionalProperties": false
+  }

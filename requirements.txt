@@ -13,3 +13,5 @@ beautifulsoup4==4.12.3
 
 # Version control system
 GitPython==3.1.43
+
+jsonschema==4.23.0
