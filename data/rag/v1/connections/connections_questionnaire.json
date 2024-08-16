@@ -4,7 +4,7 @@
     "connection_name": "${Write connection name here.It should either taken from the user input or it should reflect the information contained in the datasource}",
     "connection_type": "${Choose from values: [SQL, HTTP]}",
     "connection_base_url": "${Specify base url for the connection}",
-    "connection_endpoints": ["${Either specify values from the user input here or write a json list of all available endpoints, specifying ${method and path})}"]
+    "connection_endpoints": ["${Either specify values from the user input here or write a json list of all available endpoints, specifying ${method and path and if it has any parameters})}"]
 }
 
 This is schema that will be used for result validation

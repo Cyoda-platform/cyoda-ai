@@ -17,6 +17,7 @@ Use this template to generate com.cyoda.plugins.datasource.dtos.endpoint.HttpEnd
     "type": "test",
     "query": "${Write endpoint path here}",
     "method": "${GET or POST_BODY. (Use POST_BODY instead of POST, nothing else is supported)}",
+    Carefully analyze the doc and fill in the parameters
     "parameters": [
         ${Add parameters only if applicable}
         {
