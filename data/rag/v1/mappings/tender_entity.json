@@ -1,4 +1,6 @@
-##Tender Entity f2c3867f-6ddc-4a48-a47a-03ea7ac6b306
+##net.cyoda.saas.model.TenderEntity f2c3867f-6ddc-4a48-a47a-03ea7ac6b306
+net.cyoda.saas.model.TenderEntity
+Tender Entity
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "TenderEntity",

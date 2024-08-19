@@ -1,5 +1,8 @@
-##Contract Entity cf6c65a3-6adf-448b-bff9-e22e25cef7da
+##net.cyoda.saas.model.ContractEntity cf6c65a3-6adf-448b-bff9-e22e25cef7da
 
+net.cyoda.saas.model.ContractEntity
+
+Contract Entity
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "ContractEntity",
