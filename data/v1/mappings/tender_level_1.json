@@ -1,0 +1,71 @@
+{
+  "id": "tender-002",
+  "name": "Complex Tender",
+  "types": ["TypeA", "TypeB"],
+  "contactUser": "complex.contact@example.com",
+  "systemAccount": false,
+  "date": "2024-07-15T09:30:00Z",
+  "deadlineDate": "2024-09-15T17:00:00Z",
+  "deadlineLengthDays": 62,
+  "category": "Infrastructure",
+  "awardedValue": 2500000.75,
+  "purchaser": "Purchaser B",
+  "notices": [
+    {
+      "name": "Notice 1",
+      "id": "notice-002-001",
+      "sid": "sid-002-001",
+      "date": "2024-07-20T10:00:00Z",
+      "type": "Initial",
+      "srcId": "src-002-001",
+      "srcUrl": "http://example.com/notice-002-001",
+      "data": "Initial notice data"
+    },
+    {
+      "name": "Notice 2",
+      "id": "notice-002-002",
+      "sid": "sid-002-002",
+      "date": "2024-08-01T11:30:00Z",
+      "type": "Amendment",
+      "srcId": "src-002-002",
+      "srcUrl": "http://example.com/notice-002-002",
+      "data": "Amendment notice data"
+    }
+  ],
+  "purchaserNoticeMap": {
+    "Purchaser B": [
+      {
+        "name": "Notice 1",
+        "id": "notice-002-001",
+        "sid": "sid-002-001",
+        "date": "2024-07-20T10:00:00Z",
+        "type": "Initial",
+        "srcId": "src-002-001",
+        "srcUrl": "http://example.com/notice-002-001",
+        "data": "Initial notice data"
+      },
+      {
+        "name": "Notice 2",
+        "id": "notice-002-002",
+        "sid": "sid-002-002",
+        "date": "2024-08-01T11:30:00Z",
+        "type": "Amendment",
+        "srcId": "src-002-002",
+        "srcUrl": "http://example.com/notice-002-002",
+        "data": "Amendment notice data"
+      }
+    ],
+    "Purchaser C": [
+      {
+        "name": "Notice 3",
+        "id": "notice-002-003",
+        "sid": "sid-002-003",
+        "date": "2024-08-10T14:00:00Z",
+        "type": "Final",
+        "srcId": "src-002-003",
+        "srcUrl": "http://example.com/notice-002-003",
+        "data": "Final notice data"
+      }
+    ]
+  }
+}

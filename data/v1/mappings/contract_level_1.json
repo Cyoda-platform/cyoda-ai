@@ -1,0 +1,46 @@
+{
+    "contract_id": "CONTRACT456",
+    "contract_title": "Consulting Services Agreement",
+    "description": "This agreement outlines the consulting services provided by the seller to the buyer.",
+    "contract_dates": {
+      "start": "2024-05-01",
+      "end": "2024-12-31"
+    },
+    "financial_info": {
+      "value_due": 150000.00,
+      "currency_type": "USD"
+    },
+    "parties_involved": {
+      "client_party": {
+        "name": "Innovatech Ltd",
+        "location": "45 Tech Park, Austin, TX, USA",
+        "primary_contact": {
+          "full_name": "Michael Green",
+          "email": "michael.green@innovatech.com"
+        }
+      },
+      "provider_party": {
+        "name": "ConsultPro Services",
+        "location": "67 Consulting Lane, Seattle, WA, USA"
+      }
+    },
+    "contract_status": "Pending",
+    "terms_and_conditions": [
+      {
+        "condition_name": "Payment Terms",
+        "condition_details": "Payments are due within 30 days of invoice receipt."
+      }
+    ],
+    "contract_documents": [
+      {
+        "doc_name": "Service Agreement Document",
+        "document_url": "https://example.com/docs/service-agreement.pdf"
+      }
+    ],
+    "party_specific_documents": {
+      "client_docs": {
+        "doc_name": "Client Agreement Page",
+        "document_link": "https://example.com/docs/client-agreement.pdf"
+      }
+    }
+  }

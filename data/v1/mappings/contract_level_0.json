@@ -1,0 +1,59 @@
+{
+    "id": "CONTRACT123",
+    "title": "Service Agreement",
+    "description": "This contract outlines the terms and conditions for the service provided by Seller to Buyer.",
+    "startDate": "2024-01-01",
+    "endDate": "2024-12-31",
+    "value": {
+      "amount": 10000.00,
+      "currency": "USD"
+    },
+    "parties": {
+      "buyer": {
+        "name": "Acme Corp",
+        "address": "123 Elm Street, Springfield, IL",
+        "contact": {
+          "name": "John Doe",
+          "email": "john.doe@acmecorp.com",
+          "phone": "+1-555-1234"
+        }
+      },
+      "seller": {
+        "name": "Widget Co",
+        "address": "456 Oak Avenue, Metropolis, NY",
+        "contact": {
+          "name": "Jane Smith",
+          "email": "jane.smith@widgetco.com",
+          "phone": "+1-555-5678"
+        }
+      }
+    },
+    "status": "Active",
+    "terms": [
+      {
+        "name": "Payment Schedule",
+        "description": "Payments will be made in three installments: 30%, 50%, and 20%."
+      },
+      {
+        "name": "Termination Clause",
+        "description": "Either party may terminate the contract with 30 days' written notice."
+      }
+    ],
+    "attachments": [
+      {
+        "name": "Contract Document",
+        "url": "https://example.com/documents/contract123.pdf"
+      }
+    ],
+    "partyAttachments": {
+      "buyer": {
+        "name": "Buyer Signed Document",
+        "url": "https://example.com/documents/buyer-signature.pdf"
+      },
+      "seller": {
+        "name": "Seller Signed Document",
+        "url": "https://example.com/documents/seller-signature.pdf"
+      }
+    }
+  }
+  

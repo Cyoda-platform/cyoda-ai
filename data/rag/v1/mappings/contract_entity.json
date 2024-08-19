@@ -1,46 +1,151 @@
+##Contract Entity cf6c65a3-6adf-448b-bff9-e22e25cef7da
+
 {
-  "net.cyoda.saas.model.ContractEntity": {
-    "id": "string",
-    "title": "string",
-    "description": "string",
-    "startDate": "string (ISO 8601 date format)",
-    "endDate": "string (ISO 8601 date format)",
-    "net.cyoda.saas.model.Value": {
-      "amount": "number",
-      "currency": "string"
-    },
-    "net.cyoda.saas.model.Parties": {
-      "net.cyoda.saas.model.Buyer": {
-        "name": "string",
-        "address": "string",
-        "net.cyoda.saas.model.Contact": {
-          "name": "string",
-          "email": "string",
-          "phone": "string"
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ContractEntity",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "startDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "endDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "value": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          }
+        },
+        "required": ["amount", "currency"]
+      },
+      "parties": {
+        "type": "object",
+        "properties": {
+          "buyer": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "contact": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "email", "phone"]
+              }
+            },
+            "required": ["name", "address", "contact"]
+          },
+          "seller": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "contact": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "email", "phone"]
+              }
+            },
+            "required": ["name", "address", "contact"]
+          }
+        },
+        "required": ["buyer", "seller"]
+      },
+      "status": {
+        "type": "string"
+      },
+      "terms": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          },
+          "required": ["name", "description"]
         }
       },
-      "net.cyoda.saas.model.Seller": {
-        "name": "string",
-        "address": "string",
-        "net.cyoda.saas.model.Contact": {
-          "name": "string",
-          "email": "string",
-          "phone": "string"
+      "attachments": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["name", "url"]
+        }
+      },
+      "partyAttachments": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["name", "url"]
         }
       }
     },
-    "status": "string",
-    "net.cyoda.saas.model.Term": [
-      {
-        "name": "string",
-        "description": "string"
-      }
-    ],
-    "net.cyoda.saas.model.Attachment": [
-      {
-        "name": "string",
-        "url": "string"
-      }
-    ]
+    "required": ["id", "title", "startDate", "endDate", "value", "parties", "status"]
   }
-}

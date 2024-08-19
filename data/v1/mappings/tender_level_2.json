@@ -1,0 +1,103 @@
+{
+  "tenderId": "tender-003",
+  "tenderTitle": "Advanced Infrastructure Project",
+  "tenderCategories": ["TypeX", "TypeY", "TypeZ"],
+  "contactPerson": "advanced.contact@infrastructure.com",
+  "isSystemAccount": false,
+  "creationDate": "2024-05-15T09:15:00Z",
+  "submissionDeadline": "2024-11-30T23:59:59Z",
+  "daysUntilDeadline": 200,
+  "sector": "Construction",
+  "totalAwardedAmount": 7500000.00,
+  "primaryBuyer": "BuyerGroup E",
+  "announcementList": [
+    {
+      "noticeTitle": "Preliminary Notice",
+      "noticeId": "ann-003-001",
+      "submissionId": "sub-003-001",
+      "publishDate": "2024-05-20T14:00:00Z",
+      "noticeType": "Preliminary",
+      "sourceReference": "src-003-001",
+      "sourceLink": "http://example.com/ann-003-001",
+      "content": "Preliminary notice content for tender."
+    },
+    {
+      "noticeTitle": "Official Announcement",
+      "noticeId": "ann-003-002",
+      "submissionId": "sub-003-002",
+      "publishDate": "2024-06-01T10:30:00Z",
+      "noticeType": "Official",
+      "sourceReference": "src-003-002",
+      "sourceLink": "http://example.com/ann-003-002",
+      "content": "Official announcement content."
+    },
+    {
+      "noticeTitle": "Amendment Notice",
+      "noticeId": "ann-003-003",
+      "submissionId": "sub-003-003",
+      "publishDate": "2024-07-15T12:00:00Z",
+      "noticeType": "Amendment",
+      "sourceReference": "src-003-003",
+      "sourceLink": "http://example.com/ann-003-003",
+      "content": "Content of the amendment notice."
+    }
+  ],
+  "buyerNoticeMap": {
+    "BuyerGroup E": [
+      {
+        "noticeTitle": "Preliminary Notice",
+        "noticeId": "ann-003-001",
+        "submissionId": "sub-003-001",
+        "publishDate": "2024-05-20T14:00:00Z",
+        "noticeType": "Preliminary",
+        "sourceReference": "src-003-001",
+        "sourceLink": "http://example.com/ann-003-001",
+        "content": "Preliminary notice content for tender."
+      },
+      {
+        "noticeTitle": "Official Announcement",
+        "noticeId": "ann-003-002",
+        "submissionId": "sub-003-002",
+        "publishDate": "2024-06-01T10:30:00Z",
+        "noticeType": "Official",
+        "sourceReference": "src-003-002",
+        "sourceLink": "http://example.com/ann-003-002",
+        "content": "Official announcement content."
+      }
+    ],
+    "BuyerGroup F": [
+      {
+        "noticeTitle": "Final Award Notice",
+        "noticeId": "ann-003-004",
+        "submissionId": "sub-003-004",
+        "publishDate": "2024-08-20T09:00:00Z",
+        "noticeType": "Final",
+        "sourceReference": "src-003-004",
+        "sourceLink": "http://example.com/ann-003-004",
+        "content": "Content of the final award notice."
+      }
+    ],
+    "BuyerGroup G": [
+      {
+        "noticeTitle": "Additional Clarification Notice",
+        "noticeId": "ann-003-005",
+        "submissionId": "sub-003-005",
+        "publishDate": "2024-09-10T16:45:00Z",
+        "noticeType": "Clarification",
+        "sourceReference": "src-003-005",
+        "sourceLink": "http://example.com/ann-003-005",
+        "content": "Content of the clarification notice."
+      },
+      {
+        "noticeTitle": "Final Amendment",
+        "noticeId": "ann-003-006",
+        "submissionId": "sub-003-006",
+        "publishDate": "2024-10-05T13:30:00Z",
+        "noticeType": "Amendment",
+        "sourceReference": "src-003-006",
+        "sourceLink": "http://example.com/ann-003-006",
+        "content": "Content of the final amendment notice."
+      }
+    ]
+  }
+}
