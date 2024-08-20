@@ -3,46 +3,56 @@
     "properties": {
         "chat_id": {
             "type": "string",
-            "description": "Unique identifier for the chat session"
+            "description": "Unique identifier for the chat session",
+            "minLength": 1
         },
         "workflow_name": {
             "type": "string",
-            "description": "Name of the workflow to be executed"
+            "description": "Name of the workflow to be executed",
+            "minLength": 1
         },
         "schema_data_config_prompt": {
             "type": "string",
-            "description": "Prompt for configuring schema data"
+            "description": "Prompt for configuring schema data",
+            "minLength": 1
         },
         "schema_data_agg_config_prompt": {
             "type": "string",
-            "description": "Prompt for configuring aggregated schema data"
+            "description": "Prompt for configuring aggregated schema data",
+            "minLength": 1
         },
         "data_ingestion_config_prompt": {
             "type": "string",
-            "description": "Prompt for configuring data ingestion"
+            "description": "Prompt for configuring data ingestion",
+            "minLength": 1
         },
         "dataFormat": {
             "type": "string",
             "enum": ["JSON", "XML"],
-            "description": "Format of the data, currently only JSON is supported"
+            "description": "Format of the data, currently only JSON is supported",
+            "minLength": 1
         },
         "entityName": {
             "type": "string",
-            "description": "Name of the entity"
+            "description": "Name of the entity",
+            "minLength": 1
         },
         "modelVersion": {
             "type": "string",
-            "description": "Version of the model"
+            "description": "Version of the model",
+            "minLength": 1
         },
         "converter": {
             "type": "string",
             "enum": ["SAMPLE_DATA", "JSON_SCHEMA", "SIMPLE_VIEW"],
-            "description": "Converter type"
+            "description": "Converter type",
+            "minLength": 1
         },
         "entityType": {
             "type": "string",
             "enum": ["TREE", "TABLE"],
-            "description": "Type of the entity, set to 'TREE'"
+            "description": "Type of the entity, set to 'TREE'",
+            "minLength": 1
         },
         "schema_data_ds_id": {
             "type": "string",
