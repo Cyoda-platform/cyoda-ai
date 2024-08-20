@@ -1,0 +1,90 @@
+{
+    "type": "object",
+    "properties": {
+        "chat_id": {
+            "type": "string",
+            "description": "Unique identifier for the chat session"
+        },
+        "workflow_name": {
+            "type": "string",
+            "description": "Name of the workflow to be executed"
+        },
+        "schema_data_config_prompt": {
+            "type": "string",
+            "description": "Prompt for configuring schema data"
+        },
+        "schema_data_agg_config_prompt": {
+            "type": "string",
+            "description": "Prompt for configuring aggregated schema data"
+        },
+        "data_ingestion_config_prompt": {
+            "type": "string",
+            "description": "Prompt for configuring data ingestion"
+        },
+        "dataFormat": {
+            "type": "string",
+            "enum": ["JSON", "XML"],
+            "description": "Format of the data, currently only JSON is supported"
+        },
+        "entityName": {
+            "type": "string",
+            "description": "Name of the entity"
+        },
+        "modelVersion": {
+            "type": "string",
+            "description": "Version of the model"
+        },
+        "converter": {
+            "type": "string",
+            "enum": ["SAMPLE_DATA", "JSON_SCHEMA", "SIMPLE_VIEW"],
+            "description": "Converter type"
+        },
+        "entityType": {
+            "type": "string",
+            "enum": ["TREE", "TABLE"],
+            "description": "Type of the entity, set to 'TREE'"
+        },
+        "schema_data_ds_id": {
+            "type": "string",
+            "description": "Dataset ID for schema data"
+        },
+        "schema_data_operation": {
+            "type": "string",
+            "description": "Operation to be performed on schema data"
+        },
+        "schema_data_agg_ds_id": {
+            "type": "string",
+            "description": "Dataset ID for aggregated schema data"
+        },
+        "schema_data_agg_operation": {
+            "type": "string",
+            "description": "Operation to be performed on aggregated schema data"
+        },
+        "ingestion_data_ds_id": {
+            "type": "string",
+            "description": "Dataset ID for data ingestion"
+        },
+        "ingestion_data_operation": {
+            "type": "string",
+            "description": "Operation to be performed on ingestion data"
+        }
+    },
+    "required": [
+        "chat_id",
+        "workflow_name",
+        "schema_data_config_prompt",
+        "schema_data_agg_config_prompt",
+        "data_ingestion_config_prompt",
+        "dataFormat",
+        "entityName",
+        "modelVersion",
+        "converter",
+        "entityType",
+        "schema_data_ds_id",
+        "schema_data_operation",
+        "schema_data_agg_ds_id",
+        "schema_data_agg_operation",
+        "ingestion_data_ds_id",
+        "ingestion_data_operation"
+    ]
+}
