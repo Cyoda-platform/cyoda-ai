@@ -141,18 +141,3 @@ paths:
                   message:
                     type: string
                     example: "Fruit updated successfully."
-
-    delete:
-      summary: Delete a fruit from the inventory
-      parameters:
-        - name: fruitId
-          in: path
-          required: true
-          description: Unique identifier for the fruit.
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Fruit deleted successfully
-        '404':
-          description: Fruit not found
