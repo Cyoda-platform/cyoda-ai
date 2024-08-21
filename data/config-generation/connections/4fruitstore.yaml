@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: Fruit Store API version fd6854ca-1767-4ab0-8a56-0e7dbc29903f
+  version: fd6854ca-1767-4ab0-8a56-0e7dbc29903f
+  description: API for managing fruit inventory in a store.
+
+servers:
+  - url: http://api.example.com/v1
+
+paths:
+  /fruits:
+    get:
+      summary: Get a list of fruits
+      responses:
+        '200':
+          description: A list of fruits in the store
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fruitId:
+                      type: string
+                      format: uuid
+                      example: "c1a1e9d0-1fef-4abf-9323-23f8260138cf"
+                    name:
+                      type: string
+                      example: "Apples"
+                    price:
+                      type: number
+                      format: float
+                      example: 1.29
+                    quantity:
+                      type: integer
+                      example: 150
+
+    post:
+      summary: Add a new fruit to the inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Bananas"
+                price:
+                  type: number
+                  format: float
+                  example: 0.79
+                quantity:
+                  type: integer
+                  example: 200
+      responses:
+        '201':
+          description: Fruit created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Fruit added successfully."
+                  fruitId:
+                    type: string
+                    format: uuid
+                    example: "d4232c67-3c14-4e8d-b7d9-f60a4c60c573"
+
+  /fruits/{fruitId}:
+    get:
+      summary: Get details of a specific fruit
+      parameters:
+        - name: fruitId
+          in: path
+          required: true
+          description: Unique identifier for the fruit.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Fruit details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fruitId:
+                    type: string
+                    format: uuid
+                    example: "c1a1e9d0-1fef-4abf-9323-23f8260138cf"
+                  name:
+                    type: string
+                    example: "Apples"
+                  price:
+                    type: number
+                    format: float
+                    example: 1.29
+                  quantity:
+                    type: integer
+                    example: 150
+
+    put:
+      summary: Update an existing fruit's details
+      parameters:
+        - name: fruitId
+          in: path
+          required: true
+          description: Unique identifier for the fruit.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Green Apples"
+                price:
+                  type: number
+                  format: float
+                  example: 1.49
+                quantity:
+                  type: integer
+                  example: 120
+      responses:
+        '200':
+          description: Fruit updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Fruit updated successfully."
+
+    delete:
+      summary: Delete a fruit from the inventory
+      parameters:
+        - name: fruitId
+          in: path
+          required: true
+          description: Unique identifier for the fruit.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Fruit deleted successfully
+        '404':
+          description: Fruit not found
