@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  title: Company Officers API version a43e9e50-ca95-4f6d-8286-46d2009a0bc1
+  version: a43e9e50-ca95-4f6d-8286-46d2009a0bc1
+  description: API for managing and retrieving data about a company and its officers.
+
+servers:
+  - url: http://api.example.com/v1
+
+paths:
+  /companies/{companyId}:
+    get:
+      summary: Get company details
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          description: Unique identifier for the company.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Company details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "c1d3f2b8-1006-4de2-94f1-befb6fb6e8c7"
+                  address:
+                    type: string
+                    example: "123 Business Rd, Suite 100, Business City, BC 12345"
+
+  /companies/{companyId}/officers:
+    get:
+      summary: Get officers of a specific company
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          description: Unique identifier for the company.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of officers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    role:
+                      type: string
+                      example: "CEO"
+                    name:
+                      type: string
+                      example: "Jane Doe"
+                    address:
+                      type: string
+                      example: "456 Officer St, Business City, BC 12345"
+                    dateOfBirth:
+                      type: string
+                      format: date
+                      example: "1985-04-12"
+
+  /companies/{companyId}/officers:
+    post:
+      summary: Add a new officer to the company
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          description: Unique identifier for the company.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+                  example: "CTO"
+                name:
+                  type: string
+                  example: "John Smith"
+                address:
+                  type: string
+                  example: "789 Tech Ave, Business City, BC 12345"
+                dateOfBirth:
+                  type: string
+                  format: date
+                  example: "1990-07-22"
+      responses:
+        '201':
+          description: Officer created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Officer created successfully."
+                  officerId:
+                    type: string
+                    example: "d3c2b1e4-6185-4de3-b7c2-5fdc80ef8ed9"
+
+  /companies/{companyId}/officers/{officerId}:
+    delete:
+      summary: Delete an officer from the company
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          description: Unique identifier for the company.
+          schema:
+            type: string
+        - name: officerId
+          in: path
+          required: true
+          description: Unique identifier for the officer.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Officer deleted successfully
+        '404':
+          description: Officer or company not found
