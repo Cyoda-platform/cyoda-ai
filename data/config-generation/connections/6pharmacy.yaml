@@ -3,7 +3,7 @@ info:
   title: Pharmacy Management API version db90ebb3-2989-42de-bb93-f8c733a68ed5
   version: db90ebb3-2989-42de-bb93-f8c733a68ed5
   description: API for managing pharmaceutical products, prescriptions, patients, and sales in a pharmacy.
-
+  
 servers:
   - url: http://api.pharmacy.example.com/v1
 
@@ -153,21 +153,6 @@ paths:
                   message:
                     type: string
                     example: "Medication updated successfully."
-
-    delete:
-      summary: Delete a medication
-      parameters:
-        - name: medicationId
-          in: path
-          required: true
-          description: Unique identifier for the medication.
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Medication deleted successfully
-        '404':
-          description: Medication not found
 
   /patients:
     get:
@@ -391,19 +376,4 @@ paths:
                     type: string
                     format: uuid
                     example: "cdefb37e-0a3e-421d-809c-f83fe12b3ff2"
-
-  /sales/{saleId}:
-    delete:
-      summary: Delete a sales transaction
-      parameters:
-        - name: saleId
-          in: path
-          required: true
-          description: Unique identifier for the sale.
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Sale deleted successfully
-        '404':
-          description: Sale not found
+}
