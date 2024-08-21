@@ -203,7 +203,7 @@
                   },
                   "year": {
                     "type": "integer",
-                    "example": 2023
+                    "example": 2022
                   },
                   "price": {
                     "type": "number",
@@ -415,3 +415,20 @@
                       "message": {
                         "type": "string",
                         "example": "Sale recorded successfully."
+                      },
+                      "saleId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "f4eeb2f0-bb9e-4c67-86b1-3d22425f36cb"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
