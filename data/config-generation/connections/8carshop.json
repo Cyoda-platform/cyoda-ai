@@ -1,143 +1,27 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Car Shop Management API version a5408752-86f1-4c59-aa99-cc36c9cd4e22",
-      "version": "a5408752-86f1-4c59-aa99-cc36c9cd4e22",
-      "description": "API for managing car listings, customers, sales, and service records in a car shop."
-    },
-    "servers": [
-      {
-        "url": "http://api.carshop.example.com/v1"
-      }
-    ],
-    "paths": {
-      "/cars": {
-        "get": {
-          "summary": "Get a list of available cars",
-          "responses": {
-            "200": {
-              "description": "A list of available cars",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "carId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
-                        },
-                        "make": {
-                          "type": "string",
-                          "example": "Toyota"
-                        },
-                        "model": {
-                          "type": "string",
-                          "example": "Camry"
-                        },
-                        "year": {
-                          "type": "integer",
-                          "example": 2022
-                        },
-                        "price": {
-                          "type": "number",
-                          "format": "float",
-                          "example": 24000.99
-                        },
-                        "availableQuantity": {
-                          "type": "integer",
-                          "example": 10
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Add a new car listing",
-          "requestBody": {
-            "required": true,
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Car Shop Management API version a5408752-86f1-4c59-aa99-cc36c9cd4e22",
+    "version": "a5408752-86f1-4c59-aa99-cc36c9cd4e22",
+    "description": "API for managing car listings, customers, sales, and service records in a car shop."
+  },
+  "servers": [
+    {
+      "url": "http://api.carshop.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/cars": {
+      "get": {
+        "summary": "Get a list of available cars",
+        "responses": {
+          "200": {
+            "description": "A list of available cars",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "make": {
-                      "type": "string",
-                      "example": "Honda"
-                    },
-                    "model": {
-                      "type": "string",
-                      "example": "Civic"
-                    },
-                    "year": {
-                      "type": "integer",
-                      "example": 2021
-                    },
-                    "price": {
-                      "type": "number",
-                      "format": "float",
-                      "example": 22000.00
-                    },
-                    "availableQuantity": {
-                      "type": "integer",
-                      "example": 5
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "201": {
-                "description": "Car listing created successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Car listing added successfully."
-                        },
-                        "carId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "b1234567-89ab-cdef-0123-456789abcdef"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/cars/{carId}": {
-        "get": {
-          "summary": "Get details of a specific car",
-          "parameters": [
-            {
-              "name": "carId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the car.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Car details",
-              "content": {
-                "application/json": {
-                  "schema": {
+                  "type": "array",
+                  "items": {
                     "type": "object",
                     "properties": {
                       "carId": {
@@ -172,370 +56,58 @@
               }
             }
           }
-        },
-        "put": {
-          "summary": "Update a car listing",
-          "parameters": [
-            {
-              "name": "carId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the car.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "make": {
-                      "type": "string",
-                      "example": "Toyota"
-                    },
-                    "model": {
-                      "type": "string",
-                      "example": "Corolla"
-                    },
-                    "year": {
-                      "type": "integer",
-                      "example": 2022
-                    },
-                    "price": {
-                      "type": "number",
-                      "format": "float",
-                      "example": 23000.50
-                    },
-                    "availableQuantity": {
-                      "type": "integer",
-                      "example": 8
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "200": {
-                "description": "Car listing updated successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Car listing updated successfully."
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a car listing",
-          "parameters": [
-            {
-              "name": "carId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the car.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Car listing deleted successfully"
-            },
-            "404": {
-              "description": "Car not found"
-            }
-          }
         }
       },
-      "/customers": {
-        "get": {
-          "summary": "Get a list of customers",
+      "post": {
+        "summary": "Add a new car listing",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "make": {
+                    "type": "string",
+                    "example": "Honda"
+                  },
+                  "model": {
+                    "type": "string",
+                    "example": "Civic"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": 2021
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float",
+                    "example": 22000.00
+                  },
+                  "availableQuantity": {
+                    "type": "integer",
+                    "example": 5
+                  }
+                }
+              }
+            }
+          },
           "responses": {
-            "200": {
-              "description": "A list of customers",
+            "201": {
+              "description": "Car listing created successfully",
               "content": {
                 "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "customerId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "c1d4e51b-7890-4abc-9123-7890abcdef12"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "John Doe"
-                        },
-                        "email": {
-                          "type": "string",
-                          "format": "email",
-                          "example": "john.doe@example.com"
-                        },
-                        "phone": {
-                          "type": "string",
-                          "example": "+1-234-567-8901"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Add a new customer",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Jane Smith"
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email",
-                      "example": "jane.smith@example.com"
-                    },
-                    "phone": {
-                      "type": "string",
-                      "example": "+1-987-654-3210"
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "201": {
-                "description": "Customer created successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Customer added successfully."
-                        },
-                        "customerId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "d3c16fae-733c-49e5-a822-23456789abcd"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/sales": {
-        "get": {
-          "summary": "Get a list of sales transactions",
-          "responses": {
-            "200": {
-              "description": "A list of sales transactions",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "saleId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "f4eeb2f0-bb9e-4c67-86b1-3d22425f36cb"
-                        },
-                        "customerId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "c1d4e51b-7890-4abc-9123-7890abcdef12"
-                        },
-                        "carId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
-                        },
-                        "totalPrice": {
-                          "type": "number",
-                          "format": "float",
-                          "example": 24000.99
-                        },
-                        "saleDate": {
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2024-08-21T15:30:00Z"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Record a new sale transaction",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "customerId": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "c1d4e51b-7890-4abc-9123-7890abcdef12"
-                    },
-                    "carId": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
-                    },
-                    "totalPrice": {
-                      "type": "number",
-                      "format": "float",
-                      "example": 24000.99
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "201": {
-                "description": "Sale recorded successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Sale recorded successfully."
-                        },
-                        "saleId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "f4eeb2f0-bb9e-4c67-86b1-3d22425f36cb"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/sales/{saleId}": {
-        "delete": {
-          "summary": "Delete a sale transaction",
-          "parameters": [
-            {
-              "name": "saleId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the sale.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Sale deleted successfully"
-            },
-            "404": {
-              "description": "Sale not found"
-            }
-          }
-        }
-      },
-      "/cars/{carId}/service": {
-        "post": {
-          "summary": "Add a service record for a specific car",
-          "parameters": [
-            {
-              "name": "carId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the car.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "serviceDate": {
-                      "type": "string",
-                      "format": "date",
-                      "example": "2024-08-20"
-                    },
-                    "serviceType": {
-                      "type": "string",
-                      "example": "Oil Change"
-                    },
-                    "cost": {
-                      "type": "number",
-                      "format": "float",
-                      "example": 79.99
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Performed routine oil change and filter replacement."
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "201": {
-                "description": "Service record added successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Service record added successfully."
-                        },
-                        "serviceId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "g12b4698-6341-4fd6-8195-7d4c2e5b1e23"
-                        }
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Car listing added successfully."
+                      },
+                      "carId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "b1234567-89ab-cdef-0123-456789abcdef"
                       }
                     }
                   }
@@ -545,6 +117,301 @@
           }
         }
       }
-    }
-  }
-  
+    },
+    "/cars/{carId}": {
+      "get": {
+        "summary": "Get details of a specific car",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier for the car.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Car details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "carId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                    },
+                    "make": {
+                      "type": "string",
+                      "example": "Toyota"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Camry"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 2022
+                    },
+                    "price": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 24000.99
+                    },
+                    "availableQuantity": {
+                      "type": "integer",
+                      "example": 10
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a car listing",
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier for the car.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "make": {
+                    "type": "string",
+                    "example": "Toyota"
+                  },
+                  "model": {
+                    "type": "string",
+                    "example": "Corolla"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": 2023
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float",
+                    "example": 23000.50
+                  },
+                  "availableQuantity": {
+                    "type": "integer",
+                    "example": 8
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Car listing updated successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Car listing updated successfully."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "summary": "Get a list of customers",
+        "responses": {
+          "200": {
+            "description": "A list of customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "customerId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "c1d4e51b-7890-4abc-9123-7890abcdef12"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "john.doe@example.com"
+                      },
+                      "phone": {
+                        "type": "string",
+                        "example": "+1-234-567-8901"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new customer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Jane Smith"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "jane.smith@example.com"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+1-987-654-3210"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Customer created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Customer added successfully."
+                      },
+                      "customerId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "d3c16fae-733c-49e5-a822-23456789abcd"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sales": {
+      "get": {
+        "summary": "Get a list of sales transactions",
+        "responses": {
+          "200": {
+            "description": "A list of sales transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "saleId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "f4eeb2f0-bb9e-4c67-86b1-3d22425f36cb"
+                      },
+                      "customerId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "c1d4e51b-7890-4abc-9123-7890abcdef12"
+                      },
+                      "carId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                      },
+                      "totalPrice": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 24000.99
+                      },
+                      "saleDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2024-08-21T15:30:00Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Record a new sale transaction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customerId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "c1d4e51b-7890-4abc-9123-7890abcdef12"
+                  },
+                  "carId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                  },
+                  "totalPrice": {
+                    "type": "number",
+                    "format": "float",
+                    "example": 24000.99
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Sale recorded successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Sale recorded successfully."
