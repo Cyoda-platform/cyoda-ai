@@ -165,18 +165,3 @@ paths:
                   message:
                     type: string
                     example: "Sale updated successfully."
-
-    delete:
-      summary: Delete a sale record
-      parameters:
-        - name: saleId
-          in: path
-          required: true
-          description: Unique identifier for the sale.
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Sale deleted successfully
-        '404':
-          description: Sale not found
