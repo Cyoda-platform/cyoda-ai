@@ -1,137 +1,27 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Healthcare Management API version ac8cd968-0a90-4e20-a4e3-af20aa3984b4",
-      "version": "ac8cd968-0a90-4e20-a4e3-af20aa3984b4",
-      "description": "API for managing patients, consultations, medical records, and hospital personnel."
-    },
-    "servers": [
-      {
-        "url": "http://api.healthcare.example.com/v1"
-      }
-    ],
-    "paths": {
-      "/patients": {
-        "get": {
-          "summary": "Retrieve a list of patients",
-          "responses": {
-            "200": {
-              "description": "A list of patients",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "patientId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "d3c16fae-733c-49e5-a822-23456789abcd"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "Michael Johnson"
-                        },
-                        "dateOfBirth": {
-                          "type": "string",
-                          "format": "date",
-                          "example": "1989-09-21"
-                        },
-                        "email": {
-                          "type": "string",
-                          "format": "email",
-                          "example": "michael.johnson@example.com"
-                        },
-                        "phone": {
-                          "type": "string",
-                          "example": "+1-234-567-8901"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Register a new patient",
-          "requestBody": {
-            "required": true,
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Healthcare Management API version ac8cd968-0a90-4e20-a4e3-af20aa3984b4",
+    "version": "ac8cd968-0a90-4e20-a4e3-af20aa3984b4",
+    "description": "API for managing patients, consultations, medical records, and hospital personnel."
+  },
+  "servers": [
+    {
+      "url": "http://api.healthcare.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/patients": {
+      "get": {
+        "summary": "Retrieve a list of patients",
+        "responses": {
+          "200": {
+            "description": "A list of patients",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Anna Smith"
-                    },
-                    "dateOfBirth": {
-                      "type": "string",
-                      "format": "date",
-                      "example": "1992-03-12"
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email",
-                      "example": "anna.smith@example.com"
-                    },
-                    "phone": {
-                      "type": "string",
-                      "example": "+1-987-654-3210"
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "201": {
-                "description": "Patient registered successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Patient registered successfully."
-                        },
-                        "patientId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "b1234567-89ab-cdef-0123-456789abcdef"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/patients/{patientId}": {
-        "get": {
-          "summary": "Get detailed information about a patient",
-          "parameters": [
-            {
-              "name": "patientId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the patient.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Patient details",
-              "content": {
-                "application/json": {
-                  "schema": {
+                  "type": "array",
+                  "items": {
                     "type": "object",
                     "properties": {
                       "patientId": {
@@ -163,129 +53,55 @@
               }
             }
           }
-        },
-        "put": {
-          "summary": "Update patient information",
-          "parameters": [
-            {
-              "name": "patientId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the patient.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Michael J. Johnson"
-                    },
-                    "dateOfBirth": {
-                      "type": "string",
-                      "format": "date",
-                      "example": "1989-09-21"
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email",
-                      "example": "michael.j.johnson@example.com"
-                    },
-                    "phone": {
-                      "type": "string",
-                      "example": "+1-234-567-8901"
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "200": {
-                "description": "Patient updated successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Patient updated successfully."
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Remove a patient record",
-          "parameters": [
-            {
-              "name": "patientId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the patient.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Patient deleted successfully"
-            },
-            "404": {
-              "description": "Patient not found"
-            }
-          }
         }
       },
-      "/appointments": {
-        "get": {
-          "summary": "Retrieve a list of consultations",
+      "post": {
+        "summary": "Register a new patient",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Anna Smith"
+                  },
+                  "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1992-03-12"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "anna.smith@example.com"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+1-987-654-3210"
+                  }
+                }
+              }
+            }
+          },
           "responses": {
-            "200": {
-              "description": "A list of consultations",
+            "201": {
+              "description": "Patient registered successfully",
               "content": {
                 "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "appointmentId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "c4f1e93a-8f0b-4f6f-aa75-1a3b2be16373"
-                        },
-                        "patientId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "d3c16fae-733c-49e5-a822-23456789abcd"
-                        },
-                        "doctorId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "a7b6eb8d-4fc4-47e2-91a7-f19ecf8b9853"
-                        },
-                        "appointmentDate": {
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2024-08-21T10:00:00Z"
-                        },
-                        "status": {
-                          "type": "string",
-                          "example": "Scheduled"
-                        }
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Patient registered successfully."
+                      },
+                      "patientId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "b1234567-89ab-cdef-0123-456789abcdef"
                       }
                     }
                   }
@@ -293,11 +109,26 @@
               }
             }
           }
-        },
-        "post": {
-          "summary": "Schedule a new consultation",
-          "requestBody": {
+        }
+      }
+    },
+    "/patients/{patientId}": {
+      "get": {
+        "summary": "Get detailed information about a patient",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
             "required": true,
+            "description": "Unique identifier for the patient.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Patient details",
             "content": {
               "application/json": {
                 "schema": {
@@ -308,38 +139,23 @@
                       "format": "uuid",
                       "example": "d3c16fae-733c-49e5-a822-23456789abcd"
                     },
-                    "doctorId": {
+                    "name": {
                       "type": "string",
-                      "format": "uuid",
-                      "example": "a7b6eb8d-4fc4-47e2-91a7-f19ecf8b9853"
+                      "example": "Michael Johnson"
                     },
-                    "appointmentDate": {
+                    "dateOfBirth": {
                       "type": "string",
-                      "format": "date-time",
-                      "example": "2024-08-21T10:00:00Z"
-                    }
-                  }
-                }
-              }
-            },
-            "responses": {
-              "201": {
-                "description": "Appointment created successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Appointment scheduled successfully."
-                        },
-                        "appointmentId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "c4f1e93a-8f0b-4f6f-aa75-1a3b2be16373"
-                        }
-                      }
+                      "format": "date",
+                      "example": "1989-09-21"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "example": "michael.johnson@example.com"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "+1-234-567-8901"
                     }
                   }
                 }
@@ -348,26 +164,80 @@
           }
         }
       },
-      "/appointments/{appointmentId}": {
-        "get": {
-          "summary": "Get details of a specific consultation",
-          "parameters": [
-            {
-              "name": "appointmentId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the appointment.",
+      "put": {
+        "summary": "Update patient information",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier for the patient.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Michael J. Johnson"
+                  },
+                  "dateOfBirth": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1989-09-21"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "michael.j.johnson@example.com"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+1-234-567-8901"
+                  }
+                }
               }
             }
-          ],
+          },
           "responses": {
             "200": {
-              "description": "Appointment details",
+              "description": "Patient updated successfully",
               "content": {
                 "application/json": {
                   "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Patient updated successfully."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/appointments": {
+      "get": {
+        "summary": "Retrieve a list of consultations",
+        "responses": {
+          "200": {
+            "description": "A list of consultations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
                     "type": "object",
                     "properties": {
                       "appointmentId": {
@@ -400,69 +270,52 @@
               }
             }
           }
-        },
-        "delete": {
-          "summary": "Cancel a consultation",
-          "parameters": [
-            {
-              "name": "appointmentId",
-              "in": "path",
-              "required": true,
-              "description": "Unique identifier for the appointment.",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Appointment canceled successfully"
-            },
-            "404": {
-              "description": "Appointment not found"
-            }
-          }
         }
       },
-      "/staff": {
-        "get": {
-          "summary": "Get a list of hospital staff members",
+      "post": {
+        "summary": "Schedule a new consultation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "patientId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "d3c16fae-733c-49e5-a822-23456789abcd"
+                  },
+                  "doctorId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "a7b6eb8d-4fc4-47e2-91a7-f19ecf8b9853"
+                  },
+                  "appointmentDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-08-21T10:00:00Z"
+                  }
+                }
+              }
+            }
+          },
           "responses": {
-            "200": {
-              "description": "A list of hospital staff",
+            "201": {
+              "description": "Appointment created successfully",
               "content": {
                 "application/json": {
                   "schema": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "staffId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "f8b6d484-58b5-4bab-b701-fc947abb07b8"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "Dr. Sarah Connor"
-                        },
-                        "role": {
-                          "type": "string",
-                          "example": "Surgeon"
-                        },
-                        "department": {
-                          "type": "string",
-                          "example": "Surgery"
-                        },
-                        "email": {
-                          "type": "string",
-                          "format": "email",
-                          "example": "sarah.connor@hospital.com"
-                        },
-                        "phone": {
-                          "type": "string",
-                          "example": "+1-555-0123"
-                        }
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Appointment scheduled successfully."
+                      },
+                      "appointmentId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "c4f1e93a-8f0b-4f6f-aa75-1a3b2be16373"
                       }
                     }
                   }
@@ -470,58 +323,160 @@
               }
             }
           }
-        },
-        "post": {
-          "summary": "Add a new staff member",
-          "requestBody": {
+        }
+      }
+    },
+    "/appointments/{appointmentId}": {
+      "get": {
+        "summary": "Get details of a specific consultation",
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
             "required": true,
+            "description": "Unique identifier for the appointment.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Appointment details",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "name": {
+                    "appointmentId": {
                       "type": "string",
-                      "example": "Dr. Kyle Reese"
+                      "format": "uuid",
+                      "example": "c4f1e93a-8f0b-4f6f-aa75-1a3b2be16373"
                     },
-                    "role": {
+                    "patientId": {
                       "type": "string",
-                      "example": "General Practitioner"
+                      "format": "uuid",
+                      "example": "d3c16fae-733c-49e5-a822-23456789abcd"
                     },
-                    "department": {
+                    "doctorId": {
                       "type": "string",
-                      "example": "Family Medicine"
+                      "format": "uuid",
+                      "example": "a7b6eb8d-4fc4-47e2-91a7-f19ecf8b9853"
                     },
-                    "email": {
+                    "appointmentDate": {
                       "type": "string",
-                      "format": "email",
-                      "example": "kyle.reese@hospital.com"
+                      "format": "date-time",
+                      "example": "2024-08-21T10:00:00Z"
                     },
-                    "phone": {
+                    "status": {
                       "type": "string",
-                      "example": "+1-555-0456"
+                      "example": "Scheduled"
                     }
                   }
                 }
               }
-            },
-            "responses": {
-              "201": {
-                "description": "Staff member created successfully",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "message": {
-                          "type": "string",
-                          "example": "Staff member added successfully."
-                        },
-                        "staffId": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "d8b3b4bb-31d3-47e3-affd-bf87a632dd51"
-                        }
+            }
+          }
+        }
+      }
+    },
+    "/staff": {
+      "get": {
+        "summary": "Get a list of hospital staff members",
+        "responses": {
+          "200": {
+            "description": "A list of hospital staff",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "staffId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "f8b6d484-58b5-4bab-b701-fc947abb07b8"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Dr. Sarah Connor"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "Surgeon"
+                      },
+                      "department": {
+                        "type": "string",
+                        "example": "Surgery"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "sarah.connor@hospital.com"
+                      },
+                      "phone": {
+                        "type": "string",
+                        "example": "+1-555-0123"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new staff member",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Dr. Kyle Reese"
+                  },
+                  "role": {
+                    "type": "string",
+                    "example": "General Practitioner"
+                  },
+                  "department": {
+                    "type": "string",
+                    "example": "Family Medicine"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "kyle.reese@hospital.com"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+1-555-0456"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Staff member created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Staff member added successfully."
+                      },
+                      "staffId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "d8b3b4bb-31d3-47e3-affd-bf87a632dd51"
                       }
                     }
                   }
@@ -533,4 +488,4 @@
       }
     }
   }
-  
+}
