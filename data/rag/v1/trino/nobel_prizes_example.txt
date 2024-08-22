@@ -1,0 +1,221 @@
+Schema
+
+{
+    "extraction-date": "2024-04-14",
+    "data": {
+        "source": "taken from http://api.nobelprize.org/v1/prize.json",
+        "prizes": [
+            {
+                "year": "2020",
+                "category": "chemistry",
+                "laureates": [
+                    {
+                        "id": "991",
+                        "firstname": "Emmanuelle",
+                        "surname": "Charpentier",
+                        "motivation": "\"for the development of a method for genome editing\"",
+                        "share": "2"
+                    },
+                    {
+                        "id": "992",
+                        "firstname": "Jennifer A.",
+                        "surname": "Doudna",
+                        "motivation": "\"for the development of a method for genome editing\"",
+                        "share": "2"
+                    }
+                ],
+                "summary": "test"
+            },
+            {
+                "year": "2019",
+                "category": "physics",
+                "overallMotivation": "\"for contributions to our understanding of the evolution of the universe and Earth\u2019s place in the cosmos\"",
+                "laureates": [
+                    {
+                        "id": "973",
+                        "firstname": "James",
+                        "surname": "Peebles",
+                        "motivation": "\"for theoretical discoveries in physical cosmology\"",
+                        "share": "2"
+                    },
+                    {
+                        "id": "974",
+                        "firstname": "Michel",
+                        "surname": "Mayor",
+                        "motivation": "\"for the discovery of an exoplanet orbiting a solar-type star\"",
+                        "share": "4"
+                    },
+                    {
+                        "id": "975",
+                        "firstname": "Didier",
+                        "surname": "Queloz",
+                        "motivation": "\"for the discovery of an exoplanet orbiting a solar-type star\"",
+                        "share": "4"
+                    }
+                ]
+            },
+            {
+                "year": "1901",
+                "category": "physics",
+                "laureates": [
+                    {
+                        "id": "1",
+                        "firstname": "Wilhelm Conrad",
+                        "surname": "R\u00f6ntgen",
+                        "motivation": "\"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him\"",
+                        "share": "1"
+                    }
+                ]
+            },
+            {
+                "year": "1901",
+                "category": "medicine",
+                "laureates": [
+                    {
+                        "id": "293",
+                        "firstname": "Emil",
+                        "surname": "von Behring",
+                        "motivation": "\"for his work on serum therapy, especially its application against diphtheria, by which he has opened a new road in the domain of medical science and thereby placed in the hands of the physician a victorious weapon against illness and deaths\"",
+                        "share": "1"
+                    }
+                ]
+            }
+        ],
+        "summary": "test"
+    }
+}
+
+
+Possible quieries
+
+SELECT
+    *
+FROM
+    tdb_arr.prizes_data_prizes_laureates laureates
+        JOIN
+    tdb_arr.prizes_data_prizes prizes
+    ON
+        laureates.index[1] = prizes.index[1]
+ORDER BY
+    prizes.index
+
+
+1. Count the Number of Laureates by Category
+This query counts how many laureates are in each prize category.
+
+
+SELECT
+    category,
+    COUNT(*) AS laureate_count
+FROM
+    tdb_arr.prizes_data_prizes_laureates laureates
+        JOIN
+    tdb_arr.prizes_data_prizes prizes
+    ON
+        laureates.index[1] = prizes.index[1]
+GROUP BY
+    category
+ORDER BY
+    laureate_count DESC
+
+
+
+Average Number of Laureates Per Prize Category
+This query calculates the average number of laureates per prize category.
+
+SELECT
+    category,
+    AVG(laureate_count) AS average_laureates
+FROM (
+         SELECT
+             category,
+             COUNT(*) AS laureate_count
+         FROM
+             tdb_arr.prizes_data_prizes_laureates laureates
+                 JOIN
+             tdb_arr.prizes_data_prizes prizes
+             ON
+                 laureates.index[1] = prizes.index[1]
+         GROUP BY
+             category, prizes.index
+     ) subquery
+GROUP BY
+    category
+ORDER BY
+    average_laureates DESC
+
+
+3. Distribution of Prizes by Year
+This query shows how many prizes were awarded each year.
+
+
+SELECT
+    year,
+    COUNT(DISTINCT prizes.index) AS prize_count
+FROM
+    tdb_arr.prizes_data_prizes prizes
+GROUP BY
+    year
+ORDER BY
+    year DESC
+
+
+4. Laureates with Multiple Prizes
+
+SELECT
+    firstname,
+    surname,
+    COUNT(DISTINCT prizes.index) AS prize_count
+FROM
+    tdb_arr.prizes_data_prizes_laureates laureates
+        JOIN
+    tdb_arr.prizes_data_prizes prizes
+    ON
+        laureates.index[1] = prizes.index[1]
+GROUP BY
+    firstname, surname
+HAVING
+    COUNT(DISTINCT prizes.index) > 1
+ORDER BY
+    prize_count DESC
+
+5. Top Prize-Winning Countries
+This query determines the countries that have the most laureates.
+
+
+6. Prizes by Motivation Keyword
+This query searches for specific keywords in the motivation of laureates and groups the results.
+
+SELECT
+    COUNT(*) AS laureate_count,
+    category
+FROM
+    tdb_arr.prizes_data_prizes_laureates laureates
+        JOIN
+    tdb_arr.prizes_data_prizes prizes
+    ON
+        laureates.index[1] = prizes.index[1]
+WHERE
+    motivation LIKE '%peace%'  -- Replace 'peace' with any keyword of interest
+GROUP BY
+    category
+ORDER BY
+    laureate_count DESC
+
+
+7. Distribution of Laureates by Prize Share
+This query groups laureates by the share of the prize they received.
+
+SELECT
+    share,
+    COUNT(*) AS laureate_count
+FROM
+    tdb_arr.prizes_data_prizes_laureates laureates
+        JOIN
+    tdb_arr.prizes_data_prizes prizes
+    ON
+        laureates.index[1] = prizes.index[1]
+GROUP BY
+    share
+ORDER BY
+    laureate_count DESC
