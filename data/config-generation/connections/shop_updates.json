@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Shop Holiday Updates API Version 45305d25-58df-4dc3-8bb3-3dd97d42c386
   description: This API provides information about shop updates for upcoming holidays.
-  version: 1.0.0
+  version: 45305d25-58df-4dc3-8bb3-3dd97d42c386
 servers:
   - url: https://api.example.com/v1
     description: Production Server

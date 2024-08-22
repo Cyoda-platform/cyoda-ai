@@ -1,0 +1,251 @@
+<openapi version="3.0.0">
+  <info>
+    <title>Restaurant Management API version 6ee41b09-ea30-4440-9230-f677aa4d2ae3</title>
+    <version>6ee41b09-ea30-4440-9230-f677aa4d2ae3</version>
+    <description>API for managing restaurant menu items and orders.</description>
+  </info>
+  
+  <servers>
+    <server>
+      <url>http://api.restaurant.example.com/v1</url>
+    </server>
+  </servers>
+
+  <paths>
+    <path>
+      <path>/menu</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Get a list of menu items</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of menu items available in the restaurant</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>itemId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6</example>
+                      </property>
+                      <property>
+                        <name>name</name>
+                        <type>string</type>
+                        <example>Margherita Pizza</example>
+                      </property>
+                      <property>
+                        <name>description</name>
+                        <type>string</type>
+                        <example>Classic pizza with tomato sauce, mozzarella, and fresh basil.</example>
+                      </property>
+                      <property>
+                        <name>price</name>
+                        <type>number</type>
+                        <format>float</format>
+                        <example>12.99</example>
+                      </property>
+                      <property>
+                        <name>availableQuantity</name>
+                        <type>integer</type>
+                        <example>50</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new menu item</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>name</name>
+                    <type>string</type>
+                    <example>Pasta Carbonara</example>
+                  </property>
+                  <property>
+                    <name>description</name>
+                    <type>string</type>
+                    <example>Creamy pasta with pancetta, egg, and parmesan cheese.</example>
+                  </property>
+                  <property>
+                    <name>price</name>
+                    <type>number</type>
+                    <format>float</format>
+                    <example>14.99</example>
+                  </property>
+                  <property>
+                    <name>availableQuantity</name>
+                    <type>integer</type>
+                    <example>30</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Menu item created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Menu item added successfully.</example>
+                    </property>
+                    <property>
+                      <name>itemId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>b1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/menu/{itemId}</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Get details of a specific menu item</summary>
+        <parameters>
+          <parameter>
+            <name>itemId</name>
+            <in>path</in>
+            <required>true</required>
+            <description>Unique identifier for the menu item.</description>
+            <schema>
+              <type>string</type>
+            </schema>
+          </parameter>
+        </parameters>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>Menu item details</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>itemId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6</example>
+                    </property>
+                    <property>
+                      <name>name</name>
+                      <type>string</type>
+                      <example>Margherita Pizza</example>
+                    </property>
+                    <property>
+                      <name>description</name>
+                      <type>string</type>
+                      <example>Classic pizza with tomato sauce, mozzarella, and fresh basil.</example>
+                    </property>
+                    <property>
+                      <name>price</name>
+                      <type>number</type>
+                      <format>float</format>
+                      <example>12.99</example>
+                    </property>
+                    <property>
+                      <name>availableQuantity</name>
+                      <type>integer</type>
+                      <example>50</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+  </paths>
+
+  <examples>
+    <example>
+      <item>
+        <itemId>a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6</itemId>
+        <name>Margherita Pizza</name>
+        <description>Classic pizza with tomato sauce, mozzarella, and fresh basil.</description>
+        <price>12.99</price>
+        <availableQuantity>50</availableQuantity>
+      </item>
+    </example>
+    
+    <example>
+      <item>
+        <itemId>b1234567-89ab-cdef-0123-456789abcdef</itemId>
+        <name>Pasta Carbonara</name>
+        <description>Creamy pasta with pancetta, egg, and parmesan cheese.</description>
+        <price>14.99</price>
+        <availableQuantity>30</availableQuantity>
+      </item>
+    </example>
+
+    <example>
+      <item>
+        <itemId>c1d4e51b-7890-4abc-9123-7890abcdef12</itemId>
+        <name>Caesar Salad</name>
+        <description>Crisp romaine lettuce with Caesar dressing, croutons, and parmesan cheese.</description>
+        <price>9.99</price>
+        <availableQuantity>75</availableQuantity>
+      </item>
+    </example>
+
+    <example>
+      <item>
+        <itemId>d3c16fae-733c-49e5-a822-23456789abcd</itemId>
+        <name>Grilled Salmon</name>
+        <description>Fresh salmon fillet grilled to perfection, served with lemon butter sauce.</description>
+        <price>18.99</price>
+        <availableQuantity>20</availableQuantity>
+      </item>
+    </example>
+
+    <example>
+      <item>
+        <itemId>e4f36be2-5d72-4591-afe2-c342e6789012</itemId>
+        <name>Tiramisu</name>
+        <description>Delicious Italian dessert made with coffee-soaked ladyfingers and mascarpone cheese.</description>
+        <price>6.99</price>
+        <availableQuantity>40</availableQuantity>
+      </item>
+    </example>
+  </examples>
+</openapi>
