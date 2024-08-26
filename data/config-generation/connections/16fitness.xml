@@ -1,0 +1,296 @@
+<openapi version="3.0.0">
+  <info>
+    <title>Fitness Center Management API version 06e733f2-5e34-40e3-a300-687bf63d7224</title>
+    <version>06e733f2-5e34-40e3-a300-687bf63d7224</version>
+    <description>API for managing members, classes, trainers, and attendance records in a fitness center.</description>
+  </info>
+  
+  <servers>
+    <server>
+      <url>http://api.fitnesscenter.example.com/v1</url>
+    </server>
+  </servers>
+
+  <paths>
+    <path>
+      <path>/members</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of members</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of members</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>memberId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>f3c16fae-733c-49e5-a822-23456789abcd</example>
+                      </property>
+                      <property>
+                        <name>name</name>
+                        <type>string</type>
+                        <example>Sarah Connor</example>
+                      </property>
+                      <property>
+                        <name>email</name>
+                        <type>string</type>
+                        <format>email</format>
+                        <example>sarah.connor@example.com</example>
+                      </property>
+                      <property>
+                        <name>phone</name>
+                        <type>string</type>
+                        <example>+1-555-0123</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new member</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>name</name>
+                    <type>string</type>
+                    <example>John Doe</example>
+                  </property>
+                  <property>
+                    <name>email</name>
+                    <type>string</type>
+                    <format>email</format>
+                    <example>john.doe@example.com</example>
+                  </property>
+                  <property>
+                    <name>phone</name>
+                    <type>string</type>
+                    <example>+1-555-0456</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Member created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Member added successfully.</example>
+                    </property>
+                    <property>
+                      <name>memberId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>g1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/classes</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of classes</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of fitness classes</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>classId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>h1234567-89ab-cdef-0123-456789abcdef</example>
+                      </property>
+                      <property>
+                        <name>className</name>
+                        <type>string</type>
+                        <example>Yoga Class</example>
+                      </property>
+                      <property>
+                        <name>capacity</name>
+                        <type>integer</type>
+                        <example>20</example>
+                      </property>
+                      <property>
+                        <name>instructor</name>
+                        <type>string</type>
+                        <example>Jane Smith</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new class</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>className</name>
+                    <type>string</type>
+                    <example>Pilates Class</example>
+                  </property>
+                  <property>
+                    <name>capacity</name>
+                    <type>integer</type>
+                    <example>15</example>
+                  </property>
+                  <property>
+                    <name>instructor</name>
+                    <type>string</type>
+                    <example>David Lee</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Class created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Class added successfully.</example>
+                    </property>
+                    <property>
+                      <name>classId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>i1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/enrollments</path>
+
+      <method>
+        <name>POST</name>
+        <summary>Enroll a member in a class</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>memberId</name>
+                    <type>string</type>
+                    <format>uuid</format>
+                    <example>d3c16fae-733c-49e5-a822-23456789abcd</example>
+                  </property>
+                  <property>
+                    <name>classId</name>
+                    <type>string</type>
+                    <format>uuid</format>
+                    <example>h1234567-89ab-cdef-0123-456789abcdef</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Enrollment created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Member enrolled in class successfully.</example>
+                    </property>
+                    <property>
+                      <name>enrollmentId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>j1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+  </paths>
+</openapi>
