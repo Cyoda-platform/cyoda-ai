@@ -1,0 +1,140 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Task Management API version ec4d2619-6720-4942-95ed-ff44af901197",
+      "version": "ec4d2619-6720-4942-95ed-ff44af901197",
+      "description": "API for managing tasks in a task list."
+    },
+    "servers": [
+      {
+        "url": "http://api.taskmanager.example.com/v1"
+      }
+    ],
+    "paths": {
+      "/tasks": {
+        "get": {
+          "summary": "Get a list of tasks",
+          "responses": {
+            "200": {
+              "description": "A list of tasks",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "taskId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "f4eeb2f0-bb9e-4c67-86b1-3d22425f36cb"
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "Buy groceries"
+                        },
+                        "completed": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new task",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "example": "Finish homework"
+                    },
+                    "completed": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Task created successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Task created successfully."
+                        },
+                        "taskId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "b1234567-89ab-cdef-0123-456789abcdef"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/tasks/{taskId}": {
+        "get": {
+          "summary": "Get details of a specific task",
+          "parameters": [
+            {
+              "name": "taskId",
+              "in": "path",
+              "required": true,
+              "description": "Unique identifier for the task.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Task details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "taskId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "f4eeb2f0-bb9e-4c67-86b1-3d22425f36cb"
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Buy groceries"
+                      },
+                      "completed": {
+                        "type": "boolean",
+                        "example": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
