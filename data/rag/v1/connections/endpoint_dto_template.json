@@ -1,6 +1,7 @@
 Use this template to generate com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto endpoint config
 
-!!!Change only values inside "${}"!!!
+!!!Change only values inside ${}!!!
+All parameters should be specified in this format ${}
 {
     "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
     "consumerConfig": {
@@ -15,8 +16,8 @@ Use this template to generate com.cyoda.plugins.datasource.dtos.endpoint.HttpEnd
     },
     "connectionIndex": 0,
     "type": "test",
-    "query": "${Write endpoint path here}",
-    "method": "${GET or POST_BODY. (Use POST_BODY instead of POST, nothing else is supported)}",
+    "query": "${Write endpoint path here, use $ for path parameters like \"${parameter}\"\". Example \"/test/${parameter}\". Example: /get-companies. Support placeholders: ${name} }",
+    "method": "${GET, POST_BODY. (Use POST_BODY instead of POST, nothing else is supported), DELETE, PUT}",
     Carefully analyze the doc and fill in the parameters
     "parameters": [
         ${Add parameters only if applicable}
@@ -32,11 +33,11 @@ Use this template to generate com.cyoda.plugins.datasource.dtos.endpoint.HttpEnd
             PATH_VARIABLE, (corresponds to GET type = path)
             REQUEST_PARAM, (corresponds to GET type = query)
             HEADER_PARAM, (corresponds to type = header)
-            REQUEST_BODY_VARIABLE (corresponds to any parameter specifies for POST_BODY request in the bodyTemplate. The format: \"${parameter}\")}"
+            REQUEST_BODY_VARIABLE (corresponds to any parameter specifies for POST_BODY request in the bodyTemplate. The format: ${parameter}. Use quotes for strings, don't use for other data types. )}"
             "optionValues": []
         }
         ],
-    "bodyTemplate": "${Write body template here only for POST_BODY requests. Specify any relevant parameters in parameters section as REQUEST_BODY_VARIABLE}",
+    "bodyTemplate": "${This is required for POST_BODY requests. Specify any relevant parameters in parameters section as REQUEST_BODY_VARIABLE. Required for POST_BODY. Example format: \"{\"key\": \"${parameter}\", \"key\": \"${parameter}\"}\" "}",
     "connectionTimeout": 300,
     "readWriteTimeout": 300
 }
