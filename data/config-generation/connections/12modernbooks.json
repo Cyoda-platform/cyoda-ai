@@ -1,0 +1,179 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Modern Book Management API version de63eecf-e5a4-4625-b0d6-9ad7ff8e6df8",
+      "version": "de63eecf-e5a4-4625-b0d6-9ad7ff8e6df8",
+      "description": "API for managing modern books, authors, and literary genres."
+    },
+    "servers": [
+      {
+        "url": "http://api.modernbooks.example.com/v1"
+      }
+    ],
+    "paths": {
+      "/modern-books": {
+        "get": {
+          "summary": "Retrieve a list of modern books",
+          "responses": {
+            "200": {
+              "description": "A list of modern books available in the library",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "bookId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "f9c16fae-733c-49e5-a822-23456789abcd"
+                        },
+                        "title": {
+                          "type": "string",
+                          "example": "The Midnight Library"
+                        },
+                        "author": {
+                          "type": "string",
+                          "example": "Matt Haig"
+                        },
+                        "publishedYear": {
+                          "type": "integer",
+                          "example": 2020
+                        },
+                        "price": {
+                          "type": "number",
+                          "format": "float",
+                          "example": 15.99
+                        },
+                        "availableCopies": {
+                          "type": "integer",
+                          "example": 7
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new modern book",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "example": "Klara and the Sun"
+                    },
+                    "author": {
+                      "type": "string",
+                      "example": "Kazuo Ishiguro"
+                    },
+                    "publishedYear": {
+                      "type": "integer",
+                      "example": 2021
+                    },
+                    "price": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 18.50
+                    },
+                    "availableCopies": {
+                      "type": "integer",
+                      "example": 3
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Modern book created successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Modern book added successfully."
+                        },
+                        "bookId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "g1234567-89ab-cdef-0123-456789abcdef"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/modern-books/{bookId}": {
+        "get": {
+          "summary": "Get details of a specific modern book",
+          "parameters": [
+            {
+              "name": "bookId",
+              "in": "path",
+              "required": true,
+              "description": "Unique identifier for the modern book.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Modern book details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "bookId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "f9c16fae-733c-49e5-a822-23456789abcd"
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "The Midnight Library"
+                      },
+                      "author": {
+                        "type": "string",
+                        "example": "Matt Haig"
+                      },
+                      "publishedYear": {
+                        "type": "integer",
+                        "example": 2020
+                      },
+                      "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 15.99
+                      },
+                      "availableCopies": {
+                        "type": "integer",
+                        "example": 7
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
