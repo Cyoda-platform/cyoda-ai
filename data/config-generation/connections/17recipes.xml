@@ -1,228 +1,275 @@
-{
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Recipe Management API version fe42c11b-3381-42e3-8631-cc44d738f28e",
-    "version": "fe42c11b-3381-42e3-8631-cc44d738f28e",
-    "description": "API for managing recipes, ingredients, and cuisines."
-  },
-  "servers": [
-    {
-      "url": "http://api.recipe.example.com/v1"
-    }
-  ],
-  "paths": {
-    "/recipes": {
-      "get": {
-        "summary": "Retrieve a list of recipes",
-        "responses": {
-          "200": {
-            "description": "A list of recipes available",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "recipeId": {
-                        "type": "string",
-                        "format": "uuid",
-                        "example": "e7e78f53-b2ee-4a6e-b842-e69d59d4b547"
-                      },
-                      "title": {
-                        "type": "string",
-                        "example": "Spaghetti Carbonara"
-                      },
-                      "cuisine": {
-                        "type": "string",
-                        "example": "Italian"
-                      },
-                      "prepTime": {
-                        "type": "integer",
-                        "example": 30
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Add a new recipe",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "example": "Chicken Curry"
-                  },
-                  "cuisine": {
-                    "type": "string",
-                    "example": "Indian"
-                  },
-                  "ingredients": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "example": "Chicken, Curry Powder, Coconut Milk"
-                    }
-                  },
-                  "prepTime": {
-                    "type": "integer",
-                    "example": 45
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Recipe created successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "message": {
-                        "type": "string",
-                        "example": "Recipe added successfully."
-                      },
-                      "recipeId": {
-                        "type": "string",
-                        "format": "uuid",
-                        "example": "b1234567-89ab-cdef-0123-456789abcdef"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/recipes/{recipeId}": {
-      "get": {
-        "summary": "Get details of a specific recipe",
-        "parameters": [
-          {
-            "name": "recipeId",
-            "in": "path",
-            "required": true,
-            "description": "Unique identifier for the recipe.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Recipe details",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "recipeId": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "e7e78f53-b2ee-4a6e-b842-e69d59d4b547"
-                    },
-                    "title": {
-                      "type": "string",
-                      "example": "Spaghetti Carbonara"
-                    },
-                    "cuisine": {
-                      "type": "string",
-                      "example": "Italian"
-                    },
-                    "ingredients": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "example": "Spaghetti, Eggs, Parmesan, Bacon"
-                      }
-                    },
-                    "prepTime": {
-                      "type": "integer",
-                      "example": 30
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "summary": "Update a recipe's details",
-        "parameters": [
-          {
-            "name": "recipeId",
-            "in": "path",
-            "required": true,
-            "description": "Unique identifier for the recipe.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "example": "Chicken Curry"
-                  },
-                  "cuisine": {
-                    "type": "string",
-                    "example": "Indian"
-                  },
-                  "ingredients": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "example": "Chicken, Curry Powder, Coconut Milk"
-                    }
-                  },
-                  "prepTime": {
-                    "type": "integer",
-                    "example": 45
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Recipe updated successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "message": {
-                        "type": "string",
-                        "example": "Recipe updated successfully."
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+<openapi version="3.0.0">
+  <info>
+    <title>Recipe Management API version fe42c11b-3381-42e3-8631-cc44d738f28e</title>
+    <version>fe42c11b-3381-42e3-8631-cc44d738f28e</version>
+    <description>API for managing recipes, ingredients, and cuisines.</description>
+  </info>
+
+  <servers>
+    <server>
+      <url>http://api.recipe.example.com/v1</url>
+    </server>
+  </servers>
+
+  <paths>
+    <path>
+      <path>/recipes</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of recipes</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of recipes available</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>recipeId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>e7e78f53-b2ee-4a6e-b842-e69d59d4b547</example>
+                      </property>
+                      <property>
+                        <name>title</name>
+                        <type>string</type>
+                        <example>Spaghetti Carbonara</example>
+                      </property>
+                      <property>
+                        <name>cuisine</name>
+                        <type>string</type>
+                        <example>Italian</example>
+                      </property>
+                      <property>
+                        <name>prepTime</name>
+                        <type>integer</type>
+                        <example>30</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new recipe</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>title</name>
+                    <type>string</type>
+                    <example>Chicken Curry</example>
+                  </property>
+                  <property>
+                    <name>cuisine</name>
+                    <type>string</type>
+                    <example>Indian</example>
+                  </property>
+                  <property>
+                    <name>ingredients</name>
+                    <type>array</type>
+                    <items>
+                      <type>string</type>
+                      <example>Chicken, Curry Powder, Coconut Milk</example>
+                    </items>
+                  </property>
+                  <property>
+                    <name>prepTime</name>
+                    <type>integer</type>
+                    <example>45</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Recipe created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Recipe added successfully.</example>
+                    </property>
+                    <property>
+                      <name>recipeId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>b1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/recipes/{recipeId}</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Get details of a specific recipe</summary>
+        <parameters>
+          <parameter>
+            <name>recipeId</name>
+            <in>path</in>
+            <required>true</required>
+            <description>Unique identifier for the recipe.</description>
+            <schema>
+              <type>string</type>
+            </schema>
+          </parameter>
+        </parameters>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>Recipe details</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>recipeId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>e7e78f53-b2ee-4a6e-b842-e69d59d4b547</example>
+                    </property>
+                    <property>
+                      <name>title</name>
+                      <type>string</type>
+                      <example>Spaghetti Carbonara</example>
+                    </property>
+                    <property>
+                      <name>cuisine</name>
+                      <type>string</type>
+                      <example>Italian</example>
+                    </property>
+                    <property>
+                      <name>ingredients</name>
+                      <type>array</type>
+                      <items>
+                        <type>string</type>
+                        <example>Spaghetti</example>
+                        <example>Eggs</example>
+                        <example>Parmesan</example>
+                        <example>Bacon</example>
+                      </items>
+                    </property>
+                    <property>
+                      <name>prepTime</name>
+                      <type>integer</type>
+                      <example>30</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>PUT</name>
+        <summary>Update a recipe's details</summary>
+        <parameters>
+          <parameter>
+            <name>recipeId</name>
+            <in>path</in>
+            <required>true</required>
+            <description>Unique identifier for the recipe.</description>
+            <schema>
+              <type>string</type>
+            </schema>
+          </parameter>
+        </parameters>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>title</name>
+                    <type>string</type>
+                    <example>Chicken Curry</example>
+                  </property>
+                  <property>
+                    <name>cuisine</name>
+                    <type>string</type>
+                    <example>Indian</example>
+                  </property>
+                  <property>
+                    <name>ingredients</name>
+                    <type>array</type>
+                    <items>
+                      <type>string</type>
+                      <example>Chicken</example>
+                      <example>Curry Powder</example>
+                      <example>Coconut Milk</example>
+                    </items>
+                  </property>
+                  <property>
+                    <name>prepTime</name>
+                    <type>integer</type>
+                    <example>45</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>Recipe updated successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Recipe updated successfully.</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+  </paths>
+</openapi>
