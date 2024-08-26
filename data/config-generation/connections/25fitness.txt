@@ -1,0 +1,188 @@
+openapi: 3.0.0
+info:
+  title: Health and Fitness App API version ad37f001-e1ce-4afc-8e60-bbeed639504f
+  version: ad37f001-e1ce-4afc-8e60-bbeed639504f
+  description: API for managing users, workouts, nutrition plans, and progress tracking.
+
+servers:
+  - url: http://api.healthfitness.example.com/v1
+
+paths:
+  /users:
+    get:
+      summary: Retrieve a list of users
+      responses:
+        '200':
+          description: A list of users in the fitness app
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: string
+                      format: uuid
+                      example: "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                    name:
+                      type: string
+                      example: "Alice Smith"
+                    email:
+                      type: string
+                      format: email
+                      example: "alice.smith@example.com"
+                    age:
+                      type: integer
+                      example: 30
+
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "John Doe"
+                email:
+                  type: string
+                  format: email
+                  example: "john.doe@example.com"
+                age:
+                  type: integer
+                  example: 25
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User created successfully."
+                  userId:
+                    type: string
+                    format: uuid
+                    example: "b1c2d3e4-f5g6-h7i8-j9k0-l1m2n3o4p5q6"
+
+  /workouts:
+    get:
+      summary: Retrieve a list of workouts
+      responses:
+        '200':
+          description: A list of available workouts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    workoutId:
+                      type: string
+                      format: uuid
+                      example: "c4d5e6f7-a8b9-0c1d-e2f3-g4h5i6j7k8l9"
+                    title:
+                      type: string
+                      example: "Full Body Workout"
+                    duration:
+                      type: integer
+                      example: 60
+                    difficulty:
+                      type: string
+                      example: "Intermediate"
+
+    post:
+      summary: Add a new workout
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Upper Body Strength"
+                duration:
+                  type: integer
+                  example: 45
+                difficulty:
+                  type: string
+                  example: "Beginner"
+      responses:
+        '201':
+          description: Workout created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Workout added successfully."
+                  workoutId:
+                    type: string
+                    format: uuid
+                    example: "d1e2f3g4-h5i6-j7k8-l9m0-n1o2p3q4r5s6"
+
+  /nutrition-plans:
+    get:
+      summary: Retrieve a list of nutrition plans
+      responses:
+        '200':
+          description: A list of available nutrition plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    planId:
+                      type: string
+                      format: uuid
+                      example: "e3f4g5h6-7890-1abc-d2ef-gh34ij56kl78"
+                    name:
+                      type: string
+                      example: "Weight Loss Plan"
+                    calories:
+                      type: integer
+                      example: 1500
+
+    post:
+      summary: Create a new nutrition plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Muscle Gain Plan"
+                calories:
+                  type: integer
+                  example: 3000
+      responses:
+        '201':
+          description: Nutrition plan created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Nutrition plan added successfully."
+                  planId:
+                    type: string
+                    format: uuid
+                    example: "f1g2h3i4-j5k6-l7m8-n9o0-p1q2r3s4t5u6"
