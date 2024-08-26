@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Simple Contact Management API version b7ad2c1e-ba19-43bb-bb3c-ff08c4047cf6
+  version: b7ad2c1e-ba19-43bb-bb3c-ff08c4047cf6
+  description: API for managing contacts in a contact list.
+
+servers:
+  - url: http://api.contactmanager.example.com/v1
+
+paths:
+  /contacts:
+    get:
+      summary: Retrieve a list of contacts
+      responses:
+        '200':
+          description: A list of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    contactId:
+                      type: string
+                      format: uuid
+                      example: "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                    name:
+                      type: string
+                      example: "John Doe"
+                    email:
+                      type: string
+                      format: email
+                      example: "john.doe@example.com"
+                    phone:
+                      type: string
+                      example: "+1-234-567-8900"
+
+    post:
+      summary: Add a new contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Jane Smith"
+                email:
+                  type: string
+                  format: email
+                  example: "jane.smith@example.com"
+                phone:
+                  type: string
+                  example: "+1-987-654-3210"
+      responses:
+        '201':
+          description: Contact created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Contact added successfully."
+                  contactId:
+                    type: string
+                    format: uuid
+                    example: "b1234567-89ab-cdef-0123-456789abcdef"
