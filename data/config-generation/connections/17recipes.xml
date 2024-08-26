@@ -1,0 +1,228 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Recipe Management API version fe42c11b-3381-42e3-8631-cc44d738f28e",
+    "version": "fe42c11b-3381-42e3-8631-cc44d738f28e",
+    "description": "API for managing recipes, ingredients, and cuisines."
+  },
+  "servers": [
+    {
+      "url": "http://api.recipe.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/recipes": {
+      "get": {
+        "summary": "Retrieve a list of recipes",
+        "responses": {
+          "200": {
+            "description": "A list of recipes available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "recipeId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "e7e78f53-b2ee-4a6e-b842-e69d59d4b547"
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Spaghetti Carbonara"
+                      },
+                      "cuisine": {
+                        "type": "string",
+                        "example": "Italian"
+                      },
+                      "prepTime": {
+                        "type": "integer",
+                        "example": 30
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new recipe",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Chicken Curry"
+                  },
+                  "cuisine": {
+                    "type": "string",
+                    "example": "Indian"
+                  },
+                  "ingredients": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "Chicken, Curry Powder, Coconut Milk"
+                    }
+                  },
+                  "prepTime": {
+                    "type": "integer",
+                    "example": 45
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Recipe created successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Recipe added successfully."
+                      },
+                      "recipeId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "b1234567-89ab-cdef-0123-456789abcdef"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recipes/{recipeId}": {
+      "get": {
+        "summary": "Get details of a specific recipe",
+        "parameters": [
+          {
+            "name": "recipeId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier for the recipe.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recipe details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recipeId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "e7e78f53-b2ee-4a6e-b842-e69d59d4b547"
+                    },
+                    "title": {
+                      "type": "string",
+                      "example": "Spaghetti Carbonara"
+                    },
+                    "cuisine": {
+                      "type": "string",
+                      "example": "Italian"
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "example": "Spaghetti, Eggs, Parmesan, Bacon"
+                      }
+                    },
+                    "prepTime": {
+                      "type": "integer",
+                      "example": 30
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a recipe's details",
+        "parameters": [
+          {
+            "name": "recipeId",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier for the recipe.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Chicken Curry"
+                  },
+                  "cuisine": {
+                    "type": "string",
+                    "example": "Indian"
+                  },
+                  "ingredients": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "Chicken, Curry Powder, Coconut Milk"
+                    }
+                  },
+                  "prepTime": {
+                    "type": "integer",
+                    "example": 45
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Recipe updated successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Recipe updated successfully."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
