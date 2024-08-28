@@ -1,0 +1,2 @@
+Do not use semicolon ; at the end of the query
+Always add schema name before the table name.
