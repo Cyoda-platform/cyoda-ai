@@ -17,7 +17,7 @@
           },
           "configId": {
             "type": "string",
-            "format": "uuid"
+            "enum": ["7e93e7d0-58d7-11ef-82bb-1e5f513defed"]
           }
         },
         "required": ["consumerType", "configId"],

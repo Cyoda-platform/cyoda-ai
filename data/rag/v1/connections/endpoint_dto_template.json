@@ -6,7 +6,7 @@ All parameters should be specified in this format ${}
     "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
     "consumerConfig": {
         "consumerType": "COBI_MAPPER",
-        "configId": "7e93e7d0-58d7-11ef-82bb-1e5f513defed"
+        "configId": "7e93e7d0-58d7-11ef-82bb-1e5f513defed" #leave this id
     },
     "chainings": [],
     "operation": "${Write operation (endpoint) name here}",
