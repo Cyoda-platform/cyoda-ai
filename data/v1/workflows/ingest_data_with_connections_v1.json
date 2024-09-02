@@ -1,4 +1,7 @@
 {
+    "dataFormat":"JSON",
+    "entityType":"TREE",
+    "workflow_name":"ingest_data_with_connections_v1",
     "workflow": [
         {
             "entityId": "",
