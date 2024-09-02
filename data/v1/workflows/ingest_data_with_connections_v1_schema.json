@@ -2,6 +2,20 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
+    "dataFormat": {
+      "type": "string",
+      "enum": ["JSON"],
+      "description": "The format of the data. Currently, only JSON is supported."
+    },
+    "entityType": {
+      "type": "string",
+      "enum": ["TREE"],
+      "description": "The type of entity involved in the workflow. Currently, only 'TREE' is supported."
+    },
+    "workflow_name": {
+      "type": "string",
+      "description": "The name of the workflow."
+    },
     "workflow": {
       "type": "array",
       "items": {
@@ -25,6 +39,6 @@
       }
     }
   },
-  "required": ["workflow"],
+  "required": ["dataFormat", "entityType", "workflow_name", "workflow"],
   "additionalProperties": false
 }
