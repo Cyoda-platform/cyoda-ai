@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "workflow": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "string",
+            "description": "The ID of the entity associated with this workflow step."
+          },
+          "transitionName": {
+            "type": "string",
+            "description": "The name of the transition being applied in this step of the workflow."
+          },
+          "data": {
+            "type": "string",
+            "description": "Additional data or payload associated with this workflow step."
+          }
+        },
+        "required": ["entityId", "transitionName", "data"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["workflow"],
+  "additionalProperties": false
+}
