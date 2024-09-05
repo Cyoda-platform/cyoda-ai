@@ -1,0 +1,29 @@
+{
+    "extraction-date": "2024-04-14",
+    "data": {
+        "source": "taken from http://api.nobelprize.org/v1/prize.json",
+        "prizes": [
+            {
+                "year": "2020",
+                "category": "chemistry",
+                "laureates": [
+                    {
+                        "id": "991",
+                        "firstname": "Emmanuelle",
+                        "surname": "Charpentier",
+                        "motivation": "\"for the development of a method for genome editing\"",
+                        "share": "2"
+                    },
+                    {
+                        "id": "992",
+                        "firstname": "Jennifer A.",
+                        "surname": "Doudna",
+                        "motivation": "\"for the development of a method for genome editing\"",
+                        "share": "2"
+                    }
+                ]
+            }
+
+        ]
+    }
+}

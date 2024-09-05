@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package org.cyoda.cloud.api.grpc;
+
+import "cloudevents.proto";
+
+service CloudEventsService {
+  rpc startStreaming(stream io.cloudevents.v1.CloudEvent) returns (stream io.cloudevents.v1.CloudEvent);
+}

@@ -1,0 +1,127 @@
+{
+    "extraction-date": "2024-04-14",
+    "data": {
+        "source": "taken from http://api.nobelprize.org/v1/prize.json",
+        "prizes": [
+            {
+                "year": "2020",
+                "category": "chemistry",
+                "laureates": [
+                    {
+                        "id": "991",
+                        "firstname": "Emmanuelle",
+                        "surname": "Charpentier",
+                        "motivation": "\"for the development of a method for genome editing\"",
+                        "share": "2"
+                    },
+                    {
+                        "id": "992",
+                        "firstname": "Jennifer A.",
+                        "surname": "Doudna",
+                        "motivation": "\"for the development of a method for genome editing\"",
+                        "share": "2"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "category": "economics",
+                "laureates": [
+                    {
+                        "id": "995",
+                        "firstname": "Paul",
+                        "surname": "Milgrom",
+                        "motivation": "\"for improvements to auction theory and inventions of new auction formats\"",
+                        "share": "2"
+                    },
+                    {
+                        "id": "996",
+                        "firstname": "Robert",
+                        "surname": "Wilson",
+                        "motivation": "\"for improvements to auction theory and inventions of new auction formats\"",
+                        "share": "2"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "category": "literature",
+                "laureates": [
+                    {
+                        "id": "993",
+                        "firstname": "Louise",
+                        "surname": "Gl\u00fcck",
+                        "motivation": "\"for her unmistakable poetic voice that with austere beauty makes individual existence universal\"",
+                        "share": "1"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "category": "peace",
+                "laureates": [
+                    {
+                        "id": "994",
+                        "motivation": "\"for its efforts to combat hunger, for its contribution to bettering conditions for peace in conflict-affected areas and for acting as a driving force in efforts to prevent the use of hunger as a weapon of war and conflict\"",
+                        "share": "1",
+                        "firstname": "World Food Programme"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "category": "physics",
+                "laureates": [
+                    {
+                        "id": "988",
+                        "firstname": "Roger",
+                        "surname": "Penrose",
+                        "motivation": "\"for the discovery that black hole formation is a robust prediction of the general theory of relativity\"",
+                        "share": "2"
+                    },
+                    {
+                        "id": "989",
+                        "firstname": "Reinhard",
+                        "surname": "Genzel",
+                        "motivation": "\"for the discovery of a supermassive compact object at the centre of our galaxy\"",
+                        "share": "4"
+                    },
+                    {
+                        "id": "990",
+                        "firstname": "Andrea",
+                        "surname": "Ghez",
+                        "motivation": "\"for the discovery of a supermassive compact object at the centre of our galaxy\"",
+                        "share": "4"
+                    }
+                ]
+            },
+            {
+                "year": "2020",
+                "category": "medicine",
+                "laureates": [
+                    {
+                        "id": "985",
+                        "firstname": "Harvey",
+                        "surname": "Alter",
+                        "motivation": "\"for the discovery of Hepatitis C virus\"",
+                        "share": "3"
+                    },
+                    {
+                        "id": "986",
+                        "firstname": "Michael",
+                        "surname": "Houghton",
+                        "motivation": "\"for the discovery of Hepatitis C virus\"",
+                        "share": "3"
+                    },
+                    {
+                        "id": "987",
+                        "firstname": "Charles",
+                        "surname": "Rice",
+                        "motivation": "\"for the discovery of Hepatitis C virus\"",
+                        "share": "3"
+                    }
+                ]
+            }
+        ]
+    }
+}
