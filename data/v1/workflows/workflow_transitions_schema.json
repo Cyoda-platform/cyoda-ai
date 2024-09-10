@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the step"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the step"
+        },
+        "start_state": {
+          "type": "string",
+          "description": "The initial state of the step"
+        },
+        "start_state_description": {
+          "type": "string",
+          "description": "Description of the initial state"
+        },
+        "end_state": {
+          "type": "string",
+          "description": "The final state of the step"
+        },
+        "end_state_description": {
+          "type": "string",
+          "description": "Description of the final state"
+        },
+        "criteria": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the criteria"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the criteria"
+            }
+          },
+          "required": ["name", "description"],
+          "description": "Criteria for the step"
+        },
+        "process": {
+          "type": "object",
+          "properties": {
+            "script": {
+              "type": "string",
+              "description": "Script for the process"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the process"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the process"
+            }
+          },
+          "required": ["name", "description"],
+          "description": "Process details for the step"
+        }
+      },
+      "required": ["name", "description", "start_state", "end_state"],
+      "additionalProperties": false
+    }
+  }
