@@ -6,7 +6,9 @@ Cyoda-AI is an application that provides configuration and code necessary to gen
 Before using this application, make sure you have the following installed:
 
 Python 3.x
+
 Required Python dependencies (specified in requirements.txt)
+
 Access to a Cyoda environment (API key, secret, and URL)
 
 ### Setup
