@@ -1,6 +1,6 @@
 # Cyoda-AI
 
-Cyoda-AI is an application that provides configuration and code necessary to generate app-specific resources for your Cyoda environment. This application interacts with Cyoda's API and gRPC services using secure credentials and a predefined workspace directory.
+Cyoda-AI provides a collection of data essential for the Cyoda-AI-Chat application, along with code examples to help you get started.
 
 ## Prerequisites
 Before using this application, make sure you have the following installed:
@@ -14,10 +14,6 @@ Access to a Cyoda environment (API key, secret, and URL)
 ### Setup
 
 Clone the repository:
-```
-git clone https://github.com/your_username/cyoda-ai.git
-cd cyoda-ai
-```
 
 Install dependencies:
 
