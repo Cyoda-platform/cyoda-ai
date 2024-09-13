@@ -1,0 +1,85 @@
+openapi: 3.0.1
+info:
+  title: Shop Holiday Updates API Version 45305d25-58df-4dc3-8bb3-3dd97d42c386
+  description: This API provides information about shop updates for upcoming holidays.
+  version: 45305d25-58df-4dc3-8bb3-3dd97d42c386
+servers:
+  - url: https://api.example.com/v1
+    description: Production Server
+  - url: https://sandbox.api.example.com/v1
+    description: Sandbox Server
+
+paths:
+  /shop-updates:
+    get:
+      summary: Get a list of shop updates for upcoming holidays
+      description: Retrieve updates and changes to shop hours or closures during holidays.
+      responses:
+        '200':
+          description: A list of shop updates for holidays
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    shop_id:
+                      type: string
+                      description: Unique identifier for the shop
+                      example: "shop_12345"
+                    shop_name:
+                      type: string
+                      description: Name of the shop
+                      example: "Main Street Bakery"
+                    holiday:
+                      type: string
+                      description: Name of the holiday
+                      example: "Christmas"
+                    update_type:
+                      type: string
+                      description: Type of update (e.g., closure, modified hours)
+                      example: "closure"
+                    start_date:
+                      type: string
+                      format: date
+                      description: The start date of the update
+                      example: "2024-12-24"
+                    end_date:
+                      type: string
+                      format: date
+                      description: The end date of the update
+                      example: "2024-12-25"
+                    description:
+                      type: string
+                      description: Additional details about the update
+                      example: "Shop will be closed on Christmas Eve and Christmas Day."
+
+components:
+  schemas:
+    ShopUpdate:
+      type: object
+      properties:
+        shop_id:
+          type: string
+          description: Unique identifier for the shop
+        shop_name:
+          type: string
+          description: Name of the shop
+        holiday:
+          type: string
+          description: Name of the holiday
+        update_type:
+          type: string
+          description: Type of update (e.g., closure, modified hours)
+        start_date:
+          type: string
+          format: date
+          description: The start date of the update
+        end_date:
+          type: string
+          format: date
+          description: The end date of the update
+        description:
+          type: string
+          description: Additional details about the update

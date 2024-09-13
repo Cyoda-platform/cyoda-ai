@@ -1,0 +1,379 @@
+openapi: 3.0.0
+info:
+  title: Pharmacy Management API version db90ebb3-2989-42de-bb93-f8c733a68ed5
+  version: db90ebb3-2989-42de-bb93-f8c733a68ed5
+  description: API for managing pharmaceutical products, prescriptions, patients, and sales in a pharmacy.
+  
+servers:
+  - url: http://api.pharmacy.example.com/v1
+
+paths:
+  /medications:
+    get:
+      summary: Get a list of medications
+      responses:
+        '200':
+          description: A list of medications available in the pharmacy
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    medicationId:
+                      type: string
+                      format: uuid
+                      example: "b49e1364-3605-4c1b-b396-5f251391d69e"
+                    name:
+                      type: string
+                      example: "Amoxicillin"
+                    dosage:
+                      type: string
+                      example: "500mg"
+                    price:
+                      type: number
+                      format: float
+                      example: 12.99
+                    quantityAvailable:
+                      type: integer
+                      example: 200
+
+    post:
+      summary: Add a new medication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Ibuprofen"
+                dosage:
+                  type: string
+                  example: "200mg"
+                price:
+                  type: number
+                  format: float
+                  example: 9.99
+                quantityAvailable:
+                  type: integer
+                  example: 150
+      responses:
+        '201':
+          description: Medication created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Medication added successfully."
+                  medicationId:
+                    type: string
+                    format: uuid
+                    example: "ef368ff4-3f40-4ba6-8de9-fe442575ed46"
+
+  /medications/{medicationId}:
+    get:
+      summary: Get details of a specific medication
+      parameters:
+        - name: medicationId
+          in: path
+          required: true
+          description: Unique identifier for the medication.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Medication details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  medicationId:
+                    type: string
+                    format: uuid
+                    example: "b49e1364-3605-4c1b-b396-5f251391d69e"
+                  name:
+                    type: string
+                    example: "Amoxicillin"
+                  dosage:
+                    type: string
+                    example: "500mg"
+                  price:
+                    type: number
+                    format: float
+                    example: 12.99
+                  quantityAvailable:
+                    type: integer
+                    example: 200
+
+    put:
+      summary: Update medication details
+      parameters:
+        - name: medicationId
+          in: path
+          required: true
+          description: Unique identifier for the medication.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Amoxicillin"
+                dosage:
+                  type: string
+                  example: "500mg"
+                price:
+                  type: number
+                  format: float
+                  example: 12.99
+                quantityAvailable:
+                  type: integer
+                  example: 200
+      responses:
+        '200':
+          description: Medication updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Medication updated successfully."
+
+  /patients:
+    get:
+      summary: Get a list of patients
+      responses:
+        '200':
+          description: A list of patients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    patientId:
+                      type: string
+                      format: uuid
+                      example: "a95e3925-0c3d-4e03-b1e7-c5a962d424d0"
+                    name:
+                      type: string
+                      example: "John Doe"
+                    dateOfBirth:
+                      type: string
+                      format: date
+                      example: "1985-06-15"
+                    email:
+                      type: string
+                      format: email
+                      example: "johndoe@example.com"
+                    phone:
+                      type: string
+                      example: "+1-234-567-8901"
+
+    post:
+      summary: Add a new patient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Jane Smith"
+                dateOfBirth:
+                  type: string
+                  format: date
+                  example: "1990-03-22"
+                email:
+                  type: string
+                  format: email
+                  example: "janesmith@example.com"
+                phone:
+                  type: string
+                  example: "+1-987-654-3210"
+      responses:
+        '201':
+          description: Patient created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Patient added successfully."
+                  patientId:
+                    type: string
+                    format: uuid
+                    example: "103045ff-3bbe-4f4a-b802-bb16c3b0ba74"
+
+  /patients/{patientId}/prescriptions:
+    get:
+      summary: Get prescriptions for a specific patient
+      parameters:
+        - name: patientId
+          in: path
+          required: true
+          description: Unique identifier for the patient.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of prescriptions for the patient
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    prescriptionId:
+                      type: string
+                      format: uuid
+                      example: "a42fb1f8-52be-4efc-9fcd-fb40269a1a1d"
+                    medicationId:
+                      type: string
+                      format: uuid
+                      example: "b49e1364-3605-4c1b-b396-5f251391d69e"
+                    dosage:
+                      type: string
+                      example: "500mg"
+                    frequency:
+                      type: string
+                      example: "Twice a day"
+                    prescribedDate:
+                      type: string
+                      format: date
+                      example: "2024-08-15"
+
+    post:
+      summary: Add a new prescription for a patient
+      parameters:
+        - name: patientId
+          in: path
+          required: true
+          description: Unique identifier for the patient.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                medicationId:
+                  type: string
+                  format: uuid
+                  example: "b49e1364-3605-4c1b-b396-5f251391d69e"
+                dosage:
+                  type: string
+                  example: "500mg"
+                frequency:
+                  type: string
+                  example: "Twice a day"
+      responses:
+        '201':
+          description: Prescription created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Prescription added successfully."
+                  prescriptionId:
+                    type: string
+                    format: uuid
+                    example: "a42fb1f8-52be-4efc-9fcd-fb40269a1a1d"
+
+  /sales:
+    get:
+      summary: Get a list of sales transactions
+      responses:
+        '200':
+          description: A list of sales transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    saleId:
+                      type: string
+                      format: uuid
+                      example: "cdefb37e-0a3e-421d-809c-f83fe12b3ff2"
+                    patientId:
+                      type: string
+                      format: uuid
+                      example: "a95e3925-0c3d-4e03-b1e7-c5a962d424d0"
+                    medicationId:
+                      type: string
+                      format: uuid
+                      example: "b49e1364-3605-4c1b-b396-5f251391d69e"
+                    totalPrice:
+                      type: number
+                      format: float
+                      example: 12.99
+                    saleDate:
+                      type: string
+                      format: date-time
+                      example: "2024-08-21T15:30:00Z"
+
+    post:
+      summary: Record a new sale transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                patientId:
+                  type: string
+                  format: uuid
+                  example: "a95e3925-0c3d-4e03-b1e7-c5a962d424d0"
+                medicationId:
+                  type: string
+                  format: uuid
+                  example: "b49e1364-3605-4c1b-b396-5f251391d69e"
+                totalPrice:
+                  type: number
+                  format: float
+                  example: 12.99
+      responses:
+        '201':
+          description: Sale recorded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sale recorded successfully."
+                  saleId:
+                    type: string
+                    format: uuid
+                    example: "cdefb37e-0a3e-421d-809c-f83fe12b3ff2"
+}

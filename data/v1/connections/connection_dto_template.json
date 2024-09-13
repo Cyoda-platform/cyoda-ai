@@ -1,0 +1,57 @@
+{
+    "@bean": "com.cyoda.plugins.datasource.dtos.DataSourceConfigsContainerDto",
+    "dataSources": [
+        {
+            "id": "bcb228a0-55c7-11ef-ad83-8aaf3a6b0cc2",
+            "name": "<Write the connection name here>",
+            "lastUpdated": 1723486844219,
+            "description": "",
+            "connections": [
+            ],
+            "endpoints": [
+            ],
+            "active": true
+        }
+    ],
+    "mappings": [
+        {
+            "id": "7e93e7d0-58d7-11ef-82bb-1e5f513defed",
+            "name": "empty_mapping",
+            "lastUpdated": 1723486803697,
+            "dataType": "JSON",
+            "description": "",
+            "entityMappings": [
+                {
+                    "id": {
+                        "id": "7e8c1fa0-58d7-11ef-82bb-1e5f513defed"
+                    },
+                    "name": "empty_mapping",
+                    "entityClass": "com.cyoda.plugins.tasks.model.AlertTask",
+                    "entityRelationConfigs": [
+                        {
+                            "srcRelativeRootPath": "root:/"
+                        }
+                    ],
+                    "columns": [],
+                    "functionalMappings": [],
+                    "columnPathsForUniqueCheck": [],
+                    "metadata": [],
+                    "cobiCoreMetadata": [],
+                    "script": {
+                        "body": "",
+                        "inputSrcPaths": [],
+                        "inputMetaPaths": [],
+                        "reusableScripts": []
+                    },
+                    "entityFilter": {
+                        "@bean": "com.cyoda.core.conditions.GroupCondition",
+                        "operator": "AND",
+                        "conditions": []
+                    }
+                }
+            ],
+            "sampleContent": "{}",
+            "metadata": "{\"entityMappingsMetaDatas\":[{\"uiId\":1,\"cobiPathsRelations\":[],\"isShowNoneMappingFields\":true,\"isPolymorphicList\":false}]}"
+        }
+    ]
+}

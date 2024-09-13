@@ -1,0 +1,88 @@
+{
+    "tenderID": "TND-2024-502",
+    "tenderTitle": "Revitalization of Downtown Area",
+    "tenderCategories": [
+      "Urban Development",
+      "Public Spaces",
+      "Infrastructure"
+    ],
+    "primaryContact": {
+      "contactName": "Victoria Lane",
+      "contactInfo": {
+        "email": "victoria.lane@citygov.org",
+        "phone": {
+          "areaCode": "555",
+          "number": "867-5309"
+        }
+      }
+    },
+    "isAutomated": true,
+    "creationTimestamp": "2024-09-01T08:00:00Z",
+    "submissionDeadline": "2024-10-31T16:00:00Z",
+    "durationDays": 60,
+    "projectType": "Urban Development",
+    "budgetAllocated": 1800000,
+    "contractingAuthority": "City Urban Planning Department",
+    "notifications": [
+      {
+        "notificationTitle": "Pre-Bid Informational Session",
+        "notificationID": "NTC-3021",
+        "sessionDetails": {
+          "sid": "SID-123456",
+          "notificationDate": "2024-09-10T10:00:00Z",
+          "notificationType": "Information",
+          "source": {
+            "sourceID": "SRC-789",
+            "sourceUrl": "https://example.com/tenders/ntc-3021"
+          },
+          "notificationData": "A pre-bid informational session will be held on September 15, 2024."
+        }
+      },
+      {
+        "notificationTitle": "Bid Submission Open",
+        "notificationID": "NTC-3022",
+        "sessionDetails": {
+          "sid": "SID-123457",
+          "notificationDate": "2024-09-20T09:30:00Z",
+          "notificationType": "Announcement",
+          "source": {
+            "sourceID": "SRC-790",
+            "sourceUrl": "https://example.com/tenders/ntc-3022"
+          },
+          "notificationData": "Bids for the project are now being accepted."
+        }
+      }
+    ],
+    "authorityNotifications": {
+      "City Urban Planning Department": [
+        {
+          "notificationTitle": "Pre-Bid Informational Session",
+          "notificationID": "NTC-3021",
+          "sessionDetails": {
+            "sid": "SID-123456",
+            "notificationDate": "2024-09-10T10:00:00Z",
+            "notificationType": "Information",
+            "source": {
+              "sourceID": "SRC-789",
+              "sourceUrl": "https://example.com/tenders/ntc-3021"
+            },
+            "notificationData": "A pre-bid informational session will be held on September 15, 2024."
+          }
+        },
+        {
+          "notificationTitle": "Bid Submission Open",
+          "notificationID": "NTC-3022",
+          "sessionDetails": {
+            "sid": "SID-123457",
+            "notificationDate": "2024-09-20T09:30:00Z",
+            "notificationType": "Announcement",
+            "source": {
+              "sourceID": "SRC-790",
+              "sourceUrl": "https://example.com/tenders/ntc-3022"
+            },
+            "notificationData": "Bids for the project are now being accepted."
+          }
+        }
+      ]
+    }
+  }

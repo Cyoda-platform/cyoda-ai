@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+  description: An example API with parameter definitions and data types
+
+servers:
+  - url: https://api.example.com/v1
+
+paths:
+  /users:
+    get:
+      summary: Get a user by ID
+      parameters:
+        - name: userId
+          in: path
+          description: ID of the user to fetch
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: User details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  age:
+                    type: integer
+                  isSubscribed:
+                    type: boolean
+                  registrationDate:
+                    type: string
+                    format: date-time
+                  interests:
+                    type: array
+                    items:
+                      type: string
+                  address:
+                    type: object
+                    properties:
+                      street:
+                        type: string
+                      city:
+                        type: string
+                  status:
+                    type: string
+                    enum:
+                      - active
+                      - inactive
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer

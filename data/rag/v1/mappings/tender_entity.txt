@@ -1,0 +1,100 @@
+##net.cyoda.saas.model.TenderEntity f2c3867f-6ddc-4a48-a47a-03ea7ac6b306
+net.cyoda.saas.model.TenderEntity
+Tender Entity
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TenderEntity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contactUser": {
+      "type": "string"
+    },
+    "systemAccount": {
+      "type": "boolean"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deadlineDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deadlineLengthDays": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "category": {
+      "type": "string"
+    },
+    "awardedValue": {
+      "type": "number"
+    },
+    "purchaser": {
+      "type": "string"
+    },
+    "notices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Notice"
+      }
+    },
+    "purchaserNoticeMap": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Notice"
+        }
+      }
+    }
+  },
+  "required": ["id", "name", "types", "contactUser", "systemAccount", "date", "deadlineDate", "deadlineLengthDays", "category", "awardedValue", "purchaser", "notices", "purchaserNoticeMap"],
+  "definitions": {
+    ##net.cyoda.saas.model.dto.tender.Notice
+    "Notice": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "sid": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "srcId": {
+          "type": "string"
+        },
+        "srcUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "data": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "id", "sid", "date", "type", "srcId", "srcUrl", "data"]
+    }
+  }
+}

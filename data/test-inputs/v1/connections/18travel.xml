@@ -1,0 +1,373 @@
+<openapi version="3.0.0">
+  <info>
+    <title>Travel Booking API version ec9abc09-298e-4b7d-8b27-c640284ee2e6</title>
+    <version>ec9abc09-298e-4b7d-8b27-c640284ee2e6</version>
+    <description>API for managing flight bookings, hotel reservations, and car rentals.</description>
+  </info>
+  
+  <servers>
+    <server>
+      <url>http://api.travelbooking.example.com/v1</url>
+    </server>
+  </servers>
+
+  <paths>
+    <path>
+      <path>/flights</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of available flights</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of available flights</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>flightId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>f9b1c4d6-e9b0-4e9f-a5c4-c64bc7d8a18e</example>
+                      </property>
+                      <property>
+                        <name>airline</name>
+                        <type>string</type>
+                        <example>Delta Airlines</example>
+                      </property>
+                      <property>
+                        <name>source</name>
+                        <type>string</type>
+                        <example>New York</example>
+                      </property>
+                      <property>
+                        <name>destination</name>
+                        <type>string</type>
+                        <example>Los Angeles</example>
+                      </property>
+                      <property>
+                        <name>price</name>
+                        <type>number</type>
+                        <format>float</format>
+                        <example>299.99</example>
+                      </property>
+                      <property>
+                        <name>departureTime</name>
+                        <type>string</type>
+                        <format>date-time</format>
+                        <example>2024-08-21T15:30:00Z</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Book a flight</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>flightId</name>
+                    <type>string</type>
+                    <format>uuid</format>
+                    <example>f9b1c4d6-e9b0-4e9f-a5c4-c64bc7d8a18e</example>
+                  </property>
+                  <property>
+                    <name>passengerName</name>
+                    <type>string</type>
+                    <example>John Doe</example>
+                  </property>
+                  <property>
+                    <name>email</name>
+                    <type>string</type>
+                    <format>email</format>
+                    <example>john.doe@example.com</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Flight booked successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Flight booked successfully.</example>
+                    </property>
+                    <property>
+                      <name>bookingId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>g1h2i3j4-k5l6-m7n8-o9p0-qrstuvwx1234</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/hotels</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of available hotels</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of available hotels</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>hotelId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>h2g3f1e4-56g7-4b8c-9d0e-fghijklm1234</example>
+                      </property>
+                      <property>
+                        <name>name</name>
+                        <type>string</type>
+                        <example>Sunset Hotel</example>
+                      </property>
+                      <property>
+                        <name>location</name>
+                        <type>string</type>
+                        <example>Los Angeles</example>
+                      </property>
+                      <property>
+                        <name>rating</name>
+                        <type>number</type>
+                        <format>float</format>
+                        <example>4.5</example>
+                      </property>
+                      <property>
+                        <name>pricePerNight</name>
+                        <type>number</type>
+                        <format>float</format>
+                        <example>120.00</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Book a hotel room</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>hotelId</name>
+                    <type>string</type>
+                    <format>uuid</format>
+                    <example>h2g3f1e4-56g7-4b8c-9d0e-fghijklm1234</example>
+                  </property>
+                  <property>
+                    <name>customerName</name>
+                    <type>string</type>
+                    <example>Jane Doe</example>
+                  </property>
+                  <property>
+                    <name>checkInDate</name>
+                    <type>string</type>
+                    <format>date</format>
+                    <example>2024-08-01</example>
+                  </property>
+                  <property>
+                    <name>checkOutDate</name>
+                    <type>string</type>
+                    <format>date</format>
+                    <example>2024-08-10</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Hotel booked successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Hotel booked successfully.</example>
+                    </property>
+                    <property>
+                      <name>bookingId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>i3j4k5l6-m7n8-o9p0-qrstuvwxy123</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/customers</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of customers</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of customers</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>customerId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>k1l2m3n4-5o6p-7q8r-9s0t-uvwxy1234567</example>
+                      </property>
+                      <property>
+                        <name>name</name>
+                        <type>string</type>
+                        <example>Emily White</example>
+                      </property>
+                      <property>
+                        <name>email</name>
+                        <type>string</type>
+                        <format>email</format>
+                        <example>emily.white@example.com</example>
+                      </property>
+                      <property>
+                        <name>phone</name>
+                        <type>string</type>
+                        <example>+1-555-0033</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new customer</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>name</name>
+                    <type>string</type>
+                    <example>John Doe</example>
+                  </property>
+                  <property>
+                    <name>email</name>
+                    <type>string</type>
+                    <format>email</format>
+                    <example>john.doe@example.com</example>
+                  </property>
+                  <property>
+                    <name>phone</name>
+                    <type>string</type>
+                    <example>+1-555-0044</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Customer created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Customer added successfully.</example>
+                    </property>
+                    <property>
+                      <name>customerId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>l1m2n3o4-5p6q-7r8s-9t0u-vwx12345y678</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+  </paths>
+</openapi>

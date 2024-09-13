@@ -1,0 +1,131 @@
+<Tender>
+    <TenderReferenceNumber>TND-2024-981</TenderReferenceNumber>
+    <ProjectTitle>Integration of AI in Public Transport Systems</ProjectTitle>
+    <ProjectCategories>
+        <Category>AI Technology</Category>
+        <Category>Public Transport</Category>
+        <Category>Urban Innovation</Category>
+    </ProjectCategories>
+    <ContactInformation>
+        <LeadContact>
+            <FullName>Sophia Turner</FullName>
+            <Email>sophia.turner@publictransport.ai</Email>
+            <PhoneNumbers>
+                <Mobile>
+                    <CountryCode>+44</CountryCode>
+                    <Number>700-555-0140</Number>
+                </Mobile>
+                <Office>
+                    <CountryCode>+44</CountryCode>
+                    <Number>700-555-0183</Number>
+                </Office>
+            </PhoneNumbers>
+        </LeadContact>
+    </ContactInformation>
+    <UsesSystemAccount>false</UsesSystemAccount>
+    <DocumentDetails>
+        <CreationDate>2024-08-25T10:00:00Z</CreationDate>
+        <SubmissionDeadline>
+            <EndDate>2024-11-30T14:00:00Z</EndDate>
+            <Extension>
+                <Extended>true</Extended>
+                <ReasonList>
+                    <Reason>Increased security measures</Reason>
+                    <Reason>Integration testing phase</Reason>
+                </ReasonList>
+            </Extension>
+        </SubmissionDeadline>
+    </DocumentDetails>
+    <ProjectDurationDays>96</ProjectDurationDays>
+    <Sector>Technology and Transport</Sector>
+    <ApprovedBudget>5000000</ApprovedBudget>
+    <BuyerDetails>Metropolitan Transport Authority</BuyerDetails>
+    <Notices>
+        <Notice>
+            <Title>Virtual AI Workshop for Bidders</Title>
+            <NoticeID>NTC-6012</NoticeID>
+            <Details>
+                <SessionID>SID-346789</SessionID>
+                <Date>2024-08-30T11:00:00Z</Date>
+                <Type>Workshop</Type>
+                <Source>
+                    <ID>SRC-1202</ID>
+                    <Url>https://example.org/tenders/ntc-6012</Url>
+                </Source>
+                <Content>
+                    <Description>An online workshop will be conducted to discuss AI implementation strategies and requirements.</Description>
+                    <Topics>
+                        <Topic>Introduction to AI tools</Topic>
+                        <Topic>Data Handling and Privacy</Topic>
+                        <Topic>Integration with existing systems</Topic>
+                    </Topics>
+                </Content>
+            </Details>
+        </Notice>
+        <Notice>
+            <Title>Deadline Reminder Notice</Title>
+            <NoticeID>NTC-6013</NoticeID>
+            <Details>
+                <SessionID>SID-346790</SessionID>
+                <Date>2024-09-20T09:00:00Z</Date>
+                <Type>Reminder</Type>
+                <Source>
+                    <ID>SRC-1203</ID>
+                    <Url>https://example.org/tenders/ntc-6013/reminder</Url>
+                </Source>
+                <Content>
+                    <Description>Reminder: Please submit all project proposals by the designated deadline.</Description>
+                    <Instructions>
+                        <Instruction>Refer to submission guidelines on the website</Instruction>
+                        <Instruction>Ensure all technical documents are in order</Instruction>
+                    </Instructions>
+                </Content>
+            </Details>
+        </Notice>
+    </Notices>
+    <PurchaserNoticeMap>
+        <MetropolitanTransportAuthority>
+            <Notice>
+                <Title>Virtual AI Workshop for Bidders</Title>
+                <NoticeID>NTC-6012</NoticeID>
+                <Details>
+                    <SessionID>SID-346789</SessionID>
+                    <Date>2024-08-30T11:00:00Z</Date>
+                    <Type>Workshop</Type>
+                    <Source>
+                        <ID>SRC-1202</ID>
+                        <Url>https://example.org/tenders/ntc-6012</Url>
+                    </Source>
+                    <Content>
+                        <Description>An online workshop will be conducted to discuss AI implementation strategies and requirements.</Description>
+                        <Topics>
+                            <Topic>Introduction to AI tools</Topic>
+                            <Topic>Data Handling and Privacy</Topic>
+                            <Topic>Integration with existing systems</Topic>
+                        </Topics>
+                    </Content>
+                </Details>
+            </Notice>
+            <Notice>
+                <Title>Deadline Reminder Notice</Title>
+                <NoticeID>NTC-6013</NoticeID>
+                <Details>
+                    <SessionID>SID-346790</SessionID>
+                    <Date>2024-09-20T09:00:00Z</Date>
+                    <Type>Reminder</Type>
+                    <Source>
+                        <ID>SRC-1203</ID>
+                        <Url>https://example.org/tenders/ntc-6013/reminder</Url>
+                    </Source>
+                    <Content>
+                        <Description>Reminder: Please submit all project proposals by the designated deadline.</Description>
+                        <Instructions>
+                            <Instruction>Refer to submission guidelines on the website</Instruction>
+                            <Instruction>Ensure all technical documents are in order</Instruction>
+                        </Instructions>
+                    </Content>
+                </Details>
+            </Notice>
+        </MetropolitanTransportAuthority>
+    </PurchaserNoticeMap>
+</Tender>

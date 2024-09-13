@@ -1,0 +1,39 @@
+{
+  "id": "tender-001",
+  "name": "Simple Tender",
+  "types": ["TypeA"],
+  "contactUser": "contact@example.com",
+  "systemAccount": true,
+  "date": "2024-08-18T12:00:00Z",
+  "deadlineDate": "2024-09-01T12:00:00Z",
+  "deadlineLengthDays": 14,
+  "category": "General",
+  "awardedValue": 10000.00,
+  "purchaser": "Purchaser A",
+  "notices": [
+    {
+      "name": "Notice 1",
+      "id": "notice-001",
+      "sid": "sid-001",
+      "date": "2024-08-18T12:00:00Z",
+      "type": "Initial",
+      "srcId": "src-001",
+      "srcUrl": "http://example.com/notice-001",
+      "data": "Notice data 1"
+    }
+  ],
+  "purchaserNoticeMap": {
+    "Purchaser A": [
+      {
+        "name": "Notice 1",
+        "id": "notice-001",
+        "sid": "sid-001",
+        "date": "2024-08-18T12:00:00Z",
+        "type": "Initial",
+        "srcId": "src-001",
+        "srcUrl": "http://example.com/notice-001",
+        "data": "Notice data 1"
+      }
+    ]
+  }
+}

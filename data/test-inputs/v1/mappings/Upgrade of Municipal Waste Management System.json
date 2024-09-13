@@ -1,0 +1,102 @@
+{
+    "tenderID": "TND-2024-112",
+    "projectName": "Upgrade of Municipal Waste Management System",
+    "categories": [
+      "Environmental Services",
+      "Waste Management",
+      "Public Health"
+    ],
+    "contactInformation": {
+      "primaryContact": {
+        "fullName": "Michelle Thompson",
+        "email": "michelle.thompson@citywaste.gov",
+        "phoneNumbers": {
+          "office": {
+            "areaCode": "555",
+            "number": "123-4567"
+          },
+          "mobile": {
+            "areaCode": "555",
+            "number": "765-4321"
+          }
+        }
+      }
+    },
+    "isAutomated": false,
+    "creationDate": "2024-10-01T09:00:00Z",
+    "submissionDeadline": {
+      "dueDate": "2024-11-30T17:00:00Z",
+      "extension": {
+        "isExtended": true,
+        "newDueDate": "2025-01-15T17:00:00Z",
+        "reason": "Additional time to allow for more submissions."
+      }
+    },
+    "durationDays": 85,
+    "fundingSource": "City Environmental Fund",
+    "approvedBudget": 3000000.00,
+    "contractor": "City Waste Management Department",
+    "notifications": [
+      {
+        "noticeTitle": "Pre-Bid Conference Announcement",
+        "noticeID": "NTC-2101",
+        "details": {
+          "sessionID": "SID-1005",
+          "noticeDate": "2024-10-05T10:00:00Z",
+          "noticeType": "Conference",
+          "sourceInfo": {
+            "sourceID": "SRC-900",
+            "sourceUrl": "https://example.com/tenders/ntc-2101"
+          },
+          "description": "A pre-bid conference will be held for interested bidders."
+        }
+      },
+      {
+        "noticeTitle": "RFP Submission Guidelines Posted",
+        "noticeID": "NTC-2102",
+        "details": {
+          "sessionID": "SID-1006",
+          "noticeDate": "2024-10-10T14:00:00Z",
+          "noticeType": "Guidelines",
+          "sourceInfo": {
+            "sourceID": "SRC-901",
+            "sourceUrl": "https://example.com/tenders/ntc-2102"
+          },
+          "description": "The guidelines for submitting proposals have been officially posted."
+        }
+      }
+    ],
+    "contractorNotificationMap": {
+      "City Waste Management Department": [
+        {
+          "noticeTitle": "Pre-Bid Conference Announcement",
+          "noticeID": "NTC-2101",
+          "details": {
+            "sessionID": "SID-1005",
+            "noticeDate": "2024-10-05T10:00:00Z",
+            "noticeType": "Conference",
+            "sourceInfo": {
+              "sourceID": "SRC-900",
+              "sourceUrl": "https://example.com/tenders/ntc-2101"
+            },
+            "description": "A pre-bid conference will be held for interested bidders."
+          }
+        },
+        {
+          "noticeTitle": "RFP Submission Guidelines Posted",
+          "noticeID": "NTC-2102",
+          "details": {
+            "sessionID": "SID-1006",
+            "noticeDate": "2024-10-10T14:00:00Z",
+            "noticeType": "Guidelines",
+            "sourceInfo": {
+              "sourceID": "SRC-901",
+              "sourceUrl": "https://example.com/tenders/ntc-2102"
+            },
+            "description": "The guidelines for submitting proposals have been officially posted."
+          }
+        }
+      ]
+    }
+  }
+  

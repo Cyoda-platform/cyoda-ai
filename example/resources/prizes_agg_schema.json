@@ -1,0 +1,64 @@
+{
+    "related_entity_name": "prizes",
+    "related_entity_model_version": "10",
+    "related_entity_id": "462bad7a-43bf-11b2-9b19-621ba7a93ed7",
+    "metrics": [
+      {
+        "metric": "Total number of prizes",
+        "value": 6
+      },
+      {
+        "metric": "Total number of laureates",
+        "value": 12
+      },
+      {
+        "metric": "Number of prizes per year",
+        "value": {
+          "2020": 6
+        }
+      },
+      {
+        "metric": "Number of prizes per category",
+        "value": {
+          "chemistry": 1,
+          "economics": 1,
+          "literature": 1,
+          "medicine": 1,
+          "peace": 1,
+          "physics": 1
+        }
+      },
+      {
+        "metric": "Number of laureates per year",
+        "value": {
+          "2020": 12
+        }
+      },
+      {
+        "metric": "Number of laureates per category",
+        "value": {
+          "chemistry": 2,
+          "economics": 2,
+          "literature": 1,
+          "medicine": 3,
+          "peace": 1,
+          "physics": 3
+        }
+      },
+      {
+        "metric": "Average share per laureate",
+        "value": 2
+      },
+      {
+        "metric": "Total share per prize",
+        "value": {
+          "('2020', 'chemistry')": 4,
+          "('2020', 'economics')": 4,
+          "('2020', 'literature')": 1,
+          "('2020', 'medicine')": 9,
+          "('2020', 'peace')": 1,
+          "('2020', 'physics')": 10
+        }
+      }
+    ]
+  }

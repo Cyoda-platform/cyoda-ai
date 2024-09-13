@@ -1,0 +1,110 @@
+{
+    "tenderID": "TND-2024-804",
+    "projectName": "Construction of New City Sports Complex",
+    "projectCategories": [
+      "Sports Infrastructure",
+      "Public Recreation",
+      "Community Development"
+    ],
+    "contactDetails": {
+      "primaryContact": {
+        "name": "George Palmer",
+        "email": "george.palmer@citysports.gov",
+        "phoneNumbers": {
+          "mobile": {
+            "countryCode": "+1",
+            "number": "202-555-0199"
+          },
+          "office": {
+            "countryCode": "+1",
+            "number": "202-555-0198"
+          }
+        }
+      }
+    },
+    "automatedBid": false,
+    "timestamp": {
+      "creationDate": "2024-08-15T09:00:00Z",
+      "submissionDeadline": {
+        "date": "2024-10-20T17:00:00Z",
+        "extendedDeadline": {
+          "isExtended": false,
+          "reason": null
+        }
+      }
+    },
+    "durationInDays": 66,
+    "fundingSource": "City Sports Development Fund",
+    "budgetApproved": 2500000,
+    "contractingAuthority": "City Department of Sports and Recreation",
+    "notifications": [
+      {
+        "notificationTitle": "Mandatory Pre-Bid Meeting",
+        "notificationID": "NTF-1501",
+        "details": {
+          "sessionID": "SID-987654",
+          "notificationDate": "2024-09-01T10:00:00Z",
+          "notificationType": "Meeting",
+          "informationSource": {
+            "sourceID": "SRC-456",
+            "url": "https://example.com/tenders/ntf-1501"
+          },
+          "content": {
+            "description": "Attendance to the mandatory pre-bid meeting is required for all bidders."
+          }
+        }
+      },
+      {
+        "notificationTitle": "Bid Submission Window Open",
+        "notificationID": "NTF-1502",
+        "details": {
+          "sessionID": "SID-987655",
+          "notificationDate": "2024-09-10T09:00:00Z",
+          "notificationType": "Announcement",
+          "informationSource": {
+            "sourceID": "SRC-457",
+            "url": "https://example.com/tenders/ntf-1502"
+          },
+          "content": {
+            "description": "Bidders may now submit bids for the construction project."
+          }
+        }
+      }
+    ],
+    "authorityNotifications": {
+      "City Department of Sports and Recreation": [
+        {
+          "notificationTitle": "Mandatory Pre-Bid Meeting",
+          "notificationID": "NTF-1501",
+          "details": {
+            "sessionID": "SID-987654",
+            "notificationDate": "2024-09-01T10:00:00Z",
+            "notificationType": "Meeting",
+            "informationSource": {
+              "sourceID": "SRC-456",
+              "url": "https://example.com/tenders/ntf-1501"
+            },
+            "content": {
+              "description": "Attendance to the mandatory pre-bid meeting is required for all bidders."
+            }
+          }
+        },
+        {
+          "notificationTitle": "Bid Submission Window Open",
+          "notificationID": "NTF-1502",
+          "details": {
+            "sessionID": "SID-987655",
+            "notificationDate": "2024-09-10T09:00:00Z",
+            "notificationType": "Announcement",
+            "informationSource": {
+              "sourceID": "SRC-457",
+              "url": "https://example.com/tenders/ntf-1502"
+            },
+            "content": {
+              "description": "Bidders may now submit bids for the construction project."
+            }
+          }
+        }
+      ]
+    }
+  }

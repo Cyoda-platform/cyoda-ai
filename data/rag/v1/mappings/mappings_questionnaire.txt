@@ -1,0 +1,9 @@
+This is "Mappings questionnaire". Analyse the entity and the input structure and do your best to answer its questions
+!!!Change only values inside "${}"!!!
+{
+"list_of_input_properties": [${Provide a list of json paths of all input properties}],
+"list_of_entity_properties": [${Provide a list of json paths of all entity properties}],
+"list_of_input_to_entity_properties": [${Provide a triplet of input properties that can be mapped to entity properties with cardinality}],
+
+}
+

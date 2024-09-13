@@ -1,0 +1,1874 @@
+openapi: '3.0.2'
+info:
+  title: Binance Public Spot API
+  description: |-
+    OpenAPI Specifications for the Binance Public Spot API
+
+    API documents:
+      - [https://github.com/binance/binance-spot-api-docs](https://github.com/binance/binance-spot-api-docs)
+      - [https://binance-docs.github.io/apidocs/spot/en](https://binance-docs.github.io/apidocs/spot/en)
+  version: '1.0'
+
+servers:
+  - url: https://api.binance.com
+  - url: https://testnet.binance.vision
+
+tags:
+  - name: Market
+    description: Market Data
+  - name: Trade
+    description: Account/Trade
+  - name: Margin
+    description: Margin Account/Trade
+  - name: Wallet
+    description: Wallet Endpoints
+  - name: Sub-Account
+    description: Sub-account Endpoints
+  - name: Stream
+    description: User Data Stream
+  - name: Margin Stream
+    description: Margin User Data Stream
+  - name: Isolated Margin Stream
+    description: Isolated User Data Stream
+  - name: Savings
+    description: Savings Endpoints
+  - name: Staking
+    description: Staking Endpoints
+  - name: Mining
+    description: Mining Endpoints
+  - name: Futures
+    description: Futures Endpoints
+  - name: Futures Algo
+    description: Futures Algo Endpoints
+  - name: Spot Algo
+    description: Spot Algo Endpoints
+  - name: Portfolio Margin
+    description: Portfolio Margin Endpoints
+  - name: BLVT
+    description: Binance Leveraged Tokens Endpoints
+  - name: BSwap
+    description: Binance Swap Endpoints
+  - name: Fiat
+    description: Fiat Endpoints
+  - name: C2C
+    description: Consumer-To-Consumer Endpoints
+  - name: VIP Loans
+    description: VIP Loans Endpoints
+  - name: Crypto Loans
+    description: Crypto Loans Endpoints
+  - name: Pay
+    description: Pay Endpoints
+  - name: Convert
+    description: Convert Endpoints
+  - name: Rebate
+    description: Rebate Endpoints
+  - name: NFT
+    description: NFT Endpoints
+  - name: Gift Card
+    description: Gift Card Endpoints
+  - name: Auto-Invest
+    description: Auto-Invest Endpoints
+  - name: Simple Earn
+    description: Simple Earn Endpoints
+paths:
+  /api/v3/order/test:
+    post:
+      summary: Test New Order (TRADE)
+      description: |-
+        Test new order creation and signature/recvWindow long.
+        Creates and validates a new order but does not send it into the matching engine.
+
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/side'
+        - $ref: '#/components/parameters/orderType'
+        - $ref: '#/components/parameters/timeInForce'
+        - $ref: '#/components/parameters/optionalQuantity'
+        - $ref: '#/components/parameters/quoteOrderQty'
+        - $ref: '#/components/parameters/optionalPrice'
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/strategyId'
+        - $ref: '#/components/parameters/strategyType'
+        - $ref: '#/components/parameters/stopPrice'
+        - $ref: '#/components/parameters/optionalTrailingDelta'
+        - $ref: '#/components/parameters/icebergQty'
+        - $ref: '#/components/parameters/newOrderRespType'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /api/v3/order:
+    get:
+      summary: Query Order (USER_DATA)
+      description: |-
+        Check an order's status.
+
+        - Either `orderId` or `origClientOrderId` must be sent.
+        - For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.
+
+        Weight(IP): 4
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/origClientOrderId'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/orderDetails'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    post:
+      summary: New Order (TRADE)
+      description: |-
+        Send in a new order.
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/side'
+        - $ref: '#/components/parameters/orderType'
+        - $ref: '#/components/parameters/timeInForce'
+        - $ref: '#/components/parameters/optionalQuantity'
+        - $ref: '#/components/parameters/quoteOrderQty'
+        - $ref: '#/components/parameters/optionalPrice'
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/strategyId'
+        - $ref: '#/components/parameters/strategyType'
+        - $ref: '#/components/parameters/stopPrice'
+        - $ref: '#/components/parameters/optionalTrailingDelta'
+        - $ref: '#/components/parameters/icebergQty'
+        - $ref: '#/components/parameters/newOrderRespType'
+        - $ref: '#/components/parameters/selfTradePreventionMode'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Order result
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/orderResponseAck'
+                  - $ref: '#/components/schemas/orderResponseResult'
+                  - $ref: '#/components/schemas/orderResponseFull'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    delete:
+      summary: Cancel Order (TRADE)
+      description: |-
+        Cancel an active order.
+
+        Either `orderId` or `origClientOrderId` must be sent.
+
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/origClientOrderId'
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/cancelRestrictions'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Cancelled order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /api/v3/order/cancelReplace:
+    post:
+      summary: Cancel an Existing Order and Send a New Order (Trade)
+      description: |-
+        Cancels an existing order and places a new order on the same symbol.
+
+        Filters and Order Count are evaluated before the processing of the cancellation and order placement occurs.
+
+        A new order that was not attempted (i.e. when newOrderResult: NOT_ATTEMPTED), will still increase the order count by 1.
+
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/side'
+        - $ref: '#/components/parameters/orderType'
+        - name: cancelReplaceMode
+          in: query
+          required: true
+          description: |-
+            - `STOP_ON_FAILURE` If the cancel request fails, the new order placement will not be attempted.
+            - `ALLOW_FAILURES` If new order placement will be attempted even if cancel request fails.
+          schema:
+            type: string
+            example: "STOP_ON_FAILURE"
+        - $ref: '#/components/parameters/cancelRestrictions'
+        - $ref: '#/components/parameters/timeInForce'
+        - $ref: '#/components/parameters/optionalQuantity'
+        - $ref: '#/components/parameters/quoteOrderQty'
+        - $ref: '#/components/parameters/optionalPrice'
+        - name: cancelNewClientOrderId
+          in: query
+          description: Used to uniquely identify this cancel. Automatically generated by default
+          schema:
+            type: string
+        - name: cancelOrigClientOrderId
+          in: query
+          description: Either the cancelOrigClientOrderId or cancelOrderId must be provided. If both are provided, cancelOrderId takes precedence.
+          schema:
+            type: string
+        - name: cancelOrderId
+          in: query
+          description: Either the cancelOrigClientOrderId or cancelOrderId must be provided. If both are provided, cancelOrderId takes precedence.
+          schema:
+            type: integer
+            format: int64
+            example: 12
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/strategyId'
+        - $ref: '#/components/parameters/strategyType'
+        - $ref: '#/components/parameters/stopPrice'
+        - $ref: '#/components/parameters/optionalTrailingDelta'
+        - $ref: '#/components/parameters/icebergQty'
+        - $ref: '#/components/parameters/newOrderRespType'
+        - $ref: '#/components/parameters/selfTradePreventionMode'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Operation details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cancelResult:
+                    type: string
+                    example: SUCCESS
+                  newOrderResult:
+                    type: string
+                    example: SUCCESS
+                  cancelResponse:
+                    type: object
+                    properties:
+                      symbol:
+                        type: string
+                        example: BTCUSDT
+                      origClientOrderId:
+                        type: string
+                        example: DnLo3vTAQcjha43lAZhZ0y
+                      orderId:
+                        type: integer
+                        format: int64
+                        example: 9
+                      orderListId:
+                        type: integer
+                        format: int64
+                        example: -1
+                      clientOrderId:
+                        type: string
+                        example: osxN3JXAtJvKvCqGeMWMVR
+                      price:
+                        type: string
+                        example: '0.01000000'
+                      origQty:
+                        type: string
+                        example: '0.000100'
+                      executedQty:
+                        type: string
+                        example: '0.00000000'
+                      cummulativeQuoteQty:
+                        type: string
+                        example: '0.00000000'
+                      status:
+                        type: string
+                        example: CANCELED
+                      timeInForce:
+                        type: string
+                        example: GTC
+                      type:
+                        type: string
+                        example: LIMIT
+                      side:
+                        type: string
+                        example: SELL
+                      selfTradePreventionMode:
+                        type: string
+                        example: NONE
+                      transactTime:
+                        type: integer
+                        format: int64
+                        example: 1507725176595
+                    required:
+                      - symbol
+                      - origClientOrderId
+                      - orderId
+                      - orderListId
+                      - clientOrderId
+                      - price
+                      - origQty
+                      - executedQty
+                      - cummulativeQuoteQty
+                      - status
+                      - timeInForce
+                      - type
+                      - side
+                      - selfTradePreventionMode
+                  newOrderResponse:
+                    type: object
+                    properties:
+                      symbol:
+                        type: string
+                        example: BTCUSDT
+                      orderId:
+                        type: integer
+                        format: int64
+                        example: 10
+                      orderListId:
+                        type: integer
+                        format: int64
+                        example: -1
+                      clientOrderId:
+                        type: string
+                        example: wOceeeOzNORyLiQfw7jd8S
+                      transactTime:
+                        type: integer
+                        format: int64
+                        example: 1652928801803
+                      price:
+                        type: string
+                        example: '0.02000000'
+                      origQty:
+                        type: string
+                        example: '0.040000'
+                      executedQty:
+                        type: string
+                        example: '0.00000000'
+                      cummulativeQuoteQty:
+                        type: string
+                        example: '0.00000000'
+                      status:
+                        type: string
+                        example: NEW
+                      timeInForce:
+                        type: string
+                        example: GTC
+                      type:
+                        type: string
+                        example: LIMIT
+                      side:
+                        type: string
+                        example: BUY
+                      workingTime:
+                        type: integer
+                        format: int64
+                        example: 1669277163808
+                      fills:
+                        type: array
+                        items:
+                          type: string
+                        maxItems: 0
+                      selfTradePreventionMode:
+                        type: string
+                        example: NONE
+                    required:
+                      - symbol
+                      - orderId
+                      - orderListId
+                      - clientOrderId
+                      - transactTime
+                      - price
+                      - origQty
+                      - executedQty
+                      - cummulativeQuoteQty
+                      - status
+                      - timeInForce
+                      - type
+                      - side
+                      - workingTime
+                      - fills
+                      - selfTradePreventionMode
+                required:
+                  - cancelResult
+                  - newOrderResult
+                  - cancelResponse
+                  - newOrderResponse
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/openOrders:
+    get:
+      summary: Current Open Orders (USER_DATA)
+      description: |-
+        Get all open orders on a symbol. Careful when accessing this with no symbol.
+
+        Weight(IP):
+        - `6` for a single symbol;
+        - `80` when the symbol parameter is omitted;
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/optionalSymbol'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Current open orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/orderDetails'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+    delete:
+      summary: Cancel all Open Orders on a Symbol (TRADE)
+      description: |-
+        Cancels all active orders on a symbol.
+        This includes OCO orders.
+
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Cancelled orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/order'
+                    - $ref: '#/components/schemas/ocoOrder'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/allOrders:
+    get:
+      summary: All Orders (USER_DATA)
+      description: |-
+        Get all account orders; active, canceled, or filled..
+
+        - If `orderId` is set, it will get orders >= that `orderId`. Otherwise most recent orders are returned.
+        - For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.
+        - If `startTime` and/or `endTime` provided, `orderId` is not required
+
+        Weight(IP): 20
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Current open orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/orderDetails'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/order/oco:
+    post:
+      summary: New OCO (TRADE)
+      description: |-
+        Send in a new OCO
+
+        - Price Restrictions:
+          - `SELL`: Limit Price > Last Price > Stop Price
+          - `BUY`: Limit Price < Last Price < Stop Price
+        - Quantity Restrictions:
+            - Both legs must have the same quantity
+            - `ICEBERG` quantities however do not have to be the same
+        - Order Rate Limit
+            - `OCO` counts as 2 orders against the order rate limit.
+
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/listClientOrderId'
+        - $ref: '#/components/parameters/side'
+        - $ref: '#/components/parameters/quantity'
+        - $ref: '#/components/parameters/limitClientOrderId'
+        - $ref: '#/components/parameters/limitStrategyId'
+        - $ref: '#/components/parameters/limitStrategyType'
+        - $ref: '#/components/parameters/price'
+        - $ref: '#/components/parameters/limitIcebergQty'
+        - name: trailingDelta
+          in: query
+          schema:
+            type: number
+            format: double
+        - $ref: '#/components/parameters/stopClientOrderId'
+        - $ref: '#/components/parameters/ocoStopPrice'
+        - $ref: '#/components/parameters/stopStrategyId'
+        - $ref: '#/components/parameters/stopStrategyType'
+        - $ref: '#/components/parameters/stopLimitPrice'
+        - $ref: '#/components/parameters/stopIcebergQty'
+        - $ref: '#/components/parameters/stopLimitTimeInForce'
+        - $ref: '#/components/parameters/ocoNewOrderRespType'
+        - $ref: '#/components/parameters/selfTradePreventionMode'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: New OCO details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderListId:
+                    type: integer
+                    format: int64
+                    example: 0
+                  contingencyType:
+                    type: string
+                    example: "OCO"
+                  listStatusType:
+                    type: string
+                    example: "EXEC_STARTED"
+                  listOrderStatus:
+                    type: string
+                    example: "EXECUTING"
+                  listClientOrderId:
+                    type: string
+                    example: "JYVpp3F0f5CAG15DhtrqLp"
+                  transactionTime:
+                    type: integer
+                    format: int64
+                    example: 1563417480525
+                  symbol:
+                    type: string
+                    example: "LTCBTC"
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        symbol:
+                          type: string
+                        orderId:
+                          type: integer
+                          format: int64
+                        clientOrderId:
+                          type: string
+                      required:
+                        - symbol
+                        - orderId
+                        - clientOrderId
+                      example:
+                        - symbol: "LTCBTC"
+                          orderId: 2
+                          clientOrderId: "Kk7sqHb9J6mJWTMDVW7Vos"
+                        - symbol: "LTCBTC"
+                          orderId: 3
+                          clientOrderId: "xTXKaGYd4bluPVp78IVRvl"
+                  orderReports:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        symbol:
+                          type: string
+                        orderId:
+                          type: integer
+                          format: int64
+                        orderListId:
+                          type: integer
+                          format: int64
+                        clientOrderId:
+                          type: string
+                        transactTime:
+                          type: integer
+                          format: int64
+                        price:
+                          type: string
+                        origQty:
+                          type: string
+                        executedQty:
+                          type: string
+                        cummulativeQuoteQty:
+                          type: string
+                        status:
+                          type: string
+                        timeInForce:
+                          type: string
+                        type:
+                          type: string
+                        side:
+                          type: string
+                        stopPrice:
+                          type: string
+                        workingTime:
+                          type: string
+                        selfTradePreventionMode:
+                          type: string
+                      required:
+                        - symbol
+                        - orderId
+                        - orderListId
+                        - clientOrderId
+                        - transactTime
+                        - price
+                        - origQty
+                        - executedQty
+                        - cummulativeQuoteQty
+                        - status
+                        - timeInForce
+                        - type
+                        - side
+                        - stopPrice
+                        - workingTime
+                        - selfTradePreventionMode
+                    example:
+                      - symbol: "LTCBTC"
+                        orderId: 2
+                        orderListId: 0
+                        clientOrderId: "Kk7sqHb9J6mJWTMDVW7Vos"
+                        transactTime: 1563417480525
+                        price: "0.000000"
+                        origQty: "0.624363"
+                        executedQty: "0.000000"
+                        cummulativeQuoteQty: "0.000000"
+                        status: "NEW"
+                        timeInForce: "GTC"
+                        type: "STOP_LOSS"
+                        side: "BUY"
+                        stopPrice: "0.960664"
+                        workingTime: -1
+                        selfTradePreventionMode: "NONE"
+                      - symbol: "LTCBTC"
+                        orderId: 3
+                        orderListId: 0
+                        clientOrderId: "xTXKaGYd4bluPVp78IVRvl"
+                        transactTime: 1563417480525
+                        price: "0.036435"
+                        origQty: "0.624363"
+                        executedQty: "0.000000"
+                        cummulativeQuoteQty: "0.000000"
+                        status: "NEW"
+                        timeInForce: "GTC"
+                        type: "LIMIT_MAKER"
+                        side: "BUY"
+                        workingTime: 1563417480525
+                        selfTradePreventionMode: "NONE"
+                required:
+                  - orderListId
+                  - contingencyType
+                  - listStatusType
+                  - listOrderStatus
+                  - listClientOrderId
+                  - transactionTime
+                  - symbol
+                  - orders
+                  - orderReports
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/orderList:
+    get:
+      summary: Query OCO (USER_DATA)
+      description: |-
+        Retrieves a specific OCO based on provided optional parameters
+
+        Weight(IP): 4
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/orderListId'
+        - $ref: '#/components/parameters/origClientOrderId'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: OCO details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderListId:
+                    type: integer
+                    format: int64
+                    example: 27
+                  contingencyType:
+                    type: string
+                    example: "OCO"
+                  listStatusType:
+                    type: string
+                    example: "EXEC_STARTED"
+                  listOrderStatus:
+                    type: string
+                    example: "EXECUTING"
+                  listClientOrderId:
+                    type: string
+                    example: "h2USkA5YQpaXHPIrkd96xE"
+                  transactionTime:
+                    type: integer
+                    format: int64
+                    example: 1565245656253
+                  symbol:
+                    type: string
+                    example: "LTCBTC"
+                  orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        symbol:
+                          type: string
+                        orderId:
+                          type: integer
+                          format: int64
+                        clientOrderId:
+                          type: string
+                      example:
+                        - symbol: "LTCBTC"
+                          orderId: 4
+                          clientOrderId: "qD1gy3kc3Gx0rihm9Y3xwS"
+                        - symbol: "LTCBTC"
+                          orderId: 5
+                          clientOrderId: "ARzZ9I00CPM8i3NhmU9Ega"
+                      required:
+                        - symbol
+                        - orderId
+                        - clientOrderId
+                required:
+                  - orderListId
+                  - contingencyType
+                  - listStatusType
+                  - listOrderStatus
+                  - listClientOrderId
+                  - transactionTime
+                  - symbol
+                  - orders
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+    delete:
+      summary: Cancel OCO (TRADE)
+      description: |-
+        Cancel an entire Order List
+
+        Canceling an individual leg will cancel the entire OCO
+
+        Weight(IP): 1
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/orderListId'
+        - $ref: '#/components/parameters/listClientOrderId'
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Report on deleted OCO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ocoOrder'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/allOrderList:
+    get:
+      summary: Query all OCO (USER_DATA)
+      description: |-
+        Retrieves all OCO based on provided optional parameters
+
+        Weight(IP): 20
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/fromId'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: List of OCO orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    orderListId:
+                      type: integer
+                      format: int64
+                      example: 29
+                    contingencyType:
+                      type: string
+                      example: "OCO"
+                    listStatusType:
+                      type: string
+                      example: "EXEC_STARTED"
+                    listOrderStatus:
+                      type: string
+                      example: "EXECUTING"
+                    listClientOrderId:
+                      type: string
+                      example: "amEEAXryFzFwYF1FeRpUoZ"
+                    transactionTime:
+                      type: integer
+                      format: int64
+                      example: 1565245913483
+                    symbol:
+                      type: string
+                      example: "LTCBTC"
+                    isIsolated:
+                      type: boolean
+                    orders:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          symbol:
+                            type: string
+                          orderId:
+                            type: integer
+                            format: int64
+                          clientOrderId:
+                            type: string
+                        example:
+                          - symbol: "LTCBTC"
+                            orderId: 4
+                            clientOrderId: "oD7aesZqjEGlZrbtRpy5zB"
+                          - symbol: "LTCBTC"
+                            orderId: 5
+                            clientOrderId: "Jr1h6xirOxgeJOUuYQS7V3"
+                        required:
+                          - symbol
+                          - orderId
+                          - clientOrderId
+                  required:
+                    - orderListId
+                    - contingencyType
+                    - listStatusType
+                    - listOrderStatus
+                    - listClientOrderId
+                    - transactionTime
+                    - symbol
+                    - isIsolated
+                    - orders
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/openOrderList:
+    get:
+      summary: Query Open OCO (USER_DATA)
+      description: 'Weight(IP): 6'
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: List of OCO orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    orderListId:
+                      type: integer
+                      format: int64
+                      example: 31
+                    contingencyType:
+                      type: string
+                      example: "OCO"
+                    listStatusType:
+                      type: string
+                      example: "EXEC_STARTED"
+                    listOrderStatus:
+                      type: string
+                      example: "EXECUTING"
+                    listClientOrderId:
+                      type: string
+                      example: "wuB13fmulKj3YjdqWEcsnp"
+                    transactionTime:
+                      type: integer
+                      format: int64
+                      example: 1565246080644
+                    symbol:
+                      type: string
+                      example: "LTCBTC"
+                    orders:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          symbol:
+                            type: string
+                          orderId:
+                            type: integer
+                            format: int64
+                          clientOrderId:
+                            type: string
+                        required:
+                          - symbol
+                          - orderId
+                          - clientOrderId
+                        example:
+                          - symbol: "LTCBTC"
+                            orderId: 4
+                            clientOrderId: "r3EH2N76dHfLoSZWIUw1bT"
+                          - symbol: "LTCBTC"
+                            orderId: 5
+                            clientOrderId: "Cv1SnyPD3qhqpbjpYEHbd2"
+                  required:
+                    - orderListId
+                    - contingencyType
+                    - listStatusType
+                    - listOrderStatus
+                    - listClientOrderId
+                    - transactionTime
+                    - symbol
+                    - orders
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/sor/order:
+    post:
+      summary: New order using SOR (TRADE)
+      description: 'Weight(IP): 6'
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/side'
+        - $ref: '#/components/parameters/orderType'
+        - $ref: '#/components/parameters/timeInForce'
+        - $ref: '#/components/parameters/quantity'
+        - name: price
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/strategyId'
+        - $ref: '#/components/parameters/strategyType'
+        - $ref: '#/components/parameters/icebergQty'
+        - $ref: '#/components/parameters/newOrderRespType'
+        - $ref: '#/components/parameters/selfTradePreventionMode'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: New order details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  symbol:
+                    type: string
+                    example: "BTCUSDT"
+                  orderId:
+                    type: integer
+                    format: int64
+                    example: 2
+                  orderListId:
+                    type: integer
+                    format: int64
+                    example: -1
+                  clientOrderId:
+                    type: string
+                    example: "sBI1KM6nNtOfj5tccZSKly"
+                  transactTime:
+                    type: integer
+                    format: int64
+                    example: 1689149087774
+                  price:
+                    type: string
+                    example: "31000.00000000"
+                  origQty:
+                    type: string
+                    example: "0.50000000"
+                  executedQty:
+                    type: string
+                    example: "0.50000000"
+                  cummulativeQuoteQty:
+                    type: string
+                    example: "14000.00000000"
+                  status:
+                    type: string
+                    example: "FILLED"
+                  timeInForce:
+                    type: string
+                    example: "GTC"
+                  type:
+                    type: string
+                    example: "LIMIT"
+                  side:
+                    type: string
+                    example: "BUY"
+                  workingTime:
+                    type: integer
+                    format: int64
+                    example: 1689149087774
+                  fills:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        matchType:
+                          type: string
+                          example: "ONE_PARTY_TRADE_REPORT"
+                        price:
+                          type: string
+                          example: "28000.00000000"
+                        qty:
+                          type: string
+                          example: "0.50000000"
+                        commission:
+                          type: string
+                          example: "0.00000000"
+                        commissionAsset:
+                          type: string
+                          example: "BTC"
+                        tradeId:
+                          type: integer
+                          format: int64
+                          example: -1
+                        allocId:
+                          type: integer
+                          format: int64
+                          example: 0
+                      required:
+                        - matchType
+                        - price
+                        - qty
+                        - commission
+                        - commissionAsset
+                        - tradeId
+                        - allocId
+                  workingFloor:
+                    type: string
+                    example: "SOR"
+                  selfTradePreventionMode:
+                    type: string
+                    example: "NONE"
+                  usedSor:
+                    type: boolean
+                    example: true
+                required:
+                  - symbol
+                  - orderId
+                  - orderListId
+                  - clientOrderId
+                  - transactTime
+                  - price
+                  - origQty
+                  - executedQty
+                  - cummulativeQuoteQty
+                  - status
+                  - timeInForce
+                  - type
+                  - side
+                  - workingTime
+                  - fills
+                  - workingFloor
+                  - selfTradePreventionMode
+                  - usedSor
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /api/v3/sor/order/test:
+    post:
+      summary: Test new order using SOR (TRADE)
+      description: |-
+        Test new order creation and signature/recvWindow using smart order routing (SOR).
+        Creates and validates a new order but does not send it into the matching engine.
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/side'
+        - $ref: '#/components/parameters/orderType'
+        - $ref: '#/components/parameters/timeInForce'
+        - $ref: '#/components/parameters/quantity'
+        - name: price
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+        - $ref: '#/components/parameters/newClientOrderId'
+        - $ref: '#/components/parameters/strategyId'
+        - $ref: '#/components/parameters/strategyType'
+        - $ref: '#/components/parameters/icebergQty'
+        - $ref: '#/components/parameters/newOrderRespType'
+        - $ref: '#/components/parameters/selfTradePreventionMode'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Test new order
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  /api/v3/account:
+    get:
+      summary: Account Information (USER_DATA)
+      description: |-
+        Get current account information.
+
+        Weight(IP): 20
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Account details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/myTrades:
+    get:
+      summary: Account Trade List (USER_DATA)
+      description: |-
+        Get trades for a specific account and symbol.
+
+        If `fromId` is set, it will get id >= that `fromId`. Otherwise most recent orders are returned.
+
+        The time between startTime and endTime can't be longer than 24 hours.
+        These are the supported combinations of all parameters:
+
+          symbol
+
+          symbol + orderId
+
+          symbol + startTime
+
+          symbol + endTime
+
+          symbol + fromId
+
+          symbol + startTime + endTime
+
+          symbol+ orderId + fromId
+
+        Weight(IP): 20
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - name: orderId
+          in: query
+          description: This can only be used in combination with symbol.
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/fromId'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: List of trades
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/myTrade'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/rateLimit/order:
+    get:
+      summary: Query Current Order Count Usage (TRADE)
+      description: |-
+        Displays the user's current order count usage for all intervals.
+
+        Weight(IP): 40
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Order rate limits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    rateLimitType:
+                      type: string
+                    interval:
+                      type: string
+                    intervalNum:
+                      type: integer
+                      format: int32
+                    limit:
+                      type: integer
+                      format: int32
+                    count:
+                      type: integer
+                      format: int32
+                  required:
+                    - rateLimitType
+                    - interval
+                    - intervalNum
+                    - limit
+                example:
+                  - rateLimitType: "ORDERS"
+                    interval: "SECOND"
+                    intervalNum: 10
+                    limit: 10000
+                    count: 0
+                  - rateLimitType: "ORDERS"
+                    interval: "DAY"
+                    intervalNum: 1
+                    limit: 20000
+                    count: 0
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/myPreventedMatches:
+    get:
+      summary: Query Prevented Matches
+      description: |-
+        Displays the list of orders that were expired because of STP.
+
+        For additional information on what a Prevented match is, as well as Self Trade Prevention (STP), please refer to our STP FAQ page.
+
+        These are the combinations supported:
+
+        * symbol + preventedMatchId
+        * symbol + orderId
+        * symbol + orderId + fromPreventedMatchId (limit will default to 500)
+        * symbol + orderId + fromPreventedMatchId + limit
+
+        Weight(IP):
+
+        Case 	                          Weight
+        If symbol is invalid: 	        2
+        Querying by preventedMatchId: 	2
+        Querying by orderId: 	          20
+
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/preventedMatchId'
+        - $ref: '#/components/parameters/orderId'
+        - name: fromPreventedMatchId
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+            example: 1
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Order list that were expired due to STP
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    symbol:
+                      type: string
+                      example: "BTCUSDT"
+                    preventedMatchId:
+                      type: integer
+                      format: int64
+                      example: 1
+                    takerOrderId:
+                      type: integer
+                      format: int64
+                      example: 5
+                    makerOrderId:
+                      type: integer
+                      format: int64
+                      example: 3
+                    tradeGroupId:
+                      type: integer
+                      format: int64
+                      example: 1
+                    selfTradePreventionMode:
+                      type: string
+                      example: "EXPIRE_MAKER"
+                    price:
+                      type: string
+                      example: "1.100000"
+                    makerPreventedQuantity:
+                      type: string
+                      example: "1.300000"
+                    transactTime:
+                      type: integer
+                      format: int64
+                      example: 1669101687094
+                  required:
+                    - symbol
+                    - preventedMatchId
+                    - takerOrderId
+                    - makerOrderId
+                    - tradeGroupId
+                    - selfTradePreventionMode
+                    - price
+                    - makerPreventedQuantity
+                    - transactTime
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+  /api/v3/myAllocations:
+    get:
+      summary: Query Allocations (USER_DATA)
+      description: |-
+        Retrieves allocations resulting from SOR order placement.
+
+        Weight: 20
+
+        Supported parameter combinations:
+        Parameters 	                          Response
+        symbol 	                              allocations from oldest to newest
+        symbol + startTime 	                  oldest allocations since startTime
+        symbol + endTime 	                    newest allocations until endTime
+        symbol + startTime + endTime 	        allocations within the time range
+        symbol + fromAllocationId 	          allocations by allocation ID
+        symbol + orderId 	                    allocations related to an order starting with oldest
+        symbol + orderId + fromAllocationId 	allocations related to an order by allocation ID
+
+        Note: The time between startTime and endTime can't be longer than 24 hours.
+      tags:
+        - Trade
+      parameters:
+        - $ref: '#/components/parameters/symbol'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - name: fromAllocationId
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Allocations resulting from SOR order placement
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    symbol:
+                      type: string
+                      example: "BTCUSDT"
+                    allocationId:
+                      type: integer
+                      format: int64
+                      example: 0
+                    allocationType:
+                      type: string
+                      example: "SOR"
+                    orderId:
+                      type: integer
+                      format: int64
+                      example: 1
+                    orderListId:
+                      type: integer
+                      format: int64
+                      example:  -1
+                    price:
+                      type: string
+                      example: "1.00000000"
+                    qty:
+                      type: string
+                      example: "5.00000000"
+                    quoteQty:
+                      type: string
+                      example: "5.00000000"
+                    commission:
+                      type: string
+                      example: "0.00000000"
+                    commissionAsset:
+                      type: string
+                      example: "BTC"
+                    time:
+                      type: integer
+                      format: int64
+                      example: 1687506878118
+                    isBuyer:
+                      type: boolean
+                      example: true
+                    isMaker:
+                      type: boolean
+                      example: false
+                    isAllocator:
+                      type: boolean
+                      example: false
+                  required:
+                    - symbol
+                    - allocationId
+                    - allocationType
+                    - orderId
+                    - orderListId
+                    - price
+                    - qty
+                    - quoteQty
+                    - commission
+                    - commissionAsset
+                    - time
+                    - isBuyer
+                    - isMaker
+                    - isAllocator
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+
+  /sapi/v1/margin/transfer:
+    post:
+      summary: Cross Margin Account Transfer (MARGIN)
+      description: |-
+        Execute transfer between spot account and cross margin account.
+
+        Weight(IP): 600
+      tags:
+        - Margin
+      parameters:
+        - $ref: '#/components/parameters/asset'
+        - $ref: '#/components/parameters/amount'
+        - name: type
+          in: query
+          required: true
+          description: |-
+            * `1` - transfer from main account to margin account
+            * `2` - transfer from margin account to main account
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 2
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Transfer Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transaction'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+            description: Unauthorized Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+    get:
+      summary: Get Cross Margin Transfer History (USER_DATA)
+      description: |-
+        - Response in descending order
+        - Returns data for last 7 days by default
+        - Set `archived` to `true` to query data from 6 months ago
+
+        Weight(IP): 1
+      tags:
+        - Margin
+      parameters:
+        - $ref: '#/components/parameters/optionalAsset'
+        - $ref: '#/components/parameters/getCrossMargingTransferHistoryType'
+        - $ref: '#/components/parameters/startTime'
+        - $ref: '#/components/parameters/endTime'
+        - $ref: '#/components/parameters/current'
+        - $ref: '#/components/parameters/size'
+        - $ref: '#/components/parameters/archived'
+        - $ref: '#/components/parameters/recvWindow'
+        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/signature'
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: Margin account transfer history, response in descending order
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        amount:
+                          type: string
+                        asset:
+                          type: string
+                        status:
+                          type: string
+                        timestamp:
+                          type: integer
+                          format: int64
+                        txId:
+                          type: integer
+                          format: int64
+                        type:
+                          type: string
+                      required:
+                        - amount
+                        - asset
+                        - status
+                        - timestamp
+                        - txId
+                        - type
+                  total:
+                    type: integer
+                    format: int32
+                    example: 3
+                example:
+                  rows:
+                    -
+                      amount: "0.10000000"
+                      asset: "BNB"
+                      status: "CONFIRMED"
+                      timestamp: 1566898617
+                      txId: 5240372201
+                      type: "ROLL_IN"
+                  total: 1
+                required:
+                  - rows
+                  - total
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+  

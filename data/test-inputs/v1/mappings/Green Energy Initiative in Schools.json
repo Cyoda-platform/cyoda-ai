@@ -1,0 +1,88 @@
+{
+    "tenderRefNumber": "TND-2024-912",
+    "tenderTitle": "Green Energy Initiative in Schools",
+    "tenderTypes": [
+      "Renewable Energy",
+      "Educational Facilities",
+      "Sustainability"
+    ],
+    "contactPerson": {
+      "details": {
+        "fullName": "Alice Green",
+        "emailAddress": "alice.green@eduenergy.org",
+        "phoneNumber": {
+          "countryCode": "+49",
+          "localNumber": "030-1234-5678"
+        }
+      }
+    },
+    "hasSystemAccount": true,
+    "publicationDate": "2024-09-15T12:00:00Z",
+    "lastSubmissionDate": "2024-11-15T16:30:00Z",
+    "submissionPeriodDays": 61,
+    "sectorCategory": "Education and Energy",
+    "approvedFunding": 3000000,
+    "purchasingEntity": "National Education and Energy Department",
+    "tenderAlerts": [
+      {
+        "alertName": "Energy Initiative Briefing Session",
+        "alertID": "ALT-2025",
+        "sessionInfo": {
+          "sessionID": "SID-90876",
+          "alertDate": "2024-10-05T09:00:00Z",
+          "alertCategory": "Briefing",
+          "alertSource": {
+            "sourceRef": "SRC-512",
+            "sourceLink": "https://example.com/tenders/alt-2025"
+          },
+          "alertDescription": "An introductory session focused on renewable energy integration in schools will be conducted."
+        }
+      },
+      {
+        "alertName": "Bid Submission Commenced",
+        "alertID": "ALT-2026",
+        "sessionInfo": {
+          "sessionID": "SID-90877",
+          "alertDate": "2024-10-15T08:30:00Z",
+          "alertCategory": "Submission Open",
+          "alertSource": {
+            "sourceRef": "SRC-513",
+            "sourceLink": "https://example.com/tenders/alt-2026"
+          },
+          "alertDescription": "The tender submission process is officially open."
+        }
+      }
+    ],
+    "entityToAlertMap": {
+      "National Education and Energy Department": [
+        {
+          "alertName": "Energy Initiative Briefing Session",
+          "alertID": "ALT-2025",
+          "sessionInfo": {
+            "sessionID": "SID-90876",
+            "alertDate": "2024-10-05T09:00:00Z",
+            "alertCategory": "Briefing",
+            "alertSource": {
+              "sourceRef": "SRC-512",
+              "sourceLink": "https://example.com/tenders/alt-2025"
+            },
+            "alertDescription": "An introductory session focused on renewable energy integration in schools will be conducted."
+          }
+        },
+        {
+          "alertName": "Bid Submission Commenced",
+          "alertID": "ALT-2026",
+          "sessionInfo": {
+            "sessionID": "SID-90877",
+            "alertDate": "2024-10-15T08:30:00Z",
+            "alertCategory": "Submission Open",
+            "alertSource": {
+              "sourceRef": "SRC-513",
+              "sourceLink": "https://example.com/tenders/alt-2026"
+            },
+            "alertDescription": "The tender submission process is officially open."
+          }
+        }
+      ]
+    }
+  }

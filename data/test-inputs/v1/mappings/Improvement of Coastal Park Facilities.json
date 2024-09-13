@@ -1,0 +1,72 @@
+{
+    "bidID": "BID-2024-999",
+    "projectName": "Improvement of Coastal Park Facilities",
+    "projectCategories": [
+      "Recreation",
+      "Public Parks",
+      "Environmental Management"
+    ],
+    "contactPerson": "Daniel Ramirez",
+    "isAutomatedSystem": false,
+    "creationTimestamp": "2024-10-05T10:30:00Z",
+    "submissionDeadline": "2024-12-15T15:00:00Z",
+    "submissionDuration": 70,
+    "projectCategory": "Public Services",
+    "totalAwardedAmount": 1200000.00,
+    "contractingEntity": "Department of Urban Development",
+    "updates": [
+      {
+        "updateTitle": "Mandatory Site Visit Scheduled",
+        "updateID": "UPD-8001",
+        "uniqueSID": "SID-5011",
+        "updateDate": "2024-10-10T09:00:00Z",
+        "updateCategory": "Site Visit",
+        "informationSource": {
+          "sourceID": "SRC-321",
+          "url": "https://example.com/bids/upd-8001"
+        },
+        "announcementDetails": "A mandatory site visit will be conducted on October 20, 2024."
+      },
+      {
+        "updateTitle": "Submission Instructions Published",
+        "updateID": "UPD-8002",
+        "uniqueSID": "SID-5012",
+        "updateDate": "2024-10-15T14:00:00Z",
+        "updateCategory": "Instructions",
+        "informationSource": {
+          "sourceID": "SRC-322",
+          "url": "https://example.com/bids/upd-8002"
+        },
+        "announcementDetails": "Submission instructions for the bids have been published."
+      }
+    ],
+    "entityNotificationMap": {
+      "Department of Urban Development": [
+        {
+          "updateTitle": "Mandatory Site Visit Scheduled",
+          "updateID": "UPD-8001",
+          "uniqueSID": "SID-5011",
+          "updateDate": "2024-10-10T09:00:00Z",
+          "updateCategory": "Site Visit",
+          "informationSource": {
+            "sourceID": "SRC-321",
+            "url": "https://example.com/bids/upd-8001"
+          },
+          "announcementDetails": "A mandatory site visit will be conducted on October 20, 2024."
+        },
+        {
+          "updateTitle": "Submission Instructions Published",
+          "updateID": "UPD-8002",
+          "uniqueSID": "SID-5012",
+          "updateDate": "2024-10-15T14:00:00Z",
+          "updateCategory": "Instructions",
+          "informationSource": {
+            "sourceID": "SRC-322",
+            "url": "https://example.com/bids/upd-8002"
+          },
+          "announcementDetails": "Submission instructions for the bids have been published."
+        }
+      ]
+    }
+  }
+  

@@ -1,0 +1,72 @@
+{
+    "tenderIdentifier": "TND-2024-902",
+    "tenderTitle": "Revamp of City Transit System",
+    "projectCategories": [
+      "Transportation",
+      "Infrastructure",
+      "Public Services"
+    ],
+    "contactPerson": "Alex Johnson",
+    "isAutomated": true,
+    "creationDate": "2024-09-01T07:45:00Z",
+    "submissionDeadline": "2024-10-15T17:00:00Z",
+    "durationDays": 45,
+    "projectType": "Public Transit Upgrade",
+    "totalAwardedAmount": 5000000.00,
+    "contractor": "City Transit Authority",
+    "updates": [
+      {
+        "updateTitle": "Draft RFP Released",
+        "updateID": "UPD-405",
+        "sessionID": "SID-1001",
+        "updateDate": "2024-09-05T09:00:00Z",
+        "updateCategory": "RFP",
+        "sourceDetails": {
+          "sourceIdentifier": "SRC-555",
+          "sourceLink": "https://example.com/tenders/upd-405"
+        },
+        "updateContent": "The draft Request for Proposals (RFP) for the project is now available."
+      },
+      {
+        "updateTitle": "Final RFP Submission Date Announced",
+        "updateID": "UPD-406",
+        "sessionID": "SID-1002",
+        "updateDate": "2024-09-10T14:30:00Z",
+        "updateCategory": "Deadline",
+        "sourceDetails": {
+          "sourceIdentifier": "SRC-556",
+          "sourceLink": "https://example.com/tenders/upd-406"
+        },
+        "updateContent": "The final submission deadline for the RFP is set for October 15, 2024."
+      }
+    ],
+    "contractorNotificationLinks": {
+      "City Transit Authority": [
+        {
+          "updateTitle": "Draft RFP Released",
+          "updateID": "UPD-405",
+          "sessionID": "SID-1001",
+          "updateDate": "2024-09-05T09:00:00Z",
+          "updateCategory": "RFP",
+          "sourceDetails": {
+            "sourceIdentifier": "SRC-555",
+            "sourceLink": "https://example.com/tenders/upd-405"
+          },
+          "updateContent": "The draft Request for Proposals (RFP) for the project is now available."
+        },
+        {
+          "updateTitle": "Final RFP Submission Date Announced",
+          "updateID": "UPD-406",
+          "sessionID": "SID-1002",
+          "updateDate": "2024-09-10T14:30:00Z",
+          "updateCategory": "Deadline",
+          "sourceDetails": {
+            "sourceIdentifier": "SRC-556",
+            "sourceLink": "https://example.com/tenders/upd-406"
+          },
+          "updateContent": "The final submission deadline for the RFP is set for October 15, 2024."
+        }
+      ]
+    }
+  }
+  

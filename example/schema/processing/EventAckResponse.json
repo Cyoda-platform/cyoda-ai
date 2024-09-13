@@ -1,0 +1,18 @@
+{
+  "$id": "https://cyoda.com/cloud/event/processing/EventAckResponse.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventAckResponse",
+  "type": "object",
+  "extends": {
+    "$ref": "../common/BaseEvent.json"
+  },
+  "properties": {
+    "sourceEventId": {
+      "type": "string",
+      "description": "ID of the original event."
+    }
+  },
+  "required": [
+    "sourceEventId"
+  ]
+}

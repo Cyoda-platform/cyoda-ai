@@ -1,0 +1,79 @@
+{
+    "tenderID": "TND-2024-321",
+    "tenderTitle": "Renovation of City Exhibition Hall",
+    "projectTypes": [
+      "Construction",
+      "Public Facilities",
+      "Cultural Development"
+    ],
+    "contactPerson": "Richard Olsson",
+    "isManagedBySystem": false,
+    "creationTimestamp": "2024-08-05T10:00:00Z",
+    "submissionDeadline": "2024-09-15T14:00:00Z",
+    "submissionPeriodDays": 40,
+    "projectCategory": "Facilities Management",
+    "totalAwardedAmount": 2500000,
+    "contractingAgency": "City Events Department",
+    "alerts": [
+      {
+        "alertTitle": "Site Visit Notification",
+        "alertID": "ALR-3031",
+        "sessionID": "SID-6001",
+        "alertDate": "2024-08-15T11:00:00Z",
+        "alertCategory": "Site Visit",
+        "sourceInformation": {
+          "sourceID": "SRC-901",
+          "sourceLink": "https://example.com/tenders/alr-3031"
+        },
+        "details": {
+          "description": "A site visit will be held for interested bidders on August 20, 2024."
+        }
+      },
+      {
+        "alertTitle": "Bid Submission Instructions Released",
+        "alertID": "ALR-3032",
+        "sessionID": "SID-6002",
+        "alertDate": "2024-08-20T09:30:00Z",
+        "alertCategory": "Instructions",
+        "sourceInformation": {
+          "sourceID": "SRC-902",
+          "sourceLink": "https://example.com/tenders/alr-3032"
+        },
+        "details": {
+          "description": "Bid submission instructions are now available for review."
+        }
+      }
+    ],
+    "agencyNotifications": {
+      "City Events Department": [
+        {
+          "alertTitle": "Site Visit Notification",
+          "alertID": "ALR-3031",
+          "sessionID": "SID-6001",
+          "alertDate": "2024-08-15T11:00:00Z",
+          "alertCategory": "Site Visit",
+          "sourceInformation": {
+            "sourceID": "SRC-901",
+            "sourceLink": "https://example.com/tenders/alr-3031"
+          },
+          "details": {
+            "description": "A site visit will be held for interested bidders on August 20, 2024."
+          }
+        },
+        {
+          "alertTitle": "Bid Submission Instructions Released",
+          "alertID": "ALR-3032",
+          "sessionID": "SID-6002",
+          "alertDate": "2024-08-20T09:30:00Z",
+          "alertCategory": "Instructions",
+          "sourceInformation": {
+            "sourceID": "SRC-902",
+            "sourceLink": "https://example.com/tenders/alr-3032"
+          },
+          "details": {
+            "description": "Bid submission instructions are now available for review."
+          }
+        }
+      ]
+    }
+  }

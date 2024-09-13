@@ -1,0 +1,136 @@
+= Parameter templates
+
+When you add parameters to your endpoints, you associate the parameter with a template.
+
+== Overview
+
+Parameters are a list of objects. Each of them has the following:
+
+- name
+- default value (if required)
+- is required
+- type (path variable, request body variable, request param, header param, template variable)
+
+There are 2 approaches to configuring parameters:
+
+1. When a parameter value is taken from a request, it is set to a corresponding parameter as-is.
+2. With an extra step in between: the parameter is associated with a template.
+
+When you add parameters to your endpoints, you can enable the *Template* flag if you want to associate the parameter with a template. You can then fill in the **Template Value** field with a template string, which can comprise custom functions and parameters.
+
+Template example:
+
+```velocity
+$cyoda_functions.base64($identifier)
+$cyoda_functions.base64(${identifier})
+```
+
+A template can use other parameters which are used in the request, or intermediary parameters which are used only for template calculation and not propagated further to the data source request.
+
+Such intermediary parameters belong to the *Template Variable* type:
+
+```json
+{
+  "operation": "test",
+  "type": "some description",
+  "query": "/api/test",
+  "method": "GET",
+  "parameters": [
+    {
+      "name": "param",
+      "defaultValue": "1",
+      "secure": false,
+      "required": true,
+      "template": false,
+      "templateValue": "",
+      "excludeFromCacheKey": false,
+      "type": "TEMPLATE_VARIABLE",
+      "optionValues": []
+    },
+    {
+      "name": "identifier", 
+      "defaultValue": "",
+      "secure": false,
+      "required": true,
+      "template": true,
+      "templateValue": "$cyoda_functions.add($param, 100)",
+      "excludeFromCacheKey": false,
+      "type": "REQUEST_PARAM",
+      "optionValues": []
+    }
+  ],
+  "bodyTemplate": "",
+  "connectionTimeout": 0,
+  "readWriteTimeout": 0
+}
+
+```
+In the example above, the value of path variable `$identifier` is calculated as the sum of `$param` and 100.
+
+The order of parameters can be important. You need to ensure that a parameter's dependencies come before it. For example: $param goes before $identifier.
+
+== Testing a parameter template
+
+To test the functionality, click the *Test* button:
+
+In the window that opens, fill in the required parameter values and click the run icon:
+
+The result will contain request parameter values, body, query and headers.
+
+The currently supported template engine is the https://velocity.apache.org/
+
+=== List of current functions
+
+(Provided as an example):
+
+```velocity
+$cyoda_functions.base64($param)
+$cyoda_functions.md5Hex($param)
+$cyoda_functions.md5HexUppercase($param)
+$cyoda_functions.hash($param)
+$cyoda_functions.concat($param1, $param2)
+$cyoda_functions.add($param1, $param2)
+```
+You can also use any Velocity Tool function as it is.
+For example, 
+```velocity
+$date.day
+$date.month
+$date.year
+$math.mod($param1, $param2)
+$math.max($param1, $param2)
+$math.min($param1, $param2)
+$math.abs($param1)
+```
+and other velocity tools that you are aware of from the velocity docs.
+
+HttpEndpointDto example with template parameters using velocity tools:
+```json
+{
+  "operation": "test",
+  "type": "some description",
+  "query": "/api/test",
+  "method": "GET",
+  "parameters": [
+    {
+      "name": "date", 
+      "defaultValue": "",
+      "secure": false,
+      "required": true,
+      "template": true,
+      "templateValue": "$date.systemDate",
+      "excludeFromCacheKey": false,
+      "type": "REQUEST_PARAM",
+      "optionValues": []
+    }
+  ],
+  "bodyTemplate": "",
+  "connectionTimeout": 0,
+  "readWriteTimeout": 0
+}
+
+```
+
+=== Valid parameter names
+
+Template variable parameter names support uppercase, hyphens, single, and multiple dollar signs. For any other special characters, you need to use an intermediary parameter.

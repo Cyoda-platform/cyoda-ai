@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Book Internet Shop API version e04f4a52-9223-4922-9c35-6e8f8e459d59
+  version: e04f4a52-9223-4922-9c35-6e8f8e459d59
+  description: An API for managing books in an internet shop.
+
+servers:
+  - url: http://api.bookshop.com/v1
+
+paths:
+  /books:
+    get:
+      summary: Retrieve a list of books
+      responses:
+        '200':
+          description: A list of books is returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: "The Great Gatsby"
+                    author:
+                      type: string
+                      example: "F. Scott Fitzgerald"
+                    price:
+                      type: number
+                      format: float
+                      example: 10.99
+
+    post:
+      summary: Add a new book to the shop
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "1984"
+                author:
+                  type: string
+                  example: "George Orwell"
+                price:
+                  type: number
+                  format: float
+                  example: 15.99
+      responses:
+        '201':
+          description: Book created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  title:
+                    type: string
+                    example: "1984"
+                  author:
+                    type: string
+                    example: "George Orwell"
+                  price:
+                    type: number
+                    format: float
+                    example: 15.99
+
+  /books/{id}:
+    get:
+      summary: Retrieve a specific book by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the book
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A book detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  title:
+                    type: string
+                    example: "The Great Gatsby"
+                  author:
+                    type: string
+                    example: "F. Scott Fitzgerald"
+                  price:
+                    type: number
+                    format: float
+                    example: 10.99
+        '404':
+          description: Book not found

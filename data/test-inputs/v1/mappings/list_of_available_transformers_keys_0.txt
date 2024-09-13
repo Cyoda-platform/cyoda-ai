@@ -1,0 +1,12 @@
+["transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToInt",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToDouble",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBoolean",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToInt",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",,
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToInt",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToBoolean",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToFloat",
+"transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToLong"]
+
+This list is complete. DO NOT add any variations for transformers keys.

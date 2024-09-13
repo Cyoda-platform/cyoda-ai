@@ -1,0 +1,146 @@
+{
+    "@bean": "com.cyoda.plugins.datasource.dtos.DataSourceConfigDto",
+    "id": "2ef06b40-10e4-11ee-8b80-0e78ffa4e466",
+    "name": "mockoon auth (chaining)",
+    "lastUpdated": 1722260325978,
+    "description": "test w",
+    "connections": [
+        {
+            "@bean": "com.cyoda.plugins.datasource.dtos.connection.HttpConnectionDetailsDto",
+            "name": "Test connection",
+            "baseUrl": "http://mockoon.kube.cyoda.org",
+            "headers": {},
+            "authType": "X_AUTH_TOKEN",
+            "authConfig": {
+                "name": "get token",
+                "authOperationConfigs": [
+                    {
+                        "authService": "com.cyoda.plugins.datasource.service.handler.auth.DSHttpAuthService",
+                        "authServiceName": "default-auth-service",
+                        "baseUrl": "https://mockoon.kube.cyoda.org",
+                        "query": "/auth/login",
+                        "method": "POST_BODY",
+                        "bodyTemplate": "{\"username\":\"${username}\", \"password\":\"${password}\"}",
+                        "headers": {
+                            "Authorization": "Bearer null",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "Content-Type": "application/json"
+                        },
+                        "parameters": [
+                            {
+                                "name": "username",
+                                "defaultValue": "robert",
+                                "secure": false,
+                                "required": true,
+                                "template": false,
+                                "templateValue": "",
+                                "excludeFromCacheKey": false,
+                                "type": "REQUEST_BODY_VARIABLE",
+                                "optionValues": []
+                            },
+                            {
+                                "name": "password",
+                                "defaultValue": "stardust",
+                                "secure": false,
+                                "required": true,
+                                "template": false,
+                                "templateValue": "",
+                                "excludeFromCacheKey": false,
+                                "type": "REQUEST_BODY_VARIABLE",
+                                "optionValues": []
+                            }
+                        ],
+                        "dataSourceAuthRespConfig": {
+                            "responseParser": "com.cyoda.plugins.datasource.service.handler.auth.resp.JsonDefaultResponseParser",
+                            "responseParserName": "json-default-response-parser",
+                            "responseParamToPathMap": {
+                                "token": {
+                                    "@bean": "com.cyoda.plugins.datasource.dtos.connection.auth.resp.JsonRespSourcePathDto",
+                                    "path": "$.token"
+                                }
+                            }
+                        },
+                        "connectionTimeout": 2,
+                        "readWriteTimeout": 2
+                    }
+                ],
+                "numOfRetries": 2,
+                "cacheConfig": {
+                    "ttl": 100000000,
+                    "persistCache": true
+                }
+            }
+        }
+    ],
+    "endpoints": [
+        {
+            "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+            "consumerConfig": {
+                "consumerType": "COBI_MAPPER",
+                "configId": "4f476ed0-7a2a-11ed-bc08-7085c2ba41e4"
+            },
+            "chainings": [
+                "219e8990-10e4-11ee-8b80-0e78ffa4e466"
+            ],
+            "operation": "test1",
+            "cache": {
+                "parameters": [],
+                "ttl": 1000000000000
+            },
+            "connectionIndex": 0,
+            "type": "123",
+            "query": "/json/people/${doc_id}",
+            "method": "GET",
+            "parameters": [
+                {
+                    "name": "doc_id",
+                    "defaultValue": "111",
+                    "secure": false,
+                    "required": true,
+                    "template": false,
+                    "templateValue": "",
+                    "excludeFromCacheKey": false,
+                    "type": "PATH_VARIABLE",
+                    "optionValues": []
+                }
+            ],
+            "bodyTemplate": "{\"username\":\"robert\", \"password\":\"stardust\"}",
+            "connectionTimeout": 1,
+            "readWriteTimeout": 1
+        },
+        {
+            "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+            "consumerConfig": {
+                "consumerType": "COBI_MAPPER",
+                "configId": "4f476ed0-7a2a-11ed-bc08-7085c2ba41e4"
+            },
+            "chainings": [],
+            "operation": "test2",
+            "cache": {
+                "parameters": [],
+                "ttl": 0
+            },
+            "connectionIndex": 0,
+            "type": "2",
+            "query": "/json/people/${doc_id2}",
+            "method": "GET",
+            "parameters": [
+                {
+                    "name": "doc_id2",
+                    "defaultValue": "222",
+                    "secure": false,
+                    "required": false,
+                    "template": false,
+                    "templateValue": "",
+                    "excludeFromCacheKey": false,
+                    "type": "PATH_VARIABLE",
+                    "optionValues": []
+                }
+            ],
+            "bodyTemplate": "",
+            "connectionTimeout": 1,
+            "readWriteTimeout": 1
+        }
+    ],
+    "active": true
+}

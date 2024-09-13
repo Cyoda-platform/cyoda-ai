@@ -1,0 +1,87 @@
+<TenderEntity>
+  <TenderID>TND-2024-408</TenderID>
+  <ProjectTitle>Expansion of Public Library Services</ProjectTitle>
+  <ServiceTypes>
+    <Type>Library Services</Type>
+    <Type>Community Development</Type>
+    <Type>Public Outreach</Type>
+  </ServiceTypes>
+  <ContactPerson>
+    <Name>Julia White</Name>
+    <Email>julia.white@library.gov</Email>
+  </ContactPerson>
+  <SystemGenerated>false</SystemGenerated>
+  <CreationDate>2024-09-10T08:30:00Z</CreationDate>
+  <SubmissionDeadline>2024-10-15T15:00:00Z</SubmissionDeadline>
+  <DurationDays>35</DurationDays>
+  <ProjectCategory>Libraries</ProjectCategory>
+  <BudgetAllocated>600000.00</BudgetAllocated>
+  <FundingSource>State Library Fund</FundingSource>
+  <UpdateLog>
+    <Notifications>
+      <Notification>
+        <Title>Information Session Scheduled</Title>
+        <NotificationID>NTF-1201</NotificationID>
+        <ReferenceCode>REF-0987</ReferenceCode>
+        <NotificationDate>2024-09-20T14:00:00Z</NotificationDate>
+        <NotificationType>Session</NotificationType>
+        <SourceID>SRC-321</SourceID>
+        <Link>https://example.com/tenders/ntf-1201</Link>
+        <Details>An information session for prospective bidders will occur on September 25, 2024.</Details>
+      </Notification>
+      <Notification>
+        <Title>Bid Proposal Guidelines Released</Title>
+        <NotificationID>NTF-1202</NotificationID>
+        <ReferenceCode>REF-0988</ReferenceCode>
+        <NotificationDate>2024-09-30T09:00:00Z</NotificationDate>
+        <NotificationType>Guidelines</NotificationType>
+        <SourceID>SRC-322</SourceID>
+        <Link>https://example.com/tenders/ntf-1202</Link>
+        <Details>Bid proposal guidelines have been published and are available for review.</Details>
+      </Notification>
+    </Notifications>
+    <FinancialSummary>
+      <InitialEstimate>650000.00</InitialEstimate>
+      <ContingencyValue>5</ContingencyValue>
+      <FinalBudgetEstimate>683000.00</FinalBudgetEstimate>
+    </FinancialSummary>
+    <EvaluationCriteria>
+      <Criteria>
+        <Item>
+          <Aspect>Quality of Service</Aspect>
+          <Weight>50</Weight>
+        </Item>
+        <Item>
+          <Aspect>Experience and Qualifications</Aspect>
+          <Weight>30</Weight>
+        </Item>
+        <Item>
+          <Aspect>Cost Proposal</Aspect>
+          <Weight>20</Weight>
+        </Item>
+      </Criteria>
+    </EvaluationCriteria>
+  </UpdateLog>
+  <AgencyNotifications>
+    <AgencyNotification>
+      <Title>Information Session Scheduled</Title>
+      <NotificationID>NTF-1201</NotificationID>
+      <ReferenceCode>REF-0987</ReferenceCode>
+      <NotificationDate>2024-09-20T14:00:00Z</NotificationDate>
+      <NotificationType>Session</NotificationType>
+      <SourceID>SRC-321</SourceID>
+      <Link>https://example.com/tenders/ntf-1201</Link>
+      <Details>An information session for prospective bidders will occur on September 25, 2024.</Details>
+    </AgencyNotification>
+    <AgencyNotification>
+      <Title>Bid Proposal Guidelines Released</Title>
+      <NotificationID>NTF-1202</NotificationID>
+      <ReferenceCode>REF-0988</ReferenceCode>
+      <NotificationDate>2024-09-30T09:00:00Z</NotificationDate>
+      <NotificationType>Guidelines</NotificationType>
+      <SourceID>SRC-322</SourceID>
+      <Link>https://example.com/tenders/ntf-1202</Link>
+      <Details>Bid proposal guidelines have been published and are available for review.</Details>
+    </AgencyNotification>
+  </AgencyNotifications>
+</TenderEntity>

@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "properties": {
+        "chat_id": {
+            "type": "string",
+            "description": "Unique identifier for the chat session",
+            "minLength": 1
+        },
+        "workflow_name": {
+            "type": "string",
+            "description": "Name of the workflow to be executed",
+            "minLength": 1
+        },
+        "dataFormat": {
+            "type": "string",
+            "enum": ["JSON", "XML"],
+            "description": "Format of the data, currently only JSON is supported",
+            "minLength": 1
+        },
+        "entityName": {
+            "type": "string",
+            "description": "Name of the entity",
+            "minLength": 1
+        },
+        "modelVersion": {
+            "type": "string",
+            "description": "Version of the model",
+            "minLength": 1
+        },
+        "converter": {
+            "type": "string",
+            "enum": ["SAMPLE_DATA", "JSON_SCHEMA", "SIMPLE_VIEW"],
+            "description": "Converter type",
+            "minLength": 1
+        },
+        "entityType": {
+            "type": "string",
+            "enum": ["TREE", "TABLE"],
+            "description": "Type of the entity, set to 'TREE'",
+            "minLength": 1
+        },
+        "schema_data_ds_id": {
+            "type": "string",
+            "description": "Dataset ID for schema data"
+        },
+        "schema_data_operation": {
+            "type": "string",
+            "description": "Operation to be performed on schema data"
+        },
+        "ingestion_data_ds_id": {
+            "type": "string",
+            "description": "Dataset ID for data ingestion"
+        },
+        "ingestion_data_operation": {
+            "type": "string",
+            "description": "Operation to be performed on ingestion data"
+        }
+    },
+    "required": [
+        "chat_id",
+        "workflow_name",
+        "dataFormat",
+        "entityName",
+        "modelVersion",
+        "converter",
+        "entityType",
+        "schema_data_ds_id",
+        "schema_data_operation",
+        "ingestion_data_ds_id",
+        "ingestion_data_operation"
+    ]
+}

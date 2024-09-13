@@ -1,0 +1,291 @@
+openapi: 3.0.0
+info:
+  title: Boat Rental Service API version 760fde5e-bb59-43a8-bf2a-c68d9f35dd7d
+  version: 760fde5e-bb59-43a8-bf2a-c68d9f35dd7d
+  description: API for managing boats, customers, rentals, and reviews in a boat rental service.
+
+servers:
+  - url: http://api.boatrental.example.com/v1
+
+paths:
+  /boats:
+    get:
+      summary: Retrieve a list of available boats
+      responses:
+        '200':
+          description: A list of available boats
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    boatId:
+                      type: string
+                      format: uuid
+                      example: "e5f9c8d4-89a0-4b78-af6b-7b123456abc0"
+                    name:
+                      type: string
+                      example: "Luxury Yacht"
+                    type:
+                      type: string
+                      example: "Yacht"
+                    pricePerHour:
+                      type: number
+                      format: float
+                      example: 200.00
+                    location:
+                      type: string
+                      example: "Marina Bay"
+
+    post:
+      summary: Add a new boat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Fishing Boat"
+                type:
+                  type: string
+                  example: "Fiberglass"
+                pricePerHour:
+                  type: number
+                  format: float
+                  example: 100.00
+                location:
+                  type: string
+                  example: "Ocean Marina"
+      responses:
+        '201':
+          description: Boat added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Boat added successfully."
+                  boatId:
+                    type: string
+                    format: uuid
+                    example: "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+
+  /customers:
+    get:
+      summary: Retrieve a list of customers
+      responses:
+        '200':
+          description: A list of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    customerId:
+                      type: string
+                      format: uuid
+                      example: "c89e12d4-6b57-4b89-bd19-ef9876543210"
+                    name:
+                      type: string
+                      example: "Jessica Green"
+                    email:
+                      type: string
+                      format: email
+                      example: "jessica.green@example.com"
+                    phone:
+                      type: string
+                      example: "+1-234-567-8900"
+
+    post:
+      summary: Add a new customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Anthony White"
+                email:
+                  type: string
+                  format: email
+                  example: "anthony.white@example.com"
+                phone:
+                  type: string
+                  example: "+1-345-678-9012"
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Customer registered successfully."
+                  customerId:
+                    type: string
+                    format: uuid
+                    example: "b5671234-90ab-cdef-0123-456789abcdef"
+
+  /rentals:
+    get:
+      summary: Retrieve a list of active rentals
+      responses:
+        '200':
+          description: A list of active boat rentals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    rentalId:
+                      type: string
+                      format: uuid
+                      example: "d1234567-89ab-cdef-0123-456789abcdef"
+                    customerId:
+                      type: string
+                      format: uuid
+                      example: "c89e12d4-6b57-4b89-bd19-ef9876543210"
+                    boatId:
+                      type: string
+                      format: uuid
+                      example: "e5f9c8d4-89a0-4b78-af6b-7b123456abc0"
+                    rentalStart:
+                      type: string
+                      format: date-time
+                      example: "2024-08-21T12:00:00Z"
+                    rentalEnd:
+                      type: string
+                      format: date-time
+                      example: "2024-08-21T16:00:00Z"
+                    totalPrice:
+                      type: number
+                      format: float
+                      example: 400.00
+
+    post:
+      summary: Create a new rental transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: string
+                  format: uuid
+                  example: "c89e12d4-6b57-4b89-bd19-ef9876543210"
+                boatId:
+                  type: string
+                  format: uuid
+                  example: "e5f9c8d4-89a0-4b78-af6b-7b123456abc0"
+                rentalStart:
+                  type: string
+                  format: date-time
+                  example: "2024-08-21T12:00:00Z"
+                rentalEnd:
+                  type: string
+                  format: date-time
+                  example: "2024-08-21T16:00:00Z"
+      responses:
+        '201':
+          description: Rental transaction created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Rental transaction created successfully."
+                  rentalId:
+                    type: string
+                    format: uuid
+                    example: "d1234567-89ab-cdef-0123-456789abcdef"
+
+  /reviews:
+    get:
+      summary: Retrieve a list of reviews
+      responses:
+        '200':
+          description: A list of reviews for the boats
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    reviewId:
+                      type: string
+                      format: uuid
+                      example: "f8b12d74-47fb-4633-83c0-23456789abcd"
+                    customerId:
+                      type: string
+                      format: uuid
+                      example: "c89e12d4-6b57-4b89-bd19-ef9876543210"
+                    boatId:
+                      type: string
+                      format: uuid
+                      example: "e5f9c8d4-89a0-4b78-af6b-7b123456abc0"
+                    rating:
+                      type: integer
+                      example: 5
+                    comments:
+                      type: string
+                      example: "Great experience! The boat was in good condition."
+
+    post:
+      summary: Add a new review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: string
+                  format: uuid
+                  example: "c89e12d4-6b57-4b89-bd19-ef9876543210"
+                boatId:
+                  type: string
+                  format: uuid
+                  example: "e5f9c8d4-89a0-4b78-af6b-7b123456abc0"
+                rating:
+                  type: integer
+                  example: 4
+                comments:
+                  type: string
+                  example: "Had a wonderful day on the water."
+      responses:
+        '201':
+          description: Review added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Review added successfully."
+                  reviewId:
+                    type: string
+                    format: uuid
+                    example: "g1234567-89ab-cdef-0123-456789abcdef"

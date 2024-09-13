@@ -13,16 +13,6 @@ Access to a Cyoda environment (API key, secret, and URL)
 
 ### Setup
 
-Clone the repository:
-
-Install dependencies:
-
-Use pip or a virtual environment to install the required dependencies listed in requirements.txt:
-
-```
-pip install -r requirements.txt
-```
-
 Set up environment variables:
 
 Create a .env file in the root directory and configure it with the following values:

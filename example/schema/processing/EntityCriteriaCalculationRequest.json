@@ -1,0 +1,40 @@
+{
+  "$id": "https://cyoda.com/cloud/event/processing/EntityCriteriaCalculationRequest.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EntityCriteriaCalculationRequest",
+  "type": "object",
+  "extends": {
+    "$ref": "../common/BaseEvent.json"
+  },
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Request ID."
+    },
+    "entityId": {
+      "type": "string",
+      "description": "Entity ID."
+    },
+    "criteriaId": {
+      "type": "string",
+      "description": "Criteria ID."
+    },
+    "criteriaName": {
+      "type": "string",
+      "description": "Criteria name."
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "Transaction ID."
+    },
+    "payload": {
+      "$ref": "../common/DataPayload.json"
+    }
+  },
+  "required": [
+    "requestId",
+    "entityId",
+    "criteriaId",
+    "criteriaName"
+  ]
+}

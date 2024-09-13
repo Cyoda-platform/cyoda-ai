@@ -1,0 +1,154 @@
+##net.cyoda.saas.model.ContractEntity cf6c65a3-6adf-448b-bff9-e22e25cef7da
+
+net.cyoda.saas.model.ContractEntity
+
+Contract Entity
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ContractEntity",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "startDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "endDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "value": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          }
+        },
+        "required": ["amount", "currency"]
+      },
+      "parties": {
+        "type": "object",
+        "properties": {
+          "buyer": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "contact": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "email", "phone"]
+              }
+            },
+            "required": ["name", "address", "contact"]
+          },
+          "seller": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "address": {
+                "type": "string"
+              },
+              "contact": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "email", "phone"]
+              }
+            },
+            "required": ["name", "address", "contact"]
+          }
+        },
+        "required": ["buyer", "seller"]
+      },
+      "status": {
+        "type": "string"
+      },
+      "terms": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          },
+          "required": ["name", "description"]
+        }
+      },
+      "attachments": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["name", "url"]
+        }
+      },
+      "partyAttachments": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["name", "url"]
+        }
+      }
+    },
+    "required": ["id", "title", "startDate", "endDate", "value", "parties", "status"]
+  }

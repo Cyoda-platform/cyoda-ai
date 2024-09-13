@@ -1,0 +1,100 @@
+<root>
+	<components>
+		<schemas>
+			<GeneralError>
+				<type>object</type>
+				<properties>
+					<code>
+						<type>integer</type>
+						<format>int32</format>
+					</code>
+					<message>
+						<type>string</type>
+					</message>
+				</properties>
+			</GeneralError>
+			<Category>
+				<type>object</type>
+				<properties>
+					<id>
+						<type>integer</type>
+						<format>int64</format>
+					</id>
+					<name>
+						<type>string</type>
+					</name>
+				</properties>
+			</Category>
+			<Tag>
+				<type>object</type>
+				<properties>
+					<id>
+						<type>integer</type>
+						<format>int64</format>
+					</id>
+					<name>
+						<type>string</type>
+					</name>
+				</properties>
+			</Tag>
+		</schemas>
+		<parameters>
+			<skipParam>
+				<name>skip</name>
+				<in>query</in>
+				<description>number of items to skip</description>
+				<required>true</required>
+				<schema>
+					<type>integer</type>
+					<format>int32</format>
+				</schema>
+			</skipParam>
+			<limitParam>
+				<name>limit</name>
+				<in>query</in>
+				<description>max records to return</description>
+				<required>true</required>
+				<schema>
+					<type>integer</type>
+					<format>int32</format>
+				</schema>
+			</limitParam>
+		</parameters>
+		<responses>
+			<NotFound>
+				<description>Entity not found.</description>
+			</NotFound>
+			<IllegalInput>
+				<description>Illegal input for operation.</description>
+			</IllegalInput>
+			<GeneralError>
+				<description>General Error</description>
+				<content>
+					<application/json>
+						<schema><$ref>#/components/schemas/GeneralError
+						</$ref>
+					</schema>
+				</application/json>
+			</content>
+		</GeneralError>
+	</responses>
+	<securitySchemes>
+		<api_key>
+			<type>apiKey</type>
+			<name>api_key</name>
+			<in>header</in>
+		</api_key>
+		<petstore_auth>
+			<type>oauth2</type>
+			<flows>
+				<implicit>
+					<authorizationUrl>https://example.org/api/oauth/dialog</authorizationUrl>
+					<scopes>
+						<write:pets>modify pets in your account</write:pets>
+						<read:pets>read your pets</read:pets>
+					</scopes>
+				</implicit>
+			</flows>
+		</petstore_auth>
+	</securitySchemes>
+</components>undefined</root>

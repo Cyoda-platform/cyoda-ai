@@ -1,0 +1,297 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Ice Cream Shop Management API version 095011e0-8faf-4a52-b17d-c3e7e63c70ed",
+      "version": "095011e0-8faf-4a52-b17d-c3e7e63c70ed",
+      "description": "API for managing ice cream flavors, orders, customers, and staff at an ice cream shop."
+    },
+    "servers": [
+      {
+        "url": "http://api.icecreamshop.example.com/v1"
+      }
+    ],
+    "paths": {
+      "/flavors": {
+        "get": {
+          "summary": "Retrieve a list of ice cream flavors",
+          "responses": {
+            "200": {
+              "description": "A list of ice cream flavors",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "flavorId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "d1b2e3f4-4567-4c89-abcd-ef67890abcde"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Chocolate"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Rich chocolate ice cream made with real cocoa."
+                        },
+                        "price": {
+                          "type": "number",
+                          "format": "float",
+                          "example": 3.99
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new ice cream flavor",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Vanilla"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Classic vanilla ice cream made with Madagascar vanilla beans."
+                    },
+                    "price": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 3.49
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Ice cream flavor created successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Flavor added successfully."
+                        },
+                        "flavorId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "b2f3c6d7-6543-4c21-abc1-abcdef123456"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/orders": {
+        "get": {
+          "summary": "Retrieve a list of orders",
+          "responses": {
+            "200": {
+              "description": "A list of ice cream orders",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "orderId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "e3b1c5f6-def7-4b89-abcd-123456789abc"
+                        },
+                        "customerName": {
+                          "type": "string",
+                          "example": "Alice Martin"
+                        },
+                        "flavor": {
+                          "type": "string",
+                          "example": "Chocolate"
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "example": 2
+                        },
+                        "totalPrice": {
+                          "type": "number",
+                          "format": "float",
+                          "example": 7.98
+                        },
+                        "orderDate": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2024-08-21T15:30:00Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new order",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "customerName": {
+                      "type": "string",
+                      "example": "Bob Williams"
+                    },
+                    "flavor": {
+                      "type": "string",
+                      "example": "Vanilla"
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Order created successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Order placed successfully."
+                        },
+                        "orderId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "f1a2b3c4-de5f-6789-abcd-ef1234567890"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/customers": {
+        "get": {
+          "summary": "Retrieve a list of customers",
+          "responses": {
+            "200": {
+              "description": "A list of customers",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customerId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "g1234567-89ab-cdef-0123-456789abcdef"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Charlie Brown"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email",
+                          "example": "charlie.brown@example.com"
+                        },
+                        "phone": {
+                          "type": "string",
+                          "example": "+1-555-0033"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new customer",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Diana Prince"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "example": "diana.prince@example.com"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "+1-555-0044"
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Customer added successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Customer added successfully."
+                        },
+                        "customerId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "h2345678-90ab-cdef-0123-456789abcdef"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

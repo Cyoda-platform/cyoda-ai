@@ -1,0 +1,48 @@
+Instruction how to generate workflow version 6a5b781e-0f75-4239-9a3c-50c3d3a48047
+
+Objective version 6a5b781e-0f75-4239-9a3c-50c3d3a48047:
+Please transform the following diagram or image into a structured workflow using a typical finite-state machine (FSM) model. The FSM consists of states and transitions between them, which can be represented as a directed graph where states are nodes, and transitions are edges.
+Each transition may have processes or criterias. You need to add them if the user explicitly specifies them either in text or in image, or when it is logically required, e.g. when there are several transitions coming from a single state.
+Each state, except for the initial state (None), should be reachable from at least one transition, ensuring that there are no isolated (disconnected) states in the workflow. Additionally, each transition must have both a start state and an end state.
+
+Requirements version 6a5b781e-0f75-4239-9a3c-50c3d3a48047:
+Begin with an initial state labeled "None", which serves as the origin point.
+Define transitions between states, with each state being an endpoint (i.e., target) of at least one transition.
+Ensure that all states (except "None") serve as the destination for at least one transition to guarantee the graph remains fully connected.
+JSON Structure for the Workflow:
+json
+{
+  "name": "specify_name_that describes_the_workflow",
+  "class_name": "specify_the_class_name_from_the_user_input",
+  "transitions": [
+    {
+      "name": "spark_happy_message",
+      "description": "Spark the happy message",
+      "start_state": "None",
+      "start_state_description": "Initial state",
+      "end_state": "Happy_message_sparked",
+      "end_state_description": "A happy message has been sparked",
+      "criteria": {
+        "name": "specify_criteria_if_necessary",
+        "description": ""
+      },
+      "process": {
+        "name":"specify_attached_process_if_necessary",
+        "description": "specify_attached_process_if_necessary"
+      }
+    },
+    {
+      "name": "send_happy_message",
+      "description": "Send the happy message",
+      "start_state": "Happy_message_sparked",
+      "start_state_description": "A happy message has been sparked",
+      "end_state": "Message_sent",
+      "end_state_description": "The happy message has been sent"
+    },
+    ...
+  ]
+}
+Graph Theory Concepts Applied version 6a5b781e-0f75-4239-9a3c-50c3d3a48047:
+Nodes (States): These represent various points in the workflow, and each node can be described in terms of its role (e.g., start state, end state).
+Edges (Transitions): These directed edges indicate the flow from one state to another. Each edge must have a clear starting point (the current state) and an endpoint (the resulting state).
+Connectivity: Each state, except the initial one, must have at least one incoming transition. This ensures that the workflow remains connected, akin to ensuring that the directed graph has no isolated vertices.

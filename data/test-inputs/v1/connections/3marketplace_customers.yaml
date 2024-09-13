@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  title: Marketplace API version c5dd85b5-29a5-4ac7-9cca-eee46e266c8d
+  version: c5dd85b5-29a5-4ac7-9cca-eee46e266c8d
+  description: API for managing customers and their orders in a marketplace.
+
+servers:
+  - url: http://api.example.com/v1
+
+paths:
+  /customers:
+    get:
+      summary: Get a list of customers
+      responses:
+        '200':
+          description: A list of customers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    customerId:
+                      type: string
+                      format: uuid
+                      example: "fbc2469e-3edc-4b56-90c3-1a2f4711b0ae"
+                    name:
+                      type: string
+                      example: "Alice Johnson"
+                    email:
+                      type: string
+                      format: email
+                      example: "alice.johnson@example.com"
+                    address:
+                      type: string
+                      example: "789 Customer Lane, Shopper City, SC 45678"
+
+  /customers/{customerId}:
+    get:
+      summary: Get details of a specific customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Unique identifier for the customer.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customerId:
+                    type: string
+                    format: uuid
+                    example: "fbc2469e-3edc-4b56-90c3-1a2f4711b0ae"
+                  name:
+                    type: string
+                    example: "Alice Johnson"
+                  email:
+                    type: string
+                    format: email
+                    example: "alice.johnson@example.com"
+                  address:
+                    type: string
+                    example: "789 Customer Lane, Shopper City, SC 45678"
+
+  /customers:
+    post:
+      summary: Add a new customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Bob Smith"
+                email:
+                  type: string
+                  format: email
+                  example: "bob.smith@example.com"
+                address:
+                  type: string
+                  example: "123 Buyer Ave, Marketplace, MK 12345"
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Customer created successfully."
+                  customerId:
+                    type: string
+                    format: uuid
+                    example: "dbe3c1f0-8b69-478c-bda7-0dbafc1a5df8"
+
+  /customers/{customerId}/orders:
+    get:
+      summary: Get orders for a specific customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Unique identifier for the customer.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of customer's orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    orderId:
+                      type: string
+                      format: uuid
+                      example: "c5d8bb5e-9107-4845-8cff-e867e84a9106"
+                    product:
+                      type: string
+                      example: "Organic Avocado"
+                    quantity:
+                      type: integer
+                      example: 3
+                    orderDate:
+                      type: string
+                      format: date
+                      example: "2024-08-15"
+
+  /customers/{customerId}/orders/{orderId}:
+    delete:
+      summary: Delete an order for a specific customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          description: Unique identifier for the customer.
+          schema:
+            type: string
+        - name: orderId
+          in: path
+          required: true
+          description: Unique identifier for the order.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Order deleted successfully
+        '404':
+          description: Customer or order not found

@@ -1,0 +1,106 @@
+{
+  "name": "Connection_Workflow",
+  "class_name": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+  "transitions": [
+    {
+      "name": "init_context",
+      "description": "Initialize the context",
+      "start_state": "None",
+      "start_state_description": "Initial state",
+      "end_state": "Context Initialized",
+      "end_state_description": "The context has been initialized",
+      "process": {
+        "name": "init_context()",
+        "description": "Runs the context initialization function"
+      }
+    },
+    {
+      "name": "generate_connection",
+      "description": "Generate a connection",
+      "start_state": "Context Initialized",
+      "start_state_description": "The context has been initialized",
+      "end_state": "Connection Generated",
+      "end_state_description": "A connection has been generated",
+      "process": {
+        "name": "gen_connection()",
+        "description": "Generates the required connection"
+      }
+    },
+    {
+      "name": "validate_connection",
+      "description": "Validate the generated connection",
+      "start_state": "Connection Generated",
+      "start_state_description": "A connection has been generated",
+      "end_state": "Connection Validated",
+      "end_state_description": "The connection has been validated",
+      "process": {
+        "name": "validate_connection()",
+        "description": "Checks if the generated connection is valid"
+      },
+      "criteria": {
+        "name": "validation_status",
+        "description": "The connection must be valid"
+      }
+    },
+    {
+      "name": "retry_validation",
+      "description": "Retry connection validation if invalid",
+      "start_state": "Connection Validated",
+      "start_state_description": "The connection is not valid",
+      "end_state": "Connection Generated",
+      "end_state_description": "Retry generating the connection",
+      "process": {
+        "name": "retry()",
+        "description": "Attempts to retry validation"
+      },
+      "criteria": {
+        "name": "retry_attempts",
+        "description": "Retries validation up to a set limit if validation fails"
+      }
+    },
+    {
+      "name": "connection_ready",
+      "description": "Connection is ready after validation",
+      "start_state": "Connection Validated",
+      "start_state_description": "The connection has been validated",
+      "end_state": "Connection Ready",
+      "end_state_description": "The connection is now ready"
+    },
+    {
+      "name": "generate_endpoint",
+      "description": "Generate an endpoint",
+      "start_state": "Connection Ready",
+      "start_state_description": "The connection is ready",
+      "end_state": "Endpoint Generated",
+      "end_state_description": "An endpoint has been generated",
+      "process": {
+        "name": "generate_endpoint()",
+        "description": "Generates endpoints based on the ready connection"
+      }
+    },
+    {
+      "name": "validate_endpoints",
+      "description": "Validate the generated endpoints",
+      "start_state": "Endpoint Generated",
+      "start_state_description": "An endpoint has been generated",
+      "end_state": "Endpoints Validated",
+      "end_state_description": "The endpoints have been validated",
+      "process": {
+        "name": "validate_endpoints()",
+        "description": "Validates the endpoints"
+      }
+    },
+    {
+      "name": "notify_ready",
+      "description": "Notify that the system is ready",
+      "start_state": "Endpoints Validated",
+      "start_state_description": "The endpoints have been validated",
+      "end_state": "Ready",
+      "end_state_description": "The system is ready",
+      "process": {
+        "name": "notify_ready()",
+        "description": "Notifies that the system is ready for use"
+      }
+    }
+  ]
+}

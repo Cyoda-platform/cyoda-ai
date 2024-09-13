@@ -1,0 +1,151 @@
+#Connections
+This is instruction on how to write/produce/generate HttpEndpointDto.java object based on the API.
+
+Connection json objects are a json representation of external APIs.
+
+APIs can be submitted in Open API format or in arbitary format. Do your best to analyse the requirement.
+Let's take an examle.
+
+## Example 1: Connection Endpoint with Request Parameters
+
+### Input API Description
+```text
+List tenders
+List all tenders published for Hungary.
+
+GET https://tenders.guru/api/hu/tenders
+Request Parameters
+Param|	Type|	Description|	Default Value
+page|	Integer|	Use to paginate results. Each page contains 100 results.|	1
+```
+
+### Expected JSON Output
+Let's construct HttpEndpointDto.java object based on the API:
+```json
+{
+  "operation": "listTenders",
+  "type": "Use to paginate results. Each page contains 100 results.",
+  "query": "/api/hu/tenders",
+  "method": "GET",
+  "parameters": [
+    {
+      "name": "page",
+      "defaultValue": "1",
+      "secure": false,
+      "required": true,
+      "template": false,
+      "templateValue": "",
+      "excludeFromCacheKey": false,
+      "type": "REQUEST_PARAM",
+      "optionValues": []
+    }
+  ],
+  "bodyTemplate": "",
+  "connectionTimeout": 0,
+  "readWriteTimeout": 0
+}
+```
+
+## Example 2: Connection Endpoint with Path variables
+Let's construct HttpEndpointDto.java object based on the API:
+### Input API Description
+
+Get tender details
+Get extended set of data for a tender.
+
+GET https://tenders.guru/api/hu/tenders/{tender_id}
+Request Parameters
+Param|	Type|	Description|	Default Value
+tender_id|	Integer|	ID of a tender.|	
+
+### Expected JSON Output
+
+```json
+{
+  "operation": "getTenderDetails",
+  "type": "Get extended set of data for a tender.",
+  "query": "/api/hu/tenders/{tender_id}",
+  "method": "GET",
+  "parameters": [
+    {
+      "name": "tender_id",
+      "defaultValue": "",
+      "secure": false,
+      "required": true,
+      "template": false,
+      "templateValue": "",
+      "excludeFromCacheKey": false,
+      "type": "PATH_VARIABLE",
+      "optionValues": []
+    }
+  ],
+  "bodyTemplate": "",
+  "connectionTimeout": 0,
+  "readWriteTimeout": 0
+}
+```
+## Example 3: Connection Endpoint with Request body variables
+Let's construct HttpEndpointDto.java object based on the API:
+### Input API Description
+
+Post tender key and value
+
+POST https://tenders.guru/api/hu/tenders/
+Request Parameters
+Param|	Type|	Description|	Default Value
+key|	Integer|	ID of a tender.|	
+value|	Integer|	value of a tender.|	
+
+
+### Expected JSON Output
+
+```json
+{
+  "operation": "getTenderDetails",
+  "type": "Get extended set of data for a tender.",
+  "query": "/api/hu/tenders/",
+  "method": "POST",
+  "parameters": [
+    {
+      "name": "key",
+      "defaultValue": "",
+      "secure": false,
+      "required": true,
+      "template": false,
+      "templateValue": "",
+      "excludeFromCacheKey": false,
+      "type": "REQUEST_BODY_VARIABLE",
+      "optionValues": []
+    },
+       {
+      "name": "value",
+      "defaultValue": "",
+      "secure": false,
+      "required": true,
+      "template": false,
+      "templateValue": "",
+      "excludeFromCacheKey": false,
+      "type": "REQUEST_BODY_VARIABLE",
+      "optionValues": []
+    }
+  ],
+  "bodyTemplate": "",
+  "connectionTimeout": 0,
+  "readWriteTimeout": 0
+}
+```
+## Parameter Definitions
+These are descriptions for HttpParameterDto.ParameterType
+
+- **name**: The name of the parameter.
+- **secure**: Indicates if the parameter should be treated as secure (e.g., a password).
+- **template**: Indicates if the value of the parameter will be generated later with a template function. Default is `false`.
+- **templateValue**: The Velocity function that generates the value for the parameter. Default is an empty string.
+- **excludeFromCacheKey**: Indicates if the parameter should be excluded from the cache key. Default is `false`.
+- **type**: One of the following enum values:
+  - `PATH_VARIABLE`: Represents a path variable parameter, part of the URI template.
+  - `REQUEST_BODY_VARIABLE`: Represents a request body parameter, typically used for POST or PUT requests.
+  - `REQUEST_PARAM`: Represents a request parameter, a query parameter extracted from the request URI.
+  - `HEADER_PARAM`: Represents a header parameter, a value extracted from the HTTP headers of the request.
+  - `TEMPLATE_VARIABLE`: Represents a template variable, used within a template engine for rendering purposes.
+  - `CUSTOM_PARAM`: Represents a custom parameter, a utility parameter not directly related to the request processing.

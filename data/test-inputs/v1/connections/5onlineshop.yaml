@@ -1,0 +1,167 @@
+openapi: 3.0.0
+info:
+  title: Online Shop API version 0961f9e9-6fd2-4a58-aede-7db3715c0b0e
+  version: 0961f9e9-6fd2-4a58-aede-7db3715c0b0e
+  description: API for managing sales information in an online shop.
+
+servers:
+  - url: http://api.example.com/v1
+
+paths:
+  /sales:
+    get:
+      summary: Get a list of sales records
+      responses:
+        '200':
+          description: A list of sales records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    saleId:
+                      type: string
+                      format: uuid
+                      example: "e99f4c67-8a63-41b3-9259-81527245cd95"
+                    customerId:
+                      type: string
+                      format: uuid
+                      example: "c1f1e715-7937-4869-9c87-c055c3f7c61d"
+                    productName:
+                      type: string
+                      example: "Wireless Headphones"
+                    quantity:
+                      type: integer
+                      example: 3
+                    totalPrice:
+                      type: number
+                      format: float
+                      example: 89.97
+                    saleDate:
+                      type: string
+                      format: date-time
+                      example: "2024-08-21T15:30:00Z"
+
+    post:
+      summary: Add a new sale record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: string
+                  format: uuid
+                  example: "c1f1e715-7937-4869-9c87-c055c3f7c61d"
+                productName:
+                  type: string
+                  example: "Smartphone"
+                quantity:
+                  type: integer
+                  example: 1
+                totalPrice:
+                  type: number
+                  format: float
+                  example: 699.99
+      responses:
+        '201':
+          description: Sale created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sale recorded successfully."
+                  saleId:
+                    type: string
+                    format: uuid
+                    example: "e99f4c67-8a63-41b3-9259-81527245cd95"
+
+  /sales/{saleId}:
+    get:
+      summary: Get details of a specific sale
+      parameters:
+        - name: saleId
+          in: path
+          required: true
+          description: Unique identifier for the sale.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sale details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  saleId:
+                    type: string
+                    format: uuid
+                    example: "e99f4c67-8a63-41b3-9259-81527245cd95"
+                  customerId:
+                    type: string
+                    format: uuid
+                    example: "c1f1e715-7937-4869-9c87-c055c3f7c61d"
+                  productName:
+                    type: string
+                    example: "Wireless Headphones"
+                  quantity:
+                    type: integer
+                    example: 3
+                  totalPrice:
+                    type: number
+                    format: float
+                    example: 89.97
+                  saleDate:
+                    type: string
+                    format: date-time
+                    example: "2024-08-21T15:30:00Z"
+
+    put:
+      summary: Update an existing sale record
+      parameters:
+        - name: saleId
+          in: path
+          required: true
+          description: Unique identifier for the sale.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: string
+                  format: uuid
+                  example: "c1f1e715-7937-4869-9c87-c055c3f7c61d"
+                productName:
+                  type: string
+                  example: "Bluetooth Speaker"
+                quantity:
+                  type: integer
+                  example: 2
+                totalPrice:
+                  type: number
+                  format: float
+                  example: 120.00
+      responses:
+        '200':
+          description: Sale updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Sale updated successfully."

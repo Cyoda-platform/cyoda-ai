@@ -1,0 +1,89 @@
+{
+    "tenderIdentifier": "TND-2024-101",
+    "projectTitle": "Construction of New High School",
+    "categories": [
+      "Construction",
+      "Education",
+      "Public Infrastructure"
+    ],
+    "mainContact": {
+      "name": "Emily Watson",
+      "email": "emily.watson@educationdepartment.gov"
+    },
+    "automatedProcess": true,
+    "tenderCreatedOn": "2024-05-12T09:45:00Z",
+    "proposalDeadline": "2024-09-01T17:00:00Z",
+    "durationInDays": 112,
+    "projectSector": "Education",
+    "totalBudget": 1500000,
+    "financingAgency": "Department of Education",
+    "updates": {
+      "notices": [
+        {
+          "noticeTitle": "Pre-Bid Conference Announcement",
+          "noticeId": "NTC-701",
+          "noticeReference": "NRF-8899",
+          "noticeIssuedOn": "2024-06-01T10:00:00Z",
+          "noticeType": "Conference",
+          "providerId": "PRV-234",
+          "url": "https://example.com/tenders/notice-701",
+          "noticeDetails": "A pre-bid conference will take place on June 15, 2024."
+        },
+        {
+          "noticeTitle": "Proposal Submission Period Open",
+          "noticeId": "NTC-702",
+          "noticeReference": "NRF-8900",
+          "noticeIssuedOn": "2024-06-20T14:30:00Z",
+          "noticeType": "Call for Proposals",
+          "providerId": "PRV-235",
+          "url": "https://example.com/tenders/notice-702",
+          "noticeDetails": "The window for proposal submissions is now open."
+        }
+      ],
+      "financialOverview": {
+        "estimatedCost": 2000000,
+        "contingencyPercentage": 10,
+        "finalCostEstimate": 2200000
+      },
+      "evaluationCriteria": {
+        "criteriaList": [
+          {
+            "criterion": "Experience",
+            "weight": 30
+          },
+          {
+            "criterion": "Cost",
+            "weight": 50
+          },
+          {
+            "criterion": "Quality",
+            "weight": 20
+          }
+        ]
+      }
+    },
+    "agencyNotices": {
+      "Department of Education": [
+        {
+          "noticeTitle": "Pre-Bid Conference Announcement",
+          "noticeId": "NTC-701",
+          "noticeReference": "NRF-8899",
+          "noticeIssuedOn": "2024-06-01T10:00:00Z",
+          "noticeType": "Conference",
+          "providerId": "PRV-234",
+          "url": "https://example.com/tenders/notice-701",
+          "noticeDetails": "A pre-bid conference will take place on June 15, 2024."
+        },
+        {
+          "noticeTitle": "Proposal Submission Period Open",
+          "noticeId": "NTC-702",
+          "noticeReference": "NRF-8900",
+          "noticeIssuedOn": "2024-06-20T14:30:00Z",
+          "noticeType": "Call for Proposals",
+          "providerId": "PRV-235",
+          "url": "https://example.com/tenders/notice-702",
+          "noticeDetails": "The window for proposal submissions is now open."
+        }
+      ]
+    }
+  }

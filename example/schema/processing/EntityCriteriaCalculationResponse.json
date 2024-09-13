@@ -1,0 +1,27 @@
+{
+  "$id": "https://cyoda.com/cloud/event/processing/EntityCriteriaCalculationResponse.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EntityCriteriaCalculationResponse",
+  "type": "object",
+  "extends": {
+    "$ref": "../common/BaseEvent.json"
+  },
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "ID of the original criteria calculation request."
+    },
+    "entityId": {
+      "type": "string",
+      "description": "Entity ID."
+    },
+    "matches": {
+      "type": "boolean",
+      "description": "Criteria check result."
+    }
+  },
+  "required": [
+    "requestId",
+    "entityId"
+  ]
+}

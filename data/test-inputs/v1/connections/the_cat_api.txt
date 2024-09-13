@@ -1,0 +1,56 @@
+#TheCatApi
+##Voting on Images (Up or Down)
+You can allow your Users to Vote on any Image, and give a score between 1 and 10.
+
+Example Request to Create an 'Up' Vote
+
+POST https://api.thecatapi.com/v1/votes
+
+{
+    "image_id":"id of the image",
+    "sub_id":"optional unique id of your user",
+    "value": 1
+}
+Example Request to Create an 'Down' Vote
+
+POST https://api.thecatapi.com/v1/votes
+
+{
+    "image_id":"id of the image",
+    "sub_id":"optional unique id of your user",
+    "value": -1
+}
+Getting Votes
+Retrieve any created Vote via GET https://api.thecatapi.com/v1/votes . This can be filtered by sub_id, and paginated using page and limit Query string parameters.
+
+Optional query parameters:
+
+name	values	description
+attach_image	1 or 0	Add the Image matching the image_id to the response
+sub_id	string	Filter favourites to those with matching sub_id
+page	0-n	paginate through the favourites
+limit	1-100	number of favourites to return at once
+order	ASC, DESC	order to return by created_at. Default ASC
+Example Request to Get the Latest 10 Votes
+
+GET https://api.thecatapi.com/v1/votes?limit=10&order=DESC
+
+Example Response
+
+[{
+"id": 587093,
+"image_id": "2bbSbBC-v",
+"sub_id": "demo-474a90",
+"created_at": "2022-07-31T09:11:45.000Z",
+"value": 1,
+"country_code": "JP",
+"image": {
+    "id": "2bbSbBC-v",
+    "url": "https://cdn2.thecatapi.com/images/2bbSbBC-v.jpg"
+}
+}]
+Example Request to Get the Votes by 'sub_id' (your User)
+
+GET https://api.thecatapi.com/v1/votes?sub_id=user-123
+
+

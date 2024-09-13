@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Task List API version bd67cf1b-7dc1-4941-9c8e-269f25796e15
+  version: bd67cf1b-7dc1-4941-9c8e-269f25796e15
+  description: API for managing a simple task list.
+
+servers:
+  - url: http://api.tasklist.example.com/v1
+
+paths:
+  /tasks:
+    get:
+      summary: Retrieve a list of tasks
+      responses:
+        '200':
+          description: A list of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    taskId:
+                      type: string
+                      format: uuid
+                      example: "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                    title:
+                      type: string
+                      example: "Buy groceries"
+                    completed:
+                      type: boolean
+                      example: false
+
+    post:
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Finish homework"
+                completed:
+                  type: boolean
+                  example: false
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Task created successfully."
+                  taskId:
+                    type: string
+                    format: uuid
+                    example: "b1234567-89ab-cdef-0123-456789abcdef"
