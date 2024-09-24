@@ -1,0 +1,8 @@
+{
+    "key": "exampleKey",
+    "value": "exampleValue",
+    "meta": {"type":"string"},
+    "expiration": 1695254400000, 
+    "lastModified": 1695250800000,
+    "isDirty": true
+}
