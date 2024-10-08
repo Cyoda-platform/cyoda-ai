@@ -1,0 +1,220 @@
+openapi: 3.0.3
+info:
+  title: OpenAI API Version e5299bdc-5c24-11ef-ac83-40c2ba0ac9eb
+  description: API for interacting with OpenAI models
+  version: 1.0.0
+  contact:
+    name: OpenAI Support
+    url: https://support.openai.com
+    email: support@openai.com
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI API Base URL
+
+paths:
+  /completions:
+    post:
+      summary: Create a completion
+      description: Generate a text completion based on a given prompt.
+      operationId: createCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  example: text-davinci-003
+                prompt:
+                  type: string
+                  example: "Once upon a time..."
+                max_tokens:
+                  type: integer
+                  example: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  object:
+                    type: string
+                    example: "text_completion"
+                  created:
+                    type: integer
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                        index:
+                          type: integer
+                        finish_reason:
+                          type: string
+
+  /chat/completions:
+    post:
+      summary: Create a chat completion
+      description: Generate a response in a chat-based format.
+      operationId: createChatCompletion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  example: "gpt-3.5-turbo"
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [system, user, assistant]
+                        example: user
+                      content:
+                        type: string
+                        example: "Tell me a joke."
+                max_tokens:
+                  type: integer
+                  example: 50
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  object:
+                    type: string
+                    example: "chat_completion"
+                  created:
+                    type: integer
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: object
+                          properties:
+                            role:
+                              type: string
+                            content:
+                              type: string
+                        finish_reason:
+                          type: string
+
+  /images/generations:
+    post:
+      summary: Generate an image
+      description: Generate an image based on a text prompt.
+      operationId: createImage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  example: "A futuristic cityscape"
+                n:
+                  type: integer
+                  example: 1
+                size:
+                  type: string
+                  example: "1024x1024"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+
+  /models:
+    get:
+      summary: List available models
+      description: Retrieve a list of available models for use.
+      operationId: listModels
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: "list"
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        object:
+                          type: string
+                          example: "model"
+                        created:
+                          type: integer
+                        owned_by:
+                          type: string
+
+  /models/{model_id}:
+    get:
+      summary: Retrieve model details
+      description: Get details about a specific model.
+      operationId: retrieveModel
+      parameters:
+        - name: model_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  object:
+                    type: string
+                    example: "model"
+                  created:
+                    type: integer
+                  owned_by:
+                    type: string

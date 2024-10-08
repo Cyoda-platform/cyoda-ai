@@ -1,0 +1,48 @@
+Use this template to generate com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto endpoint config
+
+!!!Change only values inside ${}!!!
+All parameters should be specified in this format ${}
+{
+    "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+    "consumerConfig": {
+        "consumerType": "COBI_MAPPER",
+        "configId": "7e93e7d0-58d7-11ef-82bb-1e5f513defed" #leave this id
+    },
+    "chainings": [],
+    "operation": "${Write operation (endpoint) name here}",
+    "cache": {
+        "parameters": [],
+        "ttl": 0
+    },
+    "connectionIndex": 0,
+    "type": "test",
+    "query": "${Write endpoint path here, use $ for path parameters like \"${parameter}\"\". Example \"/test/${parameter}\". Example: /get-companies. Support placeholders: ${name} }",
+    "method": "${GET, POST_BODY. (Use POST_BODY instead of POST, nothing else is supported), DELETE, PUT}",
+    Carefully analyze the doc and fill in the parameters
+    "parameters": [
+        ${Add parameters only if applicable}
+        {
+            "name": "${Write parameter name}",
+            "defaultValue": "${Write parameter defaultValue if any}",
+            "secure": ${Write true or false},
+            "required": ${Write true or false},
+            "template": false,
+            "templateValue": "",
+            "excludeFromCacheKey": false,
+            "type": "${Write parameter name, choosing from enum: 
+            PATH_VARIABLE, (corresponds to GET type = path)
+            REQUEST_PARAM, (corresponds to GET type = query)
+            HEADER_PARAM, (corresponds to type = header)
+            REQUEST_BODY_VARIABLE (corresponds to any parameter specifies for POST_BODY request in the bodyTemplate. The format: ${parameter}. Use quotes for strings, don't use for other data types. )}"
+            "optionValues": []
+        }
+        ],
+    "bodyTemplate": "${This is required for POST_BODY requests. Specify any relevant parameters in parameters section as REQUEST_BODY_VARIABLE. Required for POST_BODY. Example format: \"{\"key\": \"${parameter}\", \"key\": \"${parameter}\"}\" "}",
+    "connectionTimeout": 300,
+    "readWriteTimeout": 300
+}
+
+
+
+This is schema that will be used for result validation:
+{ "$schema": "http://json-schema.org/draft-07/schema#", "type": "object", "properties": { "@bean": { "type": "string", "enum": ["com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto"] }, "consumerConfig": { "type": "object", "properties": { "consumerType": { "type": "string", "enum": ["COBI_MAPPER"] }, "configId": { "type": "string", "format": "uuid" } }, "required": ["consumerType", "configId"], "additionalProperties": false }, "chainings": { "type": "array", "items": {} }, "operation": { "type": "string" }, "cache": { "type": "object", "properties": { "parameters": { "type": "array", "items": {} }, "ttl": { "type": "integer", "minimum": 0 } }, "required": ["parameters", "ttl"], "additionalProperties": false }, "connectionIndex": { "type": "integer" }, "type": { "type": "string" }, "query": { "type": "string" }, "method": { "type": "string", "enum": ["GET", "POST_FORM", "POST_BODY"] }, "parameters": { "type": "array", "items": { "type": "object", "properties": { "name": { "type": "string" }, "defaultValue": { "type": "string" }, "secure": { "type": "boolean" }, "required": { "type": "boolean" }, "template": { "type": "boolean", "enum": [false] }, "templateValue": { "type": "string", "enum": [""] }, "excludeFromCacheKey": { "type": "boolean", "enum": [false] }, "type": { "type": "string", "enum": [ "PATH_VARIABLE", "REQUEST_BODY_VARIABLE", "REQUEST_PARAM", "HEADER_PARAM", "TEMPLATE_VARIABLE", "CUSTOM_PARAM" ] }, "optionValues": { "type": "array", "items": {} } }, "required": [ "name", "defaultValue", "secure", "required", "template", "templateValue", "excludeFromCacheKey", "type", "optionValues" ], "additionalProperties": false } }, "bodyTemplate": { "type": "string" }, "connectionTimeout": { "type": "integer", "minimum": 0 }, "readWriteTimeout": { "type": "integer", "minimum": 0 } }, "required": [ "@bean", "consumerConfig", "chainings", "operation", "cache", "connectionIndex", "type", "query", "method", "parameters", "bodyTemplate", "connectionTimeout", "readWriteTimeout" ], "additionalProperties": false }

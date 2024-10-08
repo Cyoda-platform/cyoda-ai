@@ -1,0 +1,15 @@
+{
+  "technical_id": "6d0b0836-7a20-11b2-9178-ae771997e365",
+  "key": "c-ba17f7d0-7bfd-11ef-9178-ae771997e365",
+  "date": "2020-07-09",
+  "timestamp": 1727367690274000,
+  "expiration": 1727367690274000,
+  "is_dirty": false,
+  "messages": [
+    {
+      "question": "str",
+      "answer": "str",
+      "return_object": "random"
+    }
+  ]
+}

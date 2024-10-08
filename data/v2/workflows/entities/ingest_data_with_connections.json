@@ -1,0 +1,15 @@
+{
+    "chat_id": "",
+    "workflow_name": "",
+    "schema_data_config_prompt": "",
+    "data_ingestion_config_prompt": "",
+    "entityName": "",
+    "modelVersion": "",
+    "dataFormat": "",
+    "converter": "",
+    "entityType": "",
+    "schema_data_ds_id": "",
+    "schema_data_operation": "",  
+    "ingestion_data_ds_id": "",
+    "ingestion_data_operation": ""
+}

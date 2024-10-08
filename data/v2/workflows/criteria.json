@@ -1,0 +1,12 @@
+{
+    "@bean": "com.cyoda.core.model.stateMachine.dto.CriteriaDto",
+    "name": "test_v2",
+    "description": "",
+    "condition": {
+        "@bean": "com.cyoda.core.conditions.GroupCondition",
+        "operator": "AND",
+        "conditions": []
+    },
+    "aliasDefs": [],
+    "entityClassName": "com.cyoda.tdb.model.treenode.TreeNodeEntity"
+}

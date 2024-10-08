@@ -1,0 +1,130 @@
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+Here's an example of how to map an input to an entity with a Javascript Nashorn script:
+
+Example input:
+{
+  "name": "Construction of New Office Building",
+  "types": [
+    "Construction",
+    "Development"
+  ],
+  "contactUser": "John Doe",
+  "systemAccount": true,
+  "date": "2024-03-28",
+  "deadlineDate": "2024-04-30",
+  "deadlineLengthDays": 33,
+  "category": "Construction Services",
+  "awardedValue": 185000,
+  "purchaser": "ABC Corporation",
+  "notices": [
+    {
+      "name": "Pre-Bid Conference",
+      "id": "NW20240328002",
+      "sid": "S003",
+      "date": "2024-03-28",
+      "type": "Conference",
+      "srcId": "SRC003",
+      "srcUrl": "https://example.com/notice/NW20240328002",
+      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+    },
+    {
+      "name": "Pre-Bid Conference",
+      "id": "NW20240328002",
+      "sid": "S003",
+      "date": "2024-03-28",
+      "type": "Conference",
+      "srcId": "SRC003",
+      "srcUrl": "https://example.com/notice/NW20240328002",
+      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+    }
+  ]
+}
+
+Example entity net.cyoda.saas.model.TenderEntity:
+{
+    "net.cyoda.saas.model.TenderEntity": {
+      "name": "string",
+      "types": [
+        "string"
+      ],
+      "contactUser": "string",
+      "systemAccount": true,
+      "date": "string",
+      "deadlineDate": "string",
+      "deadlineLengthDays": 0,
+      "category": "string",
+      "awardedValue": 0.0,
+      "purchaser": "string",
+      "notices": [
+        {
+          "name": "string",
+          "id": "string",
+          "sid": "string",
+          "date": "string",
+          "type": "string",
+          "srcId": "string",
+          "srcUrl": "string",
+          "data": "string"
+        }
+      ]
+    }
+  },
+
+  {
+    "net.cyoda.saas.model.Notice": {
+        "name": "string",
+        "id": "string",
+        "sid": "string",
+        "date": "string",
+        "type": "string",
+        "srcId": "string",
+        "srcUrl": "string",
+        "data": "string"
+    }
+}
+
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+
+Example object initialization. Always initialize Java objects similar way or according to the docs:
+package net.cyoda.saas.model is the same for all classes you do not know.
+
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+var notice = new Notice();
+```
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var entity = Java.type('net.cyoda.saas.model.TenderEntity');
+var entity = new TenderEntity();
+```
+
+Do NOT initialize target entity (net.cyoda.saas.model.TenderEntity in this case)
+
+So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
+Expected code output:
+```Javascript Nashorn
+//Do NOT initialize entity (net.cyoda.saas.model.TenderEntity in this case)
+entity.setDate(input.date);
+entity.setDeadlineDate(input.deadlineDate);
+entity.setDeadlineLengthDays(input.deadlineLengthDays);
+entity.setName(input.title);
+entity.setCategory(input.category);
+entity.setAwardedValue(input.awardedValue);
+
+var ArrayList = Java.type("java.util.ArrayList");
+var notices = new ArrayList();
+//this is how you should initialize objects with javascript
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+
+// Add notices from input
+for (var i = 0; i < input.notices.length; i++) {
+    var notice = new Notice();
+    notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);
+    notice.setDate(input.notices[i].date != null ? input.notices[i].date : "00-00-00");
+    notice.setType(input.notices[i].type != null ? input.notices[i].type : "Unknown type");
+    notices.add(notice);
+}
+
+entity.setNotices(notices);
+```

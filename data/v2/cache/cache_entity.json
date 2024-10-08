@@ -1,8 +1,10 @@
 {
-    "key": "exampleKey",
-    "value": "exampleValue",
-    "meta": {"type":"string"},
-    "expiration": 1695254400000, 
-    "lastModified": 1695250800000,
-    "isDirty": true
+    "technical_id": "6d0b0836-7a20-11b2-9178-ae771997e365",
+    "key": "c-ba17f7d0-7bfd-11ef-9178-ae771997e365",
+    "value": "prizes",
+    "meta": {},
+    "ttl": 31536000,
+    "expiration": 1727367690274000,
+    "last_modified": 1727367690274,
+    "is_dirty": false
 }

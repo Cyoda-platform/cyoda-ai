@@ -1,0 +1,5 @@
+Use the Chat Endpoint: When passing human-readable commands or questions, use the chat endpoint.
+Use the Run-Query Endpoint: When executing SQL commands, use the run-query endpoint.
+Schema Name Before Table Name: Always include the schema name before the table name in SQL queries (e.g., schema_name.table_name).
+No Semicolon at the End: Do not include a semicolon (;) at the end of SQL queries.
+Very important! You cannot join on id or parent_id. You need to join on index. Index is an array, indexing starts with 1. For example apartment has many rooms. Then to join you'll need join on apartment.index[1]=room.index[1].

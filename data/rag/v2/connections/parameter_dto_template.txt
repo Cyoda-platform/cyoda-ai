@@ -1,0 +1,20 @@
+HttpParameterDto parameter config 
+Use this template to generate HttpParameterDto parameter config if you asked to generate HttpParameterDto 
+
+!!!Change only values inside "${}"!!!
+
+{
+    "name": "${Write parameter name}",
+    "defaultValue": "${Write parameter defaultValue if any}",
+    "secure": ${Write true or false},
+    "required": ${Write true or false},
+    "template": ${Write true or false},
+    "templateValue": "${Write velocity template function if asked by user}",
+    "excludeFromCacheKey": false,
+    "type": "${Write parameter name, choosing from enum: 
+    PATH_VARIABLE, (corresponds to GET type = path)
+    REQUEST_PARAM, (corresponds to GET type = query)
+    HEADER_PARAM, (corresponds to type = header)
+    REQUEST_BODY_VARIABLE (corresponds to any parameter specifies for POST_BODY request in the bodyTemplate. The format: \"${parameter}\")}"
+    "optionValues": []
+}
