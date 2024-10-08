@@ -1,0 +1,231 @@
+{
+    "@bean": "com.cyoda.plugins.datasource.dtos.DataSourceConfigsContainerDto",
+    "dataSources": [
+        {
+            "id": "5133d640-7b70-11ef-a745-764f3d95f734",
+            "name": "test",
+            "lastUpdated": 1727290848911,
+            "description": "",
+            "connections": [
+                {
+                    "@bean": "com.cyoda.plugins.datasource.dtos.connection.HttpConnectionDetailsDto",
+                    "name": "Test",
+                    "baseUrl": "https://some_url.com/api",
+                    "headers": {},
+                    "authType": "NONE",
+                    "authConfig": {
+                        "name": "",
+                        "authOperationConfigs": [],
+                        "numOfRetries": 1,
+                        "cacheConfig": {
+                            "ttl": 0,
+                            "persistCache": false
+                        }
+                    }
+                }
+            ],
+            "endpoints": [
+                {
+                    "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+                    "consumerConfig": {
+                        "consumerType": "COBI_MAPPER",
+                        "configId": "98552820-7abd-11ef-aec7-96cba4a2c465"
+                    },
+                    "chainings": [],
+                    "operation": "Test",
+                    "cache": {
+                        "parameters": [],
+                        "ttl": 0
+                    },
+                    "connectionIndex": 0,
+                    "type": "Test",
+                    "query": "https://some_url.com/api",
+                    "method": "POST_BODY",
+                    "parameters": [
+                        {
+                            "name": "test",
+                            "defaultValue": "test",
+                            "secure": false,
+                            "required": false,
+                            "template": false,
+                            "templateValue": "",
+                            "excludeFromCacheKey": false,
+                            "type": "REQUEST_BODY_VARIABLE",
+                            "optionValues": []
+                        }
+                    ],
+                    "bodyTemplate": "{\"test\":${test}}",
+                    "connectionTimeout": 300,
+                    "readWriteTimeout": 300
+                }
+            ],
+            "active": true
+        },
+        {
+            "id": "bc0b2d50-83f5-11ef-beff-3ecc98a06bac",
+            "name": "insurance_data_cleaning",
+            "lastUpdated": 1728227691757,
+            "description": "",
+            "connections": [
+                {
+                    "@bean": "com.cyoda.plugins.datasource.dtos.connection.HttpConnectionDetailsDto",
+                    "name": "insurance_data_cleaning",
+                    "baseUrl": "https://raw.githubusercontent.com/Cyoda-platform/cyoda-ai/refs/heads/main/example/resources",
+                    "headers": {},
+                    "authType": "NONE",
+                    "authConfig": {
+                        "name": "",
+                        "authOperationConfigs": [],
+                        "numOfRetries": 1,
+                        "cacheConfig": {
+                            "ttl": 0,
+                            "persistCache": false
+                        }
+                    }
+                }
+            ],
+            "endpoints": [
+                {
+                    "@bean": "com.cyoda.plugins.datasource.dtos.endpoint.HttpEndpointDto",
+                    "consumerConfig": {
+                        "consumerType": "COBI_MAPPER",
+                        "configId": "6e1830c0-83f5-11ef-beff-3ecc98a06bac"
+                    },
+                    "chainings": [],
+                    "operation": "get_data",
+                    "cache": {
+                        "parameters": [],
+                        "ttl": 0
+                    },
+                    "connectionIndex": 0,
+                    "type": "get_data",
+                    "query": "/insurance_data.json",
+                    "method": "GET",
+                    "parameters": [],
+                    "bodyTemplate": "",
+                    "connectionTimeout": 300,
+                    "readWriteTimeout": 300
+                }
+            ],
+            "active": true
+        }
+    ],
+    "chainings": [],
+    "mappings": [
+        {
+            "id": "98552820-7abd-11ef-aec7-96cba4a2c465",
+            "name": "test",
+            "lastUpdated": 1727214019535,
+            "dataType": "JSON",
+            "description": "",
+            "entityMappings": [
+                {
+                    "id": {
+                        "id": "97d08ed0-7abd-11ef-aec7-96cba4a2c465"
+                    },
+                    "name": "test",
+                    "entityClass": "com.cyoda.core.consistency.TransactionLog",
+                    "entityRelationConfigs": [
+                        {
+                            "srcRelativeRootPath": "root:/"
+                        }
+                    ],
+                    "columns": [],
+                    "functionalMappings": [],
+                    "columnPathsForUniqueCheck": [],
+                    "metadata": [],
+                    "cobiCoreMetadata": [],
+                    "entityFilter": {
+                        "@bean": "com.cyoda.core.conditions.GroupCondition",
+                        "operator": "AND",
+                        "conditions": []
+                    }
+                }
+            ],
+            "sampleContent": "{\"@bean\":\"com.cyoda.plugins.mapping.core.dtos.DataMappingConfigDto\",\"name\":\"test\",\"dataType\":\"JSON\",\"description\":\"test\",\"entityMappings\":[{\"id\":{\"uiId\":\"1\"},\"entityClass\":\"com.cyoda.plugins.mapping.core.models.TestTreeNodeEntity\",\"entityRelationConfigs\":[{\"srcRelativeRootPath\":\"root:/embedded/companies/*\"}],\"columns\":[{\"srcColumnPath\":\"name\",\"dstCyodaColumnPath\":\"type\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]},{\"srcColumnPath\":\"name\",\"dstCyodaColumnPath\":\"param1\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]},{\"srcColumnPath\":\"noneExistingParam\",\"dstCyodaColumnPath\":\"param2\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]}],\"functionalMappings\":[],\"columnPathsForUniqueCheck\":[],\"metadata\":[]},{\"id\":{\"udId\":\"2\"},\"entityClass\":\"com.cyoda.plugins.mapping.core.models.TestTreeNodeEntity\",\"entityRelationConfigs\":[{\"srcRelativeRootPath\":\"root:/embedded/companies/*/persons/*\"}],\"columns\":[{\"srcColumnPath\":\"firstName\",\"dstCyodaColumnPath\":\"type\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]},{\"srcColumnPath\":\"firstName\",\"dstCyodaColumnPath\":\"param1\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]},{\"srcColumnPath\":\"lastName\",\"dstCyodaColumnPath\":\"param2\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]}],\"functionalMappings\":[],\"columnPathsForUniqueCheck\":[],\"metadata\":[]},{\"id\":{\"udId\":\"3\"},\"entityClass\":\"com.cyoda.plugins.mapping.core.models.TestTreeNodeEntity\",\"entityRelationConfigs\":[{\"parentId\":{\"uiId\":\"1\"},\"srcRelativeRootPath\":\"company-addresses/*\",\"currentEntityIdPath\":\"parent\"},{\"parentId\":{\"udId\":\"2\"},\"srcRelativeRootPath\":\"person-addresses/*\",\"currentEntityIdPath\":\"parent\"}],\"columns\":[{\"srcColumnPath\":\"street\",\"dstCyodaColumnPath\":\"type\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]},{\"srcColumnPath\":\"street\",\"dstCyodaColumnPath\":\"param1\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]},{\"srcColumnPath\":\"house\",\"dstCyodaColumnPath\":\"param2\",\"dstCyodaColumnPathType\":\"java.lang.String\",\"dstCollectionElementSetModes\":[]}],\"functionalMappings\":[],\"columnPathsForUniqueCheck\":[],\"metadata\":[]}],\"lastUpdated\":0}",
+            "metadata": "{\"entityMappingsMetaDatas\":[{\"uiId\":1,\"cobiPathsRelations\":[],\"isShowNoneMappingFields\":true,\"isPolymorphicList\":false}]}"
+        },
+        {
+            "id": "6e1830c0-83f5-11ef-beff-3ecc98a06bac",
+            "name": "insurance_data_cleaning",
+            "lastUpdated": 1728227561123,
+            "dataType": "JSON",
+            "description": "",
+            "entityMappings": [
+                {
+                    "id": {
+                        "id": "6dd9c830-83f5-11ef-beff-3ecc98a06bac"
+                    },
+                    "name": "insurance_data_cleaning",
+                    "entityClass": "insurance_v1.1000",
+                    "entityRelationConfigs": [
+                        {
+                            "srcRelativeRootPath": "root:/"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "srcColumnPath": "data/*/customer_name",
+                            "dstCyodaColumnPath": "data.[*].customer_name",
+                            "dstCyodaColumnPathType": "java.lang.String",
+                            "dstCollectionElementSetModes": [],
+                            "transformer": {
+                                "type": "COMPOSITE",
+                                "children": [
+                                    {
+                                        "type": "SINGLE",
+                                        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                        "parameters": []
+                                    },
+                                    {
+                                        "type": "SINGLE",
+                                        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                        "parameters": []
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "srcColumnPath": "data/*/policy_type",
+                            "dstCyodaColumnPath": "data.[*].policy_type",
+                            "dstCyodaColumnPathType": "java.lang.String",
+                            "dstCollectionElementSetModes": [],
+                            "transformer": {
+                                "type": "COMPOSITE",
+                                "children": [
+                                    {
+                                        "type": "SINGLE",
+                                        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.SourceObjectValueTransformer$ToString",
+                                        "parameters": []
+                                    },
+                                    {
+                                        "type": "SINGLE",
+                                        "transformerKey": "com.cyoda.plugins.mapping.core.parser.valuetransformers.StringValueTransformer$Trim",
+                                        "parameters": []
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "functionalMappings": [],
+                    "columnPathsForUniqueCheck": [],
+                    "metadata": [],
+                    "cobiCoreMetadata": [],
+                    "script": {
+                        "body": "var target = entity.modelAccessor;\n\nfor (var i = 0; i < input.data.length; i++) {\n    if (input.data[i].policy_id != null) {\n        target.data[i].policy_id = input.data[i].policy_id;\n    }\n    if (input.data[i].age != null) {\n        target.data[i].age = input.data[i].age;\n    }\n    if (input.data[i].premium_amount != null) {\n        target.data[i].premium_amount = Java.type(\"java.lang.Double\").parseDouble(input.data[i].premium_amount);\n    }\n    if (input.data[i].claim_amount != null) {\n        target.data[i].claim_amount = Java.type(\"java.lang.Double\").parseDouble(input.data[i].claim_amount);\n    }\n    if (input.data[i].policy_issue_date != null) {\n        target.data[i].policy_issue_date = Java.type(\"java.time.LocalDate\").parse(input.data[i].policy_issue_date);\n    }\n    if (input.data[i].encoding != null) {\n        target.data[i].encoding = input.data[i].encoding;\n    }\n    if (input.data[i].claim_status != null) {\n        target.data[i].claim_status = input.data[i].claim_status;\n    }\n}",
+                        "inputSrcPaths": [],
+                        "inputMetaPaths": [],
+                        "reusableScripts": []
+                    },
+                    "entityFilter": {
+                        "@bean": "com.cyoda.core.conditions.GroupCondition",
+                        "operator": "AND",
+                        "conditions": []
+                    }
+                }
+            ],
+            "sampleContent": "{\"previous_version_id\":\"0\",\"data\":[{\"policy_id\":81,\"customer_name\":\"John Doe\",\"age\":35,\"policy_type\":\"Health\",\"premium_amount\":533,\"claim_amount\":3970,\"policy_issue_date\":\"2021-09-30\",\"claim_status\":\"Approved\",\"encoding\":\"utf-8\"},{\"policy_id\":85,\"customer_name\":\"Oliver Twist\",\"age\":22,\"policy_type\":\"Travel\",\"premium_amount\":1209,\"claim_amount\":0,\"policy_issue_date\":\"2022-01-31\",\"claim_status\":null,\"encoding\":null},{\"policy_id\":34,\"customer_name\":\"Emma Brown\",\"age\":49,\"policy_type\":\"Home\",\"premium_amount\":1417,\"claim_amount\":1194,\"policy_issue_date\":\"2017-10-31\",\"claim_status\":\"Approved\",\"encoding\":\"utf-16\"},{\"policy_id\":82,\"customer_name\":\"Jane Smith\",\"age\":35,\"policy_type\":\"Life\",\"premium_amount\":957,\"claim_amount\":1426,\"policy_issue_date\":\"2021-10-31\",\"claim_status\":null,\"encoding\":\"ascii\"},{\"policy_id\":94,\"customer_name\":\"Emma Brown\",\"age\":38,\"policy_type\":\"Home\",\"premium_amount\":1273,\"claim_amount\":0,\"policy_issue_date\":\"2022-10-31\",\"claim_status\":\"Approved\",\"encoding\":\"utf-16\"},{\"policy_id\":18,\"customer_name\":\"Chris Johnson\",\"age\":37,\"policy_type\":\"Car\",\"premium_amount\":970,\"claim_amount\":554,\"policy_issue_date\":\"2016-06-30\",\"claim_status\":\"Rejected\",\"encoding\":\"iso-8859-1\"},{\"policy_id\":37,\"customer_name\":\"Jane Smith\",\"age\":67,\"policy_type\":\"Life\",\"premium_amount\":1015,\"claim_amount\":985,\"policy_issue_date\":\"2018-01-31\",\"claim_status\":\"Pending\",\"encoding\":\"ascii\"},{\"policy_id\":83,\"customer_name\":\"Chris Johnson\",\"age\":48,\"policy_type\":\"Car\",\"premium_amount\":1161,\"claim_amount\":1189,\"policy_issue_date\":\"2021-11-30\",\"claim_status\":\"Approved\",\"encoding\":\"iso-8859-1\"},{\"policy_id\":70,\"customer_name\":\"Oliver Twist\",\"age\":40,\"policy_type\":\"Travel\",\"premium_amount\":299,\"claim_amount\":3488,\"policy_issue_date\":\"2020-10-31\",\"claim_status\":\"Approved\",\"encoding\":null},{\"policy_id\":66,\"customer_name\":\"John Doe\",\"age\":30,\"policy_type\":\"Health\",\"premium_amount\":1138,\"claim_amount\":4592,\"policy_issue_date\":\"2020-06-30\",\"claim_status\":\"Rejected\",\"encoding\":\"utf-8\"}]}",
+            "metadata": "{\"entityMappingsMetaDatas\":[{\"uiId\":1,\"cobiPathsRelations\":[{\"srcColumnPath\":\"data/*/customer_name\",\"dstColumnPath\":\"data.[*].customer_name\",\"jsonPath\":\"data/0/customer_name\"},{\"srcColumnPath\":\"data/*/policy_type\",\"dstColumnPath\":\"data.[*].policy_type\",\"jsonPath\":\"data/0/policy_type\"}],\"isShowNoneMappingFields\":true,\"isPolymorphicList\":false}]}"
+        }
+    ]
+}
