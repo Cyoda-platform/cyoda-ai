@@ -3,7 +3,33 @@ Common errors:
 var notice = new Java.type('net.cyoda.saas.model.Notice');
 this is wrong syntax
 
-Correct verion:
+Correct version:
 
 var Notice = Java.type('net.cyoda.saas.model.Notice');
 var notice = new Notice();
+
+
+2. NPE handling
+if (input.test != null && input.test.value != null) {
+    entity.getNotice().setMessage(input.test.value);
+}
+This code will result in NPE if entity.getNotice() is null
+
+Correct version:
+if (input.test && input.test.value != null && entity.getNotice() != null) {
+    entity.getNotice().setMessage(input.test.value);
+}
+
+OR
+if (input.test != null && input.test.value != null) {
+
+  if (entity.getNotice() == null){
+    var Notice = Java.type('net.cyoda.saas.model.Notice');
+    var notice = new Notice();
+    notice.setMessage(input.test.value);
+    entity.setNotice(notice);
+  }
+  else{
+   entity.getNotice().setMessage(input.test.value);
+  }
+}
