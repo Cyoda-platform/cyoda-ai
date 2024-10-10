@@ -1,0 +1,9 @@
+Common errors:
+1. 
+var notice = new Java.type('net.cyoda.saas.model.Notice');
+this is wrong syntax
+
+Correct verion:
+
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+var notice = new Notice();
