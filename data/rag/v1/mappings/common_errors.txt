@@ -46,3 +46,10 @@ var Attr = Java.type('net.cyoda.saas.model.Attr');
 var attr = new Attr();
 attr.setName(input.attr);
 attr.setUrl(input.attr);
+
+
+4. HashMap not initialized
+
+Correct version:
+var HashMap = Java.type("java.util.HashMap");
+var map = new HashMap();
