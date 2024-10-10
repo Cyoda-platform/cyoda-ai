@@ -33,3 +33,16 @@ if (input.test != null && input.test.value != null) {
    entity.getNotice().setMessage(input.test.value);
   }
 }
+
+
+3. Incorrect object initialization
+This is incorrect:
+var attr = {};
+attr.setName(input.attr);
+attr.setUrl(input.attr);
+
+Correct version:
+var Attr = Java.type('net.cyoda.saas.model.Attr');
+var attr = new Attr();
+attr.setName(input.attr);
+attr.setUrl(input.attr);
