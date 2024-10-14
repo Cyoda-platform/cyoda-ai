@@ -1,0 +1,117 @@
+{
+  "university": {
+    "universityId": "uni-001",
+    "name": "Global University",
+    "location": {
+      "address": "456 Campus Way",
+      "city": "Knowledge City",
+      "state": "CA",
+      "zipCode": "94016"
+    },
+    "departments": [                                // Level 1: Departments
+      {
+        "departmentId": "dept-001",
+        "departmentName": "Computer Science",
+        "courses": [                                 // Level 2: Courses
+          {
+            "courseId": "course-001",
+            "courseName": "Introduction to Programming",
+            "credits": 3,
+            "students": [                            // Level 3: Students
+              {
+                "studentId": "student-001",
+                "fullName": "Alice Johnson",
+                "enrollments": [                     // Level 4: Enrollments
+                  {
+                    "enrollmentId": "enroll-001",
+                    "semester": "Spring 2024",
+                    "assignments": [                  // Level 5: Assignments
+                      {
+                        "assignmentId": "assign-001",
+                        "assignmentName": "Project 1",
+                        "dueDate": "2024-05-01",       // Date (String in ISO format)
+                        "grades": [                    // Level 6: Grades
+                          {
+                            "gradeId": "grade-001",
+                            "score": 95,
+                            "feedback": "Excellent work!"
+                          },
+                          {
+                            "gradeId": "grade-002",
+                            "score": 88,
+                            "feedback": "Good effort, but could improve coding style."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "studentId": "student-002",
+                "fullName": "Bob Smith",
+                "enrollments": [
+                  {
+                    "enrollmentId": "enroll-002",
+                    "semester": "Spring 2024",
+                    "assignments": [
+                      {
+                        "assignmentId": "assign-002",
+                        "assignmentName": "Project 1",
+                        "dueDate": "2024-05-01",
+                        "grades": [
+                          {
+                            "gradeId": "grade-003",
+                            "score": 85,
+                            "feedback": "Good job, but make sure to test your code."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "departmentId": "dept-002",
+        "departmentName": "Mathematics",
+        "courses": [
+          {
+            "courseId": "course-002",
+            "courseName": "Calculus I",
+            "credits": 4,
+            "students": [
+              {
+                "studentId": "student-003",
+                "fullName": "Carol Davis",
+                "enrollments": [
+                  {
+                    "enrollmentId": "enroll-003",
+                    "semester": "Spring 2024",
+                    "assignments": [
+                      {
+                        "assignmentId": "assign-003",
+                        "assignmentName": "Calculus Homework 1",
+                        "dueDate": "2024-02-15",
+                        "grades": [
+                          {
+                            "gradeId": "grade-004",
+                            "score": 90,
+                            "feedback": "Great effort on the homework!"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
