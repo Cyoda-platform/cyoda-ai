@@ -1,0 +1,44 @@
+{
+  "person": {
+    "firstName": "John",                          // String
+    "lastName": "Doe",                            // String
+    "age": 30,                                    // Integer
+    "isEmployed": true,                           // Boolean
+    "dateOfBirth": "1994-05-15",                  // Date (String in ISO 8601 format)
+    "hireDate": "2020-01-20",                     // Date (String in ISO 8601 format)
+    "address": {                                  // Object
+      "street": "123 Elm St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipCode": "90210"
+    },
+    "phoneNumbers": [                             // Array
+      "+1234567890",
+      "+0987654321",
+      null                                         // Null
+    ],
+    "email": "john.doe@example.com",              // String
+    "salary": 75000.50,                           // Number
+    "skills": [                                   // Array
+      "JavaScript",
+      "Python",
+      "SQL",
+      null                                         // Null within an array
+    ],
+    "projects": [                                  // Array of Objects
+      {
+        "projectId": "proj-001",
+        "projectName": "Web Development",
+        "durationMonths": 6,
+        "completionDate": "2021-06-30"             // Date (String in ISO 8601 format)
+      },
+      {
+        "projectId": "proj-002",
+        "projectName": "Mobile App",
+        "durationMonths": 3,
+        "completionDate": "2021-09-15"             // Date (String in ISO 8601 format)
+      }
+    ],
+    "spouse": null                                 // Null
+  }
+}
