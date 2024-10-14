@@ -1,0 +1,125 @@
+{
+  "healthcareManagementSystem": {
+    "patients": [                                   // Level 1: Patients
+      {
+        "patientId": "patient-001",
+        "fullName": "John Doe",
+        "dateOfBirth": "1985-06-15",                // Date (String in ISO format)
+        "contactDetails": {                          // Level 2: Contact Details
+          "email": "john.doe@example.com",
+          "phone": "+1234567890",
+          "address": {
+            "street": "123 Elm St",
+            "city": "Springfield",
+            "state": "IL",
+            "zipCode": "62701"
+          }
+        },
+        "appointments": [                            // Level 3: Appointments
+          {
+            "appointmentId": "appointment-001",
+            "date": "2024-02-10",                   // Date (String in ISO format)
+            "time": "10:00 AM",
+            "doctor": {                             // Level 4: Doctor Information
+              "doctorId": "doctor-001",
+              "fullName": "Dr. Alice Smith",
+              "specialty": "Cardiology",
+              "contact": {
+                "phone": "+1234560001",
+                "email": "alice.smith@hospital.com"
+              }
+            },
+            "status": "confirmed",                   // String
+            "treatmentPlan": [                       // Level 5: Treatment Plans
+              {
+                "treatmentId": "treatment-001",
+                "name": "Blood Pressure Monitoring",
+                "prescribedDate": "2024-02-01",     // Date (String in ISO format)
+                "instructions": "Monitor daily at home."
+              },
+              {
+                "treatmentId": "treatment-002",
+                "name": "Lifestyle Modification",
+                "prescribedDate": "2024-02-01",
+                "instructions": "Follow a low-sodium diet and exercise regularly."
+              }
+            ]
+          }
+        ],
+        "medicalRecords": [                         // Level 3: Medical Records
+          {
+            "recordId": "record-001",
+            "date": "2024-01-05",                   // Date (String in ISO format)
+            "diagnosis": "Hypertension",
+            "notes": "Patient has high blood pressure readings.",
+            "medications": [                          // Level 4: Medications
+              {
+                "medicationId": "med-001",
+                "name": "Lisinopril",
+                "dosage": "10 mg",
+                "frequency": "once daily"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "patientId": "patient-002",
+        "fullName": "Jane Smith",
+        "dateOfBirth": "1990-03-22",
+        "contactDetails": {
+          "email": "jane.smith@example.com",
+          "phone": "+1234567891",
+          "address": {
+            "street": "456 Maple Ave",
+            "city": "Lincoln",
+            "state": "NE",
+            "zipCode": "68501"
+          }
+        },
+        "appointments": [],
+        "medicalRecords": []
+      }
+    ],
+    "doctors": [                                    // Level 1: Doctors
+      {
+        "doctorId": "doctor-001",
+        "fullName": "Dr. Alice Smith",
+        "specialty": "Cardiology",
+        "contact": {
+          "phone": "+1234560001",
+          "email": "alice.smith@hospital.com"
+        },
+        "availability": [                             // Level 2: Availability
+          {
+            "day": "Monday",
+            "time": "9:00 AM - 5:00 PM"
+          },
+          {
+            "day": "Wednesday",
+            "time": "10:00 AM - 4:00 PM"
+          }
+        ]
+      },
+      {
+        "doctorId": "doctor-002",
+        "fullName": "Dr. Bob Johnson",
+        "specialty": "General Practice",
+        "contact": {
+          "phone": "+1234560002",
+          "email": "bob.johnson@hospital.com"
+        },
+        "availability": [
+          {
+            "day": "Tuesday",
+            "time": "8:00 AM - 2:00 PM"
+          },
+          {
+            "day": "Thursday",
+            "time": "1:00 PM - 6:00 PM"
+          }
+        ]
+      }
+    ]
+  }
+}
