@@ -1,0 +1,92 @@
+{
+  "contractManagementSystem": {
+    "contracts": [                                   // Array of Contract Objects
+      {
+        "contractId": "contract-001",
+        "title": "Service Agreement for Software Development",
+        "startDate": "2024-01-01",                  // Date (String in ISO format)
+        "endDate": "2025-01-01",                    // Date (String in ISO format)
+        "status": "active",                          // String
+        "parties": [                                 // Array of Party Objects
+          {
+            "partyId": "party-001",
+            "partyType": "Client",                   // String
+            "name": "Tech Innovations LLC",
+            "contact": {
+              "email": "contact@techinnovations.com",
+              "phone": "+1234567890"
+            }
+          },
+          {
+            "partyId": "party-002",
+            "partyType": "Contractor",                // String
+            "name": "Develop It Inc.",
+            "contact": {
+              "email": "info@developit.com",
+              "phone": "+1234567889"
+            }
+          }
+        ],
+        "terms": {                                   // Object
+          "paymentTerms": {
+            "amount": 50000,                         // Number
+            "paymentSchedule": "50% upon signing, 50% upon completion" // String
+          },
+          "confidentiality": true,                   // Boolean
+          "deliverables": [
+            "Project Plan",
+            "Source Code",
+            "User Documentation"
+          ]                                         // Array
+        },
+        "signatures": [                               // Array of Signature Objects
+          {
+            "signatureId": "sig-001",
+            "partyId": "party-001",
+            "signedDate": "2024-01-01",              // Date (String in ISO format)
+            "signerName": "Alice Brown"
+          },
+          {
+            "signatureId": "sig-002",
+            "partyId": "party-002",
+            "signedDate": "2024-01-01",
+            "signerName": "John Smith"
+          }
+        ]
+      },
+      {
+        "contractId": "contract-002",
+        "title": "Non-Disclosure Agreement",
+        "startDate": "2024-02-01",
+        "endDate": null,                             // Null value indicating no end date
+        "status": "pending",                          // String
+        "parties": [
+          {
+            "partyId": "party-003",
+            "partyType": "Disclosing Party",          // String
+            "name": "Global Solutions Inc.",
+            "contact": {
+              "email": "info@globalsolutions.com",
+              "phone": "+1234567788"
+            }
+          },
+          {
+            "partyId": "party-004",
+            "partyType": "Receiving Party",            // String
+            "name": "Innovative Tech Corp.",
+            "contact": {
+              "email": "contact@innovativetech.com",
+              "phone": "+1234567777"
+            }
+          }
+        ],
+        "terms": {
+          "duration": "2 years",                     // String
+          "confidentiality": true,
+          "scope": "All proprietary information shared during discussions."
+        },
+        "signatures": []                              // Array
+      }
+    ]
+  }
+}

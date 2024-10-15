@@ -1,0 +1,108 @@
+{
+  "university": {
+    "universityId": "uni-001",
+    "name": "Global Tech University",
+    "establishedYear": 1995,
+    "location": {
+      "address": "456 University Ave",
+      "city": "Innovation City",
+      "state": "CA",
+      "zipCode": "90001"
+    },
+    "departments": [
+      {
+        "departmentId": "dept-001",
+        "departmentName": "Computer Science",
+        "head": {
+          "facultyId": "fac-001",
+          "firstName": "Emily",
+          "lastName": "Clark",
+          "email": "emily.clark@globaltech.edu"
+        },
+        "courses": [
+          {
+            "courseId": "course-001",
+            "courseName": "Introduction to Programming",
+            "credits": 3,
+            "studentsEnrolled": 120,
+            "schedule": {
+              "days": ["Monday", "Wednesday"],
+              "time": "10:00 AM - 11:30 AM",
+              "location": "Building A Room 101"
+            }
+          },
+          {
+            "courseId": "course-002",
+            "courseName": "Data Structures",
+            "credits": 4,
+            "studentsEnrolled": 95,
+            "schedule": {
+              "days": ["Tuesday", "Thursday"],
+              "time": "1:00 PM - 2:30 PM",
+              "location": "Building B Room 204"
+            }
+          }
+        ]
+      },
+      {
+        "departmentId": "dept-002",
+        "departmentName": "Business Administration",
+        "head": {
+          "facultyId": "fac-002",
+          "firstName": "Michael",
+          "lastName": "Johnson",
+          "email": "michael.johnson@globaltech.edu"
+        },
+        "courses": [
+          {
+            "courseId": "course-003",
+            "courseName": "Principles of Marketing",
+            "credits": 3,
+            "studentsEnrolled": 110,
+            "schedule": {
+              "days": ["Monday", "Friday"],
+              "time": "2:00 PM - 3:30 PM",
+              "location": "Building C Room 302"
+            }
+          }
+        ]
+      }
+    ],
+    "faculties": [
+      {
+        "facultyId": "fac-001",
+        "fullName": "Emily Clark",
+        "department": "Computer Science",
+        "email": "emily.clark@globaltech.edu",
+        "researchAreas": ["Artificial Intelligence", "Machine Learning"]
+      },
+      {
+        "facultyId": "fac-002",
+        "fullName": "Michael Johnson",
+        "department": "Business Administration",
+        "email": "michael.johnson@globaltech.edu",
+        "researchAreas": ["Marketing Research", "Consumer Behavior"]
+      }
+    ],
+    "students": [
+      {
+        "studentId": "stud-001",
+        "firstName": "Sarah",
+        "lastName": "Williams",
+        "major": "Computer Science",
+        "enrollmentYear": 2022,
+        "gpa": 3.8,
+        "coursesEnrolled": ["course-001", "course-002"]
+      },
+      {
+        "studentId": "stud-002",
+        "firstName": "David",
+        "lastName": "Martinez",
+        "major": "Business Administration",
+        "enrollmentYear": 2023,
+        "gpa": 3.5,
+        "coursesEnrolled": ["course-003"]
+      }
+    ]
+  }
+}
