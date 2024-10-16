@@ -1,4 +1,7 @@
-**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+**Writing a JavaScript Nashorn script to map the given input to the given Cyoda target entity**
+
+Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
+
 Here's an example of how to map an input to an entity with a Javascript Nashorn script:
 
 Example input:
@@ -45,7 +48,7 @@ Example input:
   }
 }
 
-Example entity model:
+Example target entity model:
 {
   "$": {
     "#.purchaserNoticeMap": "OBJECT",
@@ -86,29 +89,19 @@ Example entity model:
   }
 }
 
+Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
 
 **Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
 
-1. Access the entity: Begin by initializing the target object to access the fields of the entity. Use this object to fill corresponding fields from the input data.
-Example:
-```Javascript Nashorn
+Always start with:
 var target = entity.modelAccessor;
-```
-
-2. Simple fields (Strings and Booleans): Directly assign string and boolean fields, as they don't require any casting.
-Example:
-```Javascript Nashorn
+then map fields
 target.name = input.name;
 target.contactUser = input.contactUser;
 target.systemAccount = input.systemAccount;
-```
 
-3. UUID and TimeUUID Type Conversion: For fields that expect UUID or TIME_UUID_TYPE, ALWAYS convert the input string using UUID.fromString. This is critical, fields of type TIME_UUID_TYPE cannot be strings; they must be parsed. Use a specific method to convert a string into TimeUUID.
-Example:
-```Javascript Nashorn
 var UUID = Java.type("java.util.UUID");
 target.employeeId = UUID.fromString(input.employeeId);
-```
 
 4. Handling Collections (Arrays and Maps): For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps.
 For Arrays (like notices):
@@ -160,81 +153,3 @@ for (var j = 0; j < purchaserKeys.length; j++) {
     purchaserNoticeMap.put(key, mappedNoticeList);
 }
 target.purchaserNoticeMap = purchaserNoticeMap;
-```
-
-7. Final Check for Custom Types: Ensure that all field types are properly cast or parsed based on the expected field type of the entity JSON schema, especially for non-string types.
-Make sure you have not left any non-String field unparsed (non-String from the entity JSON schema perspective).
-Never write comments like "Assuming employeeId is of type TIME_UUID_TYPE and input is already in the correct format", do always parse. Use appropriate Java classes where necessary to handle complex types.
-
-So, writing a JavaScript Nashorn script to map the given input to given entity model will result into this output:
-Expected code output:
-```
-var target = entity.modelAccessor;
-var ArrayList = Java.type("java.util.ArrayList");
-var HashMap = Java.type("java.util.HashMap");
-var UUID = Java.type("java.util.UUID");
-
-target.id = input.id;
-target.name = input.name;
-target.types = input.types;
-target.contactUser = input.contactUser;
-target.systemAccount = input.systemAccount;
-
-target.date = input.date;
-target.deadlineDate = input.deadlineDate;
-
-target.deadlineLengthDays = input.deadlineLengthDays;
-target.category = input.category;
-
-// Convert employeeId to TimeUUID
-target.employeeId = UUID.fromString(input.employeeId);
-
-target.awardedValue = input.awardedValue;
-
-target.purchaser = input.purchaser;
-
-// Add notices from input
-var notices = new ArrayList();
-for (var i = 0; i < input.notices.length; i++) {
-    var notice = {
-        name: input.notices[i].name,
-        id: input.notices[i].id,
-        sid: input.notices[i].sid,
-        date: input.notices[i].date, 
-        type: input.notices[i].type,
-        srcId: input.notices[i].srcId,
-        srcUrl: input.notices[i].srcUrl,
-        data: input.notices[i].data
-    };
-    notices.add(notice);
-}
-target.notices = notices;
-
-// Mapping purchaserNoticeMap field using Java's HashMap
-var purchaserNoticeMap = new HashMap();
-var purchaserKeys = input.purchaserNoticeMap.keySet().toArray();  // Getting keySet using Java method
-
-for (var j = 0; j < purchaserKeys.length; j++) {
-    var key = purchaserKeys[j];
-    var noticeList = input.purchaserNoticeMap.get(key);  // Getting notices list by key
-    var mappedNoticeList = new ArrayList();
-
-    for (var k = 0; k < noticeList.length; k++) {
-        var notice = {
-            name: noticeList[k].name,
-            id: noticeList[k].id,
-            sid: noticeList[k].sid,
-            date: noticeList[k].date,  // Parsing date
-            type: noticeList[k].type,
-            srcId: noticeList[k].srcId,
-            srcUrl: noticeList[k].srcUrl,
-            data: noticeList[k].data
-        };
-        mappedNoticeList.add(notice);
-    }
-
-    purchaserNoticeMap.put(key, mappedNoticeList);
-}
-
-target.purchaserNoticeMap = purchaserNoticeMap;
-```
