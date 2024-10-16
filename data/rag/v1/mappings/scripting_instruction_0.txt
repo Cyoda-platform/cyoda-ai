@@ -103,30 +103,14 @@ target.contactUser = input.contactUser;
 target.systemAccount = input.systemAccount;
 ```
 
-3. Handling Numeric Types (Integers, Doubles, BigDecimals): For numeric fields, check if a cast is required. For example, if the entity expects a Double or BigDecimal, cast the input value accordingly.
-Example:
-```Javascript Nashorn
-var Double = Java.type("java.lang.Double");
-target.awardedValue = Double.valueOf(input.awardedValue);
-target.deadlineLengthDays = input.deadlineLengthDays;  // Integer remains as is
-```
-
-4. Handling Date/Time Fields: For fields that require date or time values (like ZonedDateTime), parse the string input using the appropriate Java time class.
-Example:
-```Javascript Nashorn
-var ZonedDateTime = Java.type("java.time.ZonedDateTime");
-target.date = ZonedDateTime.parse(input.date);
-target.deadlineDate = ZonedDateTime.parse(input.deadlineDate);
-```
-
-5. UUID and TimeUUID Type Conversion: For fields that expect UUID or TIME_UUID_TYPE, ALWAYS convert the input string using UUID.fromString. This is critical, fields of type TIME_UUID_TYPE cannot be strings; they must be parsed. Use a specific method to convert a string into TimeUUID.
+3. UUID and TimeUUID Type Conversion: For fields that expect UUID or TIME_UUID_TYPE, ALWAYS convert the input string using UUID.fromString. This is critical, fields of type TIME_UUID_TYPE cannot be strings; they must be parsed. Use a specific method to convert a string into TimeUUID.
 Example:
 ```Javascript Nashorn
 var UUID = Java.type("java.util.UUID");
 target.employeeId = UUID.fromString(input.employeeId);
 ```
 
-6. Handling Collections (Arrays and Maps): For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps.
+4. Handling Collections (Arrays and Maps): For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps.
 For Arrays (like notices):
 Example:
 ```Javascript Nashorn
@@ -137,7 +121,7 @@ for (var i = 0; i < input.notices.length; i++) {
         name: input.notices[i].name,
         id: input.notices[i].id,
         sid: input.notices[i].sid,
-        date: ZonedDateTime.parse(input.notices[i].date),  // Date parsing
+        date: input.notices[i].date,
         type: input.notices[i].type,
         srcId: input.notices[i].srcId,
         srcUrl: input.notices[i].srcUrl,
@@ -165,7 +149,7 @@ for (var j = 0; j < purchaserKeys.length; j++) {
             name: noticeList[k].name,
             id: noticeList[k].id,
             sid: noticeList[k].sid,
-            date: ZonedDateTime.parse(noticeList[k].date),  // Date parsing
+            date: noticeList[k].date,
             type: noticeList[k].type,
             srcId: noticeList[k].srcId,
             srcUrl: noticeList[k].srcUrl,
@@ -186,8 +170,6 @@ So, writing a JavaScript Nashorn script to map the given input to given entity m
 Expected code output:
 ```
 var target = entity.modelAccessor;
-var ZonedDateTime = Java.type("java.time.ZonedDateTime");
-var Double = Java.type("java.lang.Double");
 var ArrayList = Java.type("java.util.ArrayList");
 var HashMap = Java.type("java.util.HashMap");
 var UUID = Java.type("java.util.UUID");
@@ -198,9 +180,8 @@ target.types = input.types;
 target.contactUser = input.contactUser;
 target.systemAccount = input.systemAccount;
 
-// Parsing date fields into ZonedDateTime
-target.date = ZonedDateTime.parse(input.date);
-target.deadlineDate = ZonedDateTime.parse(input.deadlineDate);
+target.date = input.date;
+target.deadlineDate = input.deadlineDate;
 
 target.deadlineLengthDays = input.deadlineLengthDays;
 target.category = input.category;
@@ -208,8 +189,7 @@ target.category = input.category;
 // Convert employeeId to TimeUUID
 target.employeeId = UUID.fromString(input.employeeId);
 
-// Convert awardedValue to BigDecimal with double precision
-target.awardedValue = Double.valueOf(input.awardedValue);
+target.awardedValue = input.awardedValue;
 
 target.purchaser = input.purchaser;
 
@@ -220,7 +200,7 @@ for (var i = 0; i < input.notices.length; i++) {
         name: input.notices[i].name,
         id: input.notices[i].id,
         sid: input.notices[i].sid,
-        date: ZonedDateTime.parse(input.notices[i].date),  // Parsing notice date as ZonedDateTime
+        date: input.notices[i].date, 
         type: input.notices[i].type,
         srcId: input.notices[i].srcId,
         srcUrl: input.notices[i].srcUrl,
@@ -244,7 +224,7 @@ for (var j = 0; j < purchaserKeys.length; j++) {
             name: noticeList[k].name,
             id: noticeList[k].id,
             sid: noticeList[k].sid,
-            date: ZonedDateTime.parse(noticeList[k].date),  // Parsing date
+            date: noticeList[k].date,  // Parsing date
             type: noticeList[k].type,
             srcId: noticeList[k].srcId,
             srcUrl: noticeList[k].srcUrl,
