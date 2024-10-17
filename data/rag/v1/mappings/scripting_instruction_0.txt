@@ -3,128 +3,258 @@ Here's an example of how to map an input to an entity with a Javascript Nashorn 
 
 Example input:
 {
-  "name": "Construction of New Office Building",
+  "id": "tender-001",
+  "name": "Simple Tender",
   "types": [
-    "Construction",
-    "Development"
+    "TypeA"
   ],
-  "contactUser": "John Doe",
+  "contactUser": "contact@example.com",
   "systemAccount": true,
-  "date": "2024-03-28",
-  "deadlineDate": "2024-04-30",
-  "deadlineLengthDays": 33,
-  "category": "Construction Services",
-  "awardedValue": 185000,
-  "purchaser": "ABC Corporation",
+  "date": "2024-08-18T12:00:00Z",
+  "deadlineDate": "2024-09-01T12:00:00Z",
+  "deadlineLengthDays": 14,
+  "category": "General",
+  "awardedValue": 10000,
+  "purchaser": "Purchaser A",
+  "employeeId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
   "notices": [
     {
-      "name": "Pre-Bid Conference",
-      "id": "NW20240328002",
-      "sid": "S003",
-      "date": "2024-03-28",
-      "type": "Conference",
-      "srcId": "SRC003",
-      "srcUrl": "https://example.com/notice/NW20240328002",
-      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
-    },
-    {
-      "name": "Pre-Bid Conference",
-      "id": "NW20240328002",
-      "sid": "S003",
-      "date": "2024-03-28",
-      "type": "Conference",
-      "srcId": "SRC003",
-      "srcUrl": "https://example.com/notice/NW20240328002",
-      "data": "Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications."
+      "name": "Notice 1",
+      "id": "notice-001",
+      "sid": "sid-001",
+      "date": "2024-08-18T12:00:00Z",
+      "type": "Initial",
+      "srcId": "src-001",
+      "srcUrl": "http://example.com/notice-001",
+      "data": "Notice data 1"
     }
-  ]
+  ],
+  "purchaserNoticeMap": {
+    "Purchaser A": [
+      {
+        "name": "Notice 1",
+        "id": "notice-001",
+        "sid": "sid-001",
+        "date": "2024-08-18T12:00:00Z",
+        "type": "Initial",
+        "srcId": "src-001",
+        "srcUrl": "http://example.com/notice-001",
+        "data": "Notice data 1"
+      }
+    ]
+  }
 }
 
-Example entity net.cyoda.saas.model.TenderEntity:
+Example entity model:
 {
-    "net.cyoda.saas.model.TenderEntity": {
-      "name": "string",
-      "types": [
-        "string"
-      ],
-      "contactUser": "string",
-      "systemAccount": true,
-      "date": "string",
-      "deadlineDate": "string",
-      "deadlineLengthDays": 0,
-      "category": "string",
-      "awardedValue": 0.0,
-      "purchaser": "string",
-      "notices": [
-        {
-          "name": "string",
-          "id": "string",
-          "sid": "string",
-          "date": "string",
-          "type": "string",
-          "srcId": "string",
-          "srcUrl": "string",
-          "data": "string"
-        }
-      ]
-    }
+  "$": {
+    "#.purchaserNoticeMap": "OBJECT",
+    ".awardedValue": "DOUBLE",
+    ".category": "STRING",
+    ".contactUser": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".deadlineDate": "ZONED_DATE_TIME",
+    ".deadlineLengthDays": "INTEGER",
+    ".employeeId": "TIME_UUID_TYPE",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".purchaser": "STRING",
+    ".systemAccount": "BOOLEAN",
+    ".types[*]": "(STRING x 1)"
   },
-
-  {
-    "net.cyoda.saas.model.Notice": {
-        "name": "string",
-        "id": "string",
-        "sid": "string",
-        "date": "string",
-        "type": "string",
-        "srcId": "string",
-        "srcUrl": "string",
-        "data": "string"
-    }
+  "$.notices[*]": {
+    "#": "ARRAY_ELEMENT",
+    ".data": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".sid": "STRING",
+    ".srcId": "STRING",
+    ".srcUrl": "STRING",
+    ".type": "STRING"
+  },
+  "$.purchaserNoticeMap.Purchaser A[*]": {
+    "#": "ARRAY_ELEMENT",
+    ".data": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".sid": "STRING",
+    ".srcId": "STRING",
+    ".srcUrl": "STRING",
+    ".type": "STRING"
+  }
 }
 
-**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
 
-Example object initialization. Always initialize Java objects similar way or according to the docs:
-package net.cyoda.saas.model is the same for all classes you do not know.
+**Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
 
+1. Access the entity: Begin by initializing the target object to access the fields of the entity. Use this object to fill corresponding fields from the input data.
+Example:
 ```Javascript Nashorn
-//this is the correct format to initialize a cyoda object.
-var Notice = Java.type('net.cyoda.saas.model.Notice');
-var notice = new Notice();
-```
-```Javascript Nashorn
-//this is the correct format to initialize a cyoda object.
-var entity = Java.type('net.cyoda.saas.model.TenderEntity');
-var entity = new TenderEntity();
+var target = entity.modelAccessor;
 ```
 
-Do NOT initialize target entity (net.cyoda.saas.model.TenderEntity in this case)
-
-So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
-Expected code output:
+2. Simple fields (Strings and Booleans): Directly assign string and boolean fields, as they don't require any casting.
+Example:
 ```Javascript Nashorn
-//Do NOT initialize entity (net.cyoda.saas.model.TenderEntity in this case)
-entity.setDate(input.date);
-entity.setDeadlineDate(input.deadlineDate);
-entity.setDeadlineLengthDays(input.deadlineLengthDays);
-entity.setName(input.title);
-entity.setCategory(input.category);
-entity.setAwardedValue(input.awardedValue);
+target.name = input.name;
+target.contactUser = input.contactUser;
+target.systemAccount = input.systemAccount;
+```
 
+3. Handling Numeric Types (Integers, Doubles, BigDecimals): For numeric fields, check if a cast is required. For example, if the entity expects a Double or BigDecimal, cast the input value accordingly.
+Example:
+```Javascript Nashorn
+var Double = Java.type("java.lang.Double");
+target.awardedValue = Double.valueOf(input.awardedValue);
+target.deadlineLengthDays = input.deadlineLengthDays;  // Integer remains as is
+```
+
+4. Handling Date/Time Fields: For fields that require date or time values (like ZonedDateTime), parse the string input using the appropriate Java time class.
+Example:
+```Javascript Nashorn
+var ZonedDateTime = Java.type("java.time.ZonedDateTime");
+target.date = ZonedDateTime.parse(input.date);
+target.deadlineDate = ZonedDateTime.parse(input.deadlineDate);
+```
+
+5. UUID and TimeUUID Type Conversion: For fields that expect UUID or TIME_UUID_TYPE, ALWAYS convert the input string using UUID.fromString. This is critical, fields of type TIME_UUID_TYPE cannot be strings; they must be parsed. Use a specific method to convert a string into TimeUUID.
+Example:
+```Javascript Nashorn
+var UUID = Java.type("java.util.UUID");
+target.employeeId = UUID.fromString(input.employeeId);
+```
+
+6. Handling Collections (Arrays and Maps): For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps.
+For Arrays (like notices):
+Example:
+```Javascript Nashorn
 var ArrayList = Java.type("java.util.ArrayList");
 var notices = new ArrayList();
-//this is how you should initialize objects with javascript
-var Notice = Java.type('net.cyoda.saas.model.Notice');
-
-// Add notices from input
 for (var i = 0; i < input.notices.length; i++) {
-    var notice = new Notice();
-    notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);
-    notice.setDate(input.notices[i].date != null ? input.notices[i].date : "00-00-00");
-    notice.setType(input.notices[i].type != null ? input.notices[i].type : "Unknown type");
+    var notice = {
+        name: input.notices[i].name,
+        id: input.notices[i].id,
+        sid: input.notices[i].sid,
+        date: ZonedDateTime.parse(input.notices[i].date),  // Date parsing
+        type: input.notices[i].type,
+        srcId: input.notices[i].srcId,
+        srcUrl: input.notices[i].srcUrl,
+        data: input.notices[i].data
+    };
     notices.add(notice);
 }
+target.notices = notices;
+```
 
-entity.setNotices(notices);
+For Maps (like purchaserNoticeMap):
+Example:
+```Javascript Nashorn
+var HashMap = Java.type("java.util.HashMap");
+var purchaserNoticeMap = new HashMap();
+
+var purchaserKeys = input.purchaserNoticeMap.keySet().toArray();
+for (var j = 0; j < purchaserKeys.length; j++) {
+    var key = purchaserKeys[j];
+    var noticeList = input.purchaserNoticeMap.get(key);
+    var mappedNoticeList = new ArrayList();
+
+    for (var k = 0; k < noticeList.length; k++) {
+        var notice = {
+            name: noticeList[k].name,
+            id: noticeList[k].id,
+            sid: noticeList[k].sid,
+            date: ZonedDateTime.parse(noticeList[k].date),  // Date parsing
+            type: noticeList[k].type,
+            srcId: noticeList[k].srcId,
+            srcUrl: noticeList[k].srcUrl,
+            data: noticeList[k].data
+        };
+        mappedNoticeList.add(notice);
+    }
+    purchaserNoticeMap.put(key, mappedNoticeList);
+}
+target.purchaserNoticeMap = purchaserNoticeMap;
+```
+
+7. Final Check for Custom Types: Ensure that all field types are properly cast or parsed based on the expected field type of the entity JSON schema, especially for non-string types.
+Make sure you have not left any non-String field unparsed (non-String from the entity JSON schema perspective).
+Never write comments like "Assuming employeeId is of type TIME_UUID_TYPE and input is already in the correct format", do always parse. Use appropriate Java classes where necessary to handle complex types.
+
+So, writing a JavaScript Nashorn script to map the given input to given entity model will result into this output:
+Expected code output:
+```
+var target = entity.modelAccessor;
+var ZonedDateTime = Java.type("java.time.ZonedDateTime");
+var Double = Java.type("java.lang.Double");
+var ArrayList = Java.type("java.util.ArrayList");
+var HashMap = Java.type("java.util.HashMap");
+var UUID = Java.type("java.util.UUID");
+
+target.id = input.id;
+target.name = input.name;
+target.types = input.types;
+target.contactUser = input.contactUser;
+target.systemAccount = input.systemAccount;
+
+// Parsing date fields into ZonedDateTime
+target.date = ZonedDateTime.parse(input.date);
+target.deadlineDate = ZonedDateTime.parse(input.deadlineDate);
+
+target.deadlineLengthDays = input.deadlineLengthDays;
+target.category = input.category;
+
+// Convert employeeId to TimeUUID
+target.employeeId = UUID.fromString(input.employeeId);
+
+// Convert awardedValue to BigDecimal with double precision
+target.awardedValue = Double.valueOf(input.awardedValue);
+
+target.purchaser = input.purchaser;
+
+// Add notices from input
+var notices = new ArrayList();
+for (var i = 0; i < input.notices.length; i++) {
+    var notice = {
+        name: input.notices[i].name,
+        id: input.notices[i].id,
+        sid: input.notices[i].sid,
+        date: ZonedDateTime.parse(input.notices[i].date),  // Parsing notice date as ZonedDateTime
+        type: input.notices[i].type,
+        srcId: input.notices[i].srcId,
+        srcUrl: input.notices[i].srcUrl,
+        data: input.notices[i].data
+    };
+    notices.add(notice);
+}
+target.notices = notices;
+
+// Mapping purchaserNoticeMap field using Java's HashMap
+var purchaserNoticeMap = new HashMap();
+var purchaserKeys = input.purchaserNoticeMap.keySet().toArray();  // Getting keySet using Java method
+
+for (var j = 0; j < purchaserKeys.length; j++) {
+    var key = purchaserKeys[j];
+    var noticeList = input.purchaserNoticeMap.get(key);  // Getting notices list by key
+    var mappedNoticeList = new ArrayList();
+
+    for (var k = 0; k < noticeList.length; k++) {
+        var notice = {
+            name: noticeList[k].name,
+            id: noticeList[k].id,
+            sid: noticeList[k].sid,
+            date: ZonedDateTime.parse(noticeList[k].date),  // Parsing date
+            type: noticeList[k].type,
+            srcId: noticeList[k].srcId,
+            srcUrl: noticeList[k].srcUrl,
+            data: noticeList[k].data
+        };
+        mappedNoticeList.add(notice);
+    }
+
+    purchaserNoticeMap.put(key, mappedNoticeList);
+}
+
+target.purchaserNoticeMap = purchaserNoticeMap;
 ```
