@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://cyoda-platform.com/CyodaAI"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             name="CyodaAIService"
+             targetNamespace="http://cyoda-platform.com/CyodaAI">
+
+    <types>
+        <xsd:schema targetNamespace="http://cyoda-platform.com/CyodaAI">
+            <xsd:element name="GetTenderLevel2MappingsRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="tenderVersion" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="buyerName" type="xsd:int" minOccurs="0"/>
+                        <xsd:element name="docVersion" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="docId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                        <xsd:element name="apiId" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="GetTenderLevel2MappingsResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="data" type="xsd:anyType"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+
+    <message name="GetTenderLevel2MappingsRequest">
+        <part name="parameters" element="tns:GetTenderLevel2MappingsRequest"/>
+    </message>
+    
+    <message name="GetTenderLevel2MappingsResponse">
+        <part name="parameters" element="tns:GetTenderLevel2MappingsResponse"/>
+    </message>
+
+    <portType name="CyodaAIServicePortType">
+        <operation name="GetTenderLevel2Mappings">
+            <input message="tns:GetTenderLevel2MappingsRequest"/>
+            <output message="tns:GetTenderLevel2MappingsResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="CyodaAIServiceBinding" type="tns:CyodaAIServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        
+        <operation name="GetTenderLevel2Mappings">
+            <soap:operation soapAction="http://cyoda-platform.com/CyodaAI/GetTenderLevel2Mappings"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CyodaAIService">
+        <port name="CyodaAIServicePort" binding="tns:CyodaAIServiceBinding">
+            <soap:address location="https://raw.githubusercontent.com/Cyoda-platform/cyoda-ai/refs/heads/main/data/test-inputs/v1/mappings/tender_level_2.json"/>
+        </port>
+    </service>
+
+</definitions>
