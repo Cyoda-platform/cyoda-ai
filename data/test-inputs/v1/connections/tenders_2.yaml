@@ -13,28 +13,28 @@ paths:
       summary: Retrieve tender level 2 mappings
       description: Fetches the tender level 2 mappings from the specified URL.
       parameters:
-        - name: param1
+        - name: tenderVersion
           in: query
           description: Random parameter 1
           required: false
           schema:
             type: string
 
-        - name: param2
+        - name: buyerName
           in: query
           description: Random parameter 2
           required: false
           schema:
             type: integer
 
-        - name: param3
+        - name: docVersion
           in: query
           description: Random parameter 3
           required: false
           schema:
             type: boolean
 
-        - name: param4
+        - name: docId
           in: query
           description: Random parameter 4
           required: false
@@ -43,7 +43,7 @@ paths:
             items:
               type: string
 
-        - name: param5
+        - name: apiId
           in: query
           description: Random parameter 5
           required: false
