@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Cyoda AI API
+  title: Cyoda AI API tenders fac62275-3d95-4417-a37d-863980e85e8b
   description: API to retrieve tender mappings.
   version: 1.0.0
 
