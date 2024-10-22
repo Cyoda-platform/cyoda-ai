@@ -1,0 +1,92 @@
+[
+  {
+    "employee": {
+      "name": "Michael Johnson",
+      "departmentInfo": {
+        "deptName": "Sales",
+        "deptCode": "SLS"
+      },
+      "jobPosition": "Sales Director",
+      "contact": {
+        "email": "michael.johnson@salescorp.com",
+        "phone": "+123456789"
+      }
+    },
+    "expense": {
+      "transactionDate": "2024-10-05",
+      "expenseDetails": {
+        "category": "Transportation",
+        "description": "Flight to a business meeting",
+        "cost": 300.00
+      },
+      "relatedProject": {
+        "projectName": "Client Retention",
+        "projectCode": "CR2024"
+      },
+      "financialPeriod": {
+        "quarter": "Q4",
+        "year": 2024
+      }
+    }
+  },
+  {
+    "employeeInfo": {
+      "fullName": "Sarah Connor",
+      "dept": {
+        "name": "Marketing",
+        "identifier": "MKT"
+      },
+      "position": "Marketing Specialist",
+      "communication": {
+        "emailAddress": "sarah.connor@marketingllc.com",
+        "mobile": "+987654321"
+      }
+    },
+    "expenseRecord": {
+      "recordedDate": "2024-11-12",
+      "expenseData": {
+        "type": "Food & Beverage",
+        "expenseDescription": "Lunch with potential clients",
+        "amountSpent": 150.75
+      },
+      "projectAssociation": {
+        "name": "Market Expansion",
+        "code": "ME2024"
+      },
+      "reportingPeriod": {
+        "quarterOfYear": "Q4",
+        "fiscalYear": 2024
+      }
+    }
+  },
+  {
+    "staffMember": {
+      "fullName": "John Doe",
+      "team": {
+        "teamName": "Product Development",
+        "teamCode": "PD"
+      },
+      "title": "Product Manager",
+      "contactDetails": {
+        "email": "john.doe@productdev.com",
+        "contactNumber": "+1122334455"
+      }
+    },
+    "spending": {
+      "dateOfTransaction": "2024-09-30",
+      "details": {
+        "category": "Software License",
+        "description": "Purchase of design software",
+        "amount": 450.00
+      },
+      "projectLinked": {
+        "projectTitle": "New Product Launch",
+        "projectIdentifier": "NPL2024"
+      },
+      "timeFrame": {
+        "fiscalQuarter": "Q3",
+        "fiscalYear": 2024
+      }
+    }
+  }
+]
