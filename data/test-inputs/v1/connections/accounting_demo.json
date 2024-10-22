@@ -1,0 +1,86 @@
+{
+  "accounts": [
+    {
+      "account_id": 1,
+      "account_name": "Cash",
+      "account_type": "Asset",
+      "balance": 15000.00
+    },
+    {
+      "account_id": 2,
+      "account_name": "Accounts Receivable",
+      "account_type": "Asset",
+      "balance": 5000.00
+    },
+    {
+      "account_id": 3,
+      "account_name": "Accounts Payable",
+      "account_type": "Liability",
+      "balance": 3000.00
+    },
+    {
+      "account_id": 4,
+      "account_name": "Revenue",
+      "account_type": "Income",
+      "balance": 20000.00
+    },
+    {
+      "account_id": 5,
+      "account_name": "Expenses",
+      "account_type": "Expense",
+      "balance": 8000.00
+    }
+  ],
+  "customers": [
+    {
+      "customer_id": 1,
+      "customer_name": "Acme Corp",
+      "contact_email": "contact@acmecorp.com",
+      "account_balance": 2000.00
+    },
+    {
+      "customer_id": 2,
+      "customer_name": "Beta LLC",
+      "contact_email": "info@betallc.com",
+      "account_balance": 1500.00
+    }
+  ],
+  "transactions": [
+    {
+      "transaction_id": 1,
+      "date": "2024-10-01",
+      "description": "Invoice #1001",
+      "amount": 3000.00,
+      "transaction_type": "Income",
+      "account_id": 4,
+      "customer_id": 1
+    },
+    {
+      "transaction_id": 2,
+      "date": "2024-10-05",
+      "description": "Purchase Office Supplies",
+      "amount": 500.00,
+      "transaction_type": "Expense",
+      "account_id": 5,
+      "customer_id": null
+    },
+    {
+      "transaction_id": 3,
+      "date": "2024-10-10",
+      "description": "Payment from Acme Corp",
+      "amount": 2000.00,
+      "transaction_type": "Income",
+      "account_id": 1,
+      "customer_id": 1
+    },
+    {
+      "transaction_id": 4,
+      "date": "2024-10-15",
+      "description": "Payment to Beta LLC",
+      "amount": 1500.00,
+      "transaction_type": "Expense",
+      "account_id": 3,
+      "customer_id": 2
+    }
+  ]
+}
