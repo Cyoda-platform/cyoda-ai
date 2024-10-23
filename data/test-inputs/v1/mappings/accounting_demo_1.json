@@ -1,92 +1,211 @@
 [
   {
-    "employee": {
-      "name": "Michael Johnson",
-      "departmentInfo": {
-        "deptName": "Sales",
-        "deptCode": "SLS"
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Alice Smith",
+        "unit": "Marketing",
+        "role": "Marketing Specialist"
       },
-      "jobPosition": "Sales Director",
-      "contact": {
-        "email": "michael.johnson@salescorp.com",
-        "phone": "+123456789"
-      }
-    },
-    "expense": {
-      "transactionDate": "2024-10-05",
-      "expenseDetails": {
-        "category": "Transportation",
-        "description": "Flight to a business meeting",
-        "cost": 300.00
-      },
-      "relatedProject": {
-        "projectName": "Client Retention",
-        "projectCode": "CR2024"
-      },
-      "financialPeriod": {
-        "quarter": "Q4",
-        "year": 2024
-      }
-    }
-  },
-  {
-    "employeeInfo": {
-      "fullName": "Sarah Connor",
-      "dept": {
-        "name": "Marketing",
-        "identifier": "MKT"
-      },
-      "position": "Marketing Specialist",
-      "communication": {
-        "emailAddress": "sarah.connor@marketingllc.com",
-        "mobile": "+987654321"
-      }
-    },
-    "expenseRecord": {
-      "recordedDate": "2024-11-12",
-      "expenseData": {
-        "type": "Food & Beverage",
-        "expenseDescription": "Lunch with potential clients",
-        "amountSpent": 150.75
-      },
-      "projectAssociation": {
-        "name": "Market Expansion",
-        "code": "ME2024"
-      },
-      "reportingPeriod": {
-        "quarterOfYear": "Q4",
-        "fiscalYear": 2024
-      }
-    }
-  },
-  {
-    "staffMember": {
-      "fullName": "John Doe",
-      "team": {
-        "teamName": "Product Development",
-        "teamCode": "PD"
-      },
-      "title": "Product Manager",
-      "contactDetails": {
-        "email": "john.doe@productdev.com",
-        "contactNumber": "+1122334455"
-      }
-    },
-    "spending": {
-      "dateOfTransaction": "2024-09-30",
+      "transaction_date": "2024-10-10",
+      "category": "Advertising",
       "details": {
-        "category": "Software License",
-        "description": "Purchase of design software",
-        "amount": 450.00
+        "description": "Online ad campaign",
+        "amount_spent": 1200,
+        "associated_project": "Brand Awareness"
       },
-      "projectLinked": {
-        "projectTitle": "New Product Launch",
-        "projectIdentifier": "NPL2024"
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Alice Smith",
+        "unit": "Marketing",
+        "role": "Marketing Specialist"
       },
-      "timeFrame": {
-        "fiscalQuarter": "Q3",
-        "fiscalYear": 2024
-      }
+      "transaction_date": "2024-10-15",
+      "category": "Travel",
+      "details": {
+        "description": "Flight to industry conference",
+        "amount_spent": 350,
+        "associated_project": "Industry Networking"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Pending"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Bob Johnson",
+        "unit": "Human Resources",
+        "role": "HR Coordinator"
+      },
+      "transaction_date": "2024-10-05",
+      "category": "Training",
+      "details": {
+        "description": "Employee workshop",
+        "amount_spent": 450,
+        "associated_project": "Employee Development"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Bob Johnson",
+        "unit": "Human Resources",
+        "role": "HR Coordinator"
+      },
+      "transaction_date": "2024-10-12",
+      "category": "Accommodation",
+      "details": {
+        "description": "Hotel stay for training session",
+        "amount_spent": 200,
+        "associated_project": "Training Session"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Charlie Brown",
+        "unit": "Information Technology",
+        "role": "Systems Analyst"
+      },
+      "transaction_date": "2024-10-20",
+      "category": "Software Licensing",
+      "details": {
+        "description": "Annual licensing fee for new software",
+        "amount_spent": 300,
+        "associated_project": "System Upgrade"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Charlie Brown",
+        "unit": "Information Technology",
+        "role": "Systems Analyst"
+      },
+      "transaction_date": "2024-10-25",
+      "category": "Infrastructure",
+      "details": {
+        "description": "New server purchase",
+        "amount_spent": 5000,
+        "associated_project": "Infrastructure Improvement"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Pending"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Diana Prince",
+        "unit": "Finance",
+        "role": "Financial Analyst"
+      },
+      "transaction_date": "2024-10-12",
+      "category": "Conference Attendance",
+      "details": {
+        "description": "Attendance at annual finance conference",
+        "amount_spent": 800,
+        "associated_project": "Annual Financial Review"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Diana Prince",
+        "unit": "Finance",
+        "role": "Financial Analyst"
+      },
+      "transaction_date": "2024-10-18",
+      "category": "Client Meals",
+      "details": {
+        "description": "Lunch meeting with clients",
+        "amount_spent": 150,
+        "associated_project": "Client Engagement"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Edward Elric",
+        "unit": "Engineering",
+        "role": "Mechanical Engineer"
+      },
+      "transaction_date": "2024-10-18",
+      "category": "Materials",
+      "details": {
+        "description": "Prototype materials purchase",
+        "amount_spent": 620,
+        "associated_project": "Product Development"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Edward Elric",
+        "unit": "Engineering",
+        "role": "Mechanical Engineer"
+      },
+      "transaction_date": "2024-10-22",
+      "category": "Travel",
+      "details": {
+        "description": "Travel expenses to supplier meeting",
+        "amount_spent": 400,
+        "associated_project": "Supplier Relations"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Pending"
+    }
+  },
+  {
+    "financial_record": {
+      "staff_member": {
+        "full_name": "Fiona Green",
+        "unit": "Sales",
+        "role": "Sales Executive"
+      },
+      "transaction_date": "2024-10-15",
+      "category": "Travel",
+      "details": {
+        "description": "Trip to meet potential client",
+        "amount_spent": 750,
+        "associated_project": "Client Acquisition"
+      },
+      "fiscal_quarter": "Q4",
+      "fiscal_year": 2024,
+      "status": "Approved"
     }
   }
 ]
