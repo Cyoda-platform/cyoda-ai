@@ -1,302 +1,211 @@
 [
   {
-    "staff": {
-      "full_name": "Michael Johnson",
-      "department": {
-        "name": "Sales",
-        "code": "SLS"
+    "expense_entry": {
+      "employee_info": {
+        "name": "Alice Smith",
+        "department": "Marketing",
+        "position": "Marketing Specialist"
       },
-      "title": "Sales Director",
-      "contact_info": {
-        "email": "michael.johnson@salescorp.com",
-        "phone_number": "+123456789"
-      }
-    },
-    "expense_info": {
-      "date": "2024-10-05",
-      "details": {
-        "type": "Transportation",
-        "notes": "Flight to a business meeting",
-        "amount": 300.00
-      },
-      "associated_project": {
-        "name": "Client Retention Program",
-        "identifier": "CR2024"
-      },
-      "fiscal_period": {
-        "quarter": "Q4",
-        "year": 2024
-      }
-    }
-  },
-  {
-    "employee": {
-      "name": "Sarah Connor",
-      "dept_info": {
-        "department_name": "Marketing",
-        "dept_id": "MKT"
-      },
-      "position_title": "Marketing Specialist",
-      "communication_details": {
-        "email": "sarah.connor@marketingllc.com",
-        "mobile_number": "+987654321"
-      }
-    },
-    "expense_record": {
-      "recorded_on": "2024-11-12",
+      "date_of_expense": "2024-10-10",
+      "expense_type": "Advertising",
       "expense_details": {
-        "category": "Meals & Entertainment",
-        "description": "Lunch with potential clients",
-        "total": 150.75
+        "item_description": "Online ad campaign",
+        "cost": 1200,
+        "related_project": "Brand Awareness"
       },
-      "linked_project": {
-        "title": "Market Expansion",
-        "project_code": "ME2024"
-      },
-      "reporting_period": {
-        "quarter_of_year": "Q4",
-        "fiscal_year": 2024
-      }
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
     }
   },
   {
-    "employee_info": {
-      "name": "John Doe",
-      "team_details": {
-        "team_name": "Product Development",
-        "team_code": "PD"
+    "expense_entry": {
+      "employee_info": {
+        "name": "Alice Smith",
+        "department": "Marketing",
+        "position": "Marketing Specialist"
       },
-      "job_title": "Product Manager",
-      "contact": {
-        "email": "john.doe@productdev.com",
-        "phone": "+1122334455"
-      }
-    },
-    "spending_info": {
-      "transaction_date": "2024-09-30",
-      "item_details": {
-        "category": "Software Licensing",
-        "description": "Purchase of design software",
-        "cost": 450.00
-      },
-      "related_project_info": {
-        "name": "New Product Launch",
-        "identifier": "NPL2024"
-      },
-      "time_period": {
-        "quarter": "Q3",
-        "year": 2024
-      }
-    }
-  },
-  {
-    "staff": {
-      "full_name": "Alice White",
-      "department": {
-        "name": "Finance",
-        "code": "FIN"
-      },
-      "title": "Financial Analyst",
-      "contact_info": {
-        "email": "alice.white@financecorp.com",
-        "phone_number": "+234567890"
-      }
-    },
-    "expense_info": {
-      "date": "2024-10-20",
-      "details": {
-        "type": "Training",
-        "notes": "Finance workshop registration",
-        "amount": 600.00
-      },
-      "associated_project": {
-        "name": "Financial Training Program",
-        "identifier": "FTP2024"
-      },
-      "fiscal_period": {
-        "quarter": "Q4",
-        "year": 2024
-      }
-    }
-  },
-  {
-    "employee": {
-      "name": "David Brown",
-      "dept_info": {
-        "department_name": "Human Resources",
-        "dept_id": "HR"
-      },
-      "position_title": "HR Manager",
-      "communication_details": {
-        "email": "david.brown@hrcorp.com",
-        "mobile_number": "+345678901"
-      }
-    },
-    "expense_record": {
-      "recorded_on": "2024-10-15",
+      "date_of_expense": "2024-10-15",
+      "expense_type": "Travel",
       "expense_details": {
-        "category": "Recruitment",
-        "description": "Job fair participation fee",
-        "total": 350.00
+        "item_description": "Flight to industry conference",
+        "cost": 350,
+        "related_project": "Industry Networking"
       },
-      "linked_project": {
-        "title": "Talent Acquisition",
-        "project_code": "TA2024"
-      },
-      "reporting_period": {
-        "quarter_of_year": "Q4",
-        "fiscal_year": 2024
-      }
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Pending"
     }
   },
   {
-    "employee_info": {
-      "name": "Eve Adams",
-      "team_details": {
-        "team_name": "Customer Support",
-        "team_code": "CS"
+    "expense_entry": {
+      "employee_info": {
+        "name": "Bob Johnson",
+        "department": "Human Resources",
+        "position": "HR Coordinator"
       },
-      "job_title": "Customer Support Specialist",
-      "contact": {
-        "email": "eve.adams@supportcorp.com",
-        "phone": "+456789012"
-      }
-    },
-    "spending_info": {
-      "transaction_date": "2024-09-25",
-      "item_details": {
-        "category": "Travel",
-        "description": "Hotel stay for client meeting",
-        "cost": 200.00
-      },
-      "related_project_info": {
-        "name": "Customer Engagement",
-        "identifier": "CE2024"
-      },
-      "time_period": {
-        "quarter": "Q3",
-        "year": 2024
-      }
-    }
-  },
-  {
-    "staff": {
-      "full_name": "Frank Castle",
-      "department": {
-        "name": "IT",
-        "code": "IT"
-      },
-      "title": "IT Specialist",
-      "contact_info": {
-        "email": "frank.castle@itcorp.com",
-        "phone_number": "+567890123"
-      }
-    },
-    "expense_info": {
-      "date": "2024-10-10",
-      "details": {
-        "type": "Equipment",
-        "notes": "Laptop purchase for new employee",
-        "amount": 1200.00
-      },
-      "associated_project": {
-        "name": "New Hire Onboarding",
-        "identifier": "NHO2024"
-      },
-      "fiscal_period": {
-        "quarter": "Q4",
-        "year": 2024
-      }
-    }
-  },
-  {
-    "employee": {
-      "name": "Grace Lee",
-      "dept_info": {
-        "department_name": "Logistics",
-        "dept_id": "LOG"
-      },
-      "position_title": "Logistics Coordinator",
-      "communication_details": {
-        "email": "grace.lee@logisticsllc.com",
-        "mobile_number": "+678901234"
-      }
-    },
-    "expense_record": {
-      "recorded_on": "2024-11-01",
+      "date_of_expense": "2024-10-05",
+      "expense_type": "Training",
       "expense_details": {
-        "category": "Travel",
-        "description": "Car rental for site visit",
-        "total": 180.50
+        "item_description": "Employee workshop",
+        "cost": 450,
+        "related_project": "Employee Development"
       },
-      "linked_project": {
-        "title": "Supply Chain Optimization",
-        "project_code": "SCO2024"
-      },
-      "reporting_period": {
-        "quarter_of_year": "Q4",
-        "fiscal_year": 2024
-      }
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
     }
   },
   {
-    "employee_info": {
-      "name": "Hank Pym",
-      "team_details": {
-        "team_name": "Research and Development",
-        "team_code": "RD"
+    "expense_entry": {
+      "employee_info": {
+        "name": "Bob Johnson",
+        "department": "Human Resources",
+        "position": "HR Coordinator"
       },
-      "job_title": "R&D Manager",
-      "contact": {
-        "email": "hank.pym@rdcorp.com",
-        "phone": "+789012345"
-      }
-    },
-    "spending_info": {
-      "transaction_date": "2024-10-05",
-      "item_details": {
-        "category": "Supplies",
-        "description": "Laboratory equipment purchase",
-        "cost": 500.00
+      "date_of_expense": "2024-10-12",
+      "expense_type": "Accommodation",
+      "expense_details": {
+        "item_description": "Hotel stay for training session",
+        "cost": 200,
+        "related_project": "Training Session"
       },
-      "related_project_info": {
-        "name": "Innovative Solutions",
-        "identifier": "IS2024"
-      },
-      "time_period": {
-        "quarter": "Q4",
-        "year": 2024
-      }
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
     }
   },
   {
-    "staff": {
-      "full_name": "Isabella Green",
-      "department": {
-        "name": "Administration",
-        "code": "ADM"
+    "expense_entry": {
+      "employee_info": {
+        "name": "Charlie Brown",
+        "department": "Information Technology",
+        "position": "Systems Analyst"
       },
-      "title": "Office Manager",
-      "contact_info": {
-        "email": "isabella.green@admincorp.com",
-        "phone_number": "+890123456"
-      }
-    },
-    "expense_info": {
-      "date": "2024-10-25",
-      "details": {
-        "type": "Supplies",
-        "notes": "Office supplies purchase",
-        "amount": 75.25
+      "date_of_expense": "2024-10-20",
+      "expense_type": "Software Licensing",
+      "expense_details": {
+        "item_description": "Annual licensing fee for new software",
+        "cost": 300,
+        "related_project": "System Upgrade"
       },
-      "associated_project": {
-        "name": "Office Management",
-        "identifier": "OM2024"
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
+    }
+  },
+  {
+    "expense_entry": {
+      "employee_info": {
+        "name": "Charlie Brown",
+        "department": "Information Technology",
+        "position": "Systems Analyst"
       },
-      "fiscal_period": {
-        "quarter": "Q4",
-        "year": 2024
-      }
+      "date_of_expense": "2024-10-25",
+      "expense_type": "Infrastructure",
+      "expense_details": {
+        "item_description": "New server purchase",
+        "cost": 5000,
+        "related_project": "Infrastructure Improvement"
+      },
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Pending"
+    }
+  },
+  {
+    "expense_entry": {
+      "employee_info": {
+        "name": "Diana Prince",
+        "department": "Finance",
+        "position": "Financial Analyst"
+      },
+      "date_of_expense": "2024-10-12",
+      "expense_type": "Conference Attendance",
+      "expense_details": {
+        "item_description": "Attendance at annual finance conference",
+        "cost": 800,
+        "related_project": "Annual Financial Review"
+      },
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
+    }
+  },
+  {
+    "expense_entry": {
+      "employee_info": {
+        "name": "Diana Prince",
+        "department": "Finance",
+        "position": "Financial Analyst"
+      },
+      "date_of_expense": "2024-10-18",
+      "expense_type": "Client Meals",
+      "expense_details": {
+        "item_description": "Lunch meeting with clients",
+        "cost": 150,
+        "related_project": "Client Engagement"
+      },
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
+    }
+  },
+  {
+    "expense_entry": {
+      "employee_info": {
+        "name": "Edward Elric",
+        "department": "Engineering",
+        "position": "Mechanical Engineer"
+      },
+      "date_of_expense": "2024-10-18",
+      "expense_type": "Materials",
+      "expense_details": {
+        "item_description": "Prototype materials purchase",
+        "cost": 620,
+        "related_project": "Product Development"
+      },
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
+    }
+  },
+  {
+    "expense_entry": {
+      "employee_info": {
+        "name": "Edward Elric",
+        "department": "Engineering",
+        "position": "Mechanical Engineer"
+      },
+      "date_of_expense": "2024-10-22",
+      "expense_type": "Travel",
+      "expense_details": {
+        "item_description": "Travel expenses to supplier meeting",
+        "cost": 400,
+        "related_project": "Supplier Relations"
+      },
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Pending"
+    }
+  },
+  {
+    "expense_entry": {
+      "employee_info": {
+        "name": "Fiona Green",
+        "department": "Sales",
+        "position": "Sales Executive"
+      },
+      "date_of_expense": "2024-10-15",
+      "expense_type": "Travel",
+      "expense_details": {
+        "item_description": "Trip to meet potential client",
+        "cost": 750,
+        "related_project": "Client Acquisition"
+      },
+      "quarter_of_financial_year": "Q4",
+      "year_of_finance": 2024,
+      "approval_status": "Approved"
     }
   }
 ]
