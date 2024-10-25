@@ -1,0 +1,171 @@
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+Here's an example of how to map an input to an entity with a Javascript Nashorn script:
+
+Example input:
+<Project>
+  <Name>Construction of New Office Building</Name>
+  <Types>
+    <Type>Construction</Type>
+    <Type>Development</Type>
+  </Types>
+  <ContactUser>John Doe</ContactUser>
+  <SystemAccount>true</SystemAccount>
+  <Date>2024-03-28</Date>
+  <DeadlineDate>2024-04-30</DeadlineDate>
+  <DeadlineLengthDays>33</DeadlineLengthDays>
+  <Category>Construction Services</Category>
+  <AwardedValue>185000</AwardedValue>
+  <Purchaser>ABC Corporation</Purchaser>
+  <Notices>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-28</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-29</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 29th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-30</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 30th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-31</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 31th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+  </Notices>
+</Project>
+
+
+Example entity net.cyoda.saas.model.TenderEntity:
+{
+    "net.cyoda.saas.model.TenderEntity": {
+      "name": "string",
+      "types": [
+        "string"
+      ],
+      "contactUser": "string",
+      "systemAccount": true,
+      "date": "string",
+      "deadlineDate": "string",
+      "deadlineLengthDays": 0,
+      "category": "string",
+      "awardedValue": 0.0,
+      "purchaser": "string",
+      "notices": [
+        {
+          "name": "string",
+          "id": "string",
+          "sid": "string",
+          "date": "string",
+          "type": "string",
+          "srcId": "string",
+          "srcUrl": "string",
+          "data": "string"
+        }
+      ]
+    }
+  },
+
+  {
+    "net.cyoda.saas.model.dto.tender.Notice": {
+        "name": "string",
+        "id": "string",
+        "sid": "string",
+        "date": "string",
+        "type": "string",
+        "srcId": "string",
+        "srcUrl": "string",
+        "data": "string"
+    }
+}
+
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+
+Example object initialization. Always initialize Java objects similar way or according to the docs:
+package net.cyoda.saas.model is the same for all classes you do not know.
+
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var Notice = Java.type('net.cyoda.saas.model.dto.tender.Notice');
+var notice = new Notice();
+```
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var entity = Java.type('net.cyoda.saas.model.TenderEntity');
+var entity = new TenderEntity();
+```
+
+Do NOT initialize target entity (net.cyoda.saas.model.TenderEntity in this case)
+
+So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
+Expected code output:
+```Javascript Nashorn
+// Do NOT initialize entity (net.cyoda.saas.model.TenderEntity in this case)
+entity.setName(input.Project.Name != null ? input.Project.Name : "");
+entity.setContactUser(input.Project.ContactUser != null ? input.Project.ContactUser : "");
+entity.setSystemAccount(input.Project.SystemAccount != null ? input.Project.SystemAccount : "");
+entity.setDate(input.Project.Date != null ? input.Project.Date : "");
+entity.setDeadlineDate(input.Project.DeadlineDate != null ? input.Project.DeadlineDate : "");
+entity.setDeadlineLengthDays(input.Project.DeadlineLengthDays != null ? input.Project.DeadlineLengthDays : 0);
+entity.setCategory(input.Project.Category != null ? input.Project.Category : "");
+entity.setAwardedValue(input.Project.AwardedValue != null ? input.Project.AwardedValue : 0.0);
+entity.setPurchaser(input.Project.Purchaser != null ? input.Project.Purchaser : "");
+
+var ArrayList = Java.type("java.util.ArrayList");
+var typesArray = new ArrayList();
+
+if (input.Project.Types != null && input.Project.Types.Type != null) {
+    var types = input.Project.Types.Type;
+    types.forEach(function(type) {
+        typesArray.add(type != null ? type : "");
+    });
+}
+
+entity.setTypes(typesArray);
+
+var notices = new ArrayList();
+var Notice = Java.type('net.cyoda.saas.model.dto.tender.Notice');
+
+// Add notices from input
+if (input.Project.Notices != null && input.Project.Notices.Notice != null) {
+    for (var i = 0; i < input.Project.Notices.Notice.length; i++) {
+        var notice = new Notice();
+        notice.setName(input.Project.Notices.Notice[i].Name != null ? input.Project.Notices.Notice[i].Name : "");
+        notice.setId(input.Project.Notices.Notice[i].ID != null ? input.Project.Notices.Notice[i].ID : "");
+        notice.setSid(input.Project.Notices.Notice[i].SID != null ? input.Project.Notices.Notice[i].SID : "");
+        notice.setDate(input.Project.Notices.Notice[i].Date != null ? input.Project.Notices.Notice[i].Date : "");
+        notice.setType(input.Project.Notices.Notice[i].Type != null ? input.Project.Notices.Notice[i].Type : "");
+        notice.setSrcId(input.Project.Notices.Notice[i].SrcId != null ? input.Project.Notices.Notice[i].SrcId : "");
+        notice.setSrcUrl(input.Project.Notices.Notice[i].SrcUrl != null ? input.Project.Notices.Notice[i].SrcUrl : "");
+        notice.setData(input.Project.Notices.Notice[i].Data != null ? input.Project.Notices.Notice[i].Data : "");
+        notices.add(notice);
+    }
+}
+
+entity.setNotices(notices);
+```

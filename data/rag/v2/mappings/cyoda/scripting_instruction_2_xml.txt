@@ -1,0 +1,170 @@
+**Writing a JavaScript Nashorn script to map the given input to the given Cyoda target entity**
+
+Instruction b7f19c43-3e09-47a1-8e64-1e789f70961e
+
+Here's an example of how to map an input to an entity with a Javascript Nashorn script:
+
+Example input:
+<Project>
+  <Name>Construction of New Office Building</Name>
+  <Types>
+    <Type>Construction</Type>
+    <Type>Development</Type>
+  </Types>
+  <ContactUser>John Doe</ContactUser>
+  <SystemAccount>true</SystemAccount>
+  <Date>2024-03-28</Date>
+  <DeadlineDate>2024-04-30</DeadlineDate>
+  <DeadlineLengthDays>33</DeadlineLengthDays>
+  <Category>Construction Services</Category>
+  <AwardedValue>185000</AwardedValue>
+  <Purchaser>ABC Corporation</Purchaser>
+  <Notices>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-28</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-29</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 29th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-30</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 30th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+    <Notice>
+      <Name>Pre-Bid Conference</Name>
+      <ID>NW20240328002</ID>
+      <SID>S003</SID>
+      <Date>2024-03-31</Date>
+      <Type>Conference</Type>
+      <SrcId>SRC003</SrcId>
+      <SrcUrl>https://example.com/notice/NW20240328002</SrcUrl>
+      <Data>Pre-bid conference scheduled on March 31th, 2024 at 2:00 PM to discuss project specifications.</Data>
+    </Notice>
+  </Notices>
+</Project>
+
+Example target entity model:
+{
+  "$": {
+    "#.purchaserNoticeMap": "OBJECT",
+    ".awardedValue": "DOUBLE",
+    ".category": "STRING",
+    ".contactUser": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".deadlineDate": "ZONED_DATE_TIME",
+    ".deadlineLengthDays": "INTEGER",
+    ".employeeId": "TIME_UUID_TYPE",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".purchaser": "STRING",
+    ".systemAccount": "BOOLEAN",
+    ".types[*]": "(STRING x 1)"
+  },
+  "$.notices[*]": {
+    "#": "ARRAY_ELEMENT",
+    ".data": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".sid": "STRING",
+    ".srcId": "STRING",
+    ".srcUrl": "STRING",
+    ".type": "STRING"
+  },
+  "$.purchaserNoticeMap.Purchaser A[*]": {
+    "#": "ARRAY_ELEMENT",
+    ".data": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".sid": "STRING",
+    ".srcId": "STRING",
+    ".srcUrl": "STRING",
+    ".type": "STRING"
+  }
+}
+
+Instruction b7f19c43-3e09-47a1-8e64-1e789f70961e
+
+**Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
+
+Always start with:
+var target = entity.modelAccessor;
+then map fields
+target.name = input.name;
+target.contactUser = input.contactUser;
+target.systemAccount = input.systemAccount;
+
+var UUID = Java.type("java.util.UUID");
+target.employeeId = UUID.fromString(input.employeeId);
+
+4. Handling Collections (Arrays and Maps): For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps.
+For Arrays (like notices):
+Example:
+```Javascript Nashorn
+var ArrayList = Java.type("java.util.ArrayList");
+var notices = new ArrayList();
+for (var i = 0; i < input.notices.length; i++) {
+    var notice = {
+        name: input.notices[i].name,
+        id: input.notices[i].id,
+        sid: input.notices[i].sid,
+        date: input.notices[i].date,
+        type: input.notices[i].type,
+        srcId: input.notices[i].srcId,
+        srcUrl: input.notices[i].srcUrl,
+        data: input.notices[i].data
+    };
+    notices.add(notice);
+}
+target.notices = notices;
+```
+
+For Maps (like purchaserNoticeMap):
+Example:
+```Javascript Nashorn
+var HashMap = Java.type("java.util.HashMap");
+var purchaserNoticeMap = new HashMap();
+
+var purchaserKeys = input.purchaserNoticeMap.keySet().toArray();
+for (var j = 0; j < purchaserKeys.length; j++) {
+    var key = purchaserKeys[j];
+    var noticeList = input.purchaserNoticeMap.get(key);
+    var mappedNoticeList = new ArrayList();
+
+    for (var k = 0; k < noticeList.length; k++) {
+        var notice = {
+            name: noticeList[k].name,
+            id: noticeList[k].id,
+            sid: noticeList[k].sid,
+            date: noticeList[k].date,
+            type: noticeList[k].type,
+            srcId: noticeList[k].srcId,
+            srcUrl: noticeList[k].srcUrl,
+            data: noticeList[k].data
+        };
+        mappedNoticeList.add(notice);
+    }
+    purchaserNoticeMap.put(key, mappedNoticeList);
+}
+target.purchaserNoticeMap = purchaserNoticeMap;
