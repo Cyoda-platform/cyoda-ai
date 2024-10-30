@@ -1,44 +1,44 @@
 {
   "person": {
-    "firstName": "John",                          // String
-    "lastName": "Doe",                            // String
-    "age": 30,                                    // Integer
-    "isEmployed": true,                           // Boolean
-    "dateOfBirth": "1994-05-15",                  // Date (String in ISO 8601 format)
-    "hireDate": "2020-01-20",                     // Date (String in ISO 8601 format)
-    "address": {                                  // Object
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 30,
+    "isEmployed": true,
+    "dateOfBirth": "1994-05-15",
+    "hireDate": "2020-01-20",
+    "address": {
       "street": "123 Elm St",
       "city": "Anytown",
       "state": "CA",
       "zipCode": "90210"
     },
-    "phoneNumbers": [                             // Array
+    "phoneNumbers": [
       "+1234567890",
       "+0987654321",
-      null                                         // Null
+      null
     ],
-    "email": "john.doe@example.com",              // String
-    "salary": 75000.50,                           // Number
-    "skills": [                                   // Array
+    "email": "john.doe@example.com",
+    "salary": 75000.50,
+    "skills": [
       "JavaScript",
       "Python",
       "SQL",
-      null                                         // Null within an array
+      null
     ],
-    "projects": [                                  // Array of Objects
+    "projects": [
       {
         "projectId": "proj-001",
         "projectName": "Web Development",
         "durationMonths": 6,
-        "completionDate": "2021-06-30"             // Date (String in ISO 8601 format)
+        "completionDate": "2021-06-30"
       },
       {
         "projectId": "proj-002",
         "projectName": "Mobile App",
         "durationMonths": 3,
-        "completionDate": "2021-09-15"             // Date (String in ISO 8601 format)
+        "completionDate": "2021-09-15"
       }
     ],
-    "spouse": null                                 // Null
+    "spouse": null
   }
 }

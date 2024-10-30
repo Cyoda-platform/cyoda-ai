@@ -1,0 +1,4 @@
+for each entity add a directory and add 3 data_source_responses that can be mapped to this entity . 1 - level 0, 2 - level 1 , 3 - level 2 complexity
+level 0 - completely the same (just copy paste entity)
+1 - semantically close attributes (synonyms) and different cardinalities
+2 - files can be mapped but need user guidance (so mapping will be done in autocomplete)
