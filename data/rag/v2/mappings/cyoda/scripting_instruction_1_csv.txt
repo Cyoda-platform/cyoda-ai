@@ -5,9 +5,8 @@ Instruction e31a2c74-4c85-4c3b-b0ab-3b0cd7a9fe58
 Here's an example of how to map an Example_input to an entity with a Javascript Nashorn script:
 
 Example_input:
-Project Name,Types,Contact User,System Account,Project Date,Deadline Date,Deadline Length Days,Category,Awarded Value,Purchaser,Notice Name 1,Notice ID 1,Notice SID 1,Notice Date 1,Notice Type 1,Notice Src ID 1,Notice Src URL 1,Notice Data 1,Notice Name 2,Notice ID 2,Notice SID 2,Notice Date 2,Notice Type 2,Notice Src ID 2,Notice Src URL 2,Notice Data 2
-Construction of New Office Building,"Construction, Development",John Doe,True,2024-03-28T12:00:00Z,2024-04-30T12:00:00Z,33,Construction Services,185000,ABC Corporation,Pre-Bid Conference,NW20240328002,S003,2024-03-28T12:00:00Z,Conference,SRC003,https://example.com/notice/NW20240328002,"Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications.",Site Visit,NW20240328003,S004,2024-03-30T12:00:00Z,Visit,SRC004,https://example.com/notice/NW20240328003,"Mandatory site visit scheduled on March 30th, 2024 at 10:00 AM for all prospective contractors."
-Renovation of Public Library,"Building, Maintenance",Jane Roe,False,2023-12-15T12:00:00Z,2024-01-15T12:00:00Z,31,Maintenance Services,190000,XYZ Industries,Post-Award Meeting,PR20231215001,S004,2023-12-15T12:00:00Z,Meeting,SRC004,https://example.org/notice/PR20231215001,"Post-award meeting scheduled on December 15th, 2023 at 3:00 PM to finalize contract details.",Project Inspection,PR20231215002,S005,2023-12-20T12:00:00Z,Inspection,SRC005,https://example.org/notice/PR20231215002,"Project inspection scheduled on December 20th, 2023 at 9:00 AM to evaluate work progress."
+awardedValue,category,contactUser,date,deadlineDate,deadlineLengthDays,employeeId,id,name,purchaser,systemAccount,types,notices[1].data,notices[1].date,notices[1].id,notices[1].name,notices[1].sid,notices[1].srcId,notices[1].srcUrl,notices[1].type,notices[2].data,notices[2].date,notices[2].id,notices[2].name,notices[2].sid,notices[2].srcId,notices[2].srcUrl,notices[2].type,purchaserNoticeMap.Purchaser A[1].data,purchaserNoticeMap.Purchaser A[1].date,purchaserNoticeMap.Purchaser A[1].id,purchaserNoticeMap.Purchaser A[1].name,purchaserNoticeMap.Purchaser A[1].sid,purchaserNoticeMap.Purchaser A[1].srcId,purchaserNoticeMap.Purchaser A[1].srcUrl,purchaserNoticeMap.Purchaser A[1].type
+10000,Category A,John Doe,2024-10-25T10:15:30Z,2024-11-01T10:15:30Z,7,c768a534-225c-11b2-bbaf-4e02553a495a,1,Contract X,Company ABC,true,Type A|Type B,Data 1,2024-10-25T10:15:30Z,101,Notice 1,001,SrcID1,https://example.com/notice1,NoticeType 1,Data 2,2024-10-26T10:15:30Z,102,Notice 2,002,SrcID2,https://example.com/notice2,NoticeType 2,Data A,2024-10-25T10:15:30Z,201,Map Notice A1,101,SrcIDA,https://example.com/noticeA1,MapNoticeType A1
 
 Example target entity model:
 {
@@ -56,58 +55,55 @@ Instruction e31a2c74-4c85-4c3b-b0ab-3b0cd7a9fe58
 
 Always start with:
 var target = entity.modelAccessor;
-then map fields
+Then map fields:
 target.name = input['Project Name'] != null ? input['Project Name'] : "";
 target.contactUser = input['Contact User'] != null ? input['Contact User'] : "";
 target.systemAccount = input['System Account'] != null ? input['System Account'] : false;
 
-var UUID = Java.type("java.util.UUID");
-target.employeeId = input['Employee ID'] != null ? UUID.fromString(input['Employee ID']) : null;
+How to handle collections:
+For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps only when you have ensured that the target entity contains corresponding collections; otherwise, map fields directly.
+Look through header field names of input to detect a pattern used in naming array elements and use the correct pattern in your output loop.
+Patterns typically involve a combination of prefixes, indices, and suffixes (e.g., "Notice Name 1", "1 Notice Name", "Notice_1_Name", "Notice[1]Name", "Notice Name (1)").
 
-How to handle collections.
-Look through header field names of input to detect a pattern used in naming array elements and use the correct pattern from script examples in your output loop.
-Choose between Pattern 1, 2 and 3.
-Pattern 1: Field names contain a prefix, followed by an index. For example: "Notice Name 1", "Notice ID 1", "Notice Name 2", "Notice ID 2", etc.
-Script example to be applied to Pattern 1:
-```Javascript Nashorn
-var i = 1;
-while (input['Notice Name ' + i] != undefined) {
+Script example:
+
+// Handling types
+var ArrayList = Java.type("java.util.ArrayList");
+var typesList = new ArrayList();
+if (input.types != null) {
+    var typesArray = input.types.split("|");
+    for (var k = 0; k < typesArray.length; k++) {
+        typesList.add(typesArray[k].trim());
+    }
+}
+target.types = typesList;
+
+// Handling notices
+var ArrayList = Java.type("java.util.ArrayList");
+var notices = new ArrayList();
+for (var i = 1; input['notices[' + i + '].name'] != null; i++) {
     var notice = {
-        name: input['Notice Name ' + i] || "",
-        id: input['Notice ID ' + i] || "",
+        name: input['notices[' + i + '].name'] || "",
+        id: input['notices[' + i + '].id'] || "",
         // Add other fields as needed
     };
     notices.add(notice);
-    i++;
 }
-```
+target.notices = notices;
 
-Pattern 2: Field names contain an index followed by a suffix. For example: "1 Notice Name", "1 Notice ID", "2 Notice Name", "2 Notice ID", etc.
-Script example to be applied to Pattern 2:
-```Javascript Nashorn
-var i = 1;
-while (input[i + ' Notice Name'] !== undefined) {
-    var notice = {
-        name: input[i + ' Notice Name'] || "",
-        id: input[i + ' Notice ID'] || "",
+// Handling purchaserNoticeMap
+var HashMap = Java.type("java.util.HashMap");
+var purchaserNoticeMap = new HashMap();
+
+var purchaserKey = "Purchaser A"; // Assuming there is only one purchaser for simplification
+var purchaserNoticesList = new ArrayList();
+for (var j = 1; input['purchaserNoticeMap.' + purchaserKey + '[' + j + '].name'] != null; j++) {
+    var purchaserNotice = {
+        name: input['purchaserNoticeMap.' + purchaserKey + '[' + j + '].name'] || "",
+        id: input['purchaserNoticeMap.' + purchaserKey + '[' + j + '].id'] || "",
         // Add other fields as needed
     };
-    notices.add(notice);
-    i++;
+    purchaserNoticesList.add(purchaserNotice);
 }
-```
-
-Pattern 3: Fields are named using underscores to separate the prefix and index. For example: "Notice_1_Name", "Notice_1_ID", "Notice_2_Name", "Notice_2_ID", etc.
-Script example to be applied to Pattern 3:
-```Javascript Nashorn
-var i = 1;
-while (input['Notice_' + i + '_Name'] !== undefined) {
-    var notice = {
-        name: input['Notice_' + i + '_Name'] || "",
-        id: input['Notice_' + i + '_ID'] || "",
-        // Add other fields as needed
-    };
-    notices.add(notice);
-    i++;
-}
-```
+purchaserNoticeMap.put(purchaserKey, purchaserNoticesList);
+target.purchaserNoticeMap = purchaserNoticeMap;

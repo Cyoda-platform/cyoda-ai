@@ -6,150 +6,174 @@ Here's an example of how to map an input to an entity with a Javascript Nashorn 
 
 Example input:
 {
-  "id": "tender-001",
-  "name": "Simple Tender",
-  "types": [
-    "TypeA"
+  "id": "b3d92c6a-f3b1-49cb-a1e1-3d2d638a7b1b",
+  "name": "John Doe",
+  "isActive": true,
+  "age": 30,
+  "salary": 85000.5,
+  "accountBalance": {
+    "current": 2500.75,
+    "overdraftLimit": 1000
+  },
+  "registrationDate": "2023-10-07T14:30:00Z",
+  "preferences": [
+    "email",
+    "sms",
+    "push"
   ],
-  "contactUser": "contact@example.com",
-  "systemAccount": true,
-  "date": "2024-08-18T12:00:00Z",
-  "deadlineDate": "2024-09-01T12:00:00Z",
-  "deadlineLengthDays": 14,
-  "category": "General",
-  "awardedValue": 10000,
-  "purchaser": "Purchaser A",
-  "employeeId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-  "notices": [
-    {
-      "name": "Notice 1",
-      "id": "notice-001",
-      "sid": "sid-001",
-      "date": "2024-08-18T12:00:00Z",
-      "type": "Initial",
-      "srcId": "src-001",
-      "srcUrl": "http://example.com/notice-001",
-      "data": "Notice data 1"
-    }
-  ],
-  "purchaserNoticeMap": {
-    "Purchaser A": [
+  "contact": {
+    "email": "johndoe@example.com",
+    "phoneNumbers": [
       {
-        "name": "Notice 1",
-        "id": "notice-001",
-        "sid": "sid-001",
-        "date": "2024-08-18T12:00:00Z",
-        "type": "Initial",
-        "srcId": "src-001",
-        "srcUrl": "http://example.com/notice-001",
-        "data": "Notice data 1"
+        "type": "home",
+        "number": "+1-555-123-4567"
+      },
+      {
+        "type": "work",
+        "number": "+1-555-987-6543"
       }
     ]
-  }
+  },
+  "skills": {
+    "Java": 4,
+    "JavaScript": 3,
+    "Python": 5
+  },
+  "projects": {
+    "Project Alpha": [
+      {
+        "taskId": "t1",
+        "description": "Design UI",
+        "status": "IN_PROGRESS"
+      },
+      {
+        "taskId": "t2",
+        "description": "Develop Backend",
+        "status": "NOT_STARTED"
+      }
+    ],
+    "Project Beta": [
+      {
+        "taskId": "t3",
+        "description": "Testing",
+        "status": "COMPLETED"
+      }
+    ]
+  },
+  "tags": [
+    "developer",
+    "team player",
+    "fast learner"
+  ]
 }
 
 Example target entity model:
-{
-  "$": {
-    "#.purchaserNoticeMap": "OBJECT",
-    ".awardedValue": "DOUBLE",
-    ".category": "STRING",
-    ".contactUser": "STRING",
-    ".date": "ZONED_DATE_TIME",
-    ".deadlineDate": "ZONED_DATE_TIME",
-    ".deadlineLengthDays": "INTEGER",
-    ".employeeId": "TIME_UUID_TYPE",
-    ".id": "STRING",
-    ".name": "STRING",
-    ".purchaser": "STRING",
-    ".systemAccount": "BOOLEAN",
-    ".types[*]": "(STRING x 1)"
-  },
-  "$.notices[*]": {
-    "#": "ARRAY_ELEMENT",
-    ".data": "STRING",
-    ".date": "ZONED_DATE_TIME",
-    ".id": "STRING",
-    ".name": "STRING",
-    ".sid": "STRING",
-    ".srcId": "STRING",
-    ".srcUrl": "STRING",
-    ".type": "STRING"
-  },
-  "$.purchaserNoticeMap.Purchaser A[*]": {
-    "#": "ARRAY_ELEMENT",
-    ".data": "STRING",
-    ".date": "ZONED_DATE_TIME",
-    ".id": "STRING",
-    ".name": "STRING",
-    ".sid": "STRING",
-    ".srcId": "STRING",
-    ".srcUrl": "STRING",
-    ".type": "STRING"
-  }
-}
+{'$': {'.id': 'UUID_TYPE',
+   '.name': 'STRING',
+   '.isActive': 'BOOLEAN',
+   '.age': 'INTEGER',
+   '.salary': 'DOUBLE',
+   '.accountBalance.current': 'DOUBLE',
+   '.accountBalance.overdraftLimit': 'INTEGER',
+   '.registrationDate': 'ZONED_DATE_TIME',
+   '.contact.email': 'STRING',
+   '.skills.Java': 'INTEGER',
+   '.skills.JavaScript': 'INTEGER',
+   '.skills.Python': 'INTEGER',
+   '.preferences[*]': '(STRING x 3)',
+   '.tags[*]': '(STRING x 3)',
+   '#.accountBalance': 'OBJECT',
+   '#.contact': 'OBJECT',
+   '#.skills': 'OBJECT',
+   '#.projects': 'OBJECT'},
+  '$.contact.phoneNumbers[*]': {'.type': 'STRING',
+   '.number': 'STRING',
+   '#': 'ARRAY_ELEMENT'},
+  '$.projects.Project Alpha[*]': {'.taskId': 'STRING',
+   '.description': 'STRING',
+   '.status': 'STRING',
+   '#': 'ARRAY_ELEMENT'},
+  '$.projects.Project Beta[*]': {'.taskId': 'STRING',
+   '.description': 'STRING',
+   '.status': 'STRING',
+   '#': 'ARRAY_ELEMENT'}}
 
 Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
 
 **Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
-
-Always start with:
+Script example:
 var target = entity.modelAccessor;
-then map fields
-target.name = input.name;
-target.contactUser = input.contactUser;
-target.systemAccount = input.systemAccount;
 
-var UUID = Java.type("java.util.UUID");
-target.employeeId = UUID.fromString(input.employeeId);
+// Mapping scalar fields
+target.id = input.id != null ? input.id : "";
+target.name = input.name != null ? input.name : "";
+target.isActive = input.isActive != null ? input.isActive : false;
+target.age = input.age != null ? input.age : 0;
+target.salary = input.salary != null ? input.salary : 0.0;
+target.registrationDate = input.registrationDate != null ? input.registrationDate : "";
+target.accountBalance = {
+    current: input.accountBalance.current != null ? input.accountBalance.current : 0.0,
+    overdraftLimit: input.accountBalance.overdraftLimit != null ? input.accountBalance.overdraftLimit : 0
+};
+target.contact = {
+    email: input.contact.email != null ? input.contact.email : "",
+};
 
-4. Handling Collections (Arrays and Maps): For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps.
-For Arrays (like notices):
-Example:
-```Javascript Nashorn
+// Handling preferences
 var ArrayList = Java.type("java.util.ArrayList");
-var notices = new ArrayList();
-for (var i = 0; i < input.notices.length; i++) {
-    var notice = {
-        name: input.notices[i].name,
-        id: input.notices[i].id,
-        sid: input.notices[i].sid,
-        date: input.notices[i].date,
-        type: input.notices[i].type,
-        srcId: input.notices[i].srcId,
-        srcUrl: input.notices[i].srcUrl,
-        data: input.notices[i].data
-    };
-    notices.add(notice);
-}
-target.notices = notices;
-```
-
-For Maps (like purchaserNoticeMap):
-Example:
-```Javascript Nashorn
-var HashMap = Java.type("java.util.HashMap");
-var purchaserNoticeMap = new HashMap();
-
-var purchaserKeys = input.purchaserNoticeMap.keySet().toArray();
-for (var j = 0; j < purchaserKeys.length; j++) {
-    var key = purchaserKeys[j];
-    var noticeList = input.purchaserNoticeMap.get(key);
-    var mappedNoticeList = new ArrayList();
-
-    for (var k = 0; k < noticeList.length; k++) {
-        var notice = {
-            name: noticeList[k].name,
-            id: noticeList[k].id,
-            sid: noticeList[k].sid,
-            date: noticeList[k].date,
-            type: noticeList[k].type,
-            srcId: noticeList[k].srcId,
-            srcUrl: noticeList[k].srcUrl,
-            data: noticeList[k].data
-        };
-        mappedNoticeList.add(notice);
+var preferencesList = new ArrayList();
+if (input.preferences != null) {
+    for (var i = 0; i < input.preferences.length; i++) {
+        preferencesList.add(input.preferences[i]);
     }
-    purchaserNoticeMap.put(key, mappedNoticeList);
 }
-target.purchaserNoticeMap = purchaserNoticeMap;
+target.preferences = preferencesList;
+
+// Handling tags
+var tagsList = new ArrayList();
+if (input.tags != null) {
+    for (var j = 0; j < input.tags.length; j++) {
+        tagsList.add(input.tags[j]);
+    }
+}
+target.tags = tagsList;
+
+// Handling skills
+target.skills = {
+    Java: input.skills.Java != null ? input.skills.Java : 0,
+    JavaScript: input.skills.JavaScript != null ? input.skills.JavaScript : 0,
+    Python: input.skills.Python != null ? input.skills.Python : 0
+};
+
+// Handling contact phone numbers
+var phoneNumbers = new ArrayList();
+if (input.contact.phoneNumbers != null) {
+    for (var k = 0; k < input.contact.phoneNumbers.length; k++) {
+        var phoneNumber = {
+            type: input.contact.phoneNumbers[k].type != null ? input.contact.phoneNumbers[k].type : "",
+            number: input.contact.phoneNumbers[k].number != null ? input.contact.phoneNumbers[k].number : ""
+        };
+        phoneNumbers.add(phoneNumber);
+    }
+}
+target.contact.phoneNumbers = phoneNumbers;
+
+// Handling projects
+var HashMap = Java.type("java.util.HashMap");
+var ArrayList = Java.type("java.util.ArrayList");
+
+target.projects = new HashMap();
+
+for (var projectName in input.projects) {
+    var taskList = new ArrayList();
+
+    for (var i = 0; i < input.projects[projectName].length; i++) {
+        var task = {
+            taskId: input.projects[projectName][i].taskId != null ? input.projects[projectName][i].taskId : "",
+            description: input.projects[projectName][i].description != null ? input.projects[projectName][i].description : "",
+            status: input.projects[projectName][i].status != null ? input.projects[projectName][i].status : ""
+        };
+        taskList.add(task);
+    }
+    target.projects.put(projectName, taskList);
+}
