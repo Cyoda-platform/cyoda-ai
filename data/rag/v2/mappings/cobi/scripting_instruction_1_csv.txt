@@ -68,7 +68,7 @@ var entity = new TenderEntity();
 
 Do NOT initialize target entity (net.cyoda.saas.model.TenderEntity in this case)
 
-So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
+So, writing a JavaScript Nashorn script to map the given input to given TenderEntity will result into this output:
 Expected code output:
 ```Javascript Nashorn
 // Do NOT initialize entity (net.cyoda.saas.model.TenderEntity in this case)
@@ -99,29 +99,23 @@ entity.setTypes(typesArray);
 var notices = new ArrayList();
 var Notice = Java.type('net.cyoda.saas.model.dto.tender.Notice');
 
-// Add first notice from input
-var notice1 = new Notice();
-notice1.setName(input['Notice Name 1'] != null ? input['Notice Name 1'] : "");
-notice1.setId(input['Notice ID 1'] != null ? input['Notice ID 1'] : "");
-notice1.setSid(input['Notice SID 1'] != null ? input['Notice SID 1'] : "");
-notice1.setDate(input['Notice Date 1'] != null ? input['Notice Date 1'] : null);
-notice1.setType(input['Notice Type 1'] != null ? input['Notice Type 1'] : "");
-notice1.setSrcId(input['Notice Src ID 1'] != null ? input['Notice Src ID 1'] : "");
-notice1.setSrcUrl(input['Notice Src URL 1'] != null ? input['Notice Src URL 1'] : "");
-notice1.setData(input['Notice Data 1'] != null ? input['Notice Data 1'] : "");
-notices.add(notice1);
+var i = 1;
 
-// Add second notice from input
-var notice2 = new Notice();
-notice2.setName(input['Notice Name 2'] != null ? input['Notice Name 2'] : "");
-notice2.setId(input['Notice ID 2'] != null ? input['Notice ID 2'] : "");
-notice2.setSid(input['Notice SID 2'] != null ? input['Notice SID 2'] : "");
-notice2.setDate(input['Notice Date 2'] != null ? input['Notice Date 2'] : null);
-notice2.setType(input['Notice Type 2'] != null ? input['Notice Type 2'] : "");
-notice2.setSrcId(input['Notice Src ID 2'] != null ? input['Notice Src ID 2'] : "");
-notice2.setSrcUrl(input['Notice Src URL 2'] != null ? input['Notice Src URL 2'] : "");
-notice2.setData(input['Notice Data 2'] != null ? input['Notice Data 2'] : "");
-notices.add(notice2);
+while (input['Notice Name ' + i] != null) {
+    var notice = new Notice();
+    notice.setName(input['Notice Name ' + i] != null ? input['Notice Name ' + i] : "");
+    notice.setId(input['Notice ID ' + i] != null ? input['Notice ID ' + i] : "");
+    notice.setSid(input['Notice SID ' + i] != null ? input['Notice SID ' + i] : "");
+    notice.setDate(input['Notice Date ' + i] != null ? input['Notice Date ' + i] : null);
+    notice.setType(input['Notice Type ' + i] != null ? input['Notice Type ' + i] : "");
+    notice.setSrcId(input['Notice Src ID ' + i] != null ? input['Notice Src ID ' + i] : "");
+    notice.setSrcUrl(input['Notice Src URL ' + i] != null ? input['Notice Src URL ' + i] : "");
+    notice.setData(input['Notice Data ' + i] != null ? input['Notice Data ' + i] : "");
+
+    notices.add(notice);
+
+    i++;
+}
 
 entity.setNotices(notices);
 
