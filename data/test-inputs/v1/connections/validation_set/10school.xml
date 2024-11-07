@@ -1,0 +1,338 @@
+<openapi version="3.0.0">
+  <info>
+    <title>School Management API version a8440776-2d85-4d4d-b103-d9c35b7647f3</title>
+    <version>a8440776-2d85-4d4d-b103-d9c35b7647f3</version>
+    <description>API for managing students, courses, teachers, and enrollment records.</description>
+  </info>
+  
+  <servers>
+    <server>
+      <url>http://api.school.example.com/v1</url>
+    </server>
+  </servers>
+
+  <paths>
+    <path>
+      <path>/students</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of students</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of students</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>studentId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>f3c16fae-733c-49e5-a822-23456789abcd</example>
+                      </property>
+                      <property>
+                        <name>name</name>
+                        <type>string</type>
+                        <example>Emily Johnson</example>
+                      </property>
+                      <property>
+                        <name>dateOfBirth</name>
+                        <type>string</type>
+                        <format>date</format>
+                        <example>2005-04-12</example>
+                      </property>
+                      <property>
+                        <name>email</name>
+                        <type>string</type>
+                        <format>email</format>
+                        <example>emily.johnson@example.com</example>
+                      </property>
+                      <property>
+                        <name>phone</name>
+                        <type>string</type>
+                        <example>+1-555-0011</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new student</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>name</name>
+                    <type>string</type>
+                    <example>Michael Smith</example>
+                  </property>
+                  <property>
+                    <name>dateOfBirth</name>
+                    <type>string</type>
+                    <format>date</format>
+                    <example>2006-08-16</example>
+                  </property>
+                  <property>
+                    <name>email</name>
+                    <type>string</type>
+                    <format>email</format>
+                    <example>michael.smith@example.com</example>
+                  </property>
+                  <property>
+                    <name>phone</name>
+                    <type>string</type>
+                    <example>+1-555-0022</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Student created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Student registered successfully.</example>
+                    </property>
+                    <property>
+                      <name>studentId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>g1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/courses</path>
+
+      <method>
+        <name>GET</name>
+        <summary>Retrieve a list of courses</summary>
+        <responses>
+          <response>
+            <status>200</status>
+            <description>A list of courses</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>array</type>
+                  <items>
+                    <type>object</type>
+                    <properties>
+                      <property>
+                        <name>courseId</name>
+                        <type>string</type>
+                        <format>uuid</format>
+                        <example>h1234567-89ab-cdef-0123-456789abcdef</example>
+                      </property>
+                      <property>
+                        <name>courseName</name>
+                        <type>string</type>
+                        <example>Mathematics 101</example>
+                      </property>
+                      <property>
+                        <name>credits</name>
+                        <type>integer</type>
+                        <example>3</example>
+                      </property>
+                      <property>
+                        <name>instructor</name>
+                        <type>string</type>
+                        <example>Prof. Amy Lee</example>
+                      </property>
+                    </properties>
+                  </items>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+
+      <method>
+        <name>POST</name>
+        <summary>Add a new course</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>courseName</name>
+                    <type>string</type>
+                    <example>Biology 101</example>
+                  </property>
+                  <property>
+                    <name>credits</name>
+                    <type>integer</type>
+                    <example>4</example>
+                  </property>
+                  <property>
+                    <name>instructor</name>
+                    <type>string</type>
+                    <example>Dr. John Carter</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Course created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Course added successfully.</example>
+                    </property>
+                    <property>
+                      <name>courseId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>i1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/enrollments</path>
+
+      <method>
+        <name>POST</name>
+        <summary>Enroll a student in a course</summary>
+        <requestBody>
+          <required>true</required>
+          <content>
+            <mediaType>
+              <name>application/json</name>
+              <schema>
+                <type>object</type>
+                <properties>
+                  <property>
+                    <name>studentId</name>
+                    <type>string</type>
+                    <format>uuid</format>
+                    <example>d3c16fae-733c-49e5-a822-23456789abcd</example>
+                  </property>
+                  <property>
+                    <name>courseId</name>
+                    <type>string</type>
+                    <format>uuid</format>
+                    <example>h1234567-89ab-cdef-0123-456789abcdef</example>
+                  </property>
+                </properties>
+              </schema>
+            </mediaType>
+          </content>
+        </requestBody>
+        <responses>
+          <response>
+            <status>201</status>
+            <description>Enrollment created successfully</description>
+            <content>
+              <mediaType>
+                <name>application/json</name>
+                <schema>
+                  <type>object</type>
+                  <properties>
+                    <property>
+                      <name>message</name>
+                      <type>string</type>
+                      <example>Student enrolled in course successfully.</example>
+                    </property>
+                    <property>
+                      <name>enrollmentId</name>
+                      <type>string</type>
+                      <format>uuid</format>
+                      <example>j1234567-89ab-cdef-0123-456789abcdef</example>
+                    </property>
+                  </properties>
+                </schema>
+              </mediaType>
+            </content>
+          </response>
+        </responses>
+      </method>
+    </path>
+
+    <path>
+      <path>/enrollments/{enrollmentId}</path>
+
+      <method>
+        <name>DELETE</name>
+        <summary>Remove a student's enrollment in a course</summary>
+        <parameters>
+          <parameter>
+            <name>enrollmentId</name>
+            <in>path</in>
+            <required>true</required>
+            <description>Unique identifier for the enrollment.</description>
+            <schema>
+              <type>string</type>
+            </schema>
+          </parameter>
+        </parameters>
+        <responses>
+          <response>
+            <status>204</status>
+            <description>Enrollment deleted successfully</description>
+          </response>
+          <response>
+            <status>404</status>
+            <description>Enrollment not found</description>
+          </response>
+        </responses>
+      </method>
+    </path>
+  </paths>
+</openapi>

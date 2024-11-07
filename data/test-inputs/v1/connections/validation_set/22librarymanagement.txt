@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: Library Management System API
+  version: 1.0.0
+  description: API for managing books, authors, members, and loans in a library.
+
+servers:
+  - url: http://api.librarymanagement.example.com/v1
+
+paths:
+  /books:
+    get:
+      summary: Retrieve a list of books
+      responses:
+        '200':
+          description: A list of books available in the library
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    bookId:
+                      type: string
+                      format: uuid
+                      example: "e7e78f53-b2ee-4a6e-b842-e69d59d4b547"
+                    title:
+                      type: string
+                      example: "The Great Gatsby"
+                    authorId:
+                      type: string
+                      format: uuid
+                      example: "f3e78f53-b2ee-4a6e-b842-e69d59d4c548"
+                    publishedYear:
+                      type: integer
+                      example: 1925
+                    availableCopies:
+                      type: integer
+                      example: 12
+
+    post:
+      summary: Add a new book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "1984"
+                authorId:
+                  type: string
+                  format: uuid
+                  example: "f3e78f53-b2ee-4a6e-b842-e69d59d4c548"
+                publishedYear:
+                  type: integer
+                  example: 1949
+                availableCopies:
+                  type: integer
+                  example: 5
+      responses:
+        '201':
+          description: Book added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Book added successfully."
+                  bookId:
+                    type: string
+                    format: uuid
+                    example: "c1234567-89ab-cdef-0123-456789abcdef"
+
+  /authors:
+    get:
+      summary: Retrieve a list of authors
+      responses:
+        '200':
+          description: A list of authors in the library
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    authorId:
+                      type: string
+                      format: uuid
+                      example: "f3e78f53-b2ee-4a6e-b842-e69d59d4c548"
+                    name:
+                      type: string
+                      example: "George Orwell"
+                    nationality:
+                      type: string
+                      example: "British"
+
+    post:
+      summary: Add a new author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "F. Scott Fitzgerald"
+                nationality:
+                  type: string
+                  example: "American"
+      responses:
+        '201':
+          description: Author added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Author added successfully."
+                  authorId:
+                    type: string
+                    format: uuid
+                    example: "a3456789-89ab-cdef-0123-456789abcdef"
+
+  /members:
+    get:
+      summary: Retrieve a list of library members
+      responses:
+        '200':
+          description: A list of members of the library
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    memberId:
+                      type: string
+                      format: uuid
+                      example: "e1a5f8d2-75b5-4c2f-9441-1234567abcdef"
+                    name:
+                      type: string
+                      example: "Alice Johnson"
+                    email:
+                      type: string
+                      format: email
+                      example: "alice.johnson@example.com"
+
+    post:
+      summary: Register a new member
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Bob Smith"
+                email:
+                  type: string
+                  format: email
+                  example: "bob.smith@example.com"
+      responses:
+        '201':
+          description: Member registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Member registered successfully."
+                  memberId:
+                    type: string
+                    format: uuid
+                    example: "b3456789-89ab-cdef-0123-456789abcdef"
+
+  /loans:
+    post:
+      summary: Create a new loan record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memberId:
+                  type: string
+                  format: uuid
+                  example: "e1a5f8d2-75b5-4c2f-9441-1234567abcdef"
+                bookId:
+                  type: string
+                  format: uuid
+                  example: "e7e78f53-b2ee-4a6e-b842-e69d59d4b547"
+                loanDate:
+                  type: string
+                  format: date
+                  example: "2024-08-20"
+                returnDate:
+                  type: string
+                  format: date
+                  example: "2024-09-20"
+      responses:
+        '201':
+          description: Loan record created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Loan record created successfully."
+                  loanId:
+                    type: string
+                    format: uuid
+                    example: "f9c5d678-89ab-cdef-0123-456789abcdef"

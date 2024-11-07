@@ -1,0 +1,308 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Bike Rental Service API version b04bd25d-57e3-4146-9440-e32a14dd0f99",
+      "version": "b04bd25d-57e3-4146-9440-e32a14dd0f99",
+      "description": "API for managing bike rentals, customers, and rental transactions."
+    },
+    "servers": [
+      {
+        "url": "http://api.bikerental.example.com/v1"
+      }
+    ],
+    "paths": {
+      "/bikes": {
+        "get": {
+          "summary": "Retrieve a list of available bikes",
+          "responses": {
+            "200": {
+              "description": "A list of available bikes for rent",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "bikeId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "b1a2d3e4-f5g6-h7i8-j9k0-l1m2n3o4p5q6"
+                        },
+                        "model": {
+                          "type": "string",
+                          "example": "Mountain Bike"
+                        },
+                        "pricePerHour": {
+                          "type": "number",
+                          "format": "float",
+                          "example": 15.00
+                        },
+                        "available": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new bike to the inventory",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": "string",
+                      "example": "City Bike"
+                    },
+                    "pricePerHour": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 10.00
+                    },
+                    "available": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Bike added successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Bike added successfully."
+                        },
+                        "bikeId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "c1d2f3g4-h5i6-j7k8-l9m0-n1o2p3q4r5s6"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/customers": {
+        "get": {
+          "summary": "Retrieve a list of customers",
+          "responses": {
+            "200": {
+              "description": "A list of customers",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customerId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "d3e4f5g6-h7i8-j9k0-l1m2-n3o4p5q6r7s8"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Alice Green"
+                        },
+                        "email": {
+                          "type": "string",
+                          "format": "email",
+                          "example": "alice.green@example.com"
+                        },
+                        "phone": {
+                          "type": "string",
+                          "example": "+1-234-567-8901"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Register a new customer",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Bob Smith"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "example": "bob.smith@example.com"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "example": "+1-987-654-3210"
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Customer registered successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Customer registered successfully."
+                        },
+                        "customerId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "c2d3e4f5-6789-0a1b-c2d3-e4f56789abc0"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/rentals": {
+        "get": {
+          "summary": "Retrieve a list of active rentals",
+          "responses": {
+            "200": {
+              "description": "A list of active bike rentals",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "rentalId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "e4f2d5c7-b0a3-4c6a-8d1e-3e4e5f6g7h8i"
+                        },
+                        "customerId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "d3e4f5g6-h7i8-j9k0-l1m2-n3o4p5q6r7s8"
+                        },
+                        "bikeId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                        },
+                        "rentalStart": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2024-08-21T10:00:00Z"
+                        },
+                        "rentalEnd": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2024-08-21T12:00:00Z"
+                        },
+                        "totalCost": {
+                          "type": "number",
+                          "format": "float",
+                          "example": 30.00
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new rental transaction",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "customerId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "d3e4f5g6-h7i8-j9k0-l1m2-n3o4p5q6r7s8"
+                    },
+                    "bikeId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2g3h4i5j6"
+                    },
+                    "rentalStart": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2024-08-21T10:00:00Z"
+                    },
+                    "rentalEnd": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2024-08-21T12:00:00Z"
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Rental transaction created successfully",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Rental added successfully."
+                        },
+                        "rentalId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "f4f2e1d0-a3b4-5c6d-a1e0-4g5h6i7j8k9l"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
