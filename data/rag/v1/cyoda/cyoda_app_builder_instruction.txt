@@ -1,0 +1,88 @@
+Cyoda Framework Overview:
+
+
+Entities: Fundamental components representing data and processes. They fall into three categories:
+
+
+Raw Data Entities: Contain raw, unprocessed data from sources like submitted forms, external data ingestion, or API inputs. Upon saving, their workflows are triggered to perform functions on the data.
+Mapped Data Entities (Post-Processed): Derived from raw entities through workflows. They contain processed, aggregated, or analyzed data with a potentially different schema.
+Job Entities: Focused on workflows rather than data. They can be scheduled or triggered via API calls, serving as entry points to initiate processes like data ingestion and analysis.
+Workflows: Defined sequences of functions applied to entity data upon certain events, like saving the entity.
+
+
+Design Considerations:
+
+
+Entity Types: [RAW_DATA, DERIVED, BPM]
+
+
+#entity event trigger-??
+Entry Points:
+[ SCHEDULER (e.g. when a JOB-type entity is scheduled and saved every day and then its workflow is used to perform actions),
+API_REQUEST (e.g. when data is pushed into the system),
+SUBMITTED_WEB_FORM (e.g. when we save an entity from data submitted by user),
+SUBMITTED_FILE (e.g. when we save entity after getting file),
+EXTERNAL_DATA_SOURCE (e.g. when we save raw data entity by pulling data),
+ANOTHER_ENTITY (e.g. when POST_PROCESSED entity is saved in the workflow processor of the RAW entity) ]
+
+
+depends_on: for entities which Entry Points equals ANOTHER_ENTITY. Need to specify the name of such entity
+
+
+Schema Management:
+
+
+Once an entity is saved, its schema is fixed.
+To save data with a different schema, create a new entity within the workflow of the existing entity.
+Workflow Activation:
+
+
+Functions operating on entity data are initiated when the entity is saved.
+Entry points trigger the saving of entities and thus their workflows.
+Required Output:
+
+
+Provide a design JSON in the following format:
+
+
+json
+Copy code
+{
+ "entities": [
+   {
+     "entity_name": "example_name",
+     "entity_type": "RAW",
+     "entity_entry_point": "API_REQUEST",
+     "depends_on_entity": "raw_eample_entity"
+     "entity_workflow": {
+       "name": "workflow_name",
+       "class_name": "WorkflowClassName",
+       "transitions": [
+         {
+           "name": "transition_name",
+           "description": "Description of the transition",
+           "start_state": "Initial_state",
+           "start_state_description": "Description of the initial state",
+           "end_state": "Final_state",
+           "end_state_description": "Description of the final state",
+           "criteria": {
+             "name": "criteria_name",
+             "description": "Description of the criteria"
+           },
+           "process": {
+             "name": "process_name",#lowercase, underscore
+             "description": "Description of the process"
+             "adds_new_entites": "another_entity_name or None"
+           }
+         }
+         // Additional transitions as needed
+       ]
+     }
+   }
+   // Additional entities as needed
+ ]
+}
+
+
+Read this instruction, tell that you’ve read it and wait for new instructions
+
