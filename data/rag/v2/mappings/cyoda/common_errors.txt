@@ -30,13 +30,14 @@ This is wrong syntax:
 target.Notifications: {
         Notification: []
 };
-var notification = {};
-target.Notifications.Notification.push(notification);
+var singleNotification = {};
+target.Notifications.Notification.push(singleNotification);
 
 Correct version:
 var ArrayList = Java.type("java.util.ArrayList");
 var notificationsList = new ArrayList();
-var notification = {};
+var singleNotification = {};
+notificationsList.add(singleNotification);
 target.Notifications = {
     Notification: notificationsList
 };
