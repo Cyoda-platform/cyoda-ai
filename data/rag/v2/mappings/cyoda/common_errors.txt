@@ -1,27 +1,43 @@
 Common_errors:
 
-1. NPE and Default value handling
+1. NPE and Default value handling.
 
 Correct version:
-
 target.date = input.Project.Date != null ? input.Project.Date : "";
 target.deadlineLengthDays = input.Project.DeadlineLengthDays != null ? parseInt(input.Project.DeadlineLengthDays) : 0;
 target.systemAccount = input.Project.SystemAccount != null ? input.Project.SystemAccount : false;
 
-2. Java collections should be initialized using Java.type.
+2. Never use 'entity' as a variable name.
 
-target.map = {};
-this is wrong syntax
-
-Correct version:
-
-var HashMap = Java.type("java.util.HashMap");
-var map = new HashMap();
-
-3. Never use 'entity' as a variable name.
-
+This is wrong syntax:
 for (var entity in input.entityToAlertMap) {}
-this is wrong syntax
 
 Correct version:
 for (var entityKey in input.entityToAlertMap) {}
+
+3. Maps should be initialized using Java.type("java.util.HashMap").
+
+This is wrong syntax:
+target.map = {};
+
+Correct version:
+var HashMap = Java.type("java.util.HashMap");
+var map = new HashMap();
+
+4. Arrays should be initialized using Java.type("java.util.ArrayList").
+
+This is wrong syntax:
+target.Notifications: {
+        Notification: []
+};
+var singleNotification = {};
+target.Notifications.Notification.push(singleNotification);
+
+Correct version:
+var ArrayList = Java.type("java.util.ArrayList");
+var notificationsList = new ArrayList();
+var singleNotification = {};
+notificationsList.add(singleNotification);
+target.Notifications = {
+    Notification: notificationsList
+};
