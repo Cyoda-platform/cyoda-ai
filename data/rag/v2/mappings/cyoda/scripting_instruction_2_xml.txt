@@ -6,194 +6,109 @@ Here's an example of how to map an input to an entity with a Javascript Nashorn 
 
 Example input:
 <?xml version="1.0" encoding="UTF-8"?>
-<complexData
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <integerValue>42</integerValue>
-  <floatValue>3.14</floatValue>
-  <booleanValue>true</booleanValue>
-  <stringValue>Hello, XML!</stringValue>
-  <dateValue>2024-10-30</dateValue>
-  <datetimeValue>2024-10-30T14:25:30Z</datetimeValue>
-  <nullValue xsi:nil="true" />
-  <emptyElement></emptyElement>
-  <missingElement />
-  <person name="John Doe" age="30" gender="male" />
-  <items>
-    <item>Item 1</item>
-    <item>Item 2</item>
-    <item>Item 3</item>
-  </items>
-  <configurations>
-    <configuration key="setting1" value="enabled" />
-    <configuration key="setting2" value="disabled" />
-    <configuration key="setting3" value="42" />
-  </configurations>
-  <company name="Tech Corp">
-    <department name="Research and Development">
-      <employee id="1">
-        <name>Alice</name>
-        <position>Engineer</position>
-        <contactDetails>
-          <email>alice@example.com</email>
-          <phone>123-456-7890</phone>
-        </contactDetails>
-      </employee>
-    </department>
-  </company>
-  <complexTypeExample>
-    <id>123</id>
-    <description>Complex data type example</description>
-    <attributes>
-      <attribute key="isNew" value="true" />
-      <attribute key="version" value="1.0" />
-    </attributes>
-    <relatedItems>
-      <relatedItem id="A001" />
-      <relatedItem id="A002" />
-    </relatedItems>
-  </complexTypeExample>
+<complexData>
+    <c_entity>
+        <integerValue>42</integerValue>
+        <stringValue>Hello, XML!</stringValue>
+        <person name="John Doe" age="30" />
+
+        <items>
+            <item>Item 1</item>
+            <item>Item 2</item>
+        </items>
+
+        <configurations>
+            <configuration key="setting1" value="enabled" />
+            <configuration key="setting2" value="disabled" />
+        </configurations>
+
+        <company name="Tech Corp">
+            <department name="Engineering">
+                <employee id="1">
+                    <name>Alice</name>
+                    <position>Engineer</position>
+                </employee>
+            </department>
+        </company>
+    </c_entity>
 </complexData>
 
 
 Example target entity model:
-{'$': {'.integerValue': 'STRING',
-   '.floatValue': 'STRING',
-   '.booleanValue': 'STRING',
-   '.stringValue': 'STRING',
-   '.dateValue': 'LOCAL_DATE',
-   '.datetimeValue': 'ZONED_DATE_TIME',
-   '.nullValue': 'NULL',
-   '.emptyElement': 'STRING',
-   '.missingElement': 'STRING',
-   '.person.name': 'STRING',
-   '.person.age': 'STRING',
-   '.person.gender': 'STRING',
-   '.company.name': 'STRING',
-   '.company.department.name': 'STRING',
-   '.company.department.employee.id': 'STRING',
-   '.company.department.employee.name': 'STRING',
-   '.company.department.employee.position': 'STRING',
-   '.company.department.employee.contactDetails.email': 'STRING',
-   '.company.department.employee.contactDetails.phone': 'STRING',
-   '.complexTypeExample.id': 'STRING',
-   '.complexTypeExample.description': 'STRING',
-   '.items.item[*]': '(STRING x 3)',
-   '#.person': 'OBJECT',
-   '#.items': 'OBJECT',
-   '#.configurations': 'OBJECT',
-   '#.company': 'OBJECT',
-   '#.company.department': 'OBJECT',
-   '#.company.department.employee': 'OBJECT',
-   '#.company.department.employee.contactDetails': 'OBJECT',
-   '#.complexTypeExample': 'OBJECT',
-   '#.complexTypeExample.attributes': 'OBJECT',
-   '#.complexTypeExample.relatedItems': 'OBJECT'},
-  '$.configurations.configuration[*]': {'.key': 'STRING',
-   '.value': 'STRING',
-   '#': 'ARRAY_ELEMENT'},
-  '$.complexTypeExample.attributes.attribute[*]': {'.key': 'STRING',
-   '.value': 'STRING',
-   '#': 'ARRAY_ELEMENT'},
-  '$.complexTypeExample.relatedItems.relatedItem[*]': {'.id': 'STRING',
-   '#': 'ARRAY_ELEMENT'}}
+{
+  "$": {
+    ".c_entity.integerValue": "STRING",
+    ".c_entity.stringValue": "STRING",
+    ".c_entity.person.name": "STRING",
+    ".c_entity.person.age": "STRING",
+    ".c_entity.items.item[*]": "(STRING x 2)",
+    ".c_entity.company.name": "STRING",
+    ".c_entity.company.department.name": "STRING",
+    ".c_entity.company.department.employee.id": "STRING",
+    ".c_entity.company.department.employee.name": "STRING",
+    ".c_entity.company.department.employee.position": "STRING",
+    "#.c_entity": "OBJECT",
+    "#.c_entity.items": "OBJECT",
+    "#.c_entity.configurations": "OBJECT",
+    "#.c_entity.company": "OBJECT",
+    "#.c_entity.company.department": "OBJECT"
+  },
+  "$.c_entity.configurations.configuration[*]": {
+    ".key": "STRING",
+    ".value": "STRING",
+    "#": "ARRAY_ELEMENT"
+  }
+}
+
 
 Instruction b7f19c43-3e09-47a1-8e64-1e789f70961e
 
 **Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
 Script example:
 var target = entity.modelAccessor;
+target.c_entity = {};
 
 // Mapping scalar fields
-target.integerValue = input.complexData.integerValue != null ? String(input.complexData.integerValue) : "";
-target.floatValue = input.complexData.floatValue != null ? String(input.complexData.floatValue) : "";
-target.booleanValue = input.complexData.booleanValue != null ? String(input.complexData.booleanValue) : "";
-target.stringValue = input.complexData.stringValue != null ? String(input.complexData.stringValue) : "";
-target.dateValue = input.complexData.dateValue != null ? input.complexData.dateValue : "";
-target.datetimeValue = input.complexData.datetimeValue != null ? input.complexData.datetimeValue : "";
-target.nullValue = input.complexData.nullValue != null ? null : null;
-target.emptyElement = input.complexData.emptyElement != null ? String(input.complexData.emptyElement) : "";
-target.missingElement = input.complexData.missingElement != null ? String(input.complexData.missingElement) : "";
+target.c_entity.integerValue = input.c_entity.complexData.integerValue != null ? String(input.c_entity.complexData.integerValue) : "";
+target.c_entity.stringValue = input.c_entity.complexData.stringValue != null ? String(input.c_entity.complexData.stringValue) : "";
 
 // Handling person
-target.person = {
-    name: input.complexData.person['@name'] != null ? String(input.complexData.person['@name']) : "",
-    age: input.complexData.person['@age'] != null ? String(input.complexData.person['@age']) : "",
-    gender: input.complexData.person['@gender'] != null ? String(input.complexData.person['@gender']) : ""
+target.c_entity.person = {
+    name: input.c_entity.complexData.person['@name'] != null ? String(input.c_entity.complexData.person['@name']) : "",
+    age: input.c_entity.complexData.person['@age'] != null ? String(input.c_entity.complexData.person['@age']) : ""
 };
 
 // Handling items
 var ArrayList = Java.type("java.util.ArrayList");
 var itemsList = new ArrayList();
-if (input.complexData.items.item != null) {
-    for (var i = 0; i < input.complexData.items.item.length; i++) {
-        itemsList.add(input.complexData.items.item[i]);
+if (input.c_entity.complexData.items.item != null) {
+    for (var i = 0; i < input.c_entity.complexData.items.item.length; i++) {
+        itemsList.add(input.c_entity.complexData.items.item[i]);
     }
 }
-target.items = {
-    item: itemsList
-};
+target.c_entity.items = { item: itemsList };
 
 // Handling configurations
 var configurationsList = new ArrayList();
-if (input.complexData.configurations.configuration != null) {
-    for (var j = 0; j < input.complexData.configurations.configuration.length; j++) {
-        var configuration = {
-            key: input.complexData.configurations.configuration[j]['@key'] != null ? String(input.complexData.configurations.configuration[j]['@key']) : "",
-            value: input.complexData.configurations.configuration[j]['@value'] != null ? String(input.complexData.configurations.configuration[j]['@value']) : ""
-        };
-        configurationsList.add(configuration);
+if (input.c_entity.complexData.configurations.configuration != null) {
+    for (var j = 0; j < input.c_entity.complexData.configurations.configuration.length; j++) {
+        configurationsList.add({
+            key: input.c_entity.complexData.configurations.configuration[j]['@key'] != null ? String(input.c_entity.complexData.configurations.configuration[j]['@key']) : "",
+            value: input.c_entity.complexData.configurations.configuration[j]['@value'] != null ? String(input.c_entity.complexData.configurations.configuration[j]['@value']) : ""
+        });
     }
 }
-target.configurations = {
-    configuration: configurationsList
-};
+target.c_entity.configurations = { configuration: configurationsList };
 
-// Handling company
-target.company = {
-    name: input.complexData.company['@name'] != null ? String(input.complexData.company['@name']) : "",
+// Handling company structure
+target.c_entity.company = {
+    name: input.c_entity.complexData.company['@name'] != null ? String(input.c_entity.complexData.company['@name']) : "",
     department: {
-        name: input.complexData.company.department['@name'] != null ? String(input.complexData.company.department['@name']) : "",
+        name: input.c_entity.complexData.company.department['@name'] != null ? String(input.c_entity.complexData.company.department['@name']) : "",
         employee: {
-            id: input.complexData.company.department.employee['@id'] != null ? String(input.complexData.company.department.employee['@id']) : "",
-            name: input.complexData.company.department.employee.name != null ? String(input.complexData.company.department.employee.name) : "",
-            position: input.complexData.company.department.employee.position != null ? String(input.complexData.company.department.employee.position) : "",
-            contactDetails: {
-                email: input.complexData.company.department.employee.contactDetails.email != null ? String(input.complexData.company.department.employee.contactDetails.email) : "",
-                phone: input.complexData.company.department.employee.contactDetails.phone != null ? String(input.complexData.company.department.employee.contactDetails.phone) : ""
-            }
+            id: input.c_entity.complexData.company.department.employee['@id'] != null ? String(input.c_entity.complexData.company.department.employee['@id']) : "",
+            name: input.c_entity.complexData.company.department.employee.name != null ? String(input.c_entity.complexData.company.department.employee.name) : "",
+            position: input.c_entity.complexData.company.department.employee.position != null ? String(input.c_entity.complexData.company.department.employee.position) : ""
         }
     }
 };
-
-// Handling complexTypeExample
-target.complexTypeExample = {
-    id: input.complexData.complexTypeExample.id != null ? String(input.complexData.complexTypeExample.id) : "",
-    description: input.complexData.complexTypeExample.description != null ? String(input.complexData.complexTypeExample.description) : "",
-    attributes: {
-        attribute: new ArrayList()
-    },
-    relatedItems: {
-        relatedItem: new ArrayList()
-    }
-};
-
-// Handling attributes
-if (input.complexData.complexTypeExample.attributes.attribute != null) {
-    for (var k = 0; k < input.complexData.complexTypeExample.attributes.attribute.length; k++) {
-        var attributeElement = {
-            key: input.complexData.complexTypeExample.attributes.attribute[k]['@key'] != null ? String(input.complexData.complexTypeExample.attributes.attribute[k]['@key']) : "",
-            value: input.complexData.complexTypeExample.attributes.attribute[k]['@value'] != null ? String(input.complexData.complexTypeExample.attributes.attribute[k]['@value']) : ""
-        };
-        target.complexTypeExample.attributes.attribute.add(attributeElement);
-    }
-}
-
-// Handling related items
-if (input.complexData.complexTypeExample.relatedItems.relatedItem != null) {
-    for (var l = 0; l < input.complexData.complexTypeExample.relatedItems.relatedItem.length; l++) {
-        var relatedItem = {
-            id: input.complexData.complexTypeExample.relatedItems.relatedItem[l]['@id'] != null ? String(input.complexData.complexTypeExample.relatedItems.relatedItem[l]['@id']) : ""
-        };
-        target.complexTypeExample.relatedItems.relatedItem.add(relatedItem);
-    }
-}
