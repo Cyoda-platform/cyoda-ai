@@ -1,0 +1,125 @@
+{
+  "healthcareManagementSystem": {
+    "patients": [
+      {
+        "patientIdentifier": "patient-001",
+        "completeName": "John Doe",
+        "birthDate": "1985-06-15",
+        "contactInformation": {
+          "emailAddress": "john.doe@example.com",
+          "phoneNumber": "+1234567890",
+          "residentialAddress": {
+            "streetAddress": "123 Elm St",
+            "town": "Springfield",
+            "state": "IL",
+            "postalCode": "62701"
+          }
+        },
+        "visitRecords": [
+          {
+            "visitIdentifier": "visit-001",
+            "visitDate": "2024-02-10",
+            "visitTime": "10:00 AM",
+            "physician": {
+              "physicianId": "physician-001",
+              "completeName": "Dr. Alice Smith",
+              "areaOfExpertise": "Cardiology",
+              "contactDetails": {
+                "phoneNumber": "+1234560001",
+                "emailAddress": "alice.smith@hospital.com"
+              }
+            },
+            "appointmentStatus": "confirmed",
+            "therapyPlans": [
+              {
+                "therapyId": "therapy-001",
+                "treatmentName": "Blood Pressure Monitoring",
+                "datePrescribed": "2024-02-01",
+                "careInstructions": "Monitor daily at home."
+              },
+              {
+                "therapyId": "therapy-002",
+                "treatmentName": "Lifestyle Modification",
+                "datePrescribed": "2024-02-01",
+                "careInstructions": "Follow a low-sodium diet and exercise regularly."
+              }
+            ]
+          }
+        ],
+        "healthRecords": [
+          {
+            "recordIdentifier": "record-001",
+            "recordDate": "2024-01-05",
+            "healthCondition": "Hypertension",
+            "additionalNotes": "Patient has high blood pressure readings.",
+            "prescriptions": [
+              {
+                "prescriptionId": "med-001",
+                "medicationName": "Lisinopril",
+                "medicationDosage": "10 mg",
+                "dosageFrequency": "once daily"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "patientIdentifier": "patient-002",
+        "completeName": "Jane Smith",
+        "birthDate": "1990-03-22",
+        "contactInformation": {
+          "emailAddress": "jane.smith@example.com",
+          "phoneNumber": "+1234567891",
+          "residentialAddress": {
+            "streetAddress": "456 Maple Ave",
+            "town": "Lincoln",
+            "state": "NE",
+            "postalCode": "68501"
+          }
+        },
+        "visitRecords": [],
+        "healthRecords": []
+      }
+    ],
+    "physicians": [
+      {
+        "physicianId": "physician-001",
+        "completeName": "Dr. Alice Smith",
+        "areaOfExpertise": "Cardiology",
+        "contactDetails": {
+          "phoneNumber": "+1234560001",
+          "emailAddress": "alice.smith@hospital.com"
+        },
+        "availabilitySchedule": [
+          {
+            "dayOfWeek": "Monday",
+            "availableTime": "9:00 AM - 5:00 PM"
+          },
+          {
+            "dayOfWeek": "Wednesday",
+            "availableTime": "10:00 AM - 4:00 PM"
+          }
+        ]
+      },
+      {
+        "physicianId": "physician-002",
+        "completeName": "Dr. Bob Johnson",
+        "areaOfExpertise": "General Practice",
+        "contactDetails": {
+          "phoneNumber": "+1234560002",
+          "emailAddress": "bob.johnson@hospital.com"
+        },
+        "availabilitySchedule": [
+          {
+            "dayOfWeek": "Tuesday",
+            "availableTime": "8:00 AM - 2:00 PM"
+          },
+          {
+            "dayOfWeek": "Thursday",
+            "availableTime": "1:00 PM - 6:00 PM"
+          }
+        ]
+      }
+    ]
+  }
+}

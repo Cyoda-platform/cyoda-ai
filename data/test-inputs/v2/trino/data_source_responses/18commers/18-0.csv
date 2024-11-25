@@ -1,0 +1,4 @@
+Category ID,Category Name,Product ID,Product Name,Price,Stock Quantity,Supplier ID,Supplier Name,Supplier Email,Supplier Phone
+cat-001,Electronics,prod-001,Smartphone XYZ,699.99,50,sup-001,Tech Supplies Inc.,contact@techsupplies.com,+1234567890
+cat-001,Electronics,prod-002,Laptop ABC,999.99,30,sup-002,Computer World Ltd.,info@computerworld.com,+0987654321
+cat-002,Home Appliances,prod-003,Air Fryer Deluxe,89.99,100,sup-003,Kitchen Essentials Co.,support@kitchenessentials.com,+1234566543

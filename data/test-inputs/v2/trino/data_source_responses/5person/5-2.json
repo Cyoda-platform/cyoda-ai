@@ -1,0 +1,53 @@
+{
+  "individual": {
+    "givenName": "Jane",
+    "familyName": "Smith",
+    "years": 25,
+    "currentlyEmployed": false,
+    "birthDate": "1998-08-12",
+    "employmentStartDate": "2021-08-01",
+    "residential": {
+      "streetAddress": "456 Maple Ave",
+      "locality": "Sampletown",
+      "region": "TX",
+      "postal": "75020"
+    },
+    "contactNumbers": [
+      "+9876543210",
+      "+1122334455",
+      null
+    ],
+    "emailAddress": "jane.smith@example.com",
+    "annualIncome": 62000.00,
+    "competencies": [
+      "C++",
+      "HTML",
+      "CSS"
+    ],
+    "tasks": [
+      {
+        "taskId": "task-001",
+        "taskTitle": "Backend Development",
+        "estimatedDuration": 4,
+        "finishBy": "2022-04-30"
+      },
+      {
+        "taskId": "task-002",
+        "taskTitle": "API Integration",
+        "estimatedDuration": 2,
+        "finishBy": "2022-06-15"
+      },
+      {
+        "taskId": "task-003",
+        "taskTitle": "Database Optimization",
+        "estimatedDuration": 1,
+        "finishBy": "2022-07-05"
+      }
+    ],
+    "partner": {
+      "name": "Sam Smith",
+      "relation": "Partner",
+      "duration": "3 years"
+    }
+  }
+}

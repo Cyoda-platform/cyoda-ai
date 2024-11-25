@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contractManagementSystem>
+  <contracts>
+    <contract>
+      <contractId>contract-001</contractId>
+      <title>Service Agreement for Software Development</title>
+      <startDate>2024-01-01</startDate>
+      <endDate>2025-01-01</endDate>
+      <status>active</status>
+      <parties>
+        <party>
+          <partyId>party-001</partyId>
+          <partyType>Client</partyType>
+          <name>Tech Innovations LLC</name>
+          <contact>
+            <email>contact@techinnovations.com</email>
+            <phone>+1234567890</phone>
+          </contact>
+        </party>
+        <party>
+          <partyId>party-002</partyId>
+          <partyType>Contractor</partyType>
+          <name>Develop It Inc.</name>
+          <contact>
+            <email>info@developit.com</email>
+            <phone>+1234567889</phone>
+          </contact>
+        </party>
+      </parties>
+      <terms>
+        <paymentTerms>
+          <amount>50000</amount>
+          <paymentSchedule>50% upon signing, 50% upon completion</paymentSchedule>
+        </paymentTerms>
+        <confidentiality>true</confidentiality>
+        <deliverables>
+          <deliverable>Project Plan</deliverable>
+          <deliverable>Source Code</deliverable>
+          <deliverable>User Documentation</deliverable>
+        </deliverables>
+      </terms>
+      <signatures>
+        <signature>
+          <signatureId>sig-001</signatureId>
+          <partyId>party-001</partyId>
+          <signedDate>2024-01-01</signedDate>
+          <signerName>Alice Brown</signerName>
+        </signature>
+        <signature>
+          <signatureId>sig-002</signatureId>
+          <partyId>party-002</partyId>
+          <signedDate>2024-01-01</signedDate>
+          <signerName>John Smith</signerName>
+        </signature>
+      </signatures>
+    </contract>
+    <contract>
+      <contractId>contract-002</contractId>
+      <title>Non-Disclosure Agreement</title>
+      <startDate>2024-02-01</startDate>
+      <endDate/>
+      <status>pending</status>
+      <parties>
+        <party>
+          <partyId>party-003</partyId>
+          <partyType>Disclosing Party</partyType>
+          <name>Global Solutions Inc.</name>
+          <contact>
+            <email>info@globalsolutions.com</email>
+            <phone>+1234567788</phone>
+          </contact>
+        </party>
+        <party>
+          <partyId>party-004</partyId>
+          <partyType>Receiving Party</partyType>
+          <name>Innovative Tech Corp.</name>
+          <contact>
+            <email>contact@innovativetech.com</email>
+            <phone>+1234567777</phone>
+          </contact>
+        </party>
+      </parties>
+      <terms>
+        <duration>2 years</duration>
+        <confidentiality>true</confidentiality>
+        <scope>All proprietary information shared during discussions.</scope>
+      </terms>
+      <signatures/>
+    </contract>
+  </contracts>
+</contractManagementSystem>

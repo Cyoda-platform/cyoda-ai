@@ -1,0 +1,81 @@
+<librarySystem>
+    <id>lib-001</id>
+    <libraryName>Central City Library</libraryName>
+    <founded>1980-04-01</founded>
+    <openStatus>true</openStatus>
+    <locationInfo>
+        <street>123 Library St.</street>
+        <town>Metropolis</town>
+        <nation>Fictionland</nation>
+    </locationInfo>
+    <bookCategories>
+        <category>
+            <id>coll-001</id>
+            <name>Science Fiction</name>
+            <info>Futuristic and speculative fiction books</info>
+            <active>true</active>
+        </category>
+        <category>
+            <id>coll-002</id>
+            <name>History</name>
+            <info>Books on historical events and figures</info>
+            <active>true</active>
+        </category>
+    </bookCategories>
+    <inventory>
+        <title>
+            <id>book-001</id>
+            <bookTitle>Dune</bookTitle>
+            <creator>
+                <first>Frank</first>
+                <last>Herbert</last>
+            </creator>
+            <year>1965</year>
+            <categories>
+                <type>Science Fiction</type>
+                <type>Adventure</type>
+            </categories>
+            <totalPages>412</totalPages>
+            <inStock>3</inStock>
+            <feedback>
+                <opinion>
+                    <id>review-001</id>
+                    <visitor>SciFiLover</visitor>
+                    <score>5</score>
+                    <feedbackText>A timeless classic.</feedbackText>
+                </opinion>
+            </feedback>
+        </title>
+        <title>
+            <id>book-002</id>
+            <bookTitle>The Guns of August</bookTitle>
+            <creator>
+                <first>Barbara</first>
+                <last>Tuchman</last>
+            </creator>
+            <year>1962</year>
+            <categories>
+                <type>History</type>
+            </categories>
+            <totalPages>511</totalPages>
+            <inStock>2</inStock>
+            <feedback/>
+        </title>
+    </inventory>
+    <patrons>
+        <individual>
+            <memberCode>member-001</memberCode>
+            <fullName>Alice Smith</fullName>
+            <joinDate>2015-08-23</joinDate>
+            <checkedOut>
+                <titleId>book-001</titleId>
+            </checkedOut>
+        </individual>
+        <individual>
+            <memberCode>member-002</memberCode>
+            <fullName>Bob Johnson</fullName>
+            <joinDate>2018-02-17</joinDate>
+            <checkedOut/>
+        </individual>
+    </patrons>
+</librarySystem>

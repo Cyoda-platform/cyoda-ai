@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<smartHomeSystem>
+  <systemId>system-001</systemId>
+  <user>
+    <userId>user-001</userId>
+    <username>techSavvyHomeowner</username>
+    <contact>
+      <email>techsavvy@example.com</email>
+      <phone>+1234567890</phone>
+    </contact>
+    <address>
+      <street>789 Smart Lane</street>
+      <city>Smartville</city>
+      <state>CA</state>
+      <zipCode>90210</zipCode>
+    </address>
+  </user>
+  <devices>
+    <device>
+      <deviceId>device-001</deviceId>
+      <deviceType>Smart Light</deviceType>
+      <brand>Philips Hue</brand>
+      <model>Hue White and Color Ambiance</model>
+      <status>on</status>
+      <settings>
+        <brightness>75</brightness>
+        <color>warm white</color>
+        <schedule>
+          <scheduledEvent>
+            <time>06:30</time>
+            <action>turn on</action>
+          </scheduledEvent>
+          <scheduledEvent>
+            <time>23:00</time>
+            <action>turn off</action>
+          </scheduledEvent>
+        </schedule>
+      </settings>
+    </device>
+    <device>
+      <deviceId>device-002</deviceId>
+      <deviceType>Smart Thermostat</deviceType>
+      <brand>Nest</brand>
+      <model>Learning Thermostat</model>
+      <status>off</status>
+      <settings>
+        <temperature>22</temperature>
+        <mode>heating</mode>
+        <schedule>
+          <scheduledEvent>
+            <day>Monday</day>
+            <time>08:00</time>
+            <temperature>20</temperature>
+          </scheduledEvent>
+          <scheduledEvent>
+            <day>Monday</day>
+            <time>18:00</time>
+            <temperature>22</temperature>
+          </scheduledEvent>
+        </schedule>
+      </settings>
+    </device>
+    <device>
+      <deviceId>device-003</deviceId>
+      <deviceType>Smart Security Camera</deviceType>
+      <brand>Ring</brand>
+      <model>Video Doorbell Pro</model>
+      <status>online</status>
+      <settings>
+        <motionDetection>true</motionDetection>
+        <videoQuality>1080p</videoQuality>
+        <recordingSchedule>
+          <scheduledEvent>
+            <day>Everyday</day>
+            <startTime>00:00</startTime>
+            <endTime>23:59</endTime>
+          </scheduledEvent>
+        </recordingSchedule>
+      </settings>
+    </device>
+  </devices>
+  <scenes>
+    <scene>
+      <sceneId>scene-001</sceneId>
+      <sceneName>Good Morning</sceneName>
+      <devicesStates>
+        <deviceState>
+          <deviceId>device-001</deviceId>
+          <status>on</status>
+          <settings>
+            <brightness>100</brightness>
+            <color>warm white</color>
+          </settings>
+        </deviceState>
+        <deviceState>
+          <deviceId>device-002</deviceId>
+          <status>on</status>
+          <settings>
+            <temperature>21</temperature>
+            <mode>heating</mode>
+          </settings>
+        </deviceState>
+      </devicesStates>
+      <active>false</active>
+    </scene>
+    <scene>
+      <sceneId>scene-002</sceneId>
+      <sceneName>Movie Night</sceneName>
+      <devicesStates>
+        <deviceState>
+          <deviceId>device-001</deviceId>
+          <status>off</status>
+        </deviceState>
+        <deviceState>
+          <deviceId>device-002</deviceId>
+          <status>on</status>
+          <settings>
+            <temperature>22</temperature>
+            <mode>cooling</mode>
+          </settings>
+        </deviceState>
+      </devicesStates>
+      <active>true</active>
+    </scene>
+  </scenes>
+  <alerts>
+    <alert>
+      <alertId>alert-001</alertId>
+      <type>Temperature Alert</type>
+      <timestamp>2024-01-15T10:00:00Z</timestamp>
+      <message>The temperature has dropped below the set threshold.</message>
+      <acknowledged>false</acknowledged>
+    </alert>
+    <alert>
+      <alertId>alert-002</alertId>
+      <type>Motion Detected</type>
+      <timestamp>2024-01-16T14:30:00Z</timestamp>
+      <message>Motion detected at front door.</message>
+      <acknowledged>true</acknowledged>
+    </alert>
+  </alerts>
+</smartHomeSystem>

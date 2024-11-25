@@ -1,0 +1,75 @@
+<conference>
+    <conferenceId>conf-001</conferenceId>
+    <name>International Technology Summit</name>
+    <year>2024</year>
+    <theme>Advancing Global Innovations</theme>
+    <location>
+        <venue>Tech Convention Center</venue>
+        <city>San Francisco</city>
+        <country>USA</country>
+    </location>
+    <dates>
+        <start>2024-09-15</start>
+        <end>2024-09-18</end>
+    </dates>
+    <isAnnual>true</isAnnual>
+    <topics>Artificial Intelligence</topics>
+    <topics>Cybersecurity</topics>
+    <topics>Blockchain</topics>
+    <sessions>
+        <session>
+            <sessionId>session-001</sessionId>
+            <sessionTitle>AI in Everyday Life</sessionTitle>
+            <speaker>
+                <speakerId>speaker-001</speakerId>
+                <firstName>Alice</firstName>
+                <lastName>Nguyen</lastName>
+                <affiliation>Tech Innovations Corp</affiliation>
+            </speaker>
+            <time>2024-09-15T10:00</time>
+            <duration>90 minutes</duration>
+        </session>
+        <session>
+            <sessionId>session-002</sessionId>
+            <sessionTitle>Cybersecurity Trends</sessionTitle>
+            <speaker>
+                <speakerId>speaker-002</speakerId>
+                <firstName>Bob</firstName>
+                <lastName>Khan</lastName>
+                <affiliation>CyberSafe Ltd.</affiliation>
+            </speaker>
+            <time>2024-09-15T14:00</time>
+            <duration>60 minutes</duration>
+        </session>
+    </sessions>
+    <attendees>
+        <attendee>
+            <attendeeId>attendee-001</attendeeId>
+            <name>John Doe</name>
+            <email>john.doe@example.com</email>
+            <registeredSessions>
+                <sessionId>session-001</sessionId>
+            </registeredSessions>
+        </attendee>
+        <attendee>
+            <attendeeId>attendee-002</attendeeId>
+            <name>Jane Smith</name>
+            <email>jane.smith@example.com</email>
+            <registeredSessions>
+                <sessionId>session-002</sessionId>
+            </registeredSessions>
+        </attendee>
+    </attendees>
+    <sponsors>
+        <sponsor>
+            <sponsorId>sponsor-001</sponsorId>
+            <name>Tech Corp</name>
+            <tier>Gold</tier>
+        </sponsor>
+        <sponsor>
+            <sponsorId>sponsor-002</sponsorId>
+            <name>Innovate Ltd</name>
+            <tier>Silver</tier>
+        </sponsor>
+    </sponsors>
+</conference>

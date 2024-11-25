@@ -1,0 +1,4 @@
+gardenId,name,city,plantId,commonName,scientificName,gardenerId,gardenerFullName
+garden-001,Sunny Garden,San Diego,plant-001,Rose,Rosa,gardener-001,John Smith
+garden-001,Sunny Garden,San Diego,plant-002,Tomato,Solanum lycopersicum,gardener-001,John Smith
+garden-001,Sunny Garden,San Diego,plant-001,Rose,Rosa,gardener-002,Emily Davis

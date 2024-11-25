@@ -1,0 +1,95 @@
+{
+  "onlineStore": {
+    "storeId": "store-001",
+    "name": "Tech Haven",
+    "establishedYear": 2015,
+    "isActive": true,
+    "location": {
+      "headquarters": "San Francisco, CA",
+      "country": "USA"
+    },
+    "productCategories": [
+      {
+        "categoryId": "cat-001",
+        "categoryName": "Electronics",
+        "description": "Devices and gadgets",
+        "isActive": true
+      },
+      {
+        "categoryId": "cat-002",
+        "categoryName": "Home Appliances",
+        "description": "Appliances for home use",
+        "isActive": true
+      }
+    ],
+    "products": [
+      {
+        "productId": "product-001",
+        "name": "Smartphone X",
+        "category": "cat-001",
+        "price": 699.99,
+        "specifications": {
+          "brand": "BrandX",
+          "model": "X-2024",
+          "features": [
+            "6-inch OLED Display",
+            "5G Support",
+            "Triple Camera System"
+          ]
+        },
+        "reviews": [
+          {
+            "reviewId": "review-001",
+            "user": "GadgetGuru",
+            "rating": 4.5,
+            "comment": "Superb performance."
+          },
+          {
+            "reviewId": "review-002",
+            "user": "TechEnthusiast",
+            "rating": 4.0,
+            "comment": "Great value for money."
+          }
+        ]
+      },
+      {
+        "productId": "product-002",
+        "name": "Microwave Oven Z",
+        "category": "cat-002",
+        "price": 129.99,
+        "specifications": {
+          "brand": "HeatMaster",
+          "model": "Z203",
+          "features": [
+            "800W Power",
+            "20L Capacity",
+            "Digital Display"
+          ]
+        },
+        "reviews": []
+      }
+    ],
+    "customers": [
+      {
+        "customerId": "customer-001",
+        "username": "johnDoe",
+        "email": "john.doe@example.com",
+        "orderHistory": [
+          {
+            "orderId": "order-001",
+            "orderDate": "2022-12-10",
+            "products": ["product-001"]
+          }
+        ],
+        "accountCreated": "2020-04-05"
+      },
+      {
+        "customerId": "customer-002",
+        "username": "janeSmith",
+        "email": "jane.smith@example.com",
+        "orderHistory": [],
+        "accountCreated": "2023-05-19"
+      }
+    ]
+  }
+}

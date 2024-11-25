@@ -1,0 +1,87 @@
+{
+  "bank": {
+    "id": "bank-001",
+    "name": "First National Bank",
+    "establishedYear": 1901,
+    "isNational": true,
+    "branches": [
+      {
+        "branchId": "branch-001",
+        "branchName": "Downtown Branch",
+        "location": {
+          "address": "123 Main St",
+          "city": "Springfield",
+          "state": "IL",
+          "zipCode": "62701"
+        },
+        "employees": [
+          {
+            "employeeId": "emp-001",
+            "firstName": "Alice",
+            "lastName": "Johnson",
+            "position": "Branch Manager",
+            "salary": 75000,
+            "contact": {
+              "email": "alice.johnson@firstnationalbank.com",
+              "phone": "+12135551234"
+            }
+          },
+          {
+            "employeeId": "emp-002",
+            "firstName": "Bob",
+            "lastName": "Smith",
+            "position": "Teller",
+            "salary": 35000,
+            "contact": {
+              "email": "bob.smith@firstnationalbank.com",
+              "phone": "+12135554321"
+            }
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "serviceId": "service-001",
+        "serviceName": "Checking Account",
+        "fee": 0.00,
+        "description": "A basic checking account with no monthly fee."
+      },
+      {
+        "serviceId": "service-002",
+        "serviceName": "Savings Account",
+        "fee": 5.00,
+        "description": "A savings account with a 0.5% interest rate."
+      },
+      {
+        "serviceId": "service-003",
+        "serviceName": "Mortgage Loan",
+        "interestRate": 3.5,
+        "description": "A fixed-rate mortgage loan for buying homes."
+      }
+    ],
+    "currency": "USD",
+    "totalAssets": 1000000000.00,
+    "onlineBanking": {
+      "available": true,
+      "features": [
+        "Account Balance Check",
+        "Funds Transfer",
+        "Bill Payment",
+        "Mobile Deposits"
+      ]
+    },
+    "customerFeedback": [
+      {
+        "customerId": "cust-001",
+        "rating": 4.5,
+        "comment": "Great service and friendly staff!"
+      },
+      {
+        "customerId": "cust-002",
+        "rating": 3.0,
+        "comment": "Waiting times are a bit long during peak hours."
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+<entertainmentEvent>
+    <eventId>fest-001</eventId>
+    <title>Harmony Festival</title>
+    <creationYear>2010</creationYear>
+    <site>
+        <location>Central Park</location>
+        <locality>New York</locality>
+        <nationality>USA</nationality>
+    </site>
+    <duration>
+        <start>2024-06-01</start>
+        <conclusion>2024-06-07</conclusion>
+    </duration>
+    <recurring>true</recurring>
+    <musicGenres>
+        <genreType>Rock</genreType>
+        <genreType>Pop</genreType>
+        <genreType>Jazz</genreType>
+    </musicGenres>
+    <areas>
+        <zone>
+            <zoneCode>stage-001</zoneCode>
+            <zoneTitle>Main Stage</zoneTitle>
+            <maxCapacity>5000</maxCapacity>
+            <performancesList>
+                <show>
+                    <showId>perf-001</showId>
+                    <performingAct>The Rockers</performingAct>
+                    <showStart>2024-06-01T18:00</showStart>
+                    <showEnd>2024-06-01T19:30</showEnd>
+                    <musicalGenre>Rock</musicalGenre>
+                </show>
+                <show>
+                    <showId>perf-002</showId>
+                    <performingAct>Sax Master</performingAct>
+                    <showStart>2024-06-01T20:00</showStart>
+                    <showEnd>2024-06-01T21:30</showEnd>
+                    <musicalGenre>Jazz</musicalGenre>
+                </show>
+                <backupPlan>
+                    <rainProtection>true</rainProtection>
+                    <alternateVenue>Indoor Hall</alternateVenue>
+                </backupPlan>
+            </performancesList>
+        </zone>
+    </areas>
+    <ticketing>
+        <ticketOption>
+            <id>ticket-001</id>
+            <category>General Admission</category>
+            <pricing>100.00</pricing>
+            <validDates>
+                <validOn>2024-06-01</validOn>
+                <validOn>2024-06-02</validOn>
+            </validDates>
+        </ticketOption>
+        <ticketOption>
+            <id>ticket-002</id>
+            <category>VIP</category>
+            <pricing>250.00</pricing>
+            <validDates>
+                <validOn>2024-06-01</validOn>
+                <validOn>2024-06-02</validOn>
+                <validOn>2024-06-03</validOn>
+            </validDates>
+        </ticketOption>
+    </ticketing>
+    <organizingBodies>
+        <entity>
+            <entityId>org-001</entityId>
+            <entityName>Music Mania Co.</entityName>
+            <officialEmail>info@musicmania.com</officialEmail>
+            <phoneNumber>123-456-7890</phoneNumber>
+        </entity>
+        <entity>
+            <entityId>org-002</entityId>
+            <entityName>Harmony Events</entityName>
+            <officialEmail>contact@harmonyevents.com</officialEmail>
+        </entity>
+    </organizingBodies>
+</entertainmentEvent>

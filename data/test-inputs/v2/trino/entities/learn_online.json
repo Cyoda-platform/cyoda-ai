@@ -1,0 +1,132 @@
+{
+  "platform": {
+    "platformId": "platform-001",
+    "name": "LearnOnline",
+    "courses": [
+      {
+        "courseId": "course-001",
+        "courseName": "Full Stack Development",
+        "description": "Learn to build web applications from scratch.",
+        "durationWeeks": 12,
+        "startDate": "2024-01-10",
+        "endDate": "2024-03-31",
+        "price": 499.99,
+        "isActive": true,
+        "instructor": {
+          "instructorId": "instructor-001",
+          "firstName": "Alice",
+          "lastName": "Johnson",
+          "email": "alice.johnson@learnonline.com",
+          "experienceYears": 8
+        },
+        "modules": [
+          {
+            "moduleId": "module-001",
+            "moduleName": "Introduction to Web Development",
+            "duration": "2 weeks",
+            "resources": [
+              {
+                "resourceId": "resource-001",
+                "resourceName": "HTML Basics",
+                "resourceType": "Video",
+                "url": "https://learnonline.com/html-basics"
+              },
+              {
+                "resourceId": "resource-002",
+                "resourceName": "CSS Styling",
+                "resourceType": "Article",
+                "url": "https://learnonline.com/css-styling"
+              }
+            ]
+          },
+          {
+            "moduleId": "module-002",
+            "moduleName": "JavaScript Fundamentals",
+            "duration": "3 weeks",
+            "resources": [
+              {
+                "resourceId": "resource-003",
+                "resourceName": "JavaScript for Beginners",
+                "resourceType": "Video",
+                "url": "https://learnonline.com/javascript-beginners"
+              },
+              {
+                "resourceId": "resource-004",
+                "resourceName": "Project: Build a Game",
+                "resourceType": "Repository",
+                "url": "https://github.com/learnonline/game-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "courseId": "course-002",
+        "courseName": "Digital Marketing Mastery",
+        "description": "Master the art of digital marketing strategies.",
+        "durationWeeks": 8,
+        "startDate": "2024-02-01",
+        "endDate": "2024-03-31",
+        "price": null,
+        "isActive": false,
+        "instructor": {
+          "instructorId": "instructor-002",
+          "firstName": "Bob",
+          "lastName": "Smith",
+          "email": null,
+          "experienceYears": 5
+        },
+        "modules": []
+      }
+    ],
+    "students": [
+      {
+        "studentId": "student-001",
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john.doe@example.com",
+        "enrollmentDate": "2023-08-15",
+        "completedCourses": [
+          {
+            "courseId": "course-001",
+            "completionDate": "2024-04-01",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "studentId": "student-002",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "enrollmentDate": "2023-09-10",
+        "completedCourses": [],
+        "currentCourses": [
+          {
+            "courseId": "course-002",
+            "enrollmentDate": "2024-01-15",
+            "status": "In Progress"
+          }
+        ]
+      }
+    ],
+    "reviews": [
+      {
+        "reviewId": "review-001",
+        "studentId": "student-001",
+        "courseId": "course-001",
+        "rating": 4.5,
+        "comment": "Great course! Learned a lot.",
+        "date": "2024-04-02"
+      },
+      {
+        "reviewId": "review-002",
+        "studentId": "student-002",
+        "courseId": "course-002",
+        "rating": 5,
+        "comment": "Excited to start!",
+        "date": "2024-01-16"
+      }
+    ]
+  }
+}

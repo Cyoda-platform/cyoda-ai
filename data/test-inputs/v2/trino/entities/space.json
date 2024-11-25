@@ -1,0 +1,68 @@
+{
+    "spaceExpedition": {
+        "expeditionId": "exp-001",
+        "missionName": "Jupiter Exploration Initiative",
+        "launchDate": "2025-03-14",
+        "missionDuration": {
+            "years": 2,
+            "months": 3
+        },
+        "destination": {
+            "planet": "Jupiter",
+            "moons": ["Europa", "Ganymede"]
+        },
+        "crew": [
+            {
+                "crewId": "crew-001",
+                "role": "Commander",
+                "firstName": "Sarah",
+                "lastName": "Connor",
+                "nationality": "USA",
+                "experience": 15,
+                "specialty": "Astrophysics"
+            },
+            {
+                "crewId": "crew-002",
+                "role": "Pilot",
+                "firstName": "James",
+                "lastName": "Holden",
+                "nationality": "Canada",
+                "experience": 10,
+                "specialty": "Aerospace Engineering"
+            }
+        ],
+        "ship": {
+            "shipId": "ship-001",
+            "name": "Orion Voyager",
+            "manufacturer": "SpaceTech Industries",
+            "fuelCapacity": 500000,
+            "lifeSupportSystems": "Advanced Oxygen Recycling"
+        },
+        "experiments": [
+            {
+                "experimentId": "exp-101",
+                "experimentName": "Microgravity Effects on Plant Growth",
+                "leadScientist": "Dr. Laura Croft",
+                "duration": "6 months"
+            },
+            {
+                "experimentId": "exp-102",
+                "experimentName": "Radiation Levels in Jovian System",
+                "leadScientist": "Dr. Neil Armstrong",
+                "duration": "1 year"
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsorId": "sponsor-101",
+                "organization": "Galactic Explorers Association",
+                "funding": 5000000
+            },
+            {
+                "sponsorId": "sponsor-102",
+                "organization": "Cosmic Innovations Inc.",
+                "funding": 3000000
+            }
+        ]
+    }
+}

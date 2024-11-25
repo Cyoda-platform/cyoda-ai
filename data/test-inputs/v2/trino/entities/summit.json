@@ -1,0 +1,71 @@
+{
+    "conference": {
+        "conferenceId": "conf-001",
+        "name": "International Technology Summit",
+        "year": 2024,
+        "theme": "Advancing Global Innovations",
+        "location": {
+            "venue": "Tech Convention Center",
+            "city": "San Francisco",
+            "country": "USA"
+        },
+        "dates": {
+            "start": "2024-09-15",
+            "end": "2024-09-18"
+        },
+        "isAnnual": true,
+        "topics": ["Artificial Intelligence", "Cybersecurity", "Blockchain"],
+        "sessions": [
+            {
+                "sessionId": "session-001",
+                "sessionTitle": "AI in Everyday Life",
+                "speaker": {
+                    "speakerId": "speaker-001",
+                    "firstName": "Alice",
+                    "lastName": "Nguyen",
+                    "affiliation": "Tech Innovations Corp"
+                },
+                "time": "2024-09-15T10:00",
+                "duration": "90 minutes"
+            },
+            {
+                "sessionId": "session-002",
+                "sessionTitle": "Cybersecurity Trends",
+                "speaker": {
+                    "speakerId": "speaker-002",
+                    "firstName": "Bob",
+                    "lastName": "Khan",
+                    "affiliation": "CyberSafe Ltd."
+                },
+                "time": "2024-09-15T14:00",
+                "duration": "60 minutes"
+            }
+        ],
+        "attendees": [
+            {
+                "attendeeId": "attendee-001",
+                "name": "John Doe",
+                "email": "john.doe@example.com",
+                "registeredSessions": ["session-001"]
+            },
+            {
+                "attendeeId": "attendee-002",
+                "name": "Jane Smith",
+                "email": "jane.smith@example.com",
+                "registeredSessions": ["session-002"]
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsorId": "sponsor-001",
+                "name": "Tech Corp",
+                "tier": "Gold"
+            },
+            {
+                "sponsorId": "sponsor-002",
+                "name": "Innovate Ltd",
+                "tier": "Silver"
+            }
+        ]
+    }
+}

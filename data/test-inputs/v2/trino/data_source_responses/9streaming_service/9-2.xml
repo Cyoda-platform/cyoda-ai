@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StreamingService>
+  <serviceCode>SVC001</serviceCode>
+  <serviceName>CineMagic</serviceName>
+  <launchDate>2020</launchDate>
+  <serviceStatus>active</serviceStatus>
+  <headquarters>Los Angeles, CA</headquarters>
+  <country>USA</country>
+  <Plans>
+    <Plan>
+      <planCode>PLN001</planCode>
+      <planTitle>Basic</planTitle>
+      <price>9.99</price>
+      <videoQuality>720p</videoQuality>
+      <features>
+        <feature>Limited Ads</feature>
+        <feature>Standard Library Access</feature>
+      </features>
+      <planStatus>active</planStatus>
+    </Plan>
+    <Plan>
+      <planCode>PLN002</planCode>
+      <planTitle>Premium</planTitle>
+      <price>14.99</price>
+      <videoQuality>1080p</videoQuality>
+      <features>
+        <feature>No Ads</feature>
+        <feature>Premium Content</feature>
+        <feature>Offline Downloads</feature>
+      </features>
+      <planStatus>active</planStatus>
+      <maxDevices>4</maxDevices>
+    </Plan>
+  </Plans>
+  <Films>
+    <Film>
+      <filmID>FLM001</filmID>
+      <filmTitle>Inception</filmTitle>
+      <releaseYear>2010</releaseYear>
+      <categories>
+        <category>Sci-Fi</category>
+        <category>Action</category>
+      </categories>
+      <runtime>148</runtime>
+      <rating>8.8</rating>
+      <director>Christopher Nolan</director>
+      <cast>
+        <actor>Leonardo DiCaprio</actor>
+        <actor>Joseph Gordon-Levitt</actor>
+      </cast>
+      <reviews>
+        <review>
+          <reviewID>REV001</reviewID>
+          <reviewer>User123</reviewer>
+          <reviewScore>5</reviewScore>
+          <reviewText>A masterpiece!</reviewText>
+        </review>
+        <review>
+          <reviewID>REV002</reviewID>
+          <reviewer>FilmBuff88</reviewer>
+          <reviewScore>4</reviewScore>
+          <reviewText>Visually stunning.</reviewText>
+        </review>
+      </reviews>
+    </Film>
+    <Film>
+      <filmID>FLM002</filmID>
+      <filmTitle>The Matrix</filmTitle>
+      <releaseYear>1999</releaseYear>
+      <categories>
+        <category>Sci-Fi</category>
+        <category>Action</category>
+      </categories>
+      <runtime>136</runtime>
+      <rating>8.7</rating>
+      <director>Lana Wachowski</director>
+      <cast>
+        <actor>Keanu Reeves</actor>
+        <actor>Laurence Fishburne</actor>
+      </cast>
+      <reviews/>
+      <availableIn4K>true</availableIn4K>
+    </Film>
+  </Films>
+  <Members>
+    <Member>
+      <memberID>MBR001</memberID>
+      <memberName>movieFanatic</memberName>
+      <email>fanatic@example.com</email>
+      <planID>PLN002</planID>
+      <viewingHistory>
+        <filmID>FLM001</filmID>
+        <filmID>FLM002</filmID>
+      </viewingHistory>
+      <joinDate>2021-07-15</joinDate>
+    </Member>
+    <Member>
+      <memberID>MBR002</memberID>
+      <memberName>casualViewer</memberName>
+      <email>casual.viewer@example.com</email>
+      <planID>PLN001</planID>
+      <viewingHistory/>
+      <joinDate>2023-01-22</joinDate>
+      <paymentStatus>Current</paymentStatus>
+    </Member>
+  </Members>
+</StreamingService>
