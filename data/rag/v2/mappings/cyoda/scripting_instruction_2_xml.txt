@@ -18,8 +18,14 @@ Example input:
         </items>
 
         <configurations>
-            <configuration key="setting1" value="enabled" />
-            <configuration key="setting2" value="disabled" />
+            <specification>
+                <key>setting1</key>
+                <value>enabled</value>
+            </specification>
+            <specification>
+                <key>setting2</key>
+                <value>disabled</value>
+            </specification>
         </configurations>
 
         <company name="Tech Corp">
@@ -49,11 +55,10 @@ Example target entity model:
     ".c_entity.company.department.employee.position": "STRING",
     "#.c_entity": "OBJECT",
     "#.c_entity.items": "OBJECT",
-    "#.c_entity.configurations": "OBJECT",
     "#.c_entity.company": "OBJECT",
     "#.c_entity.company.department": "OBJECT"
   },
-  "$.c_entity.configurations.configuration[*]": {
+  "$.c_entity.configurations[*]": {
     ".key": "STRING",
     ".value": "STRING",
     "#": "ARRAY_ELEMENT"
@@ -64,6 +69,9 @@ Example target entity model:
 Instruction b7f19c43-3e09-47a1-8e64-1e789f70961e
 
 **Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
+
+When handling arrays, always apply this check before iterating: 'if (input.c_entity.complexData.configurations.specification[0] != null)' and create a function to process individual array elements.
+
 Script example:
 var target = entity.modelAccessor;
 target.c_entity = {};
@@ -81,24 +89,43 @@ target.c_entity.person = {
 // Handling items
 var ArrayList = Java.type("java.util.ArrayList");
 var itemsList = new ArrayList();
-if (input.c_entity.complexData.items.item != null) {
-    for (var i = 0; i < input.c_entity.complexData.items.item.length; i++) {
-        itemsList.add(input.c_entity.complexData.items.item[i]);
+var items = input.c_entity.complexData.items.item;
+
+if (items != null) {
+    if (items[0] != null) {
+        for (var i = 0; i < items.length; i++) {
+            itemsList.add(items[i]);
+        }
+    } else {
+        itemsList.add(items);
     }
 }
 target.c_entity.items = { item: itemsList };
 
 // Handling configurations
+
 var configurationsList = new ArrayList();
-if (input.c_entity.complexData.configurations.configuration != null) {
-    for (var j = 0; j < input.c_entity.complexData.configurations.configuration.length; j++) {
-        configurationsList.add({
-            key: input.c_entity.complexData.configurations.configuration[j]['@key'] != null ? String(input.c_entity.complexData.configurations.configuration[j]['@key']) : "",
-            value: input.c_entity.complexData.configurations.configuration[j]['@value'] != null ? String(input.c_entity.complexData.configurations.configuration[j]['@value']) : ""
-        });
+var configurations = input.c_entity.complexData.configurations.specification;
+
+if (configurations != null) {
+    if (configurations[0] != null) {
+        for (var j = 0; j < configurations.length; j++) {
+            processConfiguration(configurations[j], configurationsList);
+        }
+    } else {
+        processConfiguration(configurations, configurationsList);
     }
 }
 target.c_entity.configurations = { configuration: configurationsList };
+
+// Function to process individual configuration
+function processConfiguration(config, configurationsList) {
+    var configuration = {
+        key: config['@key'] != null ? String(config['@key']) : "",
+        value: config['@value'] != null ? String(config['@value']) : ""
+    };
+    configurationsList.add(configuration);
+}
 
 // Handling company structure
 target.c_entity.company = {
