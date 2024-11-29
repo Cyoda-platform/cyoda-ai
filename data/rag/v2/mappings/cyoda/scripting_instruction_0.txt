@@ -1,0 +1,184 @@
+**Writing a JavaScript Nashorn script to map the given input to the given Cyoda target entity**
+
+Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
+
+Here's an example of how to map an input to an entity with a Javascript Nashorn script:
+
+Example input:
+{
+  "employee": {
+    "id": "b3d92c6a-f3b1-49cb-a1e1-3d2d638a7b1b",
+    "name": "John Doe",
+    "isActive": true,
+    "age": 30,
+    "salary": 85000.5,
+    "accountBalance": {
+      "current": 2500.75,
+      "overdraftLimit": 1000
+    },
+    "registrationDate": "2023-10-07T14:30:00Z",
+    "preferences": [
+      "email",
+      "sms",
+      "push"
+    ],
+    "contact": {
+      "email": "johndoe@example.com",
+      "phoneNumbers": [
+        {
+          "type": "home",
+          "number": "+1-555-123-4567"
+        },
+        {
+          "type": "work",
+          "number": "+1-555-987-6543"
+        }
+      ]
+    },
+    "skills": {
+      "Java": 4,
+      "JavaScript": 3,
+      "Python": 5
+    },
+    "projects": {
+      "Project Alpha": [
+        {
+          "taskId": "t1",
+          "description": "Design UI",
+          "status": "IN_PROGRESS"
+        },
+        {
+          "taskId": "t2",
+          "description": "Develop Backend",
+          "status": "NOT_STARTED"
+        }
+      ],
+      "Project Beta": [
+        {
+          "taskId": "t3",
+          "description": "Testing",
+          "status": "COMPLETED"
+        }
+      ]
+    },
+    "tags": [
+      "developer",
+      "team player",
+      "fast learner"
+    ]
+  }
+}
+
+Example target entity model:
+{'$': {'.employee.id': 'UUID_TYPE',
+   '.employee.name': 'STRING',
+   '.employee.isActive': 'BOOLEAN',
+   '.employee.age': 'INTEGER',
+   '.employee.salary': 'DOUBLE',
+   '.employee.accountBalance.current': 'DOUBLE',
+   '.employee.accountBalance.overdraftLimit': 'INTEGER',
+   '.employee.registrationDate': 'ZONED_DATE_TIME',
+   '.employee.contact.email': 'STRING',
+   '.employee.skills.Java': 'INTEGER',
+   '.employee.skills.JavaScript': 'INTEGER',
+   '.employee.skills.Python': 'INTEGER',
+   '.employee.preferences[*]': '(STRING x 3)',
+   '.employee.tags[*]': '(STRING x 3)',
+   '#.employee': 'OBJECT',
+   '#.employee.accountBalance': 'OBJECT',
+   '#.employee.contact': 'OBJECT',
+   '#.employee.skills': 'OBJECT',
+   '#.employee.projects': 'OBJECT'},
+  '$.employee.contact.phoneNumbers[*]': {'.type': 'STRING',
+   '.number': 'STRING',
+   '#': 'ARRAY_ELEMENT'},
+  '$.employee.projects.Project Alpha[*]': {'.taskId': 'STRING',
+   '.description': 'STRING',
+   '.status': 'STRING',
+   '#': 'ARRAY_ELEMENT'},
+  '$.employee.projects.Project Beta[*]': {'.taskId': 'STRING',
+   '.description': 'STRING',
+   '.status': 'STRING',
+   '#': 'ARRAY_ELEMENT'}}}
+
+Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
+Always specify the full path to each target field in the script according to the target entity model's schema, without omitting any part of the path structure, even if some prefixes appear repetitive.
+
+**Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
+Script example:
+var target = entity.modelAccessor;
+target.employee = {}
+
+// Mapping scalar fields
+target.employee.id = input.employee.id != null ? input.employee.id : "";
+target.employee.name = input.employee.name != null ? input.employee.name : "";
+target.employee.isActive = input.employee.isActive != null ? input.employee.isActive : false;
+target.employee.age = input.employee.age != null ? input.employee.age : 0;
+target.employee.salary = input.employee.salary != null ? input.employee.salary : 0.0;
+target.employee.registrationDate = input.employee.registrationDate != null ? input.employee.registrationDate : "";
+target.employee.accountBalance = {
+    current: input.employee.accountBalance.current != null ? input.employee.accountBalance.current : 0.0,
+    overdraftLimit: input.employee.accountBalance.overdraftLimit != null ? input.employee.accountBalance.overdraftLimit : 0
+};
+target.employee.contact = {
+    email: input.employee.contact.email != null ? input.employee.contact.email : "",
+};
+
+// Handling preferences
+var ArrayList = Java.type("java.util.ArrayList");
+var preferencesList = new ArrayList();
+if (input.employee.preferences != null) {
+    for (var i = 0; i < input.employee.preferences.length; i++) {
+        preferencesList.add(input.employee.preferences[i]);
+    }
+}
+target.employee.preferences = preferencesList;
+
+// Handling tags
+var tagsList = new ArrayList();
+if (input.employee.tags != null) {
+    for (var j = 0; j < input.employee.tags.length; j++) {
+        tagsList.add(input.employee.tags[j]);
+    }
+}
+target.employee.tags = tagsList;
+
+// Handling skills
+target.employee.skills = {
+    Java: input.employee.skills.Java != null ? input.employee.skills.Java : 0,
+    JavaScript: input.employee.skills.JavaScript != null ? input.employee.skills.JavaScript : 0,
+    Python: input.employee.skills.Python != null ? input.employee.skills.Python : 0
+};
+
+// Handling contact phone numbers
+var phoneNumbers = new ArrayList();
+if (input.employee.contact.phoneNumbers != null) {
+    for (var k = 0; k < input.employee.contact.phoneNumbers.length; k++) {
+        var phoneNumber = {
+            type: input.employee.contact.phoneNumbers[k].type != null ? input.employee.contact.phoneNumbers[k].type : "",
+            number: input.employee.contact.phoneNumbers[k].number != null ? input.employee.contact.phoneNumbers[k].number : ""
+        };
+        phoneNumbers.add(phoneNumber);
+    }
+}
+target.employee.contact.phoneNumbers = phoneNumbers;
+
+// Handling projects
+var HashMap = Java.type("java.util.HashMap");
+var ArrayList = Java.type("java.util.ArrayList");
+
+target.employee.projects = new HashMap();
+
+for (var projectName in input.employee.projects) {
+    var taskList = new ArrayList();
+
+    for (var i = 0; i < input.employee.projects[projectName].length; i++) {
+        var task = {
+            taskId: input.employee.projects[projectName][i].taskId != null ? input.employee.projects[projectName][i].taskId : "",
+            description: input.employee.projects[projectName][i].description != null ? input.employee.projects[projectName][i].description : "",
+            status: input.employee.projects[projectName][i].status != null ? input.employee.projects[projectName][i].status : ""
+        };
+        taskList.add(task);
+    }
+    target.employee.projects.put(projectName, taskList);
+}

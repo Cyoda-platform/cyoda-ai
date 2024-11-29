@@ -1,0 +1,121 @@
+**Writing a JavaScript Nashorn script to map the given input to the given Cyoda target entity**
+
+Instruction e31a2c74-4c85-4c3b-b0ab-3b0cd7a9fe58
+
+Here's an example of how to map an Example_input to an entity with a Javascript Nashorn script:
+
+Example_input:
+id,storeName,locationCity,locationState,locationCountry,productId,productTitle,manufacturerBrand,productCategory,cost,quantityInStock,specs,warrantyDuration,warrantyDescription,clientId,clientFullName,clientEmail,purchasedProducts,saleCode,soldProductId,soldClientId,dateOfTransaction,transactionAmount,warrantyStartDate,warrantyEndDate
+store-001,Tech Hub,San Francisco,CA,USA,device-001,Smartphone X,BrandA,Mobile,799.99,50,"5G; 128GB Storage; 12MP Camera",2 years,"Damage and Manufacturers Defect",cust-001,Alice Green,alice.green@example.com,"device-001",sale-001,device-001,cust-001,2024-01-15,799.99,2024-01-15,2026-01-15
+store-001,Tech Hub,San Francisco,CA,USA,device-002,Laptop Pro,BrandB,Computer,1299.99,30,"16GB RAM; 512GB SSD; Retina Display",1 year,"Manufacturers Defect",cust-002,David Jones,david.jones@example.com,"device-002",sale-002,device-002,cust-002,2024-01-20,1299.99,2024-01-20,2025-01-20
+store-001,Tech Hub,San Francisco,CA,USA,device-003,Laptop Pro,BrandB,Computer,,,"16GB RAM; 512GB SSD; Retina Display",1 year,"Manufacturers Defect",cust-002,David Jones,david.jones@example.com,"device-002",sale-002,device-002,cust-002,,1299.99,2024-01-20,2025-01-20
+
+
+Example target entity model:
+{'$': {'.deviceManagement.storeId': 'STRING',
+   '.deviceManagement.storeName': 'STRING',
+   '.deviceManagement.location.city': 'STRING',
+   '.deviceManagement.location.state': 'STRING',
+   '.deviceManagement.location.country': 'STRING',
+   '#.deviceManagement': 'OBJECT',
+   '#.deviceManagement.location': 'OBJECT'},
+  '$.deviceManagement.devices[*]': {'.deviceId': 'STRING',
+   '.deviceName': 'STRING',
+   '.brand': 'STRING',
+   '.category': 'STRING',
+   '.price': 'DOUBLE',
+   '.stockQuantity': 'INTEGER',
+   '.warranty.period': 'STRING',
+   '.warranty.coverage': 'STRING',
+   '.features[*]': '(STRING x 3)',
+   '#': 'ARRAY_ELEMENT',
+   '#.warranty': 'OBJECT'},
+  '$.deviceManagement.customers[*]': {'.customerId': 'STRING',
+   '.fullName': 'STRING',
+   '.email': 'STRING',
+   '.purchasedDevices[*]': '(STRING x 1)',
+   '#': 'ARRAY_ELEMENT'},
+  '$.deviceManagement.sales[*]': {'.saleId': 'STRING',
+   '.deviceId': 'STRING',
+   '.customerId': 'STRING',
+   '.saleDate': 'LOCAL_DATE',
+   '.price': 'DOUBLE',
+   '.warrantyStart': 'LOCAL_DATE',
+   '.warrantyEnd': 'LOCAL_DATE',
+   '#': 'ARRAY_ELEMENT'}}
+
+Instruction e31a2c74-4c85-4c3b-b0ab-3b0cd7a9fe58
+
+**Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
+Script example:
+
+Always start with:
+var target = entity.modelAccessor;
+target.deviceManagement = {};
+
+Always perform empty string check: != "":
+
+// Mapping scalar fields
+target.deviceManagement.storeId = input.id != "" ? input.id : "";
+target.deviceManagement.storeName = input.storeName != "" ? input.storeName : "";
+target.deviceManagement.location = {
+    city: input.locationCity != "" ? input.locationCity : "",
+    state: input.locationState != "" ? input.locationState : "",
+    country: input.locationCountry != "" ? input.locationCountry : ""
+};
+
+// Handling devices
+var ArrayList = Java.type("java.util.ArrayList");
+target.deviceManagement.devices = new ArrayList();
+
+var device = {
+    deviceId: input.productId != "" ? input.productId : "",
+    deviceName: input.productTitle != "" ? input.productTitle : "",
+    brand: input.manufacturerBrand != "" ? input.manufacturerBrand : "",
+    category: input.productCategory != "" ? input.productCategory : "",
+    price: input.cost != "" ? parseFloat(input.cost) : 0.0,
+    stockQuantity: input.quantityInStock != "" ? parseInt(input.quantityInStock) : 0,
+    warranty: {
+        period: input.warrantyDuration != "" ? input.warrantyDuration : "",
+        coverage: input.warrantyDescription != "" ? input.warrantyDescription : ""
+    },
+    features: new ArrayList()
+};
+
+// Handling specs
+if (input.specs != "") {
+    var specsArray = input.specs.split(";"); // Assuming specs are separated by ";"
+    for (var j = 0; j < specsArray.length; j++) {
+        device.features.add(specsArray[j].trim());
+    }
+}
+
+target.deviceManagement.devices.add(device);
+
+// Handling customers
+target.deviceManagement.customers = new ArrayList();
+var customer = {
+    customerId: input.clientId != "" ? input.clientId : "",
+    fullName: input.clientFullName != "" ? input.clientFullName : "",
+    email: input.clientEmail != "" ? input.clientEmail : "",
+    purchasedDevices: new ArrayList()
+};
+
+if (input.purchasedProducts != "") {
+    customer.purchasedDevices.add(input.purchasedProducts);
+}
+target.deviceManagement.customers.add(customer);
+
+// Handling sales
+target.deviceManagement.sales = new ArrayList();
+var sale = {
+    saleId: input.saleCode != "" ? input.saleCode : "",
+    deviceId: input.soldProductId != "" ? input.soldProductId : "",
+    customerId: input.soldClientId != "" ? input.soldClientId : "",
+    saleDate: input.dateOfTransaction != "" ? input.dateOfTransaction : null,
+    price: input.transactionAmount != "" ? parseFloat(input.transactionAmount) : 0.0,
+    warrantyStart: input.warrantyStartDate != "" ? input.warrantyStartDate : null,
+    warrantyEnd: input.warrantyEndDate != "" ? input.warrantyEndDate : null
+};
+
+target.deviceManagement.sales.add(sale);
