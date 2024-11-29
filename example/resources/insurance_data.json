@@ -18,7 +18,7 @@
             "age": 22,
             "policy_type": "Travel",
             "premium_amount": 1209,
-            "claim_amount": null,
+            "claim_amount": 0.0,
             "policy_issue_date": "2022-01-31",
             "claim_status": null,
             "encoding": null
@@ -51,7 +51,7 @@
             "age": 38,
             "policy_type": "Home",
             "premium_amount": 1273,
-            "claim_amount": null,
+            "claim_amount": 0.0,
             "policy_issue_date": "2022-10-31",
             "claim_status": "Approved",
             "encoding": "utf-16"

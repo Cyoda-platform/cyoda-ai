@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TravelAgency>
+  <agencyID>agency-001</agencyID>
+  <agencyName>Wanderlust Travel</agencyName>
+  <address>123 Travel Blvd</address>
+  <city>Adventure City</city>
+  <state>FL</state>
+  <zip>33101</zip>
+  <founded>2010-05-15</founded>
+  <active>true</active>
+  <Bookings>
+    <Booking>
+      <bookingRef>booking-001</bookingRef>
+      <customerID>cust-001</customerID>
+      <firstName>Sarah</firstName>
+      <lastName>Williams</lastName>
+      <email>sarah.williams@example.com</email>
+      <phoneNumber>+1234567890</phoneNumber>
+      <destination>Paris, France</destination>
+      <departure>2024-03-01</departure>
+      <arrival>2024-03-10</arrival>
+      <hotel>Hotel de Paris</hotel>
+      <checkIn>2024-03-01</checkIn>
+      <checkOut>2024-03-10</checkOut>
+      <hotelRating>4.5</hotelRating>
+      <price>1500.00</price>
+      <services>
+        <service>Flight</service>
+        <service>Hotel</service>
+        <service>Breakfast</service>
+        <service>Tour</service>
+      </services>
+      <bookingStatus>Confirmed</bookingStatus>
+      <bookingDate>2024-01-15</bookingDate>
+      <agentAssigned>agent-001</agentAssigned>
+    </Booking>
+    <Booking>
+      <bookingRef>booking-002</bookingRef>
+      <customerID>cust-002</customerID>
+      <firstName>John</firstName>
+      <lastName>Doe</lastName>
+      <email>john.doe@example.com</email>
+      <phoneNumber>+0987654321</phoneNumber>
+      <destination>Tokyo, Japan</destination>
+      <departure>2024-04-05</departure>
+      <arrival>2024-04-15</arrival>
+      <hotel>Shinjuku Grand Hotel</hotel>
+      <checkIn>2024-04-05</checkIn>
+      <checkOut>2024-04-15</checkOut>
+      <hotelRating>4.7</hotelRating>
+      <price>2000.00</price>
+      <services>
+        <service>Flight</service>
+        <service>Hotel</service>
+        <service>Airport Transfer</service>
+        <service>Breakfast</service>
+      </services>
+      <bookingStatus>Pending</bookingStatus>
+      <bookingDate>2024-01-20</bookingDate>
+      <agentAssigned>agent-002</agentAssigned>
+      <paymentStatus>Unpaid</paymentStatus>
+    </Booking>
+  </Bookings>
+  <Agents>
+    <Agent>
+      <agentID>agent-001</agentID>
+      <agentName>Emily Clark</agentName>
+      <experience>7</experience>
+      <email>emily.clark@wanderlusttravel.com</email>
+      <phone>+1234567888</phone>
+    </Agent>
+    <Agent>
+      <agentID>agent-002</agentID>
+      <agentName>Michael Smith</agentName>
+      <experience>5</experience>
+      <email>michael.smith@wanderlusttravel.com</email>
+      <phone>+1234567777</phone>
+      <commissionRate>0.10</commissionRate>
+    </Agent>
+  </Agents>
+  <Reviews>
+    <Review>
+      <reviewID>rev-001</reviewID>
+      <customerID>cust-001</customerID>
+      <bookingRef>booking-001</bookingRef>
+      <rating>5</rating>
+      <feedback>Amazing experience! Highly recommend!</feedback>
+      <reviewDate>2024-03-12</reviewDate>
+    </Review>
+    <Review>
+      <reviewID>rev-002</reviewID>
+      <customerID>cust-002</customerID>
+      <bookingRef>booking-002</bookingRef>
+      <rating>4</rating>
+      <feedback>Great service, but the hotel could be better.</feedback>
+      <reviewDate>2024-04-16</reviewDate>
+    </Review>
+  </Reviews>
+</TravelAgency>

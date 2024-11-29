@@ -1,0 +1,50 @@
+{
+  "individual": {
+    "givenName": "Jane",
+    "familyName": "Smith",
+    "yearsOld": 28,
+    "currentlyEmployed": false,
+    "birthDate": "1995-08-22",
+    "employmentStartDate": "2021-03-15",
+    "residentialAddress": {
+      "streetName": "456 Oak Ave",
+      "locality": "Sample City",
+      "province": "CA",
+      "postalCode": "90211"
+    },
+    "contactNumbers": [
+      "+11234567890",
+      "+10987654321",
+      null
+    ],
+    "emailAddress": "jane.smith@example.com",
+    "annualIncome": 65000.00,
+    "expertise": [
+      "React",
+      "Node.js",
+      "MySQL",
+      null
+    ],
+    "workItems": [
+      {
+        "taskId": "task-001",
+        "taskName": "E-commerce Website",
+        "durationInMonths": 4,
+        "finishDate": "2022-10-15"
+      },
+      {
+        "taskId": "task-002",
+        "taskName": "Dashboard Analytics",
+        "durationInMonths": 5,
+        "finishDate": "2023-01-30"
+      },
+      {
+        "taskId": "task-003",
+        "taskName": "API Development",
+        "durationInMonths": 2,
+        "finishDate": "2023-04-10"
+      }
+    ],
+    "partner": null
+  }
+}

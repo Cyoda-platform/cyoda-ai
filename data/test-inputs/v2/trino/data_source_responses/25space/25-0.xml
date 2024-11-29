@@ -1,0 +1,67 @@
+<spaceExpedition>
+    <expeditionId>exp-001</expeditionId>
+    <missionName>Jupiter Exploration Initiative</missionName>
+    <launchDate>2025-03-14</launchDate>
+    <missionDuration>
+        <years>2</years>
+        <months>3</months>
+    </missionDuration>
+    <destination>
+        <planet>Jupiter</planet>
+        <moons>Europa</moons>
+        <moons>Ganymede</moons>
+    </destination>
+    <crew>
+        <member>
+            <crewId>crew-001</crewId>
+            <role>Commander</role>
+            <firstName>Sarah</firstName>
+            <lastName>Connor</lastName>
+            <nationality>USA</nationality>
+            <experience>15</experience>
+            <specialty>Astrophysics</specialty>
+        </member>
+        <member>
+            <crewId>crew-002</crewId>
+            <role>Pilot</role>
+            <firstName>James</firstName>
+            <lastName>Holden</lastName>
+            <nationality>Canada</nationality>
+            <experience>10</experience>
+            <specialty>Aerospace Engineering</specialty>
+        </member>
+    </crew>
+    <ship>
+        <shipId>ship-001</shipId>
+        <name>Orion Voyager</name>
+        <manufacturer>SpaceTech Industries</manufacturer>
+        <fuelCapacity>500000</fuelCapacity>
+        <lifeSupportSystems>Advanced Oxygen Recycling</lifeSupportSystems>
+    </ship>
+    <experiments>
+        <experiment>
+            <experimentId>exp-101</experimentId>
+            <experimentName>Microgravity Effects on Plant Growth</experimentName>
+            <leadScientist>Dr. Laura Croft</leadScientist>
+            <duration>6 months</duration>
+        </experiment>
+        <experiment>
+            <experimentId>exp-102</experimentId>
+            <experimentName>Radiation Levels in Jovian System</experimentName>
+            <leadScientist>Dr. Neil Armstrong</leadScientist>
+            <duration>1 year</duration>
+        </experiment>
+    </experiments>
+    <sponsors>
+        <sponsor>
+            <sponsorId>sponsor-101</sponsorId>
+            <organization>Galactic Explorers Association</organization>
+            <funding>5000000</funding>
+        </sponsor>
+        <sponsor>
+            <sponsorId>sponsor-102</sponsorId>
+            <organization>Cosmic Innovations Inc.</organization>
+            <funding>3000000</funding>
+        </sponsor>
+    </sponsors>
+</spaceExpedition>

@@ -1,0 +1,109 @@
+{
+  "financialInstitution": {
+    "identifier": "bank-002",
+    "institutionTitle": "Capital Savings Bank",
+    "yearFounded": 1955,
+    "isPublic": false,
+    "locations": [
+      {
+        "branchIdentifier": "branch-002",
+        "branchDesignation": "Uptown Office",
+        "addressDetails": {
+          "street": "456 Oak Ave",
+          "municipality": "Greenwood",
+          "province": "IN",
+          "postalCode": "46142"
+        },
+        "staffMembers": [
+          {
+            "staffIdentifier": "emp-003",
+            "givenName": "Charlie",
+            "surname": "Brown",
+            "jobTitle": "City Manager",
+            "annualIncome": 80000,
+            "contactDetails": {
+              "emailAddress": "charlie.brown@capitalsavingsbank.com",
+              "phoneNumber": "+12135558765"
+            }
+          },
+          {
+            "staffIdentifier": "emp-004",
+            "givenName": "Diana",
+            "surname": "White",
+            "jobTitle": "Customer Service Associate",
+            "annualIncome": 36000,
+            "contactDetails": {
+              "emailAddress": "diana.white@capitalsavingsbank.com",
+              "phoneNumber": "+12135559876"
+            }
+          }
+        ]
+      },
+      {
+        "branchIdentifier": "branch-003",
+        "branchDesignation": "Eastside Office",
+        "addressDetails": {
+          "street": "789 Pine St",
+          "municipality": "Clinton",
+          "province": "IN",
+          "postalCode": "47236"
+        },
+        "staffMembers": []
+      }
+    ],
+    "productOfferings": [
+      {
+        "productIdentifier": "service-001",
+        "productTitle": "Business Checking Account",
+        "monthlyCharge": 0.00,
+        "productDetails": "A checking account designed for businesses with no monthly fees."
+      },
+      {
+        "productIdentifier": "service-002",
+        "productTitle": "Regular Savings Account",
+        "monthlyCharge": 4.00,
+        "productDetails": "A traditional savings account with a 0.25% interest rate."
+      },
+      {
+        "productIdentifier": "service-003",
+        "productTitle": "Home Equity Line of Credit",
+        "interestRate": 4.5,
+        "productDetails": "Flexible access to credit based on home equity."
+      },
+      {
+        "productIdentifier": "service-004",
+        "productTitle": "Student Loan",
+        "interestRate": 5.0,
+        "productDetails": "Loans offered to students for educational expenses."
+      }
+    ],
+    "monetaryUnit": "USD",
+    "aggregateAssets": 1500000000.00,
+    "digitalServices": {
+      "isActive": true,
+      "functionalities": [
+        "View Account Transactions",
+        "Transfer Funds",
+        "Settle Bills",
+        "Deposit Checks"
+      ]
+    },
+    "clientReviews": [
+      {
+        "reviewerId": "cust-003",
+        "score": 4.8,
+        "feedback": "Excellent banking experience!"
+      },
+      {
+        "reviewerId": "cust-004",
+        "score": 3.5,
+        "feedback": "Decent services, but could improve."
+      },
+      {
+        "reviewerId": "cust-005",
+        "score": 2.0,
+        "feedback": "Had issues with account setup."
+      }
+    ]
+  }
+}

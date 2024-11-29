@@ -1,0 +1,69 @@
+<mission>
+    <id>exp-001</id>
+    <name>Jupiter Exploration Initiative</name>
+    <departureDate>2025-03-14</departureDate>
+    <duration>
+        <yearCount>2</yearCount>
+        <monthCount>3</monthCount>
+    </duration>
+    <target>
+        <mainPlanet>Jupiter</mainPlanet>
+        <satellites>
+            <moonName>Europa</moonName>
+            <moonName>Ganymede</moonName>
+        </satellites>
+    </target>
+    <team>
+        <crewMember>
+            <id>crew-001</id>
+            <position>Commander</position>
+            <givenName>Sarah</givenName>
+            <surname>Connor</surname>
+            <country>USA</country>
+            <yearsOfExperience>15</yearsOfExperience>
+            <expertise>Astrophysics</expertise>
+        </crewMember>
+        <crewMember>
+            <id>crew-002</id>
+            <position>Pilot</position>
+            <givenName>James</givenName>
+            <surname>Holden</surname>
+            <country>Canada</country>
+            <yearsOfExperience>10</yearsOfExperience>
+            <expertise>Aerospace Engineering</expertise>
+        </crewMember>
+    </team>
+    <vessel>
+        <identifier>ship-001</identifier>
+        <vesselName>Orion Voyager</vesselName>
+        <builder>SpaceTech Industries</builder>
+        <capacity>500000</capacity>
+        <environmentalSystems>Advanced Oxygen Recycling</environmentalSystems>
+    </vessel>
+    <researchProjects>
+        <project>
+            <projectId>exp-101</projectId>
+            <projectName>Microgravity Effects on Plant Growth</projectName>
+            <chiefScientist>Dr. Laura Croft</chiefScientist>
+            <projectDuration>6 months</projectDuration>
+        </project>
+        <project>
+            <projectId>exp-102</projectId>
+            <projectName>Radiation Levels in Jovian System</projectName>
+            <chiefScientist>Dr. Neil Armstrong</chiefScientist>
+            <projectDuration>1 year</projectDuration>
+        </project>
+    </researchProjects>
+    <backers>
+        <backer>
+            <backerId>sponsor-101</backerId>
+            <orgName>Galactic Explorers Association</orgName>
+            <investment>5000000</investment>
+        </backer>
+        <backer>
+            <backerId>sponsor-102</backerId>
+            <orgName>Cosmic Innovations Inc.</orgName>
+            <investment>3000000</investment>
+        </backer>
+    </backers>
+</mission>

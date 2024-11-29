@@ -1,0 +1,122 @@
+{
+  "fitnessApp": {
+    "appId": "app-001",
+    "name": "FitTrack Pro",
+    "version": "1.2.3",
+    "releaseDate": "2023-05-10",
+    "isActive": true,
+    "users": [
+      {
+        "userId": "user-001",
+        "username": "fitgirl92",
+        "firstName": "Emma",
+        "lastName": "Johnson",
+        "email": "emma.johnson@example.com",
+        "age": 29,
+        "heightCm": 165,
+        "weightKg": 60,
+        "workouts": [
+          {
+            "workoutId": "workout-001",
+            "type": "Running",
+            "durationMinutes": 30,
+            "caloriesBurned": 300,
+            "date": "2024-01-10"
+          },
+          {
+            "workoutId": "workout-002",
+            "type": "Strength Training",
+            "durationMinutes": 45,
+            "caloriesBurned": 400,
+            "date": "2024-01-15"
+          }
+        ],
+        "goals": {
+          "weightGoalKg": 55,
+          "stepsGoal": 10000,
+          "startDate": "2024-01-01",
+          "endDate": "2024-06-01"
+        },
+        "progress": [
+          {
+            "date": "2024-01-01",
+            "weightKg": 60,
+            "steps": 5000
+          },
+          {
+            "date": "2024-01-10",
+            "weightKg": 59,
+            "steps": 8000
+          }
+        ]
+      },
+      {
+        "userId": "user-002",
+        "username": "health_freak88",
+        "firstName": "Liam",
+        "lastName": "Smith",
+        "email": "liam.smith@example.com",
+        "age": 34,
+        "heightCm": 180,
+        "weightKg": 75,
+        "workouts": [],
+        "goals": {
+          "weightGoalKg": 70,
+          "stepsGoal": 12000,
+          "startDate": "2024-02-01",
+          "endDate": "2024-08-01"
+        },
+        "progress": []
+      }
+    ],
+    "nutrition": {
+      "foodDiary": [
+        {
+          "entryId": "entry-001",
+          "userId": "user-001",
+          "meal": "Breakfast",
+          "foods": [
+            {
+              "foodId": "food-001",
+              "name": "Oatmeal",
+              "calories": 150,
+              "date": "2024-01-10"
+            },
+            {
+              "foodId": "food-002",
+              "name": "Banana",
+              "calories": 90,
+              "date": "2024-01-10"
+            }
+          ],
+          "totalCalories": 240
+        }
+      ],
+      "mealPlans": [
+        {
+          "mealPlanId": "plan-001",
+          "userId": "user-002",
+          "name": "Basic 1,500 Calorie Diet",
+          "meals": [
+            {
+              "meal": "Lunch",
+              "foods": [
+                {
+                  "foodId": "food-003",
+                  "name": "Grilled Chicken",
+                  "calories": 250
+                },
+                {
+                  "foodId": "food-004",
+                  "name": "Quinoa",
+                  "calories": 220
+                }
+              ],
+              "totalCalories": 470
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

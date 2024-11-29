@@ -1,0 +1,4 @@
+Category Code,Category Title,Item ID,Item Model,Cost,In Stock,Vendor Code,Vendor Company,Vendor Email,Vendor Phone,Release Date,Warranty Period
+cat-001,Gadgets,prod-001,Smartphone 2024,749.99,45,sup-005,Electronic Hub,tech@electronichub.com,+1234598765,2024-03-15,2 years
+cat-001,Gadgets,prod-002,Laptop Series Z,1049.99,25,sup-006,Digital World,service@digitalworld.com,+0987651223,2024-07-20,1 year
+cat-002,Kitchenware,prod-003,Air Cooker Pro,99.99,95,sup-007,Home Tech Supplies,kitchen@hometech.com,+1234569870,2023-11-05,6 months

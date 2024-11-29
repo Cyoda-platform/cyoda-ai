@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tenderManagementSystem>
+  <tenders>
+    <tender>
+      <tenderId>tender-001</tenderId>
+      <title>Construction of New Community Center</title>
+      <description>This tender is for the construction of a new community center in downtown.</description>
+      <issueDate>2024-01-15</issueDate>
+      <submissionDeadline>2024-02-15</submissionDeadline>
+      <status>open</status>
+      <requirements>
+        <documentsRequired>
+          <document>Company Profile</document>
+          <document>Project Proposal</document>
+          <document>Financial Statements</document>
+        </documentsRequired>
+        <eligibilityCriteria>
+          <minimumExperience>5</minimumExperience>
+          <certifications>
+            <certification>ISO 9001</certification>
+            <certification>LEED Certification</certification>
+          </certifications>
+        </eligibilityCriteria>
+      </requirements>
+      <awarded>false</awarded>
+      <participants>
+        <participant>
+          <participantId>participant-001</participantId>
+          <companyName>BuildRight LLC</companyName>
+          <contactPerson>Alice Green</contactPerson>
+          <contactInfo>
+            <email>alice.green@buildright.com</email>
+            <phone>+1234567890</phone>
+          </contactInfo>
+          <bid>
+            <bidAmount>120000</bidAmount>
+            <submittedDate>2024-02-10</submittedDate>
+            <bidStatus>pending</bidStatus>
+          </bid>
+        </participant>
+        <participant>
+          <participantId>participant-002</participantId>
+          <companyName>ConstructIt Inc.</companyName>
+          <contactPerson>John Doe</contactPerson>
+          <contactInfo>
+            <email>john.doe@constructit.com</email>
+            <phone>+1234567888</phone>
+          </contactInfo>
+          <bid>
+            <bidAmount>115000</bidAmount>
+            <submittedDate>2024-02-12</submittedDate>
+            <bidStatus>pending</bidStatus>
+          </bid>
+        </participant>
+      </participants>
+      <evaluationCriteria>
+        <criteria>
+          <criterion>
+            <name>Price</name>
+            <weight>0.40</weight>
+          </criterion>
+          <criterion>
+            <name>Experience</name>
+            <weight>0.30</weight>
+          </criterion>
+          <criterion>
+            <name>Project Approach</name>
+            <weight>0.30</weight>
+          </criterion>
+        </criteria>
+      </evaluationCriteria>
+    </tender>
+    <tender>
+      <tenderId>tender-002</tenderId>
+      <title>Supply of Office Furniture</title>
+      <description>Tender for supplying office furniture to the new municipal building.</description>
+      <issueDate>2024-01-25</issueDate>
+      <submissionDeadline>2024-03-01</submissionDeadline>
+      <status>open</status>
+      <requirements>
+        <documentsRequired>
+          <document>Product Catalog</document>
+          <document>Warranty Information</document>
+        </documentsRequired>
+        <eligibilityCriteria>
+          <minimumExperience>3</minimumExperience>
+          <certifications/>
+        </eligibilityCriteria>
+      </requirements>
+      <awarded>false</awarded>
+      <participants/>
+      <evaluationCriteria>
+        <criteria>
+          <criterion>
+            <name>Quality</name>
+            <weight>0.50</weight>
+          </criterion>
+          <criterion>
+            <name>Delivery Time</name>
+            <weight>0.25</weight>
+          </criterion>
+          <criterion>
+            <name>Cost</name>
+            <weight>0.25</weight>
+          </criterion>
+        </criteria>
+      </evaluationCriteria>
+    </tender>
+  </tenders>
+</tenderManagementSystem>

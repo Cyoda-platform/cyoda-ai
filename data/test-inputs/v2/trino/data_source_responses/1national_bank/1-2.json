@@ -1,0 +1,124 @@
+{
+  "financialInstitution": {
+    "identifier": "bank-012",
+    "institutionName": "Heritage Community Bank",
+    "yearEstablished": 1975,
+    "isInternational": false,
+    "locations": [
+      {
+        "branchID": "branch-002",
+        "branchTitle": "Central Branch",
+        "address": {
+          "streetAddress": "456 River Rd",
+          "town": "Hometown",
+          "province": "CA",
+          "postalCode": "90210"
+        },
+        "staffMembers": [
+          {
+            "staffID": "emp-003",
+            "firstName": "Emma",
+            "lastName": "Williams",
+            "jobTitle": "Branch Supervisor",
+            "annualSalary": 78000,
+            "contactDetails": {
+              "emailAddress": "emma.williams@heritagecommunitybank.com",
+              "phoneNumber": "+12135559876"
+            }
+          },
+          {
+            "staffID": "emp-004",
+            "firstName": "Liam",
+            "lastName": "Brown",
+            "jobTitle": "Customer Support Agent",
+            "annualSalary": 34000,
+            "contactDetails": {
+              "emailAddress": "liam.brown@heritagecommunitybank.com",
+              "phoneNumber": "+12135551234"
+            }
+          }
+        ]
+      },
+      {
+        "branchID": "branch-003",
+        "branchTitle": "Northside Branch",
+        "address": {
+          "streetAddress": "789 Elm St",
+          "town": "Springfield",
+          "province": "CA",
+          "postalCode": "90211"
+        },
+        "staffMembers": []
+      }
+    ],
+    "financialServices": [
+      {
+        "serviceID": "service-005",
+        "serviceName": "Basic Checking Plan",
+        "monthlyFee": 0.00,
+        "serviceDescription": "No monthly fees for this basic checking option."
+      },
+      {
+        "serviceID": "service-006",
+        "serviceName": "High-Yield Savings",
+        "monthlyFee": 5.00,
+        "serviceDescription": "A savings account with a competitive interest rate."
+      },
+      {
+        "serviceID": "service-007",
+        "serviceName": "Home Purchase Loan",
+        "interestRate": 4.0,
+        "serviceDescription": "Competitive rates for purchasing homes."
+      },
+      {
+        "serviceID": "service-008",
+        "serviceName": "Car Loan",
+        "interestRate": 6.0,
+        "serviceDescription": "Loans for new and used car purchases."
+      }
+    ],
+    "monetaryUnit": "CAD",
+    "aggregateAssets": 1500000000.00,
+    "digitalBanking": {
+      "isAvailable": true,
+      "functionalities": [
+        "Account Overview",
+        "Transfer Funds",
+        "Payment Services",
+        "Check Deposits"
+      ]
+    },
+    "clientReviews": [
+      {
+        "clientID": "cust-101",
+        "score": 4.7,
+        "feedback": "Friendly staff and quick service!"
+      },
+      {
+        "clientID": "cust-102",
+        "score": 2.8,
+        "feedback": "More tellers needed during busy hours."
+      },
+      {
+        "clientID": "cust-103",
+        "score": 5.0,
+        "feedback": "Exceptional service and support."
+      }
+    ],
+    "communityPrograms": {
+      "volunteerDays": 15,
+      "scholarships": {
+        "scholarshipAvailable": true,
+        "amount": "$1000"
+      }
+    },
+    "marketing": {
+      "latestCampaign": {
+        "campaignName": "Home Sweet Home",
+        "startDate": "2024-01-10",
+        "endDate": "2024-03-10",
+        "targetAudience": "First-time Homebuyers"
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "healthcareManagementSystem": {
+    "clients": [
+      {
+        "clientId": "client-001",
+        "name": "John Doe",
+        "dob": "1985-06-15",
+        "contactInfo": {
+          "emailAddress": "john.doe@example.com",
+          "phoneNumber": "+1234567890",
+          "homeAddress": {
+            "addressLine": "123 Elm St",
+            "town": "Springfield",
+            "region": "IL",
+            "postal": "62701"
+          }
+        },
+        "visits": [
+          {
+            "visitCode": "visit-001",
+            "scheduledDate": "2024-02-10",
+            "scheduledTime": "10:00 AM",
+            "attendingDoctor": {
+              "doctorId": "doc-001",
+              "name": "Dr. Alice Smith",
+              "areaOfFocus": "Cardiology",
+              "communication": {
+                "directLine": "+1234560001",
+                "workEmail": "alice.smith@hospital.com"
+              }
+            },
+            "appointmentState": "confirmed",
+            "carePlans": [
+              {
+                "planId": "plan-001",
+                "type": "Monitoring",
+                "dateAssigned": "2024-02-01",
+                "guidelines": "Monitor daily at home."
+              },
+              {
+                "planId": "plan-002",
+                "type": "Lifestyle Changes",
+                "dateAssigned": "2024-02-01",
+                "guidelines": "Follow a low-sodium diet and exercise regularly."
+              }
+            ]
+          }
+        ],
+        "records": [
+          {
+            "recordId": "record-001",
+            "recordedDate": "2024-01-05",
+            "healthIssue": "Hypertension",
+            "physicianNotes": "Patient has high blood pressure readings.",
+            "drugs": [
+              {
+                "pharmaceuticalId": "drug-001",
+                "medName": "Lisinopril",
+                "dosageAmount": "10 mg",
+                "intakeFrequency": "once daily"
+              }
+            ]
+          }
+        ],
+        "insuranceProvider": "HealthCare Inc.",
+        "policyNumber": "HC-987654321"
+      },
+      {
+        "clientId": "client-002",
+        "name": "Jane Smith",
+        "dob": "1990-03-22",
+        "contactInfo": {
+          "emailAddress": "jane.smith@example.com",
+          "phoneNumber": "+1234567891",
+          "homeAddress": {
+            "addressLine": "456 Maple Ave",
+            "town": "Lincoln",
+            "region": "NE",
+            "postal": "68501"
+          }
+        },
+        "visits": [],
+        "records": [],
+        "insuranceProvider": "Wellness Plan",
+        "policyNumber": "WP-123456789"
+      }
+    ],
+    "physicians": [
+      {
+        "doctorId": "doc-001",
+        "name": "Dr. Alice Smith",
+        "areaOfFocus": "Cardiology",
+        "communication": {
+          "directLine": "+1234560001",
+          "workEmail": "alice.smith@hospital.com"
+        },
+        "availability": [
+          {
+            "weekday": "Monday",
+            "workingHours": "9:00 AM - 5:00 PM"
+          },
+          {
+            "weekday": "Wednesday",
+            "workingHours": "10:00 AM - 4:00 PM"
+          },
+          {
+            "weekday": "Friday",
+            "workingHours": "1:00 PM - 5:00 PM"
+          }
+        ]
+      },
+      {
+        "doctorId": "doc-002",
+        "name": "Dr. Bob Johnson",
+        "areaOfFocus": "Family Medicine",
+        "communication": {
+          "directLine": "+1234560002",
+          "workEmail": "bob.johnson@hospital.com"
+        },
+        "availability": [
+          {
+            "weekday": "Tuesday",
+            "workingHours": "8:00 AM - 2:00 PM"
+          },
+          {
+            "weekday": "Thursday",
+            "workingHours": "1:00 PM - 6:00 PM"
+          },
+          {
+            "weekday": "Saturday",
+            "workingHours": "9:00 AM - 12:00 PM"
+          }
+        ],
+        "certifications": ["Board Certified in Family Medicine", "CPR Certified"]
+      }
+    ]
+

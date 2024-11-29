@@ -5,6 +5,7 @@
     "connection_type": "${Choose from values: [SQL, HTTP]}",
     "connection_base_url": "${Specify base url for the connection}",
     "connection_endpoints": ["${Either specify values from the user input here or write a json list of all available endpoints, specifying ${method and path and if it has any parameters})}"]
+    "endpoints_parameters": ["${For each endpoint analyze if they have any parameters according to the specification})}"]
 }
 
 This is schema that will be used for result validation

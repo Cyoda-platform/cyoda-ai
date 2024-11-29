@@ -1,0 +1,120 @@
+{
+  "ecommercePlatform": {
+    "platformIdentifier": "platform-002",
+    "siteName": "BuyNook",
+    "websiteUrl": "https://www.buynook.com",
+    "launchDate": "2021-03-10",
+    "isOperational": true,
+    "productCategories": [
+      {
+        "categoryIdentifier": "cat-003",
+        "categoryTitle": "Consumer Electronics",
+        "items": [
+          {
+            "itemIdentifier": "prod-001",
+            "itemName": "Smartphone ABC",
+            "priceValue": 749.99,
+            "availability": true,
+            "averageRating": 4.7,
+            "customerReviews": [
+              {
+                "reviewIdentifier": "rev-001",
+                "reviewerName": "Mary Johnson",
+                "feedback": "Fantastic phone with amazing camera!",
+                "starScore": 5,
+                "dateOfReview": "2024-01-15"
+              },
+              {
+                "reviewIdentifier": "rev-002",
+                "reviewerName": "Michael Lee",
+                "feedback": "Solid performance and battery life.",
+                "starScore": 4,
+                "dateOfReview": "2024-01-17"
+              }
+            ]
+          },
+          {
+            "itemIdentifier": "prod-002",
+            "itemName": "Noise-Cancelling Headphones",
+            "priceValue": 249.99,
+            "availability": false,
+            "averageRating": 4.6,
+            "customerReviews": []
+          }
+        ]
+      },
+      {
+        "categoryIdentifier": "cat-004",
+        "categoryTitle": "Kitchen Gadgets",
+        "items": [
+          {
+            "itemIdentifier": "prod-003",
+            "itemName": "Compact Air Fryer",
+            "priceValue": 79.99,
+            "availability": true,
+            "averageRating": 4.8,
+            "customerReviews": [
+              {
+                "reviewIdentifier": "rev-003",
+                "reviewerName": "Sarah Connor",
+                "feedback": "Makes cooking so easy and quick!",
+                "starScore": 5,
+                "dateOfReview": "2024-02-05"
+              }
+            ]
+          },
+          {
+            "itemIdentifier": "prod-004",
+            "itemName": "Electric Kettle",
+            "priceValue": 30.00,
+            "availability": true,
+            "averageRating": 4.4,
+            "customerReviews": []
+          }
+        ]
+      }
+    ],
+    "paymentOptions": [
+      {
+        "paymentMethodId": "pm-001",
+        "paymentType": "Debit Card",
+        "availabilityStatus": true
+      },
+      {
+        "paymentMethodId": "pm-002",
+        "paymentType": "Stripe",
+        "availabilityStatus": true
+      },
+      {
+        "paymentMethodId": "pm-003",
+        "paymentType": "Store Credit",
+        "availabilityStatus": false
+      },
+      {
+        "paymentMethodId": "pm-004",
+        "paymentType": "Cryptocurrency",
+        "availabilityStatus": true
+      }
+    ],
+    "deliveryMethods": [
+      {
+        "deliveryMethodId": "ship-001",
+        "deliveryType": "Basic Shipping",
+        "shippingCost": 4.99,
+        "expectedDelivery": "4-6 business days"
+      },
+      {
+        "deliveryMethodId": "ship-002",
+        "deliveryType": "Priority Shipping",
+        "shippingCost": 24.99,
+        "expectedDelivery": "2-4 business days"
+      },
+      {
+        "deliveryMethodId": "ship-003",
+        "deliveryType": "Same Day Delivery",
+        "shippingCost": 29.99,
+        "expectedDelivery": "Same day"
+      }
+    ]
+  }
+}

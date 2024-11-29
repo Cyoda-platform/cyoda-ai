@@ -1,0 +1,111 @@
+{
+  "projectManagementSystem": {
+    "projects": [                                   // Array of Project Objects
+      {
+        "projectId": "project-001",
+        "projectName": "Website Redesign",
+        "startDate": "2024-01-01",                 // Date (String in ISO format)
+        "endDate": "2024-05-01",                   // Date (String in ISO format)
+        "status": "in progress",                    // String
+        "description": "Redesigning the company website for a better user experience.",
+        "client": {                                 // Object
+          "clientId": "client-001",
+          "companyName": "Tech Innovations LLC",
+          "contactPerson": "Alice Johnson",
+          "contactDetails": {
+            "email": "alice.johnson@techinnovations.com",
+            "phone": "+1234567890"
+          }
+        },
+        "teamMembers": [                            // Array of Team Member Objects
+          {
+            "memberId": "member-001",
+            "name": "John Doe",
+            "role": "Project Manager",
+            "tasks": [                               // Array of Task Objects
+              {
+                "taskId": "task-001",
+                "taskName": "Gather Requirements",
+                "assignedDate": "2024-01-02",       // Date (String in ISO format)
+                "dueDate": "2024-01-10",
+                "status": "completed",
+                "subtasks": [                        // Array of Subtask Objects
+                  {
+                    "subtaskId": "subtask-001",
+                    "subtaskName": "Meet with stakeholders",
+                    "status": "completed"
+                  },
+                  {
+                    "subtaskId": "subtask-002",
+                    "subtaskName": "Document requirements",
+                    "status": "completed"
+                  }
+                ]
+              },
+              {
+                "taskId": "task-002",
+                "taskName": "Design Mockups",
+                "assignedDate": "2024-01-11",
+                "dueDate": "2024-02-01",
+                "status": "in progress",
+                "subtasks": [
+                  {
+                    "subtaskId": "subtask-003",
+                    "subtaskName": "Create homepage mockup",
+                    "status": "in progress"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "memberId": "member-002",
+            "name": "Jane Smith",
+            "role": "UI/UX Designer",
+            "tasks": [
+              {
+                "taskId": "task-003",
+                "taskName": "Conduct User Research",
+                "assignedDate": "2024-01-02",
+                "dueDate": "2024-01-20",
+                "status": "in progress",
+                "subtasks": []
+              }
+            ]
+          }
+        ],
+        "updates": [                                // Array of Project Update Objects
+          {
+            "updateId": "update-001",
+            "updateDate": "2024-01-05",             // Date (String in ISO format)
+            "message": "Kick-off meeting completed."
+          },
+          {
+            "updateId": "update-002",
+            "updateDate": "2024-01-15",
+            "message": "Requirements gathering is on track."
+          }
+        ]
+      },
+      {
+        "projectId": "project-002",
+        "projectName": "Marketing Campaign",
+        "startDate": "2024-02-01",
+        "endDate": "2024-04-01",
+        "status": "not started",
+        "description": "Comprehensive marketing strategy for product launch.",
+        "client": {
+          "clientId": "client-002",
+          "companyName": "Global Solutions Inc.",
+          "contactPerson": "Carol Davis",
+          "contactDetails": {
+            "email": "carol.davis@globalsolutions.com",
+            "phone": "+1234567889"
+          }
+        },
+        "teamMembers": [],
+        "updates": []
+      }
+    ]
+  }
+}

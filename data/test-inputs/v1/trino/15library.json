@@ -1,0 +1,103 @@
+{
+  "libraryManagementSystem": {
+    "libraryId": "lib-001",
+    "name": "Central City Library",
+    "location": {
+      "address": "123 Book St",
+      "city": "Booktown",
+      "state": "CA",
+      "zipCode": "90210"
+    },
+    "establishedYear": 1985,
+    "books": [                                        // Array of Book Objects
+      {
+        "bookId": "book-001",
+        "title": "The Great Gatsby",
+        "authors": [                                  // Array of Author Objects
+          {
+            "authorId": "author-001",
+            "name": "F. Scott Fitzgerald",
+            "birthYear": 1896,
+            "deathYear": 1940
+          }
+        ],
+        "genre": ["Fiction", "Classic"],              // Array
+        "publishedYear": 1925,
+        "isbn": "9780743273565",
+        "copiesAvailable": 3                           // Integer
+      },
+      {
+        "bookId": "book-002",
+        "title": "1984",
+        "authors": [
+          {
+            "authorId": "author-002",
+            "name": "George Orwell",
+            "birthYear": 1903,
+            "deathYear": 1950
+          }
+        ],
+        "genre": ["Fiction", "Dystopian"],
+        "publishedYear": 1949,
+        "isbn": "9780451524935",
+        "copiesAvailable": 0
+      },
+      {
+        "bookId": "book-003",
+        "title": "Sapiens: A Brief History of Humankind",
+        "authors": [
+          {
+            "authorId": "author-003",
+            "name": "Yuval Noah Harari",
+            "birthYear": 1976,
+            "deathYear": null                            // Null indicating still alive
+          }
+        ],
+        "genre": ["Non-Fiction", "History"],
+        "publishedYear": 2011,
+        "isbn": "9780099590088",
+        "copiesAvailable": 5
+      }
+    ],
+    "borrowers": [                                   // Array of Borrower Objects
+      {
+        "borrowerId": "borrower-001",
+        "fullName": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1234567890",
+        "borrowedBooks": [                             // Array of Borrowed Book Objects
+          {
+            "bookId": "book-001",
+            "borrowDate": "2024-01-10",               // Date (String in ISO format)
+            "returnDate": "2024-01-20"                // Date (String in ISO format)
+          }
+        ]
+      },
+      {
+        "borrowerId": "borrower-002",
+        "fullName": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "phone": "+0987654321",
+        "borrowedBooks": []                             // Array (Empty)
+      }
+    ],
+    "transactions": [                                 // Array of Transaction Objects
+      {
+        "transactionId": "trans-001",
+        "borrowerId": "borrower-001",
+        "bookId": "book-001",
+        "transactionDate": "2024-01-10",              // Date (String in ISO format)
+        "transactionType": "borrow",                   // String
+        "status": "completed"                           // String
+      },
+      {
+        "transactionId": "trans-002",
+        "borrowerId": "borrower-001",
+        "bookId": "book-001",
+        "transactionDate": "2024-01-20",
+        "transactionType": "return",
+        "status": "completed"
+      }
+    ]
+  }
+}

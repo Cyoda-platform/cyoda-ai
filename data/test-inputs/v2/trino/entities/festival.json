@@ -1,0 +1,81 @@
+{
+    "musicFestival": {
+        "festivalId": "fest-001",
+        "name": "Harmony Festival",
+        "yearEstablished": 2010,
+        "location": {
+            "venueName": "Central Park",
+            "city": "New York",
+            "country": "USA"
+        },
+        "dateRange": {
+            "startDate": "2024-06-01",
+            "endDate": "2024-06-07"
+        },
+        "isAnnual": true,
+        "genres": ["Rock", "Pop", "Jazz"],
+        "stages": [
+            {
+                "stageId": "stage-001",
+                "stageName": "Main Stage",
+                "capacity": 5000,
+                "performances": [
+                    {
+                        "performanceId": "perf-001",
+                        "act": "The Rockers",
+                        "startTime": "2024-06-01T18:00",
+                        "endTime": "2024-06-01T19:30",
+                        "genre": "Rock"
+                    },
+                    {
+                        "performanceId": "perf-002",
+                        "act": "Sax Master",
+                        "startTime": "2024-06-01T20:00",
+                        "endTime": "2024-06-01T21:30",
+                        "genre": "Jazz"
+                    }
+                ]
+            },
+            {
+                "stageId": "stage-002",
+                "stageName": "Acoustic Stage",
+                "capacity": 2000,
+                "performances": [
+                    {
+                        "performanceId": "perf-003",
+                        "act": "Melody Duo",
+                        "startTime": "2024-06-02T17:00",
+                        "endTime": "2024-06-02T18:30",
+                        "genre": "Pop"
+                    }
+                ]
+            }
+        ],
+        "tickets": [
+            {
+                "ticketId": "ticket-001",
+                "ticketType": "General Admission",
+                "price": 100.00,
+                "daysValid": ["2024-06-01", "2024-06-02"]
+            },
+            {
+                "ticketId": "ticket-002",
+                "ticketType": "VIP",
+                "price": 250.00,
+                "daysValid": ["2024-06-01", "2024-06-02", "2024-06-03"]
+            }
+        ],
+        "organizers": [
+            {
+                "organizerId": "org-001",
+                "name": "Music Mania Co.",
+                "contactEmail": "info@musicmania.com"
+            },
+            {
+                "organizerId": "org-002",
+                "name": "Harmony Events",
+                "contactEmail": "contact@harmonyevents.com"
+            }
+        ]
+    }
+}

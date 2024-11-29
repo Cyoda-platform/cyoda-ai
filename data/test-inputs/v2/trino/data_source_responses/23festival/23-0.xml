@@ -1,0 +1,84 @@
+<musicFestival>
+    <festivalId>fest-001</festivalId>
+    <name>Harmony Festival</name>
+    <yearEstablished>2010</yearEstablished>
+    <location>
+        <venueName>Central Park</venueName>
+        <city>New York</city>
+        <country>USA</country>
+    </location>
+    <dateRange>
+        <startDate>2024-06-01</startDate>
+        <endDate>2024-06-07</endDate>
+    </dateRange>
+    <isAnnual>true</isAnnual>
+    <genres>Rock</genres>
+    <genres>Pop</genres>
+    <genres>Jazz</genres>
+    <stages>
+        <stage>
+            <stageId>stage-001</stageId>
+            <stageName>Main Stage</stageName>
+            <capacity>5000</capacity>
+            <performances>
+                <performance>
+                    <performanceId>perf-001</performanceId>
+                    <act>The Rockers</act>
+                    <startTime>2024-06-01T18:00</startTime>
+                    <endTime>2024-06-01T19:30</endTime>
+                    <genre>Rock</genre>
+                </performance>
+                <performance>
+                    <performanceId>perf-002</performanceId>
+                    <act>Sax Master</act>
+                    <startTime>2024-06-01T20:00</startTime>
+                    <endTime>2024-06-01T21:30</endTime>
+                    <genre>Jazz</genre>
+                </performance>
+            </performances>
+        </stage>
+        <stage>
+            <stageId>stage-002</stageId>
+            <stageName>Acoustic Stage</stageName>
+            <capacity>2000</capacity>
+            <performances>
+                <performance>
+                    <performanceId>perf-003</performanceId>
+                    <act>Melody Duo</act>
+                    <startTime>2024-06-02T17:00</startTime>
+                    <endTime>2024-06-02T18:30</endTime>
+                    <genre>Pop</genre>
+                </performance>
+            </performances>
+        </stage>
+    </stages>
+    <tickets>
+        <ticket>
+            <ticketId>ticket-001</ticketId>
+            <ticketType>General Admission</ticketType>
+            <price>100.00</price>
+            <daysValid>2024-06-01</daysValid>
+            <daysValid>2024-06-02</daysValid>
+        </ticket>
+        <ticket>
+            <ticketId>ticket-002</ticketId>
+            <ticketType>VIP</ticketType>
+            <price>250.00</price>
+            <daysValid>2024-06-01</daysValid>
+            <daysValid>2024-06-02</daysValid>
+            <daysValid>2024-06-03</daysValid>
+        </ticket>
+    </tickets>
+    <organizers>
+        <organizer>
+            <organizerId>org-001</organizerId>
+            <name>Music Mania Co.</name>
+            <contactEmail>info@musicmania.com</contactEmail>
+        </organizer>
+        <organizer>
+            <organizerId>org-002</organizerId>
+            <name>Harmony Events</name>
+            <contactEmail>contact@harmonyevents.com</contactEmail>
+        </organizer>
+    </organizers>
+</musicFestival>

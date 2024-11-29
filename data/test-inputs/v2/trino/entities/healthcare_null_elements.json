@@ -1,0 +1,101 @@
+{
+  "healthcareSystem": {
+    "systemId": "health-001",
+    "name": "Wellness Healthcare Network",
+    "establishedYear": 2010,
+    "location": {
+      "address": "789 Health St",
+      "city": "Wellness City",
+      "state": "TX",
+      "zipCode": "75001"
+    },
+    "departments": [
+      {
+        "departmentId": "dept-001",
+        "departmentName": "Cardiology",
+        "head": {
+          "doctorId": "doc-001",
+          "firstName": "Anna",
+          "lastName": "Stevens",
+          "email": "anna.stevens@wellnessnetwork.com",
+          "phone": null
+        },
+        "staff": [
+          {
+            "staffId": "staff-001",
+            "fullName": "Mark Johnson",
+            "role": "Nurse",
+            "experienceYears": 5,
+            "specializations": null
+          },
+          {
+            "staffId": "staff-002",
+            "fullName": "Sara Lee",
+            "role": "Technician",
+            "experienceYears": 3,
+            "specializations": ["ECG", "Stress Test"]
+          }
+        ],
+        "services": [
+          {
+            "serviceId": "service-001",
+            "serviceName": "Heart Checkup",
+            "cost": 200.00
+          },
+          {
+            "serviceId": "service-002",
+            "serviceName": "Echocardiogram",
+            "cost": null
+          }
+        ]
+      },
+      {
+        "departmentId": "dept-002",
+        "departmentName": "Pediatrics",
+        "head": {
+          "doctorId": "doc-002",
+          "firstName": "David",
+          "lastName": "Smith",
+          "email": null,
+          "phone": "+1234567890"
+        },
+        "staff": [
+          {
+            "staffId": "staff-003",
+            "fullName": "Linda Brown",
+            "role": "Pediatric Nurse",
+            "experienceYears": 8,
+            "specializations": ["Child Nutrition", null]
+          }
+        ],
+        "services": [
+          {
+            "serviceId": "service-003",
+            "serviceName": "Child Wellness Check",
+            "cost": 150.00
+          }
+        ]
+      }
+    ],
+    "patients": [
+      {
+        "patientId": "pat-001",
+        "firstName": "Emily",
+        "lastName": "Davis",
+        "age": 30,
+        "gender": "Female",
+        "medicalHistory": ["Hypertension", "Cholesterol"],
+        "currentMedications": null
+      },
+      {
+        "patientId": "pat-002",
+        "firstName": "Michael",
+        "lastName": "Green",
+        "age": 45,
+        "gender": "Male",
+        "medicalHistory": [],
+        "currentMedications": ["Aspirin"]
+      }
+    ]
+  }
+}

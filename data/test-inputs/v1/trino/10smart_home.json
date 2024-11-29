@@ -1,0 +1,143 @@
+{
+  "smartHomeSystem": {
+    "systemId": "system-001",
+    "user": {
+      "userId": "user-001",
+      "username": "techSavvyHomeowner",
+      "contact": {
+        "email": "techsavvy@example.com",
+        "phone": "+1234567890"
+      },
+      "address": {
+        "street": "789 Smart Lane",
+        "city": "Smartville",
+        "state": "CA",
+        "zipCode": "90210"
+      }
+    },
+    "devices": [                                     // Array of Device Objects
+      {
+        "deviceId": "device-001",
+        "deviceType": "Smart Light",
+        "brand": "Philips Hue",
+        "model": "Hue White and Color Ambiance",
+        "status": "on",                              // String
+        "settings": {                                // Object
+          "brightness": 75,                         // Integer (0-100)
+          "color": "warm white",                    // String
+          "schedule": [                              // Array of Objects
+            {
+              "time": "06:30",
+              "action": "turn on"
+            },
+            {
+              "time": "23:00",
+              "action": "turn off"
+            }
+          ]
+        }
+      },
+      {
+        "deviceId": "device-002",
+        "deviceType": "Smart Thermostat",
+        "brand": "Nest",
+        "model": "Learning Thermostat",
+        "status": "off",
+        "settings": {
+          "temperature": 22,                       // Integer (Degrees Celsius)
+          "mode": "heating",                       // String
+          "schedule": [                             // Array of Objects
+            {
+              "day": "Monday",
+              "time": "08:00",
+              "temperature": 20
+            },
+            {
+              "day": "Monday",
+              "time": "18:00",
+              "temperature": 22
+            }
+          ]
+        }
+      },
+      {
+        "deviceId": "device-003",
+        "deviceType": "Smart Security Camera",
+        "brand": "Ring",
+        "model": "Video Doorbell Pro",
+        "status": "online",
+        "settings": {
+          "motionDetection": true,                  // Boolean
+          "videoQuality": "1080p",                  // String
+          "recordingSchedule": [                     // Array of Objects
+            {
+              "day": "Everyday",
+              "startTime": "00:00",
+              "endTime": "23:59"
+            }
+          ]
+        }
+      }
+    ],
+    "scenes": [                                     // Array of Scene Objects
+      {
+        "sceneId": "scene-001",
+        "sceneName": "Good Morning",
+        "devicesStates": [                           // Array of Device States
+          {
+            "deviceId": "device-001",
+            "status": "on",
+            "settings": {
+              "brightness": 100,
+              "color": "warm white"
+            }
+          },
+          {
+            "deviceId": "device-002",
+            "status": "on",
+            "settings": {
+              "temperature": 21,
+              "mode": "heating"
+            }
+          }
+        ],
+        "active": false                             // Boolean
+      },
+      {
+        "sceneId": "scene-002",
+        "sceneName": "Movie Night",
+        "devicesStates": [
+          {
+            "deviceId": "device-001",
+            "status": "off"
+          },
+          {
+            "deviceId": "device-002",
+            "status": "on",
+            "settings": {
+              "temperature": 22,
+              "mode": "cooling"
+            }
+          }
+        ],
+        "active": true
+      }
+    ],
+    "alerts": [                                     // Array of Alert Objects
+      {
+        "alertId": "alert-001",
+        "type": "Temperature Alert",
+        "timestamp": "2024-01-15T10:00:00Z",      // Date (String in ISO format)
+        "message": "The temperature has dropped below the set threshold.",
+        "acknowledged": false                        // Boolean
+      },
+      {
+        "alertId": "alert-002",
+        "type": "Motion Detected",
+        "timestamp": "2024-01-16T14:30:00Z",
+        "message": "Motion detected at front door.",
+        "acknowledged": true
+      }
+    ]
+  }
+}

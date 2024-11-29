@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<travelAgency>
+  <agencyId>agency-001</agencyId>
+  <name>Wanderlust Travel Co.</name>
+  <location>
+    <address>123 Travel Blvd</address>
+    <city>Adventure City</city>
+    <state>FL</state>
+    <zipCode>33101</zipCode>
+  </location>
+  <established>2010-05-15</established>
+  <isActive>true</isActive>
+  <bookings>
+    <booking>
+      <bookingId>booking-001</bookingId>
+      <customer>
+        <customerId>cust-001</customerId>
+        <firstName>Sarah</firstName>
+        <lastName>Williams</lastName>
+        <email>sarah.williams@example.com</email>
+        <phone>+1234567890</phone>
+      </customer>
+      <tripDetails>
+        <destination>Paris, France</destination>
+        <travelDates>
+          <departure>2024-03-01</departure>
+          <return>2024-03-10</return>
+        </travelDates>
+        <accommodation>
+          <hotelName>Hotel de Paris</hotelName>
+          <checkIn>2024-03-01</checkIn>
+          <checkOut>2024-03-10</checkOut>
+          <rating>4.5</rating>
+        </accommodation>
+        <totalCost>1500.00</totalCost>
+        <includedServices>
+          <service>Flight</service>
+          <service>Hotel Accommodation</service>
+          <service>Breakfast</service>
+          <service>City Tour</service>
+        </includedServices>
+      </tripDetails>
+      <status>Confirmed</status>
+      <bookingDate>2024-01-15</bookingDate>
+    </booking>
+    <booking>
+      <bookingId>booking-002</bookingId>
+      <customer>
+        <customerId>cust-002</customerId>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+        <email>john.doe@example.com</email>
+        <phone>+0987654321</phone>
+      </customer>
+      <tripDetails>
+        <destination>Tokyo, Japan</destination>
+        <travelDates>
+          <departure>2024-04-05</departure>
+          <return>2024-04-15</return>
+        </travelDates>
+        <accommodation>
+          <hotelName>Shinjuku Grand Hotel</hotelName>
+          <checkIn>2024-04-05</checkIn>
+          <checkOut>2024-04-15</checkOut>
+          <rating>4.7</rating>
+        </accommodation>
+        <totalCost>2000.00</totalCost>
+        <includedServices>
+          <service>Flight</service>
+          <service>Hotel Accommodation</service>
+          <service>Airport Transfer</service>
+          <service>Breakfast</service>
+        </includedServices>
+      </tripDetails>
+      <status>Pending</status>
+      <bookingDate>2024-01-20</bookingDate>
+    </booking>
+  </bookings>
+  <agents>
+    <agent>
+      <agentId>agent-001</agentId>
+      <firstName>Emily</firstName>
+      <lastName>Clark</lastName>
+      <experienceYears>7</experienceYears>
+      <email>emily.clark@wanderlusttravel.com</email>
+      <phone>+1234567888</phone>
+    </agent>
+    <agent>
+      <agentId>agent-002</agentId>
+      <firstName>Michael</firstName>
+      <lastName>Smith</lastName>
+      <experienceYears>5</experienceYears>
+      <email>michael.smith@wanderlusttravel.com</email>
+      <phone>+1234567777</phone>
+    </agent>
+  </agents>
+  <reviews>
+    <review>
+      <reviewId>rev-001</reviewId>
+      <customerId>cust-001</customerId>
+      <bookingId>booking-001</bookingId>
+      <rating>5</rating>
+      <comment>Amazing experience! Highly recommend!</comment>
+      <date>2024-03-12</date>
+    </review>
+    <review>
+      <reviewId>rev-002</reviewId>
+      <customerId>cust-002</customerId>
+      <bookingId>booking-002</bookingId>
+      <rating>4</rating>
+      <comment>Great service, but the hotel could be better.</comment>
+      <date>2024-04-16</date>
+    </review>
+  </reviews>
+</travelAgency>

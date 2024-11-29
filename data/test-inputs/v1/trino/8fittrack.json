@@ -1,0 +1,122 @@
+{
+  "fitnessApp": {
+    "appId": "app-001",
+    "name": "FitTrack Pro",
+    "version": "1.2.3",
+    "releaseDate": "2023-05-10",                      // Date (String in ISO format)
+    "isActive": true,                                 // Boolean
+    "users": [                                        // Array of Objects
+      {
+        "userId": "user-001",
+        "username": "fitgirl92",
+        "firstName": "Emma",
+        "lastName": "Johnson",
+        "email": "emma.johnson@example.com",
+        "age": 29,                                     // Integer
+        "heightCm": 165,                               // Integer
+        "weightKg": 60,                                // Integer
+        "workouts": [                                  // Array of Objects
+          {
+            "workoutId": "workout-001",
+            "type": "Running",
+            "durationMinutes": 30,                     // Integer
+            "caloriesBurned": 300,                     // Integer
+            "date": "2024-01-10"                       // Date (String in ISO format)
+          },
+          {
+            "workoutId": "workout-002",
+            "type": "Strength Training",
+            "durationMinutes": 45,
+            "caloriesBurned": 400,
+            "date": "2024-01-15"
+          }
+        ],
+        "goals": {                                     // Object
+          "weightGoalKg": 55,
+          "stepsGoal": 10000,                          // Integer
+          "startDate": "2024-01-01",                   // Date (String in ISO format)
+          "endDate": "2024-06-01"                      // Date (String in ISO format)
+        },
+        "progress": [                                  // Array of Objects
+          {
+            "date": "2024-01-01",                      // Date (String in ISO format)
+            "weightKg": 60,
+            "steps": 5000
+          },
+          {
+            "date": "2024-01-10",
+            "weightKg": 59,
+            "steps": 8000
+          }
+        ]
+      },
+      {
+        "userId": "user-002",
+        "username": "health_freak88",
+        "firstName": "Liam",
+        "lastName": "Smith",
+        "email": "liam.smith@example.com",
+        "age": 34,
+        "heightCm": 180,
+        "weightKg": 75,
+        "workouts": [],
+        "goals": {
+          "weightGoalKg": 70,
+          "stepsGoal": 12000,
+          "startDate": "2024-02-01",
+          "endDate": "2024-08-01"
+        },
+        "progress": []
+      }
+    ],
+    "nutrition": {                                    // Object
+      "foodDiary": [                                  // Array of Objects
+        {
+          "entryId": "entry-001",
+          "userId": "user-001",
+          "meal": "Breakfast",
+          "foods": [                                  // Array
+            {
+              "foodId": "food-001",
+              "name": "Oatmeal",
+              "calories": 150,                        // Integer
+              "date": "2024-01-10"                   // Date (String in ISO format)
+            },
+            {
+              "foodId": "food-002",
+              "name": "Banana",
+              "calories": 90,
+              "date": "2024-01-10"
+            }
+          ],
+          "totalCalories": 240                        // Integer
+        }
+      ],
+      "mealPlans": [                                  // Array of Objects
+        {
+          "mealPlanId": "plan-001",
+          "userId": "user-002",
+          "name": "Basic 1,500 Calorie Diet",
+          "meals": [
+            {
+              "meal": "Lunch",
+              "foods": [
+                {
+                  "foodId": "food-003",
+                  "name": "Grilled Chicken",
+                  "calories": 250
+                },
+                {
+                  "foodId": "food-004",
+                  "name": "Quinoa",
+                  "calories": 220
+                }
+              ],
+              "totalCalories": 470
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

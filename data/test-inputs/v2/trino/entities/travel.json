@@ -1,0 +1,116 @@
+{
+  "travelAgency": {
+    "agencyId": "agency-001",
+    "name": "Wanderlust Travel Co.",
+    "location": {
+      "address": "123 Travel Blvd",
+      "city": "Adventure City",
+      "state": "FL",
+      "zipCode": "33101"
+    },
+    "established": "2010-05-15",
+    "isActive": true,
+    "bookings": [
+      {
+        "bookingId": "booking-001",
+        "customer": {
+          "customerId": "cust-001",
+          "firstName": "Sarah",
+          "lastName": "Williams",
+          "email": "sarah.williams@example.com",
+          "phone": "+1234567890"
+        },
+        "tripDetails": {
+          "destination": "Paris, France",
+          "travelDates": {
+            "departure": "2024-03-01",
+            "return": "2024-03-10"
+          },
+          "accommodation": {
+            "hotelName": "Hotel de Paris",
+            "checkIn": "2024-03-01",
+            "checkOut": "2024-03-10",
+            "rating": 4.5
+          },
+          "totalCost": 1500.00,
+          "includedServices": [
+            "Flight",
+            "Hotel Accommodation",
+            "Breakfast",
+            "City Tour"
+          ]
+        },
+        "status": "Confirmed",
+        "bookingDate": "2024-01-15"
+      },
+      {
+        "bookingId": "booking-002",
+        "customer": {
+          "customerId": "cust-002",
+          "firstName": "John",
+          "lastName": "Doe",
+          "email": "john.doe@example.com",
+          "phone": "+0987654321"
+        },
+        "tripDetails": {
+          "destination": "Tokyo, Japan",
+          "travelDates": {
+            "departure": "2024-04-05",
+            "return": "2024-04-15"
+          },
+          "accommodation": {
+            "hotelName": "Shinjuku Grand Hotel",
+            "checkIn": "2024-04-05",
+            "checkOut": "2024-04-15",
+            "rating": 4.7
+          },
+          "totalCost": 2000.00,
+          "includedServices": [
+            "Flight",
+            "Hotel Accommodation",
+            "Airport Transfer",
+            "Breakfast"
+          ]
+        },
+        "status": "Pending",
+        "bookingDate": "2024-01-20"
+      }
+    ],
+    "agents": [
+      {
+        "agentId": "agent-001",
+        "firstName": "Emily",
+        "lastName": "Clark",
+        "experienceYears": 7,
+        "email": "emily.clark@wanderlusttravel.com",
+        "phone": "+1234567888"
+      },
+      {
+        "agentId": "agent-002",
+        "firstName": "Michael",
+        "lastName": "Smith",
+        "experienceYears": 5,
+        "email": "michael.smith@wanderlusttravel.com",
+        "phone": "+1234567777"
+      }
+    ],
+    "reviews": [
+      {
+        "reviewId": "rev-001",
+        "customerId": "cust-001",
+        "bookingId": "booking-001",
+        "rating": 5,
+        "comment": "Amazing experience! Highly recommend!",
+        "date": "2024-03-12"
+      },
+      {
+        "reviewId": "rev-002",
+        "customerId": "cust-002",
+        "bookingId": "booking-002",
+        "rating": 4,
+        "comment": "Great service, but the hotel could be better.",
+        "date": "2024-04-16"
+      }
+    ]
+  }
+}

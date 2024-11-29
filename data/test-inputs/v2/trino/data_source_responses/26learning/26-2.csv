@@ -1,0 +1,3 @@
+platformId,name,courseId,title,instructorName,price,studentId,learnerName
+platform-001,SkillUp Academy,course-001,Introduction to Programming,Alice Johnson,199.99,student-001,John Doe
+platform-001,SkillUp Academy,course-002,Data Science Fundamentals,Bob Smith,249.99,student-002,Jane Doe

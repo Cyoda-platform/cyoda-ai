@@ -1,0 +1,111 @@
+{
+  "tenderManagementSystem": {
+    "tenders": [
+      {
+        "tenderId": "tender-001",
+        "title": "Construction of New Community Center",
+        "description": "This tender is for the construction of a new community center in downtown.",
+        "issueDate": "2024-01-15",
+        "submissionDeadline": "2024-02-15",
+        "status": "open",
+        "requirements": {
+          "documentsRequired": [
+            "Company Profile",
+            "Project Proposal",
+            "Financial Statements"
+          ],
+          "eligibilityCriteria": {
+            "minimumExperience": 5,
+            "certifications": [
+              "ISO 9001",
+              "LEED Certification"
+            ]
+          }
+        },
+        "awarded": false,
+        "participants": [
+          {
+            "participantId": "participant-001",
+            "companyName": "BuildRight LLC",
+            "contactPerson": "Alice Green",
+            "contactInfo": {
+              "email": "alice.green@buildright.com",
+              "phone": "+1234567890"
+            },
+            "bid": {
+              "bidAmount": 120000,
+              "submittedDate": "2024-02-10",
+              "status": "pending"
+            }
+          },
+          {
+            "participantId": "participant-002",
+            "companyName": "ConstructIt Inc.",
+            "contactPerson": "John Doe",
+            "contactInfo": {
+              "email": "john.doe@constructit.com",
+              "phone": "+1234567888"
+            },
+            "bid": {
+              "bidAmount": 115000,
+              "submittedDate": "2024-02-12",
+              "status": "pending"
+            }
+          }
+        ],
+        "evaluationCriteria": {
+          "criteria": [
+            {
+              "criterion": "Price",
+              "weight": 0.40
+            },
+            {
+              "criterion": "Experience",
+              "weight": 0.30
+            },
+            {
+              "criterion": "Project Approach",
+              "weight": 0.30
+            }
+          ]
+        }
+      },
+      {
+        "tenderId": "tender-002",
+        "title": "Supply of Office Furniture",
+        "description": "Tender for supplying office furniture to the new municipal building.",
+        "issueDate": "2024-01-25",
+        "submissionDeadline": "2024-03-01",
+        "status": "open",
+        "requirements": {
+          "documentsRequired": [
+            "Product Catalog",
+            "Warranty Information"
+          ],
+          "eligibilityCriteria": {
+            "minimumExperience": 3,
+            "certifications": []
+          }
+        },
+        "awarded": false,
+        "participants": [],
+        "evaluationCriteria": {
+          "criteria": [
+            {
+              "criterion": "Quality",
+              "weight": 0.50
+            },
+            {
+              "criterion": "Delivery Time",
+              "weight": 0.25
+            },
+            {
+              "criterion": "Cost",
+              "weight": 0.25
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

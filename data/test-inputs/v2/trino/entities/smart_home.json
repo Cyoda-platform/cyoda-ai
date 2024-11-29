@@ -1,0 +1,143 @@
+{
+  "smartHomeSystem": {
+    "systemId": "system-001",
+    "user": {
+      "userId": "user-001",
+      "username": "techSavvyHomeowner",
+      "contact": {
+        "email": "techsavvy@example.com",
+        "phone": "+1234567890"
+      },
+      "address": {
+        "street": "789 Smart Lane",
+        "city": "Smartville",
+        "state": "CA",
+        "zipCode": "90210"
+      }
+    },
+    "devices": [
+      {
+        "deviceId": "device-001",
+        "deviceType": "Smart Light",
+        "brand": "Philips Hue",
+        "model": "Hue White and Color Ambiance",
+        "status": "on",
+        "settings": {
+          "brightness": 75,
+          "color": "warm white",
+          "schedule": [
+            {
+              "time": "06:30",
+              "action": "turn on"
+            },
+            {
+              "time": "23:00",
+              "action": "turn off"
+            }
+          ]
+        }
+      },
+      {
+        "deviceId": "device-002",
+        "deviceType": "Smart Thermostat",
+        "brand": "Nest",
+        "model": "Learning Thermostat",
+        "status": "off",
+        "settings": {
+          "temperature": 22,
+          "mode": "heating",
+          "schedule": [
+            {
+              "day": "Monday",
+              "time": "08:00",
+              "temperature": 20
+            },
+            {
+              "day": "Monday",
+              "time": "18:00",
+              "temperature": 22
+            }
+          ]
+        }
+      },
+      {
+        "deviceId": "device-003",
+        "deviceType": "Smart Security Camera",
+        "brand": "Ring",
+        "model": "Video Doorbell Pro",
+        "status": "online",
+        "settings": {
+          "motionDetection": true,
+          "videoQuality": "1080p",
+          "recordingSchedule": [
+            {
+              "day": "Everyday",
+              "startTime": "00:00",
+              "endTime": "23:59"
+            }
+          ]
+        }
+      }
+    ],
+    "scenes": [
+      {
+        "sceneId": "scene-001",
+        "sceneName": "Good Morning",
+        "devicesStates": [
+          {
+            "deviceId": "device-001",
+            "status": "on",
+            "settings": {
+              "brightness": 100,
+              "color": "warm white"
+            }
+          },
+          {
+            "deviceId": "device-002",
+            "status": "on",
+            "settings": {
+              "temperature": 21,
+              "mode": "heating"
+            }
+          }
+        ],
+        "active": false
+      },
+      {
+        "sceneId": "scene-002",
+        "sceneName": "Movie Night",
+        "devicesStates": [
+          {
+            "deviceId": "device-001",
+            "status": "off"
+          },
+          {
+            "deviceId": "device-002",
+            "status": "on",
+            "settings": {
+              "temperature": 22,
+              "mode": "cooling"
+            }
+          }
+        ],
+        "active": true
+      }
+    ],
+    "alerts": [
+      {
+        "alertId": "alert-001",
+        "type": "Temperature Alert",
+        "timestamp": "2024-01-15T10:00:00Z",
+        "message": "The temperature has dropped below the set threshold.",
+        "acknowledged": false
+      },
+      {
+        "alertId": "alert-002",
+        "type": "Motion Detected",
+        "timestamp": "2024-01-16T14:30:00Z",
+        "message": "Motion detected at front door.",
+        "acknowledged": true
+      }
+    ]
+  }
+}

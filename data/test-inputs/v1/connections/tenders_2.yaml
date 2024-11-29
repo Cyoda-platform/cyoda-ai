@@ -1,0 +1,68 @@
+openapi: 3.0.1
+info:
+  title: Cyoda AI API tenders fac62275-3d95-4417-a37d-863980e85e8b
+  description: API to retrieve tender mappings.
+  version: 1.0.0
+
+servers:
+  - url: https://raw.githubusercontent.com/Cyoda-platform/cyoda-ai/refs/heads/main/data/test-inputs/v1/mappings
+
+paths:
+  /tender_level_2.json:
+    get:
+      summary: Retrieve tender level 2 mappings
+      description: Fetches the tender level 2 mappings from the specified URL.
+      parameters:
+        - name: tenderVersion
+          in: query
+          description: Random parameter 1
+          required: false
+          schema:
+            type: string
+
+        - name: buyerName
+          in: query
+          description: Random parameter 2
+          required: false
+          schema:
+            type: integer
+
+        - name: docVersion
+          in: query
+          description: Random parameter 3
+          required: false
+          schema:
+            type: boolean
+
+        - name: docId
+          in: query
+          description: Random parameter 4
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+
+        - name: apiId
+          in: query
+          description: Random parameter 5
+          required: false
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    additionalProperties:
+                      type: object
+        '404':
+          description: Not Found
+        '500':
+          description: Server Error

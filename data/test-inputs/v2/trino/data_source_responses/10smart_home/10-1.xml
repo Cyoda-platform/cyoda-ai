@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SmartHomeSystem>
+  <systemID>system-001</systemID>
+  <user>
+    <userID>user-001</userID>
+    <userName>techSavvyHomeowner</userName>
+    <contactInfo>
+      <email>techsavvy@example.com</email>
+      <phoneNumber>+1234567890</phoneNumber>
+    </contactInfo>
+    <streetAddress>789 Smart Lane</streetAddress>
+    <city>Smartville</city>
+    <state>CA</state>
+    <zip>90210</zip>
+  </user>
+  <devices>
+    <device>
+      <deviceID>device-001</deviceID>
+      <deviceType>Smart Light</deviceType>
+      <brand>Philips Hue</brand>
+      <model>Hue White and Color Ambiance</model>
+      <powerStatus>on</powerStatus>
+      <deviceSettings>
+        <brightness>75</brightness>
+        <lightColor>warm white</lightColor>
+        <schedules>
+          <scheduledEvent>
+            <eventTime>06:30</eventTime>
+            <eventAction>turn on</eventAction>
+          </scheduledEvent>
+          <scheduledEvent>
+            <eventTime>23:00</eventTime>
+            <eventAction>turn off</eventAction>
+          </scheduledEvent>
+        </schedules>
+      </deviceSettings>
+    </device>
+    <device>
+      <deviceID>device-002</deviceID>
+      <deviceType>Smart Thermostat</deviceType>
+      <brand>Nest</brand>
+      <model>Learning Thermostat</model>
+      <powerStatus>off</powerStatus>
+      <deviceSettings>
+        <temperature>22</temperature>
+        <thermostatMode>heating</thermostatMode>
+        <schedules>
+          <scheduledEvent>
+            <dayOfWeek>Monday</dayOfWeek>
+            <eventTime>08:00</eventTime>
+            <temperature>20</temperature>
+          </scheduledEvent>
+          <scheduledEvent>
+            <dayOfWeek>Monday</dayOfWeek>
+            <eventTime>18:00</eventTime>
+            <temperature>22</temperature>
+          </scheduledEvent>
+        </schedules>
+      </deviceSettings>
+    </device>
+    <device>
+      <deviceID>device-003</deviceID>
+      <deviceType>Smart Security Camera</deviceType>
+      <brand>Ring</brand>
+      <model>Video Doorbell Pro</model>
+      <powerStatus>online</powerStatus>
+      <deviceSettings>
+        <motionDetection>true</motionDetection>
+        <videoResolution>1080p</videoResolution>
+        <recordingSchedules>
+          <scheduledEvent>
+            <dayOfWeek>Everyday</dayOfWeek>
+            <startTime>00:00</startTime>
+            <endTime>23:59</endTime>
+          </scheduledEvent>
+        </recordingSchedules>
+      </deviceSettings>
+    </device>
+  </devices>
+  <homeScenes>
+    <homeScene>
+      <sceneID>scene-001</sceneID>
+      <sceneName>Good Morning</sceneName>
+      <deviceStates>
+        <deviceState>
+          <deviceID>device-001</deviceID>
+          <powerStatus>on</powerStatus>
+          <deviceSettings>
+            <brightness>100</brightness>
+            <lightColor>warm white</lightColor>
+          </deviceSettings>
+        </deviceState>
+        <deviceState>
+          <deviceID>device-002</deviceID>
+          <powerStatus>on</powerStatus>
+          <deviceSettings>
+            <temperature>21</temperature>
+            <thermostatMode>heating</thermostatMode>
+          </deviceSettings>
+        </deviceState>
+      </deviceStates>
+      <sceneActive>false</sceneActive>
+    </homeScene>
+    <homeScene>
+      <sceneID>scene-002</sceneID>
+      <sceneName>Movie Night</sceneName>
+      <deviceStates>
+        <deviceState>
+          <deviceID>device-001</deviceID>
+          <powerStatus>off</powerStatus>
+        </deviceState>
+        <deviceState>
+          <deviceID>device-002</deviceID>
+          <powerStatus>on</powerStatus>
+          <deviceSettings>
+            <temperature>22</temperature>
+            <thermostatMode>cooling</thermostatMode>
+          </deviceSettings>
+        </deviceState>
+      </deviceStates>
+      <sceneActive>true</sceneActive>
+    </homeScene>
+  </homeScenes>
+  <alerts>
+    <alert>
+      <alertID>alert-001</alertID>
+      <alertType>Temperature Alert</alertType>
+      <alertTimestamp>2024-01-15T10:00:00Z</alertTimestamp>
+      <alertMessage>The temperature has dropped below the set threshold.</alertMessage>
+      <alertAcknowledged>false</alertAcknowledged>
+    </alert>
+    <alert>
+      <alertID>alert-002</alertID>
+      <alertType>Motion Detected</alertType>
+      <alertTimestamp>2024-01-16T14:30:00Z</alertTimestamp>
+      <alertMessage>Motion detected at front door.</alertMessage>
+      <alertAcknowledged>true</alertAcknowledged>
+    </alert>
+  </alerts>
+</SmartHomeSystem>

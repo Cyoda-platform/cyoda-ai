@@ -1,0 +1,60 @@
+{
+  "eCommerceSystem": {
+    "categories": [                               // Level 1: Categories
+      {
+        "categoryId": "cat-001",
+        "categoryName": "Electronics",
+        "products": [                             // Level 2: Products
+          {
+            "productId": "prod-001",
+            "productName": "Smartphone XYZ",
+            "price": 699.99,                      // Number
+            "stockQuantity": 50,
+            "supplier": {                          // Level 3: Supplier
+              "supplierId": "sup-001",
+              "supplierName": "Tech Supplies Inc.",
+              "contactDetails": {
+                "email": "contact@techsupplies.com",
+                "phone": "+1234567890"
+              }
+            }
+          },
+          {
+            "productId": "prod-002",
+            "productName": "Laptop ABC",
+            "price": 999.99,
+            "stockQuantity": 30,
+            "supplier": {
+              "supplierId": "sup-002",
+              "supplierName": "Computer World Ltd.",
+              "contactDetails": {
+                "email": "info@computerworld.com",
+                "phone": "+0987654321"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "categoryId": "cat-002",
+        "categoryName": "Home Appliances",
+        "products": [
+          {
+            "productId": "prod-003",
+            "productName": "Air Fryer Deluxe",
+            "price": 89.99,
+            "stockQuantity": 100,
+            "supplier": {
+              "supplierId": "sup-003",
+              "supplierName": "Kitchen Essentials Co.",
+              "contactDetails": {
+                "email": "support@kitchenessentials.com",
+                "phone": "+1234566543"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

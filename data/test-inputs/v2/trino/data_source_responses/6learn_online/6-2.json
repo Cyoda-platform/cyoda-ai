@@ -1,0 +1,132 @@
+{
+  "educationSystem": {
+    "systemId": "edu-005",
+    "systemName": "SkillShare Academy",
+    "availableCourses": [
+      {
+        "courseIdentifier": "course-101",
+        "title": "Web Development Bootcamp",
+        "summary": "Create dynamic web applications using the latest technologies.",
+        "lengthInWeeks": 10,
+        "startDate": "2024-02-15",
+        "finishDate": "2024-05-01",
+        "cost": 599.00,
+        "status": true,
+        "trainer": {
+          "trainerId": "trainer-001",
+          "firstName": "Samantha",
+          "lastName": "Adams",
+          "contactMail": "samantha.adams@skillshare.com",
+          "yearsTeaching": 7
+        },
+        "topicModules": [
+          {
+            "moduleIdentifier": "module-101",
+            "moduleTitle": "Foundations of Web Design",
+            "length": "3 weeks",
+            "learningResources": [
+              {
+                "resourceIdentifier": "resource-101",
+                "resourceTitle": "Learning HTML",
+                "mediaType": "Video",
+                "link": "https://skillshare.com/learning-html"
+              },
+              {
+                "resourceIdentifier": "resource-102",
+                "resourceTitle": "Understanding CSS",
+                "mediaType": "Article",
+                "link": "https://skillshare.com/understanding-css"
+              }
+            ]
+          },
+          {
+            "moduleIdentifier": "module-102",
+            "moduleTitle": "Introduction to JavaScript",
+            "length": "4 weeks",
+            "learningResources": [
+              {
+                "resourceIdentifier": "resource-103",
+                "resourceTitle": "JavaScript Essentials",
+                "mediaType": "Video",
+                "link": "https://skillshare.com/javascript-essentials"
+              },
+              {
+                "resourceIdentifier": "resource-104",
+                "resourceTitle": "Create a Personal Project",
+                "mediaType": "GitHub Repository",
+                "link": "https://github.com/skillshare/personal-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "courseIdentifier": "course-102",
+        "title": "Advanced Marketing Techniques",
+        "summary": "Learn strategies to enhance your marketing skills.",
+        "lengthInWeeks": 6,
+        "startDate": "2024-03-01",
+        "finishDate": "2024-04-10",
+        "cost": null,
+        "status": false,
+        "trainer": {
+          "trainerId": "trainer-002",
+          "firstName": "Lucas",
+          "lastName": "Garcia",
+          "contactMail": null,
+          "yearsTeaching": 4
+        },
+        "topicModules": []
+      }
+    ],
+    "participants": [
+      {
+        "participantId": "learner-001",
+        "firstName": "Emily",
+        "lastName": "White",
+        "contactMail": "emily.white@example.com",
+        "registrationDate": "2023-08-20",
+        "finishedCourses": [
+          {
+            "courseIdentifier": "course-101",
+            "completionDate": "2024-05-05",
+            "achievedGrade": "A+"
+          }
+        ]
+      },
+      {
+        "participantId": "learner-002",
+        "firstName": "Michael",
+        "lastName": "Black",
+        "contactMail": "michael.black@example.com",
+        "registrationDate": "2023-09-12",
+        "finishedCourses": [],
+        "ongoingCourses": [
+          {
+            "courseIdentifier": "course-102",
+            "startDate": "2024-03-15",
+            "currentStatus": "In Progress"
+          }
+        ]
+      }
+    ],
+    "studentFeedback": [
+      {
+        "feedbackId": "review-101",
+        "participantId": "learner-001",
+        "courseIdentifier": "course-101",
+        "ratingScore": 4.8,
+        "commentText": "Incredible course! Very insightful.",
+        "reviewDate": "2024-05-06"
+      },
+      {
+        "feedbackId": "review-102",
+        "participantId": "learner-002",
+        "courseIdentifier": "course-102",
+        "ratingScore": 5,
+        "commentText": "Can't wait to begin the course!",
+        "reviewDate": "2024-03-02"
+      }
+    ]
+  }
+}
