@@ -53,6 +53,8 @@ Always start with:
 var target = entity.modelAccessor;
 target.deviceManagement = {};
 
+Always perform empty string check: != "":
+
 // Mapping scalar fields
 target.deviceManagement.storeId = input.id != "" ? input.id : "";
 target.deviceManagement.storeName = input.storeName != "" ? input.storeName : "";
