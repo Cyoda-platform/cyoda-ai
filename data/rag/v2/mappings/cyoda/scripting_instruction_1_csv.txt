@@ -5,105 +5,117 @@ Instruction e31a2c74-4c85-4c3b-b0ab-3b0cd7a9fe58
 Here's an example of how to map an Example_input to an entity with a Javascript Nashorn script:
 
 Example_input:
-awardedValue,category,contactUser,date,deadlineDate,deadlineLengthDays,employeeId,id,name,purchaser,systemAccount,types,notices[1].data,notices[1].date,notices[1].id,notices[1].name,notices[1].sid,notices[1].srcId,notices[1].srcUrl,notices[1].type,notices[2].data,notices[2].date,notices[2].id,notices[2].name,notices[2].sid,notices[2].srcId,notices[2].srcUrl,notices[2].type,purchaserNoticeMap.Purchaser A[1].data,purchaserNoticeMap.Purchaser A[1].date,purchaserNoticeMap.Purchaser A[1].id,purchaserNoticeMap.Purchaser A[1].name,purchaserNoticeMap.Purchaser A[1].sid,purchaserNoticeMap.Purchaser A[1].srcId,purchaserNoticeMap.Purchaser A[1].srcUrl,purchaserNoticeMap.Purchaser A[1].type
-10000,Category A,John Doe,2024-10-25T10:15:30Z,2024-11-01T10:15:30Z,7,c768a534-225c-11b2-bbaf-4e02553a495a,1,Contract X,Company ABC,true,Type A|Type B,Data 1,2024-10-25T10:15:30Z,101,Notice 1,001,SrcID1,https://example.com/notice1,NoticeType 1,Data 2,2024-10-26T10:15:30Z,102,Notice 2,002,SrcID2,https://example.com/notice2,NoticeType 2,Data A,2024-10-25T10:15:30Z,201,Map Notice A1,101,SrcIDA,https://example.com/noticeA1,MapNoticeType A1
+id,storeName,locationCity,locationState,locationCountry,productId,productTitle,manufacturerBrand,productCategory,cost,quantityInStock,specs,warrantyDuration,warrantyDescription,clientId,clientFullName,clientEmail,purchasedProducts,saleCode,soldProductId,soldClientId,dateOfTransaction,transactionAmount,warrantyStartDate,warrantyEndDate
+store-001,Tech Hub,San Francisco,CA,USA,device-001,Smartphone X,BrandA,Mobile,799.99,50,"5G; 128GB Storage; 12MP Camera",2 years,"Damage and Manufacturers Defect",cust-001,Alice Green,alice.green@example.com,"device-001",sale-001,device-001,cust-001,2024-01-15,799.99,2024-01-15,2026-01-15
+store-001,Tech Hub,San Francisco,CA,USA,device-002,Laptop Pro,BrandB,Computer,1299.99,30,"16GB RAM; 512GB SSD; Retina Display",1 year,"Manufacturers Defect",cust-002,David Jones,david.jones@example.com,"device-002",sale-002,device-002,cust-002,2024-01-20,1299.99,2024-01-20,2025-01-20
+store-001,Tech Hub,San Francisco,CA,USA,device-003,Laptop Pro,BrandB,Computer,,,"16GB RAM; 512GB SSD; Retina Display",1 year,"Manufacturers Defect",cust-002,David Jones,david.jones@example.com,"device-002",sale-002,device-002,cust-002,,1299.99,2024-01-20,2025-01-20
+
 
 Example target entity model:
-{
-  "$": {
-    "#.purchaserNoticeMap": "OBJECT",
-    ".awardedValue": "DOUBLE",
-    ".category": "STRING",
-    ".contactUser": "STRING",
-    ".date": "ZONED_DATE_TIME",
-    ".deadlineDate": "ZONED_DATE_TIME",
-    ".deadlineLengthDays": "INTEGER",
-    ".employeeId": "TIME_UUID_TYPE",
-    ".id": "STRING",
-    ".name": "STRING",
-    ".purchaser": "STRING",
-    ".systemAccount": "BOOLEAN",
-    ".types[*]": "(STRING x 1)"
-  },
-  "$.notices[*]": {
-    "#": "ARRAY_ELEMENT",
-    ".data": "STRING",
-    ".date": "ZONED_DATE_TIME",
-    ".id": "STRING",
-    ".name": "STRING",
-    ".sid": "STRING",
-    ".srcId": "STRING",
-    ".srcUrl": "STRING",
-    ".type": "STRING"
-  },
-  "$.purchaserNoticeMap.Purchaser A[*]": {
-    "#": "ARRAY_ELEMENT",
-    ".data": "STRING",
-    ".date": "ZONED_DATE_TIME",
-    ".id": "STRING",
-    ".name": "STRING",
-    ".sid": "STRING",
-    ".srcId": "STRING",
-    ".srcUrl": "STRING",
-    ".type": "STRING"
-  }
-}
+{'$': {'.deviceManagement.storeId': 'STRING',
+   '.deviceManagement.storeName': 'STRING',
+   '.deviceManagement.location.city': 'STRING',
+   '.deviceManagement.location.state': 'STRING',
+   '.deviceManagement.location.country': 'STRING',
+   '#.deviceManagement': 'OBJECT',
+   '#.deviceManagement.location': 'OBJECT'},
+  '$.deviceManagement.devices[*]': {'.deviceId': 'STRING',
+   '.deviceName': 'STRING',
+   '.brand': 'STRING',
+   '.category': 'STRING',
+   '.price': 'DOUBLE',
+   '.stockQuantity': 'INTEGER',
+   '.warranty.period': 'STRING',
+   '.warranty.coverage': 'STRING',
+   '.features[*]': '(STRING x 3)',
+   '#': 'ARRAY_ELEMENT',
+   '#.warranty': 'OBJECT'},
+  '$.deviceManagement.customers[*]': {'.customerId': 'STRING',
+   '.fullName': 'STRING',
+   '.email': 'STRING',
+   '.purchasedDevices[*]': '(STRING x 1)',
+   '#': 'ARRAY_ELEMENT'},
+  '$.deviceManagement.sales[*]': {'.saleId': 'STRING',
+   '.deviceId': 'STRING',
+   '.customerId': 'STRING',
+   '.saleDate': 'LOCAL_DATE',
+   '.price': 'DOUBLE',
+   '.warrantyStart': 'LOCAL_DATE',
+   '.warrantyEnd': 'LOCAL_DATE',
+   '#': 'ARRAY_ELEMENT'}}
 
 Instruction e31a2c74-4c85-4c3b-b0ab-3b0cd7a9fe58
 
 **Writing a JavaScript Nashorn script to map the given input to the given entity model** Instruction
+Script example:
 
 Always start with:
 var target = entity.modelAccessor;
-Then map fields:
-target.name = input['Project Name'] != null ? input['Project Name'] : "";
-target.contactUser = input['Contact User'] != null ? input['Contact User'] : "";
-target.systemAccount = input['System Account'] != null ? input['System Account'] : false;
+target.deviceManagement = {};
 
-How to handle collections:
-For arrays and maps, iterate over the collection to map the values to Java types. Use ArrayList for lists and HashMap for maps only when you have ensured that the target entity contains corresponding collections; otherwise, map fields directly.
-Look through header field names of input to detect a pattern used in naming array elements and use the correct pattern in your output loop.
-Patterns typically involve a combination of prefixes, indices, and suffixes (e.g., "Notice Name 1", "1 Notice Name", "Notice_1_Name", "Notice[1]Name", "Notice Name (1)").
+Always perform empty string check: != "":
 
-Script example:
+// Mapping scalar fields
+target.deviceManagement.storeId = input.id != "" ? input.id : "";
+target.deviceManagement.storeName = input.storeName != "" ? input.storeName : "";
+target.deviceManagement.location = {
+    city: input.locationCity != "" ? input.locationCity : "",
+    state: input.locationState != "" ? input.locationState : "",
+    country: input.locationCountry != "" ? input.locationCountry : ""
+};
 
-// Handling types
+// Handling devices
 var ArrayList = Java.type("java.util.ArrayList");
-var typesList = new ArrayList();
-if (input.types != null) {
-    var typesArray = input.types.split("|");
-    for (var k = 0; k < typesArray.length; k++) {
-        typesList.add(typesArray[k].trim());
+target.deviceManagement.devices = new ArrayList();
+
+var device = {
+    deviceId: input.productId != "" ? input.productId : "",
+    deviceName: input.productTitle != "" ? input.productTitle : "",
+    brand: input.manufacturerBrand != "" ? input.manufacturerBrand : "",
+    category: input.productCategory != "" ? input.productCategory : "",
+    price: input.cost != "" ? parseFloat(input.cost) : 0.0,
+    stockQuantity: input.quantityInStock != "" ? parseInt(input.quantityInStock) : 0,
+    warranty: {
+        period: input.warrantyDuration != "" ? input.warrantyDuration : "",
+        coverage: input.warrantyDescription != "" ? input.warrantyDescription : ""
+    },
+    features: new ArrayList()
+};
+
+// Handling specs
+if (input.specs != "") {
+    var specsArray = input.specs.split(";"); // Assuming specs are separated by ";"
+    for (var j = 0; j < specsArray.length; j++) {
+        device.features.add(specsArray[j].trim());
     }
 }
-target.types = typesList;
 
-// Handling notices
-var ArrayList = Java.type("java.util.ArrayList");
-var notices = new ArrayList();
-for (var i = 1; input['notices[' + i + '].name'] != null; i++) {
-    var notice = {
-        name: input['notices[' + i + '].name'] || "",
-        id: input['notices[' + i + '].id'] || "",
-        // Add other fields as needed
-    };
-    notices.add(notice);
+target.deviceManagement.devices.add(device);
+
+// Handling customers
+target.deviceManagement.customers = new ArrayList();
+var customer = {
+    customerId: input.clientId != "" ? input.clientId : "",
+    fullName: input.clientFullName != "" ? input.clientFullName : "",
+    email: input.clientEmail != "" ? input.clientEmail : "",
+    purchasedDevices: new ArrayList()
+};
+
+if (input.purchasedProducts != "") {
+    customer.purchasedDevices.add(input.purchasedProducts);
 }
-target.notices = notices;
+target.deviceManagement.customers.add(customer);
 
-// Handling purchaserNoticeMap
-var HashMap = Java.type("java.util.HashMap");
-var purchaserNoticeMap = new HashMap();
+// Handling sales
+target.deviceManagement.sales = new ArrayList();
+var sale = {
+    saleId: input.saleCode != "" ? input.saleCode : "",
+    deviceId: input.soldProductId != "" ? input.soldProductId : "",
+    customerId: input.soldClientId != "" ? input.soldClientId : "",
+    saleDate: input.dateOfTransaction != "" ? input.dateOfTransaction : null,
+    price: input.transactionAmount != "" ? parseFloat(input.transactionAmount) : 0.0,
+    warrantyStart: input.warrantyStartDate != "" ? input.warrantyStartDate : null,
+    warrantyEnd: input.warrantyEndDate != "" ? input.warrantyEndDate : null
+};
 
-var purchaserKey = "Purchaser A"; // Assuming there is only one purchaser for simplification
-var purchaserNoticesList = new ArrayList();
-for (var j = 1; input['purchaserNoticeMap.' + purchaserKey + '[' + j + '].name'] != null; j++) {
-    var purchaserNotice = {
-        name: input['purchaserNoticeMap.' + purchaserKey + '[' + j + '].name'] || "",
-        id: input['purchaserNoticeMap.' + purchaserKey + '[' + j + '].id'] || "",
-        // Add other fields as needed
-    };
-    purchaserNoticesList.add(purchaserNotice);
-}
-purchaserNoticeMap.put(purchaserKey, purchaserNoticesList);
-target.purchaserNoticeMap = purchaserNoticeMap;
+target.deviceManagement.sales.add(sale);
