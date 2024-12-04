@@ -1,0 +1,197 @@
+Cyoda enables event-driven workflow management to orchestrate processes by invoking server-side functions in response to entity events.
+Drawing parallels to AWS Step Functions, Cyoda models workflows as state machines, which represents the lifecycle of entities within an event-driven architecture.
+
+Key Concepts
+
+Entities:
+Entities are fundamental components in Cyoda that together with workflow represent both data and processes. They serve as the primary units around which workflows are centered. Entities fall into three categories (v1):
+
+Raw Data Entities (RAW_DATA):
+Description: Contain raw, unprocessed data obtained from sources like submitted forms, external data ingestion, or API inputs.
+Workflow Interaction: Upon creation or modification, their associated workflows are automatically triggered to process the data.
+
+Derived Data Entities (DERIVED_DATA):
+Description: Result from the processing of raw data entities through workflows. They contain processed, aggregated, or analyzed data, often with a different schema.
+Workflow Interaction: Serve as the output of workflows and can trigger subsequent workflows if needed.
+
+Job Entities (JOB):
+Description: Represent scheduled or ad-hoc tasks that initiate workflows, focusing on processes rather than specific data.
+Workflow Interaction: Can be scheduled or triggered via API calls, serving as entry points for processes like data ingestion, analysis, or transformation.
+
+Workflows and State Machines:
+Workflows in Cyoda are modeled as state machines, comprising states and transitions that define the lifecycle of an entity.
+
+States: Represent the status of an entity at a specific point in its lifecycle.
+
+Transitions: Define how an entity moves from one state to another based on specific criteria or events.
+
+Components of a Transition:
+Start State: The current state of the entity before the transition.
+End State: The new state of the entity after the transition.
+Criteria: Conditions or rules that must be met for the transition to occur.
+Processes: Functions or actions executed during the transition.
+
+Transition Types:
+Automatic Transitions: Occur when predefined criteria are met without external intervention.
+Manual Transitions: Require external input or actions (e.g., user interaction which leads to entity update) to proceed.
+
+Processes and Server-Side Functions:
+Processes are integral to transitions and represent the actions taken when a transition occurs.
+
+Processes:
+Attached to transitions and executed when the transition is launched.
+Can transform the entity, perform validations, or interact with external systems.
+
+Server-Side Functions:
+Provision: Must be provided by the developer (i.e. AI generated). Function name should equal the process name. Should be in python.
+Execution: Run in an isolated, stateless environment on the server (similar to AWS Lambda functions).
+Arguments:
+meta: Metadata about the event or context.
+data: The entity involved in the workflow.
+Behavior: Can modify the entity, and the updated entity is then used in subsequent workflow transitions. Can get another entity data as well as add/update/delete another entity.
+
+
+Event-Driven Architecture
+Cyoda employs an event-driven architecture where workflows are activated by entities events.
+
+Event Emission: Events are emitted upon entities creation, modification, or deletion.
+
+Event Handling: Workflows listen for these events and initiate or progress accordingly.
+
+
+Workflow Persistence and Recovery
+Scalability: Persisting workflow states within entities allows for distribution across multiple instances, promoting horizontal scalability.
+Auditability: A record of state transitions within entities facilitates tracking and auditing of the entity's lifecycle.
+
+Error Handling and Compensation
+Cyoda incorporates mechanisms to handle errors gracefully:
+Compensation Actions: Define steps to undo partial changes or maintain consistency in case of failures.
+
+Scalability and Resilience
+Stateless Functions: Process functions are stateless, enabling horizontal scaling across multiple servers or instances.
+
+Distributed Processing: Workflows and event handling can be distributed to handle high throughput.
+
+
+Design Considerations
+Entity Types and Entity Events
+Entity Types: [RAW_DATA, DERIVED_DATA, JOB]
+
+Event triggers:
+
+Define how and when workflows are initiated.
+
+Examples:
+
+SCHEDULER: Triggers workflows at scheduled intervals.
+
+API_REQUEST: Initiates workflows via API calls.
+
+FORM_SUBMISSION: Starts workflows upon form submissions.
+
+FILE_UPLOAD: Begins workflows when files are uploaded.
+
+EXTERNAL_DATA_SOURCE: Triggers workflows when data is pulled from external sources.
+
+ENTITY_UPDATE: Initiates workflows when an entity is added/updated by another entity or workflow.
+
+Dependencies:
+depends_on: Specifies dependent entities for workflows triggered by ENTITY_UPDATE.
+
+Immutable Schemas:
+Once an entity is saved, its schema is considered fixed for that version to maintain data integrity.
+
+Example Workflow Execution
+Scenario: Order Processing Workflow
+
+Entities:
+*Order (RAW_DATA)
+*Payment (DERIVED_DATA)
+*Shipment (DERIVED_DATA)
+
+Workflow States for Order Entity:
+
+*Order Placed
+*Payment Processed
+*Order Shipped
+*Order Completed
+
+Transitions:
+
+*From Order Placed to Payment Processed:
+  Type: Automatic Transition
+  Criteria: Payment confirmation received.
+  Processes:
+  ProcessPayment: Validates and processes payment details.
+
+*From Payment Processed to Order Shipped:
+  Type: Manual Transition
+  Criteria: Warehouse staff marks the order as shipped.
+  Processes:
+  InitiateShipment: Notifies the warehouse to prepare the order.
+
+*From Order Shipped to Order Completed:
+  Type: Automatic Transition
+  Criteria: Confirmation of delivery.
+  Processes:
+  FinalizeOrder: Updates order status and triggers customer notification.
+
+ Required Output:
+
+ Provide a design JSON in the following format:
+
+ json
+
+ {
+   "entities": [
+     {
+       "entity_name": "example_name",
+       "entity_type": "RAW",
+       "entity_entry_point": "API_REQUEST",
+       "depends_on_entity": "raw_eample_entity"
+       "entity_workflow": {
+         "name": "workflow_name",
+         "class_name": "WorkflowClassName",
+         "transitions": [
+           {
+             "name": "transition_name",
+             "description": "Description of the transition",
+             "start_state": "Initial_state",
+             "start_state_description": "Description of the initial state",
+             "end_state": "Final_state",
+             "end_state_description": "Description of the final state",
+             "criteria": {
+               "name": "criteria_name",
+               "description": "Description of the criteria"
+             },
+             "process": {
+               "name": "process_name",#lowercase, underscore
+               "description": "Description of the process"
+               "adds_new_entites": "another_entity_name or None"
+             }
+           }
+           // Additional transitions as needed
+         ]
+       }
+     }
+     // Additional entities as needed
+   ]
+ }
+
+ Read this instruction, tell that you read it and wait for new instructions
+
+Example of server-side function file:
+```python
+import logging
+
+from common.config.config import ENTITY_VERSION
+from logic.app_init import entity_service
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def process_name(meta, data):
+    entity = entity_service.get_item(meta["token"], "order", ENTITY_VERSION, data["id"])
+    logger.info("processing ")
+
+```
