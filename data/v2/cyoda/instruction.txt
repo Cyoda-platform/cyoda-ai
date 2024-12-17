@@ -239,8 +239,7 @@ Auditability: Keeping a historical record of transitions for review and debuggin
       "entity_name": "raw_data_entity",
       "entity_source": "ENTITY_EVENT",
       "entity_type": "EXTERNAL_SOURCES_PULL_BASED_RAW_DATA",
-      "entity_workflow": None
-      }
+      "entity_workflow": {}
       //other entities,
   //entities names, processor names - should be all lowercase and underscore in order to match python style
     }
