@@ -1,184 +1,254 @@
-Cyoda enables event-driven workflow management to orchestrate processes by invoking server-side functions in response to entity events.
-Drawing parallels to AWS Step Functions, Cyoda models workflows as state machines, which represents the lifecycle of entities within an event-driven architecture.
+Cyoda Event-Driven Workflow Overview:
 
-Key Concepts
+Cyoda manages workflows by reacting to entity events, orchestrating processes as state machines. Similar to AWS Step Functions, each workflow in Cyoda leverages state transitions that define how entities evolve over their lifecycle.
 
-Entities:
-Entities are fundamental components in Cyoda that together with workflow represent both data and processes. They serve as the primary units around which workflows are centered. Entities fall into three categories (v1):
+JSON Representation of Cyoda Logic:
 
-Raw Data Entities (RAW_DATA):
-Description: Contain raw, unprocessed data obtained from sources like submitted forms, external data ingestion, or API inputs.
-Workflow Interaction: Upon creation or modification, their associated workflows are automatically triggered to process the data.
+The JSON structure provided outlines the conceptual model behind the Cyoda application. It maps each entity type to its possible data sources, transitions, and dependencies within an event-driven architecture:
 
-Derived Data Entities (DERIVED_DATA):
-Description: Result from the processing of raw data entities through workflows. They contain processed, aggregated, or analyzed data, often with a different schema.
-Workflow Interaction: Serve as the output of workflows and can trigger subsequent workflows if needed.
+{
+  "entity": {
+    "type": {
+      "JOB": {
+        "source": {
+          "API_REQUEST": {},
+          "SCHEDULED": {},
+          "ENTITY_EVENT": {}
+        },
+        "example_transitions": [
+          {
+            "name": "ingest_data",
+            "description": "Ingest data from a connection and store it as raw data. Transition succeeds after successful ingestion.",
+            "secondary_entities_to_consider": ["RAW_DATA"],
+            "actions_to_consider": [
+              "data_ingestion.ingest_data_from_connection(entity_name) // returns raw_request_id",
+            ],
+            "data_to_remember": ["raw_request_id"],
+            "transition_type": "automatic",
+          },
+          {
+            "name": "transform_data",
+            "description": "Transform retrieved raw data into secondary data by applying user-defined transformations.",
+            "secondary_entities_to_consider": ["SECONDARY_DATA"],
+            "actions_to_consider": [
+              "entity_service.get_item(raw_request_id)",
+              "transform_data(): based on the user requirement",
+              "entity_service.add_item(secondary_data)"
+            ],
+            "transition_type": "automatic",
+            "depends_on": ["RAW_DATA"]
+          },
+          {
+            "name": "enrich_data",
+            "description": "Enrich the transformed data with additional information, possibly by querying external services.",
+            "secondary_entities_to_consider": ["SECONDARY_DATA"],
+            "actions_to_consider": [
+              "entity_service.get_item(raw_request_id)",
+              "enrich_data(): based on the user requirement",
+              "entity_service.add_item(secondary_data)"
+            ],
+            "transition_type": "automatic",
+            "depends_on": ["RAW_DATA"]
+          },
+          {
+            "name": "aggregate_data",
+            "description": "Aggregate the enriched data for final reporting or further analysis.",
+            "secondary_entities_to_consider": ["SECONDARY_DATA"],
+            "actions_to_consider": [
+              "entity_service.get_item(raw_request_id)",
+              "aggregate_data(): based on the user requirement",
+              "entity_service.add_item(secondary_data)"
+            ],
+            "transition_type": "automatic",
+            "depends_on": ["RAW_DATA"]
+          },
+          {
+            "name": "add_report",
+            "description": "Generate and store a report from the aggregated data.",
+            "secondary_entities_to_consider": ["REPORT"],
+            "actions_to_consider": [
+              "get_report_from_trino(user_requirement)",
+              "entity_service.add_item(raw_data)"
+            ],
+            "transition_type": "manual",
+            "depends_on": ["RAW_DATA"]
+          }
+        ]
+      },
+      "DATA": {
+        "type": [
+          {
+            "RAW_DATA": {
+              "type": [
+                {
+                  "PULL_BASED_RAW_DATA": {
+                    "type": [
+                      {
+                        "EXTERNAL_SOURCES_PULL_BASED_RAW_DATA": {},
+                        "WEB_SCRAPING_PULL_BASED_RAW_DATA": {},
+                        "TRANSACTIONAL_PULL_BASED_RAW_DATA": {}
+                      }
+                    ]
+                  },
+                  "PUSH_BASED_RAW_DATA": {
+                    "type": [
+                      {
+                        "EXTERNAL_SOURCES_PUSH_BASED_RAW_DATA": {},
+                        "WEB_SCRAPING_PUSH_BASED_RAW_DATA": {},
+                        "TRANSACTIONAL_PUSH_BASED_RAW_DATA": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "source": {
+                "ENTITY_EVENT": {
+                  "depends_on": ["JOB", "DATA entity"]
+                }
+              },
+              "example_transitions": [
+                "Transitions for RAW_DATA occur as part of JOB workflows, initiating data processing."
+              ]
+            },
+            "SECONDARY_DATA": {
+              "type": [
+                {
+                  "TRANSFORMED_SECONDARY_DATA": {},
+                  "ENRICHED_SECONDARY_DATA": {},
+                  "AGGREGATED_SECONDARY_DATA": {}
+                }
+              ],
+              "source": {
+                "ENTITY_EVENT": {
+                  "depends_on": "JOB or any other entity"
+                }
+              },
+              "example_transitions": [
+                "SECONDARY_DATA transitions result from JOB workflows (transformation, enrichment, aggregation)."
+              ]
+            }
+          }
+        ]
+      },
+      "UTIL": {
+        "source": {
+          "API_REQUEST": {},
+          "SCHEDULED": {},
+          "ENTITY_EVENT": {}
+        }
+      },
+      "CONFIG": {
+        "source": {
+          "API_REQUEST": {}
+        }
+      },
+      "BUSINESS_ENTITY": {
+        "source": {
+          "API_REQUEST": {},
+          "ENTITY_EVENT": {}
+        },
+        "example_transitions": [
+          "Transitions depend on the user’s specific business logic."
+        ]
+      }
+    }
+  }
+}
+Entities and Their Roles:
 
-Job Entities (JOB):
-Description: Represent scheduled or ad-hoc tasks that initiate workflows, focusing on processes rather than specific data.
-Workflow Interaction: Can be scheduled or triggered via API calls, serving as entry points for processes like data ingestion, analysis, or transformation.
+Raw Data Entities (RAW_DATA)
 
-Workflows and State Machines:
-Workflows in Cyoda are modeled as state machines, comprising states and transitions that define the lifecycle of an entity.
+Description: Store unprocessed data obtained from various inputs (e.g., external APIs, user submissions, or web scraping).
+Lifecycle in Workflow: Creation or updates to these entities trigger the associated JOB workflows to ingest and process this data.
+Derived Data Entities (SECONDARY_DATA)
 
-States: Represent the status of an entity at a specific point in its lifecycle.
+Description: Contain transformed or enriched data derived from RAW_DATA through JOB workflows. They often have different schemas or structures than the original RAW_DATA.
+Lifecycle in Workflow: Serve as intermediate outputs from workflows. Changes in SECONDARY_DATA can trigger further processing steps such as enrichment, aggregation, and eventually reporting.
+Job Entities (JOB)
 
-Transitions: Define how an entity moves from one state to another based on specific criteria or events.
+Description: Represent the execution of processes rather than data. They initiate and manage workflows that act on RAW_DATA and produce SECONDARY_DATA.
+Lifecycle in Workflow: Triggered by API calls, schedules, or entity events, JOB entities orchestrate the ingestion, transformation, enrichment, aggregation, and reporting processes.
+Workflows as State Machines:
 
-Components of a Transition:
-Start State: The current state of the entity before the transition.
-End State: The new state of the entity after the transition.
-Criteria: Conditions or rules that must be met for the transition to occur.
-Processes: Functions or actions executed during the transition.
+States: Each entity’s status at a given time is captured as a “state,” reflecting its current stage in the workflow.
+Transitions: Define how an entity moves from one state to another. In JOB workflows, transitions like ingest_data, transform_data, enrich_data, and aggregate_data are automated steps that run when conditions are met. Others, like add_report, may require manual triggers or additional data.
+Types of Transitions:
 
-Transition Types:
-Automatic Transitions: Occur when predefined criteria are met without external intervention.
-Manual Transitions: Require external input or actions (e.g., user interaction which leads to entity update) to proceed.
-
+Automatic Transitions: Execute when the required conditions are fulfilled without any external input, advancing the entity’s state automatically.
+Manual Transitions: Require user intervention or an external call to proceed.
 Processes and Server-Side Functions:
-Processes are integral to transitions and represent the actions taken when a transition occurs.
 
-Processes:
-Attached to transitions and executed when the transition is launched.
-Can transform the entity, perform validations, or interact with external systems.
+Processes: Attached to transitions, these represent the logic performed during the state change. For example, transform_data() is a process that uses entity_service functions to manipulate data.
 
 Server-Side Functions:
-Provision: Must be provided by the developer (i.e. AI generated). Function name should equal the process name. Should be in python.
-Execution: Run in an isolated, stateless environment on the server (similar to AWS Lambda functions).
-Arguments:
-meta: Metadata about the event or context.
-data: The entity involved in the workflow.
-Behavior: Can modify the entity, and the updated entity is then used in subsequent workflow transitions. Can get another entity data as well as add/update/delete another entity.
 
+Provisioning: Developers provide functions that implement the logic referenced by transitions. Each function’s name should match the process name and must be in Python.
+Execution: Functions run in a stateless environment. They receive metadata and entity data as arguments and can update entities, fetch additional data, and store results.
+Side Effects: Updated entities are persisted and subsequently used in downstream transitions.
+Event-Driven Architecture:
 
-Event-Driven Architecture
-Cyoda employs an event-driven architecture where workflows are activated by entities events.
+Event Emission: Events occur when entities are created, modified, or removed.
+Event Handling: These events trigger or advance workflows, moving entities through their defined transitions.
+Workflow Persistence and Recovery:
 
-Event Emission: Events are emitted upon entities creation, modification, or deletion.
+Persisting state within each entity allows for:
+Scalability: Distributing workload across multiple instances.
+Auditability: Keeping a historical record of transitions for review and debugging.
 
-Event Handling: Workflows listen for these events and initiate or progress accordingly.
-
-
-Workflow Persistence and Recovery
-Scalability: Persisting workflow states within entities allows for distribution across multiple instances, promoting horizontal scalability.
-Auditability: A record of state transitions within entities facilitates tracking and auditing of the entity's lifecycle.
-
-Error Handling and Compensation
-Cyoda incorporates mechanisms to handle errors gracefully:
-Compensation Actions: Define steps to undo partial changes or maintain consistency in case of failures.
-
-Scalability and Resilience
-Stateless Functions: Process functions are stateless, enabling horizontal scaling across multiple servers or instances.
-
-Distributed Processing: Workflows and event handling can be distributed to handle high throughput.
-
-
-Design Considerations
-Entity Types and Entity Events
-Entity Types: [RAW_DATA, DERIVED_DATA, JOB]
-
-Event triggers:
-
-Define how and when workflows are initiated.
-
-Examples:
-
-SCHEDULER: Triggers workflows at scheduled intervals.
-
-API_REQUEST: Initiates workflows via API calls.
-
-FORM_SUBMISSION: Starts workflows upon form submissions.
-
-FILE_UPLOAD: Begins workflows when files are uploaded.
-
-EXTERNAL_DATA_SOURCE: Triggers workflows when data is pulled from external sources.
-
-ENTITY_UPDATE: Initiates workflows when an entity is added/updated by another entity or workflow.
-
-Dependencies:
-depends_on: Specifies dependent entities for workflows triggered by ENTITY_UPDATE.
-
-Immutable Schemas:
-Once an entity is saved, its schema is considered fixed for that version to maintain data integrity.
-
-Example Workflow Execution
-Scenario: Order Processing Workflow
-
-Entities:
-*Order (RAW_DATA)
-*Payment (DERIVED_DATA)
-*Shipment (DERIVED_DATA)
-
-Workflow States for Order Entity:
-
-*Order Placed
-*Payment Processed
-*Order Shipped
-*Order Completed
-
-Transitions:
-
-*From Order Placed to Payment Processed:
-  Type: Automatic Transition
-  Criteria: Payment confirmation received.
-  Processes:
-  ProcessPayment: Validates and processes payment details.
-
-*From Payment Processed to Order Shipped:
-  Type: Manual Transition
-  Criteria: Warehouse staff marks the order as shipped.
-  Processes:
-  InitiateShipment: Notifies the warehouse to prepare the order.
-
-*From Order Shipped to Order Completed:
-  Type: Automatic Transition
-  Criteria: Confirmation of delivery.
-  Processes:
-  FinalizeOrder: Updates order status and triggers customer notification.
 
  Required Output:
 
- Provide a design JSON in the following format:
+ Provide a Cyoda design JSON in the following format:
 
  json
 
- {
-   "entities": [
-     {
-       "entity_name": "example_name",
-       "entity_type": "RAW",
-       "entity_entry_point": "API_REQUEST",
-       "depends_on_entity": "raw_eample_entity"
-       "entity_workflow": {
-         "name": "workflow_name",
-         "class_name": "WorkflowClassName",
-         "transitions": [
-           {
-             "name": "transition_name",
-             "description": "Description of the transition",
-             "start_state": "Initial_state",
-             "start_state_description": "Description of the initial state",
-             "end_state": "Final_state",
-             "end_state_description": "Description of the final state",
-             "criteria": {
-               "name": "criteria_name",
-               "description": "Description of the criteria"
-             },
-             "process": {
-               "name": "process_name",#lowercase, underscore
-               "description": "Description of the process"
-               "adds_new_entites": "another_entity_name or None"
-             }
-           }
-           // Additional transitions as needed
-         ]
-       }
-     }
-     // Additional entities as needed
-   ]
- }
+{
+  "can_proceed": false,
+  "entities": [
+    {
+      "depends_on_entity": "None",
+      "entity_name": "data_ingestion_job",
+      "entity_source": "SCHEDULED",
+      "entity_type": "JOB",
+      "entity_workflow": {
+        "class_name": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+        "name": "data_ingestion_workflow",
+        "transitions": [
+          {
+            "criteria": {
+              "description": "Triggered by a scheduled job to ingest data.",
+              "name": "scheduled_ingestion"
+            },
+            "description": "Start the data ingestion process from the API.",
+            "end_state": "data_ingested",
+            "end_state_description": "Data has been successfully ingested.",
+            "name": "start_data_ingestion",
+            "process": {
+              "adds_new_entites": "raw_data_entity",
+              "description": "Process to ingest raw data from the specified API.",
+              "name": "ingest_raw_data"
+            },
+            "start_state": "None",
+            "start_state_description": "Initial state before data ingestion."
+          }
+        ]
+      }
+    },
+    {
+      "depends_on_entity": "data_ingestion_job",
+      "entity_name": "raw_data_entity",
+      "entity_source": "ENTITY_EVENT",
+      "entity_type": "EXTERNAL_SOURCES_PULL_BASED_RAW_DATA",
+      "entity_workflow": None
+      }
+      //other entities,
+  //entities names, processor names - should be all lowercase and underscore in order to match python style
+    }
+  ]
+}
 
- Read this instruction, tell that you read it and wait for new instructions
+
+Read this instruction, tell that you read it and wait for new instructions
 
 Example of server-side function file:
 ```python
