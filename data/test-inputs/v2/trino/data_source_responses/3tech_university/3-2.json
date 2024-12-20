@@ -1,0 +1,119 @@
+{
+  "educationalInstitution": {
+    "institutionId": "uni-005",
+    "instituteName": "Pioneering Arts College",
+    "establishedDate": 2000,
+    "campusAddress": {
+      "street": "123 Creative Way",
+      "town": "Imagination City",
+      "region": "CA",
+      "postalCode": "90003"
+    },
+    "academicDepartments": [
+      {
+        "deptIdentifier": "dept-007",
+        "deptTitle": "Visual Arts",
+        "deptChair": {
+          "teacherId": "fac-005",
+          "firstName": "Lila",
+          "lastName": "Mason",
+          "workEmail": "lila.mason@pioneeringarts.edu"
+        },
+        "programs": [
+          {
+            "programId": "prog-001",
+            "programTitle": "Introduction to Painting",
+            "creditHours": 2,
+            "participants": 25,
+            "programSchedule": {
+              "weekdays": ["Tuesday", "Thursday"],
+              "classTime": "1:00 PM - 3:00 PM",
+              "classRoom": "Studio A"
+            }
+          },
+          {
+            "programId": "prog-002",
+            "programTitle": "Sculpture Techniques",
+            "creditHours": 3,
+            "participants": 30,
+            "programSchedule": {
+              "weekdays": ["Monday", "Wednesday"],
+              "classTime": "9:00 AM - 12:00 PM",
+              "classRoom": "Studio B"
+            }
+          }
+        ]
+      },
+      {
+        "deptIdentifier": "dept-008",
+        "deptTitle": "Music Performance",
+        "deptChair": {
+          "teacherId": "fac-006",
+          "firstName": "Ethan",
+          "lastName": "Rivera",
+          "workEmail": "ethan.rivera@pioneeringarts.edu"
+        },
+        "programs": [
+          {
+            "programId": "prog-003",
+            "programTitle": "Basic Guitar Skills",
+            "creditHours": 1,
+            "participants": 20,
+            "programSchedule": {
+              "weekdays": ["Friday"],
+              "classTime": "4:00 PM - 5:30 PM",
+              "classRoom": "Music Hall"
+            }
+          },
+          {
+            "programId": "prog-004",
+            "programTitle": "Advanced Vocal Techniques",
+            "creditHours": 3,
+            "participants": 15,
+            "programSchedule": {
+              "weekdays": ["Monday", "Wednesday"],
+              "classTime": "6:00 PM - 8:00 PM",
+              "classRoom": "Vocal Studio"
+            }
+          }
+        ]
+      }
+    ],
+    "academicPersonnel": [
+      {
+        "teacherId": "fac-005",
+        "completeName": "Lila Mason",
+        "deptTitle": "Visual Arts",
+        "workEmail": "lila.mason@pioneeringarts.edu",
+        "expertise": ["Color Theory", "Art History"]
+      },
+      {
+        "teacherId": "fac-006",
+        "completeName": "Ethan Rivera",
+        "deptTitle": "Music Performance",
+        "workEmail": "ethan.rivera@pioneeringarts.edu",
+        "expertise": ["Music Composition", "Stage Presence"]
+      }
+    ],
+    "learners": [
+      {
+        "learnerId": "stud-005",
+        "givenName": "Isabella",
+        "surname": "Scott",
+        "fieldOfStudy": "Visual Arts",
+        "startYear": 2021,
+        "gradeAverage": 3.6,
+        "assessedPrograms": ["prog-001", "prog-002"]
+      },
+      {
+        "learnerId": "stud-006",
+        "givenName": "Alexander",
+        "surname": "Cruz",
+        "fieldOfStudy": "Music Performance",
+        "startYear": 2022,
+        "gradeAverage": 3.9,
+        "assessedPrograms": ["prog-003"]
+      }
+    ]
+  }
+}

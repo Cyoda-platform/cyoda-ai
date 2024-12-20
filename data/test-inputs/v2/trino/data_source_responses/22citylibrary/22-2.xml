@@ -1,0 +1,33 @@
+<resourceCenter>
+    <code>lib-001</code>
+    <centerName>Central City Library</centerName>
+    <openingYear>1980</openingYear>
+    <operational>true</operational>
+    <addressInfo>
+        <localAddress>123 Library St.</localAddress>
+        <municipality>Metropolis</municipality>
+        <countryName>Fictionland</countryName>
+    </addressInfo>
+    <sections>
+        <section>
+            <sectionId>coll-001</sectionId>
+            <sectionTitle>Science Fiction</sectionTitle>
+            <status>true</status>
+        </section>
+    </sections>
+    <inventoryList>
+        <titleEntry>
+            <ident>book-001</ident>
+            <name>Dune</name>
+            <yearPublished>1965</yearPublished>
+            <copiesAvailable>3</copiesAvailable>
+        </titleEntry>
+    </inventoryList>
+    <participants>
+        <participant>
+            <idCode>member-001</idCode>
+            <personName>Alice Smith</personName>
+            <joining>2015-08-23</joining>
+        </participant>
+    </participants>
+</resourceCenter>

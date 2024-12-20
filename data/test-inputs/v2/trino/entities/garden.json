@@ -1,0 +1,59 @@
+{
+    "garden": {
+        "gardenId": "garden-001",
+        "name": "Sunny Garden",
+        "location": {
+            "city": "San Diego",
+            "state": "CA",
+            "country": "USA"
+        },
+        "plants": [
+            {
+                "plantId": "plant-001",
+                "commonName": "Rose",
+                "scientificName": "Rosa",
+                "plantType": "Flower",
+                "season": "Spring",
+                "wateringFrequency": "Weekly"
+            },
+            {
+                "plantId": "plant-002",
+                "commonName": "Tomato",
+                "scientificName": "Solanum lycopersicum",
+                "plantType": "Vegetable",
+                "season": "Summer",
+                "wateringFrequency": "Every other day"
+            }
+        ],
+        "gardeners": [
+            {
+                "gardenerId": "gardener-001",
+                "name": "John Smith",
+                "email": "john.smith@example.com",
+                "experienceYears": 5,
+                "assignedPlants": ["plant-001", "plant-002"]
+            },
+            {
+                "gardenerId": "gardener-002",
+                "name": "Emily Davis",
+                "email": "emily.davis@example.com",
+                "experienceYears": 3,
+                "assignedPlants": ["plant-001"]
+            }
+        ],
+        "maintenanceSchedule": [
+            {
+                "scheduleId": "schedule-001",
+                "task": "Fertilizing",
+                "frequency": "Monthly",
+                "nextDueDate": "2024-04-01"
+            },
+            {
+                "scheduleId": "schedule-002",
+                "task": "Pruning",
+                "frequency": "Every three months",
+                "nextDueDate": "2024-06-01"
+            }
+        ]
+    }
+}

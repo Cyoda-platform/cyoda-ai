@@ -1,0 +1,119 @@
+{
+  "higherEducationInstitution": {
+    "institutionId": "uni-002",
+    "institutionName": "Innovative Tech University",
+    "foundedYear": 1997,
+    "campus": {
+      "street": "789 College Blvd",
+      "town": "Progress City",
+      "state": "CA",
+      "postalCode": "90210"
+    },
+    "academicDepartments": [
+      {
+        "departmentIdentifier": "dept-003",
+        "departmentTitle": "Software Engineering",
+        "departmentHead": {
+          "facultyIdentifier": "fac-003",
+          "givenName": "Sophia",
+          "surname": "Adams",
+          "contactEmail": "sophia.adams@innovatetech.edu"
+        },
+        "offeredCourses": [
+          {
+            "courseIdentifier": "course-004",
+            "courseTitle": "Fundamentals of Coding",
+            "creditHours": 3,
+            "enrolledStudents": 130,
+            "classSchedule": {
+              "classDays": ["Monday", "Wednesday"],
+              "classTime": "9:00 AM - 10:30 AM",
+              "classLocation": "Building A Room 201"
+            }
+          },
+          {
+            "courseIdentifier": "course-005",
+            "courseTitle": "Algorithms and Complexity",
+            "creditHours": 4,
+            "enrolledStudents": 85,
+            "classSchedule": {
+              "classDays": ["Tuesday", "Thursday"],
+              "classTime": "12:00 PM - 1:30 PM",
+              "classLocation": "Building B Room 205"
+            }
+          }
+        ]
+      },
+      {
+        "departmentIdentifier": "dept-004",
+        "departmentTitle": "Management Studies",
+        "departmentHead": {
+          "facultyIdentifier": "fac-004",
+          "givenName": "Olivia",
+          "surname": "Brown",
+          "contactEmail": "olivia.brown@innovatetech.edu"
+        },
+        "offeredCourses": [
+          {
+            "courseIdentifier": "course-006",
+            "courseTitle": "Marketing Strategies",
+            "creditHours": 3,
+            "enrolledStudents": 120,
+            "classSchedule": {
+              "classDays": ["Monday", "Friday"],
+              "classTime": "3:00 PM - 4:30 PM",
+              "classLocation": "Building C Room 303"
+            }
+          },
+          {
+            "courseIdentifier": "course-007",
+            "courseTitle": "Project Management",
+            "creditHours": 3,
+            "enrolledStudents": 90,
+            "classSchedule": {
+              "classDays": ["Wednesday"],
+              "classTime": "4:00 PM - 6:00 PM",
+              "classLocation": "Building D Room 401"
+            }
+          }
+        ]
+      }
+    ],
+    "academicStaff": [
+      {
+        "facultyIdentifier": "fac-003",
+        "completeName": "Sophia Adams",
+        "department": "Software Engineering",
+        "contactEmail": "sophia.adams@innovatetech.edu",
+        "researchInterests": ["Artificial Intelligence", "Data Science"]
+      },
+      {
+        "facultyIdentifier": "fac-004",
+        "completeName": "Olivia Brown",
+        "department": "Management Studies",
+        "contactEmail": "olivia.brown@innovatetech.edu",
+        "researchInterests": ["Consumer Insights", "Brand Management"]
+      }
+    ],
+    "enrolledStudents": [
+      {
+        "studentIdentifier": "stud-003",
+        "givenName": "Emma",
+        "surname": "Johnson",
+        "fieldOfStudy": "Software Engineering",
+        "yearOfEnrollment": 2022,
+        "gradePointAverage": 3.9,
+        "registeredCourses": ["course-004", "course-005"]
+      },
+      {
+        "studentIdentifier": "stud-004",
+        "givenName": "Matthew",
+        "surname": "Garcia",
+        "fieldOfStudy": "Management Studies",
+        "yearOfEnrollment": 2023,
+        "gradePointAverage": 3.6,
+        "registeredCourses": ["course-006"]
+      }
+    ]
+  }
+}

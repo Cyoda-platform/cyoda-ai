@@ -1,0 +1,75 @@
+<event>
+    <id>conf-001</id>
+    <eventName>International Technology Summit</eventName>
+    <yearHeld>2024</yearHeld>
+    <themeFocus>Advancing Global Innovations</themeFocus>
+    <venueInfo>
+        <venueName>Tech Convention Center</venueName>
+        <municipality>San Francisco</municipality>
+        <nation>USA</nation>
+    </venueInfo>
+    <schedule>
+        <beginDate>2024-09-15</beginDate>
+        <endDate>2024-09-18</endDate>
+    </schedule>
+    <annual>true</annual>
+    <majorTopics>Artificial Intelligence</majorTopics>
+    <majorTopics>Cybersecurity</majorTopics>
+    <majorTopics>Blockchain</majorTopics>
+    <presentations>
+        <presentation>
+            <id>session-001</id>
+            <title>AI in Everyday Life</title>
+            <presenter>
+                <presenterId>speaker-001</presenterId>
+                <first>Alice</first>
+                <last>Nguyen</last>
+                <company>Tech Innovations Corp</company>
+            </presenter>
+            <startTime>2024-09-15T10:00</startTime>
+            <length>90 minutes</length>
+        </presentation>
+        <presentation>
+            <id>session-002</id>
+            <title>Cybersecurity Trends</title>
+            <presenter>
+                <presenterId>speaker-002</presenterId>
+                <first>Bob</first>
+                <last>Khan</last>
+                <company>CyberSafe Ltd.</company>
+            </presenter>
+            <startTime>2024-09-15T14:00</startTime>
+            <length>60 minutes</length>
+        </presentation>
+    </presentations>
+    <participants>
+        <participant>
+            <id>attendee-001</id>
+            <fullName>John Doe</fullName>
+            <contactEmail>john.doe@example.com</contactEmail>
+            <sessionsRegistered>
+                <sessionCode>session-001</sessionCode>
+            </sessionsRegistered>
+        </participant>
+        <participant>
+            <id>attendee-002</id>
+            <fullName>Jane Smith</fullName>
+            <contactEmail>jane.smith@example.com</contactEmail>
+            <sessionsRegistered>
+                <sessionCode>session-002</sessionCode>
+            </sessionsRegistered>
+        </participant>
+    </participants>
+    <supporters>
+        <supporter>
+            <supporterId>sponsor-001</supporterId>
+            <supporterName>Tech Corp</supporterName>
+            <level>Gold</level>
+        </supporter>
+        <supporter>
+            <supporterId>sponsor-002</supporterId>
+            <supporterName>Innovate Ltd</supporterName>
+            <level>Silver</level>
+        </supporter>
+    </supporters>
+</event>

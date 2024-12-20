@@ -1,0 +1,101 @@
+{
+  "ecommercePlatform": {
+    "platformId": "platform-001",
+    "name": "ShopEase",
+    "url": "https://www.shopease.com",
+    "established": "2020-06-15",
+    "isActive": true,
+    "categories": [
+      {
+        "categoryId": "cat-001",
+        "categoryName": "Electronics",
+        "products": [
+          {
+            "productId": "prod-001",
+            "productName": "Smartphone XYZ",
+            "price": 699.99,
+            "inStock": true,
+            "rating": 4.8,
+            "reviews": [
+              {
+                "reviewId": "rev-001",
+                "customerName": "Jane Doe",
+                "comment": "Amazing phone with great features!",
+                "starRating": 5,
+                "reviewDate": "2024-01-10"
+              },
+              {
+                "reviewId": "rev-002",
+                "customerName": "John Smith",
+                "comment": "Good value for money.",
+                "starRating": 4,
+                "reviewDate": "2024-01-12"
+              }
+            ]
+          },
+          {
+            "productId": "prod-002",
+            "productName": "Wireless Headphones",
+            "price": 199.99,
+            "inStock": false,
+            "rating": 4.5,
+            "reviews": []
+          }
+        ]
+      },
+      {
+        "categoryId": "cat-002",
+        "categoryName": "Home Appliances",
+        "products": [
+          {
+            "productId": "prod-003",
+            "productName": "Air Fryer Deluxe",
+            "price": 89.99,
+            "inStock": true,
+            "rating": 4.9,
+            "reviews": [
+              {
+                "reviewId": "rev-003",
+                "customerName": "Alice Brown",
+                "comment": "Cooks food perfectly!",
+                "starRating": 5,
+                "reviewDate": "2024-02-01"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "paymentMethods": [
+      {
+        "methodId": "pm-001",
+        "methodName": "Credit Card",
+        "isAvailable": true
+      },
+      {
+        "methodId": "pm-002",
+        "methodName": "PayPal",
+        "isAvailable": true
+      },
+      {
+        "methodId": "pm-003",
+        "methodName": "Gift Card",
+        "isAvailable": false
+      }
+    ],
+    "shippingOptions": [
+      {
+        "shippingMethodId": "ship-001",
+        "methodName": "Standard Shipping",
+        "cost": 5.99,
+        "estimatedDelivery": "5-7 business days"
+      },
+      {
+        "shippingMethodId": "ship-002",
+        "methodName": "Express Shipping",
+        "cost": 19.99,
+        "estimatedDelivery": "1-3 business days"
+      }
+    ]
+  }
+}

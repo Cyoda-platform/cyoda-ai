@@ -1,0 +1,59 @@
+<spaceMission>
+    <missionCode>exp-001</missionCode>
+    <title>Jupiter Exploration Initiative</title>
+    <scheduledLaunch>2025-03-14</scheduledLaunch>
+    <timeline>
+        <years>2</years>
+        <months>3</months>
+    </timeline>
+    <journeyTarget>
+        <primaryBody>Jupiter</primaryBody>
+        <moonTargets>
+            <targetName>Europa</targetName>
+            <targetName>Ganymede</targetName>
+        </moonTargets>
+    </journeyTarget>
+    <humanResources>
+        <individual>
+            <resourceId>crew-001</resourceId>
+            <assignment>Commander</assignment>
+            <personalDetails>
+                <first>Sarah</first>
+                <last>Connor</last>
+            </personalDetails>
+            <nationality>USA</nationality>
+            <background>Experienced in Astrophysics with 15 years service</background>
+        </individual>
+    </humanResources>
+    <spacecraft>
+        <craftId>ship-001</craftId>
+        <craftName>Orion Voyager</craftName>
+        <constructedBy>SpaceTech Industries</constructedBy>
+        <reserveCapacity>500000</reserveCapacity>
+        <systemDetails>Advanced Oxygen Recycling</systemDetails>
+    </spacecraft>
+    <scienceTasks>
+        <task>
+            <taskId>exp-101</taskId>
+            <taskTitle>Microgravity Effects on Plant Growth</taskTitle>
+            <headResearcher>Dr. Laura Croft</headResearcher>
+            <duration>6 months</duration>
+            <additionalFunds>100000</additionalFunds>
+        </task>
+    </scienceTasks>
+    <partnerships>
+        <partner>
+            <partnerCode>sponsor-101</partnerCode>
+            <partnerName>Galactic Explorers Association</partnerName>
+            <contribution>5000000</contribution>
+        </partner>
+        <partner>
+            <partnerCode>sponsor-102</partnerCode>
+            <partnerName>Cosmic Innovations Inc.</partnerName>
+            <contributionDetails>
+                <cash>3000000</cash>
+                <equipmentValue>500000</equipmentValue>
+            </contributionDetails>
+        </partner>
+    </partnerships>
+</spaceMission>

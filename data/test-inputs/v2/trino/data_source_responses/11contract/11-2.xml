@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContractSystem>
+  <Agreements>
+    <Agreement>
+      <agreementID>AG001</agreementID>
+      <agreementName>Software Development Service Agreement</agreementName>
+      <effectiveDate>2024-01-01</effectiveDate>
+      <expiryDate>2025-01-01</expiryDate>
+      <agreementStatus>active</agreementStatus>
+      <Parties>
+        <Party>
+          <partyID>PTY001</partyID>
+          <partyRole>Client</partyRole>
+          <partyName>Tech Innovations LLC</partyName>
+          <email>contact@techinnovations.com</email>
+          <phone>+1234567890</phone>
+        </Party>
+        <Party>
+          <partyID>PTY002</partyID>
+          <partyRole>Vendor</partyRole>
+          <partyName>Develop It Inc.</partyName>
+          <email>info@developit.com</email>
+          <phone>+1234567889</phone>
+          <address>123 Main St, Anytown, CA 91234</address>
+        </Party>
+      </Parties>
+      <Terms>
+        <paymentDetails>
+          <totalValue currency="USD">50000</totalValue>
+          <paymentSchedule>50% upfront, 50% on completion</paymentSchedule>
+        </paymentDetails>
+        <confidentiality>yes</confidentiality>
+        <deliverables>
+          <deliverable>Project Plan</deliverable>
+          <deliverable>Source Code</deliverable>
+          <deliverable>User Manual</deliverable>
+        </deliverables>
+      </Terms>
+      <Signatures>
+        <Signature>
+          <signatureID>SIG001</signatureID>
+          <partyID>PTY001</partyID>
+          <signedDate>2024-01-01</signedDate>
+          <signerName>Alice Brown</signerName>
+        </Signature>
+        <Signature>
+          <signatureID>SIG002</signatureID>
+          <partyID>PTY002</partyID>
+          <signedDate>2024-01-01</signedDate>
+          <signerName>John Smith</signerName>
+        </Signature>
+      </Signatures>
+    </Agreement>
+    <Agreement>
+      <agreementID>AG002</agreementID>
+      <agreementName>NDA</agreementName>
+      <effectiveDate>2024-02-01</effectiveDate>
+      <agreementStatus>pending</agreementStatus>
+      <Parties>
+        <Party>
+          <partyID>PTY003</partyID>
+          <partyRole>Disclosing Party</partyRole>
+          <partyName>Global Solutions Inc.</partyName>
+          <email>info@globalsolutions.com</email>
+          <phone>+1234567788</phone>
+        </Party>
+        <Party>
+          <partyID>PTY004</partyID>
+          <partyRole>Recipient</partyRole>
+          <partyName>Innovative Tech Corp.</partyName>
+          <email>contact@innovativetech.com</email>
+          <phone>+1234567777</phone>
+        </Party>
+      </Parties>
+      <Terms>
+        <termLength>2 years</termLength>
+        <confidentiality>yes</confidentiality>
+        <scope>All proprietary information shared in discussions.</scope>
+        <governingLaw>California</governingLaw>
+      </Terms>
+      <Signatures/>
+    </Agreement>
+  </Agreements>
+</ContractSystem>

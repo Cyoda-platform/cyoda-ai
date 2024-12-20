@@ -1,0 +1,57 @@
+{
+    "fitnessCenter": {
+        "centerId": "fit-001",
+        "name": "Dynamic Fitness",
+        "location": {
+            "city": "Miami",
+            "state": "FL",
+            "country": "USA"
+        },
+        "members": [
+            {
+                "memberId": "mem-001",
+                "fullName": "Sarah Connor",
+                "email": "sarah.connor@example.com",
+                "dateJoined": "2023-01-10",
+                "membershipType": "Premium",
+                "personalTrainer": {
+                    "trainerId": "train-001",
+                    "trainerName": "John Doe"
+                }
+            },
+            {
+                "memberId": "mem-002",
+                "fullName": "James Smith",
+                "email": "james.smith@example.com",
+                "dateJoined": "2023-02-15",
+                "membershipType": "Basic",
+                "personalTrainer": {
+                    "trainerId": "train-002",
+                    "trainerName": "Anna Taylor"
+                }
+            }
+        ],
+        "classes": [
+            {
+                "classId": "class-001",
+                "className": "Yoga",
+                "duration": "60 minutes",
+                "schedule": "Monday 6:00 PM",
+                "instructor": {
+                    "instructorId": "instr-001",
+                    "instructorName": "Emily Clarke"
+                }
+            },
+            {
+                "classId": "class-002",
+                "className": "Pilates",
+                "duration": "45 minutes",
+                "schedule": "Wednesday 5:00 PM",
+                "instructor": {
+                    "instructorId": "instr-002",
+                    "instructorName": "Sarah Davis"
+                }
+            }
+        ]
+    }
+}

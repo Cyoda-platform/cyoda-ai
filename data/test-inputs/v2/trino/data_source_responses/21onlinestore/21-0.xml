@@ -1,0 +1,95 @@
+<onlineStore>
+    <storeId>store-001</storeId>
+    <name>Tech Haven</name>
+    <establishedYear>2015</establishedYear>
+    <isActive>true</isActive>
+    <location>
+        <headquarters>San Francisco, CA</headquarters>
+        <country>USA</country>
+    </location>
+    <productCategories>
+        <category>
+            <categoryId>cat-001</categoryId>
+            <categoryName>Electronics</categoryName>
+            <description>Devices and gadgets</description>
+            <isActive>true</isActive>
+        </category>
+        <category>
+            <categoryId>cat-002</categoryId>
+            <categoryName>Home Appliances</categoryName>
+            <description>Appliances for home use</description>
+            <isActive>true</isActive>
+        </category>
+    </productCategories>
+    <products>
+        <product>
+            <productId>product-001</productId>
+            <name>Smartphone X</name>
+            <category>cat-001</category>
+            <price>699.99</price>
+            <specifications>
+                <brand>BrandX</brand>
+                <model>X-2024</model>
+                <features>
+                    <feature>6-inch OLED Display</feature>
+                    <feature>5G Support</feature>
+                    <feature>Triple Camera System</feature>
+                </features>
+            </specifications>
+            <reviews>
+                <review>
+                    <reviewId>review-001</reviewId>
+                    <user>GadgetGuru</user>
+                    <rating>4.5</rating>
+                    <comment>Superb performance.</comment>
+                </review>
+                <review>
+                    <reviewId>review-002</reviewId>
+                    <user>TechEnthusiast</user>
+                    <rating>4.0</rating>
+                    <comment>Great value for money.</comment>
+                </review>
+            </reviews>
+        </product>
+        <product>
+            <productId>product-002</productId>
+            <name>Microwave Oven Z</name>
+            <category>cat-002</category>
+            <price>129.99</price>
+            <specifications>
+                <brand>HeatMaster</brand>
+                <model>Z203</model>
+                <features>
+                    <feature>800W Power</feature>
+                    <feature>20L Capacity</feature>
+                    <feature>Digital Display</feature>
+                </features>
+            </specifications>
+            <reviews/>
+        </product>
+    </products>
+    <customers>
+        <customer>
+            <customerId>customer-001</customerId>
+            <username>johnDoe</username>
+            <email>john.doe@example.com</email>
+            <orderHistory>
+                <order>
+                    <orderId>order-001</orderId>
+                    <orderDate>2022-12-10</orderDate>
+                    <products>
+                        <productId>product-001</productId>
+                    </products>
+                </order>
+            </orderHistory>
+            <accountCreated>2020-04-05</accountCreated>
+        </customer>
+        <customer>
+            <customerId>customer-002</customerId>
+            <username>janeSmith</username>
+            <email>jane.smith@example.com</email>
+            <orderHistory/>
+            <accountCreated>2023-05-19</accountCreated>
+        </customer>
+    </customers>
+</onlineStore>

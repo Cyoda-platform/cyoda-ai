@@ -1,0 +1,115 @@
+{
+  "ecommercePlatform": {
+    "platformIdentifier": "platform-010",
+    "storeName": "DealFinder",
+    "websiteUrl": "https://www.dealfinder.com",
+    "founded": "2021-09-01",
+    "isOperational": true,
+    "productCategories": [
+      {
+        "categoryIdentifier": "cat-005",
+        "title": "Gadgets",
+        "items": [
+          {
+            "itemIdentifier": "prod-001",
+            "itemTitle": "Smartwatch Series A",
+            "cost": 249.99,
+            "available": true,
+            "averageRating": 4.6,
+            "customerReviews": [
+              {
+                "reviewIdentifier": "rev-001",
+                "reviewerName": "Emily Stone",
+                "feedback": "Great smartwatch with fantastic health features!",
+                "ratingStars": 5,
+                "dateOfReview": "2024-01-15"
+              },
+              {
+                "reviewIdentifier": "rev-002",
+                "reviewerName": "David Lee",
+                "feedback": "Good product but could use more apps.",
+                "ratingStars": 4,
+                "dateOfReview": "2024-01-18"
+              }
+            ]
+          },
+          {
+            "itemIdentifier": "prod-002",
+            "itemTitle": "Noise Isolation Earbuds",
+            "cost": 139.99,
+            "available": false,
+            "averageRating": 4.3,
+            "customerReviews": []
+          }
+        ]
+      },
+      {
+        "categoryIdentifier": "cat-006",
+        "title": "Kitchen Essentials",
+        "items": [
+          {
+            "itemIdentifier": "prod-003",
+            "itemTitle": "Instant Pot Mini",
+            "cost": 79.99,
+            "available": true,
+            "averageRating": 4.8,
+            "customerReviews": [
+              {
+                "reviewIdentifier": "rev-003",
+                "reviewerName": "Linda Green",
+                "feedback": "Makes cooking so quick and easy!",
+                "ratingStars": 5,
+                "dateOfReview": "2024-02-05"
+              }
+            ]
+          },
+          {
+            "itemIdentifier": "prod-004",
+            "itemTitle": "Baking Set",
+            "cost": 29.99,
+            "available": true,
+            "averageRating": 4.5,
+            "customerReviews": []
+          }
+        ]
+      }
+    ],
+    "paymentOptions": [
+      {
+        "paymentMethodId": "pm-004",
+        "paymentType": "Debit Card",
+        "available": true
+      },
+      {
+        "paymentMethodId": "pm-005",
+        "paymentType": "Venmo",
+        "available": true
+      },
+      {
+        "paymentMethodId": "pm-006",
+        "paymentType": "Store Voucher",
+        "available": false
+      }
+    ],
+    "deliveryOptions": [
+      {
+        "deliveryMethodId": "ship-003",
+        "methodLabel": "Regular Delivery",
+        "charge": 4.99,
+        "expectedArrival": "3-5 business days"
+      },
+      {
+        "deliveryMethodId": "ship-004",
+        "methodLabel": "Next-Day Delivery",
+        "charge": 29.99,
+        "expectedArrival": "Next business day"
+      },
+      {
+        "deliveryMethodId": "ship-005",
+        "methodLabel": "Same-Day Pickup",
+        "charge": 0,
+        "expectedArrival": "Same day at store"
+      }
+    ]
+  }
+}

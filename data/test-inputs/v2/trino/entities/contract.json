@@ -1,0 +1,92 @@
+{
+  "contractManagementSystem": {
+    "contracts": [
+      {
+        "contractId": "contract-001",
+        "title": "Service Agreement for Software Development",
+        "startDate": "2024-01-01",
+        "endDate": "2025-01-01",
+        "status": "active",
+        "parties": [
+          {
+            "partyId": "party-001",
+            "partyType": "Client",
+            "name": "Tech Innovations LLC",
+            "contact": {
+              "email": "contact@techinnovations.com",
+              "phone": "+1234567890"
+            }
+          },
+          {
+            "partyId": "party-002",
+            "partyType": "Contractor",
+            "name": "Develop It Inc.",
+            "contact": {
+              "email": "info@developit.com",
+              "phone": "+1234567889"
+            }
+          }
+        ],
+        "terms": {
+          "paymentTerms": {
+            "amount": 50000,
+            "paymentSchedule": "50% upon signing, 50% upon completion"
+          },
+          "confidentiality": true,
+          "deliverables": [
+            "Project Plan",
+            "Source Code",
+            "User Documentation"
+          ]
+        },
+        "signatures": [
+          {
+            "signatureId": "sig-001",
+            "partyId": "party-001",
+            "signedDate": "2024-01-01",
+            "signerName": "Alice Brown"
+          },
+          {
+            "signatureId": "sig-002",
+            "partyId": "party-002",
+            "signedDate": "2024-01-01",
+            "signerName": "John Smith"
+          }
+        ]
+      },
+      {
+        "contractId": "contract-002",
+        "title": "Non-Disclosure Agreement",
+        "startDate": "2024-02-01",
+        "endDate": null,
+        "status": "pending",
+        "parties": [
+          {
+            "partyId": "party-003",
+            "partyType": "Disclosing Party",
+            "name": "Global Solutions Inc.",
+            "contact": {
+              "email": "info@globalsolutions.com",
+              "phone": "+1234567788"
+            }
+          },
+          {
+            "partyId": "party-004",
+            "partyType": "Receiving Party",
+            "name": "Innovative Tech Corp.",
+            "contact": {
+              "email": "contact@innovativetech.com",
+              "phone": "+1234567777"
+            }
+          }
+        ],
+        "terms": {
+          "duration": "2 years",
+          "confidentiality": true,
+          "scope": "All proprietary information shared during discussions."
+        },
+        "signatures": []
+      }
+    ]
+  }
+}

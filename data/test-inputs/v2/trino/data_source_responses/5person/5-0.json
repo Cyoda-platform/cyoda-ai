@@ -1,0 +1,44 @@
+{
+  "person": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "age": 30,
+    "isEmployed": true,
+    "dateOfBirth": "1994-05-15",
+    "hireDate": "2020-01-20",
+    "address": {
+      "street": "123 Elm St",
+      "city": "Anytown",
+      "state": "CA",
+      "zipCode": "90210"
+    },
+    "phoneNumbers": [
+      "+1234567890",
+      "+0987654321",
+      null
+    ],
+    "email": "john.doe@example.com",
+    "salary": 75000.50,
+    "skills": [
+      "JavaScript",
+      "Python",
+      "SQL",
+      null
+    ],
+    "projects": [
+      {
+        "projectId": "proj-001",
+        "projectName": "Web Development",
+        "durationMonths": 6,
+        "completionDate": "2021-06-30"
+      },
+      {
+        "projectId": "proj-002",
+        "projectName": "Mobile App",
+        "durationMonths": 3,
+        "completionDate": "2021-09-15"
+      }
+    ],
+    "spouse": null
+  }
+}

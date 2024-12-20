@@ -1,0 +1,55 @@
+<internationalSymposium>
+    <symposiumId>conf-001</symposiumId>
+    <titleText>International Technology Summit</titleText>
+    <organizationalYear>2024</organizationalYear>
+    <centralTheme>Advancing Global Innovations</centralTheme>
+    <locale>
+        <facility>Tech Convention Center</facility>
+        <urbanArea>San Francisco</urbanArea>
+        <region>USA</region>
+    </locale>
+    <timeframe>
+        <startPoint>2024-09-15</startPoint>
+        <finishPoint>2024-09-18</finishPoint>
+    </timeframe>
+    <recurrent>true</recurrent>
+    <discussionTopics>
+        <topic>Artificial Intelligence</topic>
+        <topic>Cybersecurity</topic>
+        <topic>Blockchain</topic>
+    </discussionTopics>
+    <programs>
+        <briefing>
+            <briefingId>session-001</briefingId>
+            <discussionTitle>AI in Everyday Life</discussionTitle>
+            <speakerContributor>
+                <contributorId>speaker-001</contributorId>
+                <foreName>Alice</foreName>
+                <surname>Nguyen</surname>
+                <organisation>Tech Innovations Corp</organisation>
+            </speakerContributor>
+            <sessionStart>2024-09-15T10:00</sessionStart>
+            <sessionDuration>90 minutes</sessionDuration>
+            <additionalNotes>
+                <note>AI impact on daily applications</note>
+            </additionalNotes>
+        </briefing>
+    </programs>
+    <registrants>
+        <individual>
+            <identifier>attendee-001</identifier>
+            <contactTitle>John Doe</contactTitle>
+            <emailAddress>john.doe@example.com</emailAddress>
+            <registeredBriefings>
+                <briefingId>session-001</briefingId>
+            </registeredBriefings>
+        </individual>
+    </registrants>
+    <financialSupport>
+        <backer>
+            <backerId>sponsor-001</backerId>
+            <backerName>Tech Corp</backerName>
+            <supportLevel>Gold</supportLevel>
+        </backer>
+    </financialSupport>
+</internationalSymposium>

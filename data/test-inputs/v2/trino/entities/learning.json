@@ -1,0 +1,60 @@
+{
+    "learningPlatform": {
+        "platformId": "platform-001",
+        "name": "SkillUp Academy",
+        "location": {
+            "country": "USA",
+            "city": "San Francisco"
+        },
+        "courses": [
+            {
+                "courseId": "course-001",
+                "title": "Introduction to Programming",
+                "instructor": {
+                    "instructorId": "instr-001",
+                    "name": "Alice Johnson",
+                    "experienceYears": 10,
+                    "email": "alice.johnson@skillup.com"
+                },
+                "duration": "8 weeks",
+                "price": 199.99,
+                "enrolledStudents": 120
+            },
+            {
+                "courseId": "course-002",
+                "title": "Data Science Fundamentals",
+                "instructor": {
+                    "instructorId": "instr-002",
+                    "name": "Bob Smith",
+                    "experienceYears": 5,
+                    "email": "bob.smith@skillup.com"
+                },
+                "duration": "10 weeks",
+                "price": 249.99,
+                "enrolledStudents": 75
+            }
+        ],
+        "students": [
+            {
+                "studentId": "student-001",
+                "name": "John Doe",
+                "email": "john.doe@student.skillup.com",
+                "enrolledCourses": ["course-001", "course-002"]
+            },
+            {
+                "studentId": "student-002",
+                "name": "Jane Doe",
+                "email": "jane.doe@student.skillup.com",
+                "enrolledCourses": ["course-002"]
+            }
+        ],
+        "subscriptions": [
+            {
+                "subscriptionId": "sub-001",
+                "type": "Monthly",
+                "price": 29.99,
+                "features": ["Access to all courses", "Weekly webinars"]
+            }
+        ]
+    }
+}

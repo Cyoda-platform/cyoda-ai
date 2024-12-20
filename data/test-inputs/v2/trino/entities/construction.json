@@ -1,0 +1,80 @@
+{
+  "tenderManagement": {
+    "tenders": [
+      {
+        "tenderId": "tender-001",
+        "title": "Construction of New Highway",
+        "description": "Tender for the construction of a new highway connecting City A to City B.",
+        "issueDate": "2024-01-10",
+        "submissionDeadline": "2024-02-15",
+        "budget": 3000000,
+        "status": "open",
+        "documents": [
+          {
+            "documentId": "doc-001",
+            "documentType": "Specification",
+            "filePath": "/documents/specification.pdf"
+          },
+          {
+            "documentId": "doc-002",
+            "documentType": "Blueprint",
+            "filePath": "/documents/blueprint.pdf"
+          }
+        ],
+        "contractors": [
+          {
+            "contractorId": "contractor-001",
+            "companyName": "ABC Construction Ltd.",
+            "contactDetails": {
+              "contactPerson": "John Doe",
+              "email": "john.doe@abcconstruction.com",
+              "phone": "+1234567890"
+            },
+            "bids": [
+              {
+                "bidId": "bid-001",
+                "amount": 2800000,
+                "submissionDate": "2024-02-10",
+                "status": "submitted"
+              }
+            ]
+          },
+          {
+            "contractorId": "contractor-002",
+            "companyName": "XYZ Builders",
+            "contactDetails": {
+              "contactPerson": "Jane Smith",
+              "email": "jane.smith@xyzbuilders.com",
+              "phone": "+0987654321"
+            },
+            "bids": [
+              {
+                "bidId": "bid-002",
+                "amount": 2900000,
+                "submissionDate": "2024-02-13",
+                "status": "submitted"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tenderId": "tender-002",
+        "title": "Renovation of City Park",
+        "description": "Tender for the renovation and landscaping of City Park.",
+        "issueDate": "2024-01-20",
+        "submissionDeadline": "2024-03-01",
+        "budget": 500000,
+        "status": "open",
+        "documents": [
+          {
+            "documentId": "doc-003",
+            "documentType": "Project Overview",
+            "filePath": "/documents/project_overview.pdf"
+          }
+        ],
+        "contractors": []
+      }
+    ]
+  }
+}

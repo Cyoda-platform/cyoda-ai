@@ -1,0 +1,123 @@
+{
+  "streamingService": {
+    "serviceId": "service-001",
+    "name": "CineMagic",
+    "majorLaunchYear": 2020,
+    "isActive": true,
+    "location": {
+      "headquarters": "Los Angeles, CA",
+      "country": "USA"
+    },
+    "subscriptionPlans": [
+      {
+        "planId": "plan-001",
+        "planName": "Basic",
+        "monthlyFee": 9.99,
+        "resolution": "720p",
+        "features": [
+          "Limited Ads",
+          "Access to Standard Library"
+        ],
+        "isActive": true
+      },
+      {
+        "planId": "plan-002",
+        "planName": "Premium",
+        "monthlyFee": 14.99,
+        "resolution": "1080p",
+        "features": [
+          "No Ads",
+          "Access to Premium Library",
+          "Offline Viewing"
+        ],
+        "isActive": true
+      }
+    ],
+    "movies": [
+      {
+        "movieId": "movie-001",
+        "title": "Inception",
+        "releaseYear": 2010,
+        "genre": ["Sci-Fi", "Action"],
+        "durationMinutes": 148,
+        "rating": 8.8,
+        "director": {
+          "firstName": "Christopher",
+          "lastName": "Nolan"
+        },
+        "cast": [
+          {
+            "actorId": "actor-001",
+            "fullName": "Leonardo DiCaprio",
+            "role": "Dom Cobb"
+          },
+          {
+            "actorId": "actor-002",
+            "fullName": "Joseph Gordon-Levitt",
+            "role": "Arthur"
+          }
+        ],
+        "reviews": [
+          {
+            "reviewId": "rev-001",
+            "user": "User123",
+            "rating": 5,
+            "comment": "A masterpiece!"
+          },
+          {
+            "reviewId": "rev-002",
+            "user": "FilmBuff88",
+            "rating": 4,
+            "comment": "Visually stunning."
+          }
+        ]
+      },
+      {
+        "movieId": "movie-002",
+        "title": "The Matrix",
+        "releaseYear": 1999,
+        "genre": ["Sci-Fi", "Action"],
+        "durationMinutes": 136,
+        "rating": 8.7,
+        "director": {
+          "firstName": "Lana",
+          "lastName": "Wachowski"
+        },
+        "cast": [
+          {
+            "actorId": "actor-003",
+            "fullName": "Keanu Reeves",
+            "role": "Neo"
+          },
+          {
+            "actorId": "actor-004",
+            "fullName": "Laurence Fishburne",
+            "role": "Morpheus"
+          }
+        ],
+        "reviews": []
+      }
+    ],
+    "users": [
+      {
+        "userId": "user-001",
+        "username": "movieFanatic",
+        "email": "fanatic@example.com",
+        "subscriptionPlan": "plan-002",
+        "watchHistory": [
+          "movie-001",
+          "movie-002"
+        ],
+        "accountCreated": "2021-07-15"
+      },
+      {
+        "userId": "user-002",
+        "username": "casualViewer",
+        "email": "casual.viewer@example.com",
+        "subscriptionPlan": "plan-001",
+        "watchHistory": [],
+        "accountCreated": "2023-01-22"
+      }
+    ]
+  }
+}

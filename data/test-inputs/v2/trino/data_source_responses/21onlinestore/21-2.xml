@@ -1,0 +1,66 @@
+<marketplace>
+    <identifier>store-001</identifier>
+    <brandName>Tech Haven</brandName>
+    <yearFounded>2015</yearFounded>
+    <activeStatus>true</activeStatus>
+    <headquarterInfo>
+        <city>San Francisco, CA</city>
+        <nation>USA</nation>
+    </headquarterInfo>
+    <productLines>
+        <line>
+            <code>cat-001</code>
+            <title>Electronics</title>
+            <info>Devices and gadgets</info>
+        </line>
+        <line>
+            <code>cat-002</code>
+            <title>Home Appliances</title>
+            <info>Appliances for home use</info>
+        </line>
+    </productLines>
+    <inventory>
+        <goods>
+            <productID>product-001</productID>
+            <label>Smartphone X</label>
+            <categoryCode>cat-001</categoryCode>
+            <value>699.99</value>
+            <attributes>
+                <featureName>BrandX</featureName>
+                <variant>X-2024</variant>
+                <characteristics>
+                    <characteristic>6-inch OLED Display</characteristic>
+                    <characteristic>5G Support</characteristic>
+                    <characteristic>Triple Camera System</characteristic>
+                </characteristics>
+            </attributes>
+        </goods>
+        <goods>
+            <productID>product-002</productID>
+            <label>Microwave Oven Z</label>
+            <categoryCode>cat-002</categoryCode>
+            <value>129.99</value>
+            <attributes>
+                <featureName>HeatMaster</featureName>
+                <variant>Z203</variant>
+                <characteristics>
+                    <characteristic>800W Power</characteristic>
+                    <characteristic>20L Capacity</characteristic>
+                    <characteristic>Digital Display</characteristic>
+                </characteristics>
+            </attributes>
+        </goods>
+    </inventory>
+    <clientele>
+        <person>
+            <user_id>customer-001</user_id>
+            <nickname>johnDoe</nickname>
+            <emailAddress>john.doe@example.com</emailAddress>
+        </person>
+        <person>
+            <user_id>customer-002</user_id>
+            <nickname>janeSmith</nickname>
+            <emailAddress>jane.smith@example.com</emailAddress>
+        </person>
+    </clientele>
+</marketplace>

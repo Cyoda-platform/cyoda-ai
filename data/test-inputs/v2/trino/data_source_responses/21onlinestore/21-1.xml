@@ -1,0 +1,95 @@
+<shop>
+    <id>store-001</id>
+    <storeName>Tech Haven</storeName>
+    <foundedYear>2015</foundedYear>
+    <status>active</status>
+    <address>
+        <hq>San Francisco, CA</hq>
+        <nation>USA</nation>
+    </address>
+    <categories>
+        <type>
+            <id>cat-001</id>
+            <name>Electronics</name>
+            <details>Devices and gadgets</details>
+            <status>active</status>
+        </type>
+        <type>
+            <id>cat-002</id>
+            <name>Home Appliances</name>
+            <details>Appliances for home use</details>
+            <status>active</status>
+        </type>
+    </categories>
+    <items>
+        <item>
+            <id>product-001</id>
+            <productName>Smartphone X</productName>
+            <categoryRef>cat-001</categoryRef>
+            <cost>699.99</cost>
+            <specs>
+                <brandName>BrandX</brandName>
+                <version>X-2024</version>
+                <attributes>
+                    <attribute>6-inch OLED Display</attribute>
+                    <attribute>5G Support</attribute>
+                    <attribute>Triple Camera System</attribute>
+                </attributes>
+            </specs>
+            <feedbacks>
+                <feedback>
+                    <reviewId>review-001</reviewId>
+                    <user>GadgetGuru</user>
+                    <stars>4.5</stars>
+                    <note>Superb performance.</note>
+                </feedback>
+                <feedback>
+                    <reviewId>review-002</reviewId>
+                    <user>TechEnthusiast</user>
+                    <stars>4.0</stars>
+                    <note>Great value for money.</note>
+                </feedback>
+            </feedbacks>
+        </item>
+        <item>
+            <id>product-002</id>
+            <productName>Microwave Oven Z</productName>
+            <categoryRef>cat-002</categoryRef>
+            <cost>129.99</cost>
+            <specs>
+                <brandName>HeatMaster</brandName>
+                <version>Z203</version>
+                <attributes>
+                    <attribute>800W Power</attribute>
+                    <attribute>20L Capacity</attribute>
+                    <attribute>Digital Display</attribute>
+                </attributes>
+            </specs>
+            <feedbacks/>
+        </item>
+    </items>
+    <clients>
+        <client>
+            <clientId>customer-001</clientId>
+            <handle>johnDoe</handle>
+            <contactEmail>john.doe@example.com</contactEmail>
+            <purchaseHistory>
+                <purchase>
+                    <purchaseId>order-001</purchaseId>
+                    <date>2022-12-10</date>
+                    <itemsPurchased>
+                        <itemId>product-001</itemId>
+                    </itemsPurchased>
+                </purchase>
+            </purchaseHistory>
+            <joinDate>2020-04-05</joinDate>
+        </client>
+        <client>
+            <clientId>customer-002</clientId>
+            <handle>janeSmith</handle>
+            <contactEmail>jane.smith@example.com</contactEmail>
+            <purchaseHistory/>
+            <joinDate>2023-05-19</joinDate>
+        </client>
+    </clients>
+</shop>

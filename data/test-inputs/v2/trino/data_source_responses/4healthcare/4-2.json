@@ -1,0 +1,131 @@
+{
+  "healthServiceOrganization": {
+    "organizationId": "health-004",
+    "organizationTitle": "Harmony Health Collective",
+    "inceptionYear": 2021,
+    "officeLocation": {
+      "streetAddress": "321 Care Blvd",
+      "municipality": "Calm Valley",
+      "province": "TX",
+      "zip": "75004"
+    },
+    "medicalUnits": [
+      {
+        "unitCode": "unit-005",
+        "unitName": "Cardiac Center",
+        "chiefDoctor": {
+          "physicianId": "phys-001",
+          "firstName": "Liam",
+          "lastName": "Parker",
+          "contactEmail": "liam.parker@harmonyhealth.com",
+          "phone": "+1234567891"
+        },
+        "team": [
+          {
+            "teamMemberId": "member-001",
+            "fullName": "James Smith",
+            "positionTitle": "Senior Cardiac Nurse",
+            "experience": 10,
+            "certifications": ["CCRN", "BLS Certification"]
+          },
+          {
+            "teamMemberId": "member-002",
+            "fullName": "Chris Johnson",
+            "positionTitle": "Diagnostic Technician",
+            "experience": 4,
+            "certifications": ["ECG Technician"]
+          }
+        ],
+        "offeredProcedures": [
+          {
+            "procedureCode": "proc-001",
+            "procedureName": "Comprehensive Cardiac Assessment",
+            "price": 250.00
+          },
+          {
+            "procedureCode": "proc-002",
+            "procedureName": "Holter Monitoring",
+            "price": 0.00
+          }
+        ]
+      },
+      {
+        "unitCode": "unit-006",
+        "unitName": "Child Health Services",
+        "chiefDoctor": {
+          "physicianId": "phys-002",
+          "firstName": "Olivia",
+          "lastName": "Robinson",
+          "contactEmail": null,
+          "phone": null
+        },
+        "team": [
+          {
+            "teamMemberId": "member-003",
+            "fullName": "Sophia Lee",
+            "positionTitle": "Child Health Specialist",
+            "experience": 7,
+            "certifications": ["Pediatric Nursing Certification"]
+          },
+          {
+            "teamMemberId": "member-004",
+            "fullName": "Noah Williams",
+            "positionTitle": "Child Psychologist",
+            "experience": 5,
+            "certifications": ["Licensed Psychologist"]
+          }
+        ],
+        "offeredProcedures": [
+          {
+            "procedureCode": "proc-003",
+            "procedureName": "Annual Pediatric Exam",
+            "price": 180.00
+          },
+          {
+            "procedureCode": "proc-004",
+            "procedureName": "Developmental Screening",
+            "price": 120.00
+          }
+        ]
+      }
+    ],
+    "individualClients": [
+      {
+        "clientId": "patient-001",
+        "firstName": "Jessica",
+        "lastName": "Taylor",
+        "age": 28,
+        "sex": "Female",
+        "healthRecords": ["Heart Murmur", "Anxiety"],
+        "medications": ["Beta Blockers"]
+      },
+      {
+        "clientId": "patient-002",
+        "firstName": "Ethan",
+        "lastName": "Clark",
+        "age": 50,
+        "sex": "Male",
+        "healthRecords": ["High Blood Pressure"],
+        "medications": []
+      },
+      {
+        "clientId": "patient-003",
+        "firstName": "Chloe",
+        "lastName": "Miller",
+        "age": 22,
+        "sex": "Female",
+        "healthRecords": ["Asthma"],
+        "medications": ["Inhaler"]
+      },
+      {
+        "clientId": "patient-004",
+        "firstName": "Julian",
+        "lastName": "Brown",
+        "age": 5,
+        "sex": "Male",
+        "healthRecords": ["Developmental Delays"],
+        "medications": []
+      }
+    ]
+  }
+}

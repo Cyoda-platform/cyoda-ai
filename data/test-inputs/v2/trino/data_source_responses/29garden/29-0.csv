@@ -1,0 +1,4 @@
+gardenId,name,city,state,country,plantId,commonName,scientificName,plantType,season,wateringFrequency,gardenerId,gardenerName,gardenerEmail,experienceYears,assignedPlants,scheduleId,task,frequency,nextDueDate
+garden-001,Sunny Garden,San Diego,CA,USA,plant-001,Rose,Rosa,Flower,Spring,Weekly,gardener-001,John Smith,john.smith@example.com,5,"plant-001, plant-002",schedule-001,Fertilizing,Monthly,2024-04-01
+garden-001,Sunny Garden,San Diego,CA,USA,plant-002,Tomato,Solanum lycopersicum,Vegetable,Summer,Every other day,gardener-001,John Smith,john.smith@example.com,5,"plant-001, plant-002",schedule-002,Pruning,Every three months,2024-06-01
+garden-001,Sunny Garden,San Diego,CA,USA,plant-001,Rose,Rosa,Flower,Spring,Weekly,gardener-002,Emily Davis,emily.davis@example.com,3,"plant-001",schedule-001,Fertilizing,Monthly,2024-04-01
