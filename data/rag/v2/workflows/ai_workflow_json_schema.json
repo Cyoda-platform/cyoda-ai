@@ -64,10 +64,13 @@
   ],
   "definitions": {
     "enums": {
-      "group_condition_operator": [
-        "OR",
-        "AND"
-      ],
+      "group_condition_operator": {
+        "type": "string",
+        "enum": [
+          "OR",
+          "AND"
+        ]
+      },
       "retry_policy": {
         "type": "string",
         "enum": [
@@ -75,222 +78,223 @@
           "NONE"
         ]
       },
-      "operation": [
-        "equals (disregard case)",
-        "not equal (disregard case)",
-        "between (inclusive)",
-        "contains",
-        "starts with",
-        "ends with",
-        "does not contain",
-        "does not start with",
-        "does not end with",
-        "matches other field (case insensitive)",
-        "equals",
-        "not equal",
-        "less than",
-        "greater than",
-        "less than or equal to",
-        "greater than or equal to",
-        "between (inclusive, match case)",
-        "is null",
-        "is not null"
-      ],
-      "value_type": [
-        "classes",
-        "nulls",
-        "localTimes",
-        "timeuuids",
-        "years",
-        "longs",
-        "yearMonths",
-        "strings",
-        "ints",
-        "byteArrays",
-        "booleans",
-        "bigIntegers",
-        "shorts",
-        "typeReferences",
-        "zonedDateTimes",
-        "floats",
-        "bigDecimals",
-        "dates",
-        "localDates",
-        "locales",
-        "doubles",
-        "bytes",
-        "localDateTimes",
-        "chars",
-        "uuids"
-      ],
-      "meta_fields": [
-        "owner",
-        "previousTransition",
-        "entityModelVersion",
-        "entityModelName",
-        "state",
-        "creationDate",
-        "entityModelClassId",
-        "lastUpdateTime",
-        "id"
-      ]
+      "operation": {
+        "type": "string",
+        "enum": [
+          "equals (disregard case)",
+          "not equal (disregard case)",
+          "between (inclusive)",
+          "contains",
+          "starts with",
+          "ends with",
+          "does not contain",
+          "does not start with",
+          "does not end with",
+          "matches other field (case insensitive)",
+          "equals",
+          "not equal",
+          "less than",
+          "greater than",
+          "less than or equal to",
+          "greater than or equal to",
+          "between (inclusive, match case)",
+          "is null",
+          "is not null"
+        ]
+      },
+      "value_type": {
+        "type": "string",
+        "enum": [
+          "classes",
+          "nulls",
+          "localTimes",
+          "timeuuids",
+          "years",
+          "longs",
+          "yearMonths",
+          "strings",
+          "ints",
+          "byteArrays",
+          "booleans",
+          "bigIntegers",
+          "shorts",
+          "typeReferences",
+          "zonedDateTimes",
+          "floats",
+          "bigDecimals",
+          "dates",
+          "localDates",
+          "locales",
+          "doubles",
+          "bytes",
+          "localDateTimes",
+          "chars",
+          "uuids"
+        ]
+      },
+      "meta_fields": {
+        "type": "string",
+        "enum": [
+          "owner",
+          "previousTransition",
+          "entityModelVersion",
+          "entityModelName",
+          "state",
+          "creationDate",
+          "entityModelClassId",
+          "lastUpdateTime",
+          "id"
+        ]
+      }
     },
     "criterias": {
-      "externalized_criterias": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+      "type": "object",
+      "properties": {
+        "externalized_criterias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "calculation_nodes_tags": {
+                "type": "string"
+              },
+              "attach_entity": {
+                "type": "boolean"
+              },
+              "calculation_response_timeout_ms": {
+                "type": "string"
+              },
+              "retry_policy": {
+                "$ref": "#/definitions/enums/retry_policy"
+              }
             },
-            "description": {
-              "type": "string"
-            },
-            "calculation_nodes_tags": {
-              "type": "string"
-            },
-            "attach_entity": {
-              "type": "boolean"
-            },
-            "calculation_response_timeout_ms": {
-              "type": "string"
-            },
-            "retry_policy": {
-              "$ref": "#/definitions/enums/retry_policy"
-            }
-          },
-          "required": [
-            "name",
-            "description",
-            "calculation_nodes_tags",
-            "attach_entity",
-            "calculation_response_timeout_ms",
-            "retry_policy"
-          ]
-        }
-      },
-      "condition_criterias": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "condition": {
-              "type": "object",
-              "properties": {
-                "group_condition_operator": {
-                  "type": "string",
-                  "enum": {
+            "required": [
+              "name",
+              "description",
+              "calculation_nodes_tags",
+              "attach_entity",
+              "calculation_response_timeout_ms",
+              "retry_policy"
+            ]
+          }
+        },
+        "condition_criterias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "condition": {
+                "type": "object",
+                "properties": {
+                  "group_condition_operator": {
                     "$ref": "#/definitions/enums/group_condition_operator"
-                  }
-                },
-                "conditions": {
-                  "type": "array",
-                  "items": {
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "field_name": {
-                            "type": "string"
-                          },
-                          "is_meta_field": {
-                            "type": "boolean"
-                          },
-                          "operation": {
-                            "type": "string",
-                            "enum": {
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "field_name": {
+                              "type": "string"
+                            },
+                            "is_meta_field": {
+                              "type": "boolean"
+                            },
+                            "operation": {
                               "$ref": "#/definitions/enums/operation"
-                            }
-                          },
-                          "value": {
-                            "type": "string"
-                          },
-                          "value_type": {
-                            "type": "string",
-                            "enum": {
+                            },
+                            "value": {
+                              "type": "string"
+                            },
+                            "value_type": {
                               "$ref": "#/definitions/enums/value_type"
                             }
-                          }
-                        },
-                        "required": [
-                          "field_name",
-                          "is_meta_field",
-                          "operation",
-                          "value",
-                          "value_type"
-                        ],
-                        "dependencies": {
-                          "is_meta_field": {
-                            "oneOf": [
-                              {
-                                "properties": {
-                                  "is_meta_field": {
-                                    "const": true
-                                  },
-                                  "field_name": {
-                                    "type": "string",
-                                    "enum": {
+                          },
+                          "required": [
+                            "field_name",
+                            "is_meta_field",
+                            "operation",
+                            "value",
+                            "value_type"
+                          ],
+                          "dependencies": {
+                            "is_meta_field": {
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "is_meta_field": {
+                                      "const": true
+                                    },
+                                    "field_name": {
                                       "$ref": "#/definitions/enums/meta_fields"
                                     }
                                   }
-                                }
-                              },
-                              {
-                                "properties": {
-                                  "is_meta_field": {
-                                    "const": false
+                                },
+                                {
+                                  "properties": {
+                                    "is_meta_field": {
+                                      "const": false
+                                    }
                                   }
                                 }
-                              }
-                            ]
-                          }
-                        }
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "group_condition_operator": {
-                            "type": "string",
-                            "enum": {
-                              "$ref": "#/definitions/enums/group_condition_operator"
-                            }
-                          },
-                          "conditions": {
-                            "type": "array",
-                            "items": {
-                              "$ref": "#/definitions/criterias/condition_criterias/items/properties/condition/properties/conditions/items"
+                              ]
                             }
                           }
                         },
-                        "required": [
-                          "group_condition_operator",
-                          "conditions"
-                        ]
-                      }
-                    ]
+                        {
+                          "type": "object",
+                          "properties": {
+                            "group_condition_operator": {
+                              "$ref": "#/definitions/enums/group_condition_operator"
+                            },
+                            "conditions": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/definitions/criterias/properties/condition_criterias/items/properties/condition/properties/conditions/items"
+                              }
+                            }
+                          },
+                          "required": [
+                            "group_condition_operator",
+                            "conditions"
+                          ]
+                        }
+                      ]
+                    }
                   }
-                }
-              },
-              "required": [
-                "group_condition_operator",
-                "conditions"
-              ]
-            }
-          },
-          "required": [
-            "name",
-            "description",
-            "condition"
-          ]
+                },
+                "required": [
+                  "group_condition_operator",
+                  "conditions"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "condition"
+            ]
+          }
         }
-      }
+      },
+      "required": [
+        "externalized_criterias",
+        "condition_criterias"
+      ]
     },
     "processes": {
       "type": "object",
