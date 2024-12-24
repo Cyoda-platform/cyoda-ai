@@ -149,7 +149,8 @@
 
                 # Test example with mocks
                 class TestSendEmailProcess(unittest.TestCase):
-                    @patch("logic.app_init.entity_service.add_item")
+                #This is correct mock, common.app_init.entity_service without .add_item will not work!
+                    @patch("common.app_init.entity_service.add_item")
                     def test_send_email_process(self, mock_entity_service):
                         mock_entity_service.return_value = None
                         meta = {"token": "test_token"}
@@ -239,7 +240,7 @@
                         result = self.scheduler.schedule_job(token, test_data)
 
                         self.mock_service.add_item.assert_called_once_with(
-                            token, "send_hello_world_email_job", "v1", test_data
+                            token, "send_hello_world_email_job", ENTITY_VERSION, test_data
                         )
                         self.assertEqual(result, test_data)
 
