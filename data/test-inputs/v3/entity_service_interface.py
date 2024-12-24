@@ -1,6 +1,3 @@
-#use entity_service to implement persistence logic
-#entity_service path: common/service/entity_service_interface.py
-
 from abc import ABC, abstractmethod
 from typing import List, Any
 
