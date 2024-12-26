@@ -17,9 +17,7 @@ logger = logging.getLogger(__name__)
 def ingest_data_process(meta, data):
     logger.info("Starting process to ingest raw data.")
     try:
-        response_data = ingest_data(data.get("request_parameters", {}).get("code"),
-                                    data.get("request_parameters", {}).get("country"),
-                                    data.get("request_parameters", {}).get("name"))
+        response_data = ingest_data(#fill in parameters from job entity represented with 'data')))
         # Save the raw data entity
         raw_data_entity_data = response_data  # Assume it returns the correct data structure
         raw_data_entity_id = entity_service.add_item(
@@ -35,6 +33,7 @@ def ingest_data_process(meta, data):
 def aggregate_raw_data(meta, data):
     logger.info("Starting process to aggregate raw data.")
     try:
+        #This is an example how to aggregate data with trino
         # Get the path to the aggregated data entity schema file
         base_dir = os.path.abspath(os.path.join(__file__, "../../../"))
         aggregated_data_entity_path = os.path.join(base_dir, 'aggregated_data_entity',
