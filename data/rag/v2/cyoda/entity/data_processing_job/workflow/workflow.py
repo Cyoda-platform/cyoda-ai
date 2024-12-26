@@ -45,7 +45,7 @@ def aggregate_raw_data(meta, data):
 
         # Make API call to AI service to generate aggregated data report based on schema
         aggregated_data = ai_service.ai_chat(token=meta["token"],
-                           chat_id=get_trino_schema_id_by_entity_name("response_data_entity"),
+                           chat_id=get_trino_schema_id_by_entity_name("raw_data_entity"),
                            ai_endpoint=TRINO_AI_API,
                            ai_question=f"Could you please return json report based on this schema: {json.dumps(aggregated_data_entity_schema)}. Return only json")
 
