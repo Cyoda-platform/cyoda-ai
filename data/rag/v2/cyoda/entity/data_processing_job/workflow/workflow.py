@@ -2,7 +2,7 @@ import json
 import logging
 import os
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 from common.app_init import entity_service, ai_service
 from common.config.config import ENTITY_VERSION, TRINO_AI_API
@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def ingest_raw_data(meta, data):
+def ingest_data_process(meta, data):
     logger.info("Starting process to ingest raw data.")
     try:
         response_data = ingest_data(data.get("request_parameters", {}).get("code"),
@@ -67,7 +67,7 @@ def aggregate_raw_data(meta, data):
         logger.error(f"Error in aggregate_raw_data: {e}")
         raise
 
-def generate_and_send_report_email(meta, data):
+def generate_report_process(meta, data):
     logger.info("Starting process to generate and send report email.")
     try:
 
@@ -99,16 +99,52 @@ def generate_and_send_report_email(meta, data):
 # Updated Test Classes with Mocks
 class TestDataProcessingJob(unittest.TestCase):
 
-    @patch("common.app_init.entity_service.add_item")
-    @patch("entity.raw_data_entity.connections.connections.ingest_data")
-    def test_ingest_raw_data(self, mock_ingest_data, mock_entity_service):
+    @patch("workflow.ingest_data")
+    @patch("common.app_init.entity_service.add_item")  # Inner decorator
+    def test_ingest_data_process(self, mock_entity_service, mock_ingest_raw_data):
         # Arrange
-        mock_ingest_data.return_value = {"response_data": "dummy data"}
+        mock_ingest_raw_data.return_value = [
+            {
+                "brpCode": "7080005051286",
+                "brpName": "Example Name",
+                "country": "FI",
+                "businessId": "123456789",
+                "codingScheme": "GS1",
+                "validityStart": "2023-01-01",
+                "validityEnd": "2025-01-01"
+            }
+        ]
         mock_entity_service.return_value = "raw_data_entity_id"
-        meta = {"token": "test_token"}
-        data = {"request_parameters": {"code": "test_code", "country": "test_country", "name": "test_name"}}
-        ingest_raw_data(meta, data)
 
+        meta = {"token": "test_token"}
+        data = {
+            "request_parameters": {
+                "code": "7080005051286",
+                "country": "FI",
+                "name": ""
+            }
+        }
+
+        # Act
+        ingest_data_process(meta, data)
+
+        # Assert
+        mock_entity_service.assert_called_once_with(
+            meta["token"],
+            "raw_data_entity",
+            ENTITY_VERSION,
+            [
+                {
+                    "brpCode": "7080005051286",
+                    "brpName": "Example Name",
+                    "country": "FI",
+                    "businessId": "123456789",
+                    "codingScheme": "GS1",
+                    "validityStart": "2023-01-01",
+                    "validityEnd": "2025-01-01"
+                }
+            ]
+        )
 
 
     @patch("common.app_init.entity_service.add_item")
@@ -138,7 +174,7 @@ class TestDataProcessingJob(unittest.TestCase):
 
     @patch("common.app_init.entity_service.add_item")
     @patch("common.app_init.entity_service.get_item")
-    def test_generate_and_send_report_email(self, mock_get_item, mock_entity_service):
+    def test_generate_report_process(self, mock_get_item, mock_entity_service):
         # Arrange
         mock_get_item.return_value = {"aggregated_data": "dummy_data"}
         mock_entity_service.return_value = "report_entity_id"
@@ -146,7 +182,7 @@ class TestDataProcessingJob(unittest.TestCase):
         data = {"aggregated_data_entity": {"technical_id": "aggregated_data_entity_id"}}
 
         # Act
-        generate_and_send_report_email(meta, data)
+        generate_report_process(meta, data)
 
         # Assert
         mock_get_item.assert_called_once_with(

@@ -1,0 +1,126 @@
+{
+    "name": "data_processing_workflow",
+    "description": "Workflow for processing data from ingestion to reporting.",
+    "workflow_criterias": {
+        "externalized_criterias": [],
+        "condition_criterias": [
+            {
+                "name": "data_processing_job",
+                "description": "Workflow criteria",
+                "condition": {
+                    "group_condition_operator": "AND",
+                    "conditions": [
+                        {
+                            "field_name": "entityModelName",
+                            "is_meta_field": true,
+                            "operation": "equals",
+                            "value": "data_processing_job",
+                            "value_type": "strings"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "transitions": [
+        {
+            "name": "ingest_data",
+            "description": "Ingest data from the source.",
+            "start_state": "None",
+            "start_state_description": "Initial state before data ingestion.",
+            "end_state": "data_ingested",
+            "end_state_description": "Data has been successfully ingested.",
+            "automated": true,
+            "transition_criterias": {
+                "externalized_criterias": [],
+                "condition_criterias": []
+            },
+            "processes": {
+                "schedule_transition_processors": [],
+                "externalized_processors": [
+                    {
+                        "name": "ingest_data_process",
+                        "description": "Process to ingest raw data from the specified source.",
+                        "calculation_nodes_tags": "8db8289b-c397-11ef-a30d-40c2ba0ac9eb",
+                        "attach_entity": true,
+                        "calculation_response_timeout_ms": "5000",
+                        "retry_policy": "NONE",
+                        "sync_process": true,
+                        "new_transaction_for_async": false,
+                        "none_transactional_for_async": false,
+                        "processor_criterias": {
+                            "externalized_criterias": [],
+                            "condition_criterias": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "aggregate_data",
+            "description": "Aggregate the ingested raw data.",
+            "start_state": "data_ingested",
+            "start_state_description": "Data has been ingested and is ready for aggregation.",
+            "end_state": "data_aggregated",
+            "end_state_description": "Data has been successfully aggregated.",
+            "automated": true,
+            "transition_criterias": {
+                "externalized_criterias": [],
+                "condition_criterias": []
+            },
+            "processes": {
+                "schedule_transition_processors": [],
+                "externalized_processors": [
+                    {
+                        "name": "aggregate_raw_data",
+                        "description": "Process to aggregate raw data for reporting.",
+                        "calculation_nodes_tags": "8db8289b-c397-11ef-a30d-40c2ba0ac9eb",
+                        "attach_entity": true,
+                        "calculation_response_timeout_ms": "120000",
+                        "retry_policy": "NONE",
+                        "sync_process": true,
+                        "new_transaction_for_async": false,
+                        "none_transactional_for_async": false,
+                        "processor_criterias": {
+                            "externalized_criterias": [],
+                            "condition_criterias": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "generate_and_send_report",
+            "description": "Generate a report and send it to admin via email.",
+            "start_state": "data_aggregated",
+            "start_state_description": "Data has been aggregated and is ready to be reported.",
+            "end_state": "report_sent",
+            "end_state_description": "Report has been successfully sent to admin.",
+            "automated": true,
+            "transition_criterias": {
+                "externalized_criterias": [],
+                "condition_criterias": []
+            },
+            "processes": {
+                "schedule_transition_processors": [],
+                "externalized_processors": [
+                    {
+                        "name": "generate_report_process",
+                        "description": "Process to create a report and send it via email.",
+                        "calculation_nodes_tags": "8db8289b-c397-11ef-a30d-40c2ba0ac9eb",
+                        "attach_entity": true,
+                        "calculation_response_timeout_ms": "120000",
+                        "retry_policy": "NONE",
+                        "sync_process": true,
+                        "new_transaction_for_async": false,
+                        "none_transactional_for_async": false,
+                        "processor_criterias": {
+                            "externalized_criterias": [],
+                            "condition_criterias": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
