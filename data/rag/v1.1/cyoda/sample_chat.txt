@@ -1,0 +1,158 @@
+##chat
+"Hello! What application would you like to build? Could you, please, share your ideas?"
+##you
+""i need very simple job entity that sends hello world email every day at 5 pm""
+##chat
+"Pushing changes for entity/app_design.json"
+##chat
+"{
+  "can_proceed": false,
+  "questions_to_answer": [
+    "What email service or API should be used to send the email?",
+    "What content should be included in the email besides 'Hello World'?",
+    "Should the email be sent to a specific recipient or a list of recipients?",
+    "Is there any specific format required for the email (e.g., HTML, plain text)?",
+    "What should happen if the job fails to send the email?"
+  ]
+}"
+##chat
+"Please answer the question or validate"
+##you
+"you can decide all this, it's a test app"
+##chat
+"Pushing changes for entity/app_design.json"
+##chat
+"Finishing iteration with result:"
+##chat
+"{
+  "can_proceed": true,
+  "questions_to_answer": []
+}"
+##chat
+"Generating Cyoda design: please wait"
+##chat
+"Pushing changes for entity/app_design.json"
+##chat
+"Finishing iteration with result:"
+##chat
+"{
+  "entities": [
+    {
+      "depends_on_entity": "None",
+      "entity_name": "send_hello_world_email_job",
+      "entity_source": "SCHEDULED",
+      "entity_type": "JOB",
+      "entity_workflow": {
+        "class_name": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+        "name": "send_hello_world_email_workflow",
+        "transitions": [
+          {
+            "description": "Triggered by a schedule to send a 'Hello World' email.",
+            "end_state": "email_sent",
+            "end_state_description": "Email has been successfully sent.",
+            "name": "scheduled_email_job",
+            "process": {
+              "adds_new_entites": "email_entity",
+              "description": "Process to send 'Hello World' email at 5 PM every day.",
+              "name": "send_email_process"
+            },
+            "start_state": "None",
+            "start_state_description": "Initial state before the email is sent."
+          }
+        ]
+      }
+    },
+    {
+      "depends_on_entity": "send_hello_world_email_job",
+      "entity_name": "email_entity",
+      "entity_source": "ENTITY_EVENT",
+      "entity_type": "EXTERNAL_SOURCES_PUSH_BASED_RAW_DATA",
+      "entity_workflow": {
+        "class_name": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+        "name": "email_entity_workflow",
+        "transitions": []
+      }
+    }
+  ]
+}"
+##chat
+"Would you like to change anything in the design?"
+##chat
+"Let's generate the entity schema. Would you like to specify the data for entity: {'entity_name':
+'email_entity', 'entity_type': 'EXTERNAL_SOURCES_PUSH_BASED_RAW_DATA', 'entity_source':
+'ENTITY_EVENT', 'depends_on_entity': 'send_hello_world_email_job', 'entity_workflow': {'name':
+'email_entity_workflow', 'class_name': 'com.cyoda.tdb.model.treenode.TreeNodeEntity', 'transitions':
+[]}}"
+##you
+"what would you suggest?"
+##chat
+"{
+  "entity": {
+    "attachments": [
+      {
+        "file_name": "attachment1.txt",
+        "file_size": 1024,
+        "file_type": "text/plain"
+      },
+      {
+        "file_name": "attachment2.pdf",
+        "file_size": 2048,
+        "file_type": "application/pdf"
+      }
+    ],
+    "body": "This is a test email to demonstrate the email entity.",
+    "email_id": "12345",
+    "recipient": "example@example.com",
+    "sent_timestamp": "2023-10-10T17:00:00Z",
+    "status": "SENT",
+    "subject": "Hello World"
+  },
+  "title": "Entity data"
+}"
+
+##chat
+"Let's generate the entity schema. Would you like to specify the data for entity: {'entity_name':
+'send_hello_world_email_job', 'entity_type': 'JOB', 'entity_source': 'SCHEDULED',
+'depends_on_entity': 'None', 'entity_workflow': {'name': 'send_hello_world_email_workflow',
+'class_name': 'com.cyoda.tdb.model.treenode.TreeNodeEntity', 'transitions': [{'name':
+'scheduled_email_job', 'description': "Triggered by a schedule to send a 'Hello World' email.",
+'start_state': 'None', 'start_state_description': 'Initial state before the email is sent.',
+'end_state': 'email_sent', 'end_state_description': 'Email has been successfully sent.', 'process':
+{'name': 'send_email_process', 'description': "Process to send 'Hello World' email at 5 PM every
+day.", 'adds_new_entites': 'email_entity'}}]}}"
+##you
+"what would you suggest?"
+##chat
+"Pushing changes for entity/send_hello_world_email_job/send_hello_world_email_job.json"
+##chat
+"Finishing iteration with result:"
+##chat
+"{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "entity": {
+    "created_timestamp": "2023-10-01T12:00:00Z",
+    "email_details": {
+      "attachments": [
+        {
+          "file_name": "example_attachment.txt",
+          "file_size": 512,
+          "file_type": "text/plain"
+        }
+      ],
+      "body": "This is a test email to demonstrate the functionality of the job.",
+      "recipient": "recipient@example.com",
+      "subject": "Hello World from Cyoda"
+    },
+    "error_count": 0,
+    "execution_details": {
+      "end_time": null,
+      "execution_status": "pending",
+      "start_time": null
+    },
+    "job_id": "job_20231010",
+    "last_modified_timestamp": "2023-10-10T16:00:00Z",
+    "scheduled_time": "2023-10-10T17:00:00Z",
+    "status": "scheduled"
+  },
+  "title": "Entity data"
+}"
