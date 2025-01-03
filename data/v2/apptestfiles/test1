@@ -1,0 +1,75 @@
+{
+  "feedback": {
+    "entries": [
+      {
+        "id": "d2c56cbb-0b5e-4a5c-bb50-99432c672192",
+        "comment": "Love the new features!",
+        "createdAt": "2025-01-02T10:30:00Z"
+      },
+      {
+        "id": "a5f3aabc-0035-4b56-9495-10c12bcd4ef2",
+        "comment": "Not satisfied. It has a lot of issues.",
+        "createdAt": "2025-01-01T12:00:00Z"
+      },
+      {
+        "id": "d1e2c1bb-0e0b-4567-b5cd-82823e6b5491",
+        "comment": "It was okay, nothing special.",
+        "createdAt": "2025-01-03T15:45:00Z"
+      },
+      {
+        "id": "f1db83d6-3b1e-4c4e-9313-4e05e527162c",
+        "comment": "Great customer service!",
+        "createdAt": "2025-01-04T11:20:00Z"
+      },
+      {
+        "id": "5a59ede3-6036-4715-ac56-64c34c858488",
+        "comment": "I would recommend it to a friend.",
+        "createdAt": "2025-01-05T09:15:00Z"
+      },
+      {
+        "id": "6d0fe706-ab3a-4fec-b59d-f9f7547e1d94",
+        "comment": "Complete waste of money.",
+        "createdAt": "2025-01-06T14:00:00Z"
+      },
+      {
+        "id": "7b788e3e-5ce3-4ff5-8fb9-3c9ffc0b064b",
+        "comment": "Could improve on some features.",
+        "createdAt": "2025-01-07T16:30:00Z"
+      },
+      {
+        "id": "e5cf4b43-3436-455f-a91f-2d541f251206",
+        "comment": "Fantastic experience overall.",
+        "createdAt": "2025-01-08T18:45:00Z"
+      },
+      {
+        "id": "8f8d87f1-c51c-4d12-9b5d-75d7521a117d",
+        "comment": "Not worth the hype.",
+        "createdAt": "2025-01-09T12:50:00Z"
+      },
+      {
+        "id": "c3ae4fb4-2b62-4bc2-bf43-0b58b09d64d4",
+        "comment": "Helped me improve my productivity.",
+        "createdAt": "2025-01-10T10:00:00Z"
+      }
+    ]
+  },
+  "sentiment_analysis": {
+    "input": {
+      "comments": [
+        "Love the new features!",
+        "Not satisfied. It has a lot of issues.",
+        "It was okay, nothing special."
+      ]
+    },
+    "result": {
+      "positive": 1,
+      "negative": 1,
+      "neutral": 1
+    }
+  },
+  "report": {
+    "summary": {
+      "report": "The overall sentiment from user feedback is balanced, with positives highlighting new features and negatives pointing out issues."
+    }
+  }
+}
