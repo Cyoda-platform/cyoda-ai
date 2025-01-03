@@ -1,6 +1,5 @@
 {
-  "feedback": {
-    "entries": [
+  "feedback":
       {
         "id": "d2c56cbb-0b5e-4a5c-bb50-99432c672192",
         "comment": "Love the new features!",
@@ -50,8 +49,6 @@
         "id": "c3ae4fb4-2b62-4bc2-bf43-0b58b09d64d4",
         "comment": "Helped me improve my productivity.",
         "createdAt": "2025-01-10T10:00:00Z"
-      }
-    ]
   },
   "sentiment_analysis": {
     "input": {
