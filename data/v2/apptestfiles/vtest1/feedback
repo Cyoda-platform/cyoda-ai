@@ -1,0 +1,17 @@
+[
+  {
+    "id": "d2c56cbb-0b5e-4a5c-bb50-99432c672192",
+    "comment": "Great product! Really enjoyed using it.",
+    "createdAt": "2025-01-02T10:30:00Z"
+  },
+  {
+    "id": "a5f3aabc-0035-4b56-9495-10c12bcd4ef2",
+    "comment": "Not satisfied. It has a lot of issues.",
+    "createdAt": "2025-01-01T12:00:00Z"
+  },
+  {
+    "id": "d1e2c1bb-0e0b-4567-b5cd-82823e6b5491",
+    "comment": "It was okay, nothing special.",
+    "createdAt": "2025-01-03T15:45:00Z"
+  }
+]
