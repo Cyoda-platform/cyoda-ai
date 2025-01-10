@@ -2,7 +2,7 @@ Instruction how to generate workflow version 6a5b781e-0f75-4239-9a3c-50c3d3a4804
 
 Objective version 6a5b781e-0f75-4239-9a3c-50c3d3a48047:
 Please transform the following diagram or image into a structured workflow using a typical finite-state machine (FSM) model. The FSM consists of states and transitions between them, which can be represented as a directed graph where states are nodes, and transitions are edges.
-Each transition may have processes or criterias. You need to add them if the user explicitly specifies them either in text or in image, or when it is logically required, e.g. when there are several transitions coming from a single state.
+Each transition may have processes or criteria. You need to add them if the user explicitly specifies them either in text or in image, or when it is logically required, e.g. when there are several transitions coming from a single state.
 Each state, except for the initial state (None), should be reachable from at least one transition, ensuring that there are no isolated (disconnected) states in the workflow. Additionally, each transition must have both a start state and an end state.
 
 Requirements version 6a5b781e-0f75-4239-9a3c-50c3d3a48047:

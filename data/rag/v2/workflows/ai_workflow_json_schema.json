@@ -8,8 +8,8 @@
     "description": {
       "type": "string"
     },
-    "workflow_criterias": {
-      "$ref": "#/definitions/criterias"
+    "workflow_criteria": {
+      "$ref": "#/definitions/criteria"
     },
     "transitions": {
       "type": "array",
@@ -37,8 +37,8 @@
           "automated": {
             "type": "boolean"
           },
-          "transition_criterias": {
-            "$ref": "#/definitions/criterias"
+          "transition_criteria": {
+            "$ref": "#/definitions/criteria"
           },
           "processes": {
             "$ref": "#/definitions/processes"
@@ -52,7 +52,7 @@
           "end_state",
           "end_state_description",
           "automated",
-          "transition_criterias",
+          "transition_criteria",
           "processes"
         ]
       }
@@ -147,10 +147,10 @@
         ]
       }
     },
-    "criterias": {
+    "criteria": {
       "type": "object",
       "properties": {
-        "externalized_criterias": {
+        "externalized_criteria": {
           "type": "array",
           "items": {
             "type": "object",
@@ -184,7 +184,7 @@
             ]
           }
         },
-        "condition_criterias": {
+        "condition_criteria": {
           "type": "array",
           "items": {
             "type": "object",
@@ -264,7 +264,7 @@
                             "conditions": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/definitions/criterias/properties/condition_criterias/items/properties/condition/properties/conditions/items"
+                                "$ref": "#/definitions/criteria/properties/condition_criteria/items/properties/condition/properties/conditions/items"
                               }
                             }
                           },
@@ -292,8 +292,8 @@
         }
       },
       "required": [
-        "externalized_criterias",
-        "condition_criterias"
+        "externalized_criteria",
+        "condition_criteria"
       ]
     },
     "processes": {
@@ -328,8 +328,8 @@
               "none_transactional_for_async": {
                 "type": "boolean"
               },
-              "processor_criterias": {
-                "$ref": "#/definitions/criterias"
+              "processor_criteria": {
+                "$ref": "#/definitions/criteria"
               }
             },
             "required": [
@@ -341,7 +341,7 @@
               "sync_process",
               "new_transaction_for_async",
               "none_transactional_for_async",
-              "processor_criterias"
+              "processor_criteria"
             ]
           }
         },
@@ -377,8 +377,8 @@
               "none_transactional_for_async": {
                 "type": "boolean"
               },
-              "processor_criterias": {
-                "$ref": "#/definitions/criterias"
+              "processor_criteria": {
+                "$ref": "#/definitions/criteria"
               }
             },
             "required": [
@@ -391,7 +391,7 @@
               "sync_process",
               "new_transaction_for_async",
               "none_transactional_for_async",
-              "processor_criterias"
+              "processor_criteria"
             ]
           }
         }
