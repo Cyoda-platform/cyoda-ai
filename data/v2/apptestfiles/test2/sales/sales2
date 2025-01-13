@@ -1,5 +1,4 @@
 {
-  "sales2": [
     {
       "Sale Date": "01/15/2023",
       "Transaction ID": "TID001",
@@ -37,5 +36,4 @@
       }
     }
     }
-  ]
 }
