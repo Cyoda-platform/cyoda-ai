@@ -15,7 +15,7 @@
       "Payment Method": "Credit Card",
       "Customer ID": "CUST001",
       "links": {
-        "transactionId": "/sales2/TID001"
+        "transactionId": "/TID001"
       }
     },
     {
@@ -33,7 +33,7 @@
       "Payment Method": "Debit Card",
       "Customer ID": "CUST002",
       "links": {
-        "transactionId": "/sales2/TID002"
+        "transactionId": "/TID002"
       }
     }
     }
