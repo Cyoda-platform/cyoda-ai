@@ -1,23 +1,332 @@
-Sale Date,Transaction ID,Date,Product,Category of Product,Sales,Revenue,Discount,Profit,Region,Salesperson,Payment Method,Customer ID
-01/15/2023,TID001,01/15/2023,Widget A,Electronics,100,2000,0,500,North,John Doe,Credit Card,CUST001
-02/20/2023,TID002,02/20/2023,Widget B,Home Goods,150,3750,5%,750,South,Jane Smith,Debit Card,CUST002
-03/10/2023,TID003,03/10/2023,Widget A,Electronics,120,2400,0,600,East,Emily Davis,Cash,CUST003
-04/05/2023,TID004,04/05/2023,Widget C,Toys,130,1950,10%,390,West,Michael Brown,Credit Card,CUST004
-05/09/2023,TID005,05/09/2023,Widget B,Home Goods,160,4000,0,800,North,Jessica Wilson,Debit Card,CUST005
-05/20/2023,TID006,05/20/2023,Widget D,Stationery,110,2200,5%,440,South,Alice Johnson,Cash,CUST006
-06/15/2024,TID007,06/15/2024,Widget A,Electronics,90,1800,0,450,East,David Wilson,Credit Card,CUST007
-07/10/2024,TID008,07/10/2024,Widget C,Toys,140,2100,15%,315,West,Christopher Lee,Debit Card,CUST008
-08/05/2024,TID009,08/05/2024,Widget B,Home Goods,180,4500,5%,900,North,John Doe,Cash,CUST009
-09/25/2024,TID010,09/25/2024,Widget E,Electronics,150,3750,10%,750,South,Jane Smith,Credit Card,CUST010
-10/30/2024,TID011,10/30/2024,Widget D,Stationery,125,2500,0,500,East,Emily Davis,Debit Card,CUST011
-11/14/2024,TID012,11/14/2024,Widget A,Electronics,200,4000,0,1000,West,Michael Brown,Cash,CUST012
-12/01/2024,TID013,12/01/2024,Widget C,Toys,160,2400,10%,480,North,Jessica Wilson,Credit Card,CUST013
-01/15/2025,TID014,01/15/2025,Widget E,Electronics,140,3500,0,700,South,Alice Johnson,Debit Card,CUST014
-02/20/2025,TID015,02/20/2025,Widget B,Home Goods,195,4875,5%,975,East,David Wilson,Cash,CUST015
-03/12/2025,TID016,03/12/2025,Widget A,Electronics,135,2700,0,675,North,John Doe,Credit Card,CUST016
-04/07/2025,TID017,04/07/2025,Widget C,Toys,180,2700,10%,540,South,Jane Smith,Debit Card,CUST017
-05/25/2025,TID018,05/25/2025,Widget D,Stationery,160,3200,5%,640,East,Emily Davis,Cash,CUST018
-06/12/2025,TID019,06/12/2025,Widget A,Electronics,175,3500,0,875,North,John Doe,Credit Card,CUST019
-07/17/2025,TID020,07/17/2025,Widget B,Home Goods,150,3750,5%,750,South,Jessica Wilson,Debit Card,CUST020
-08/21/2025,TID021,08/21/2025,Widget E,Electronics,200,5000,10%,1000,East,Alice Johnson,Cash,CUST021
-09/15/2025,TID022,09/15/2025,Widget C,Toys,190,2850,0,570,West,David Wilson,Credit Card,CUST022
+[
+  {
+    "Sale Date": "01/15/2023",
+    "Transaction ID": "TID001",
+    "Date": "01/15/2023",
+    "Product": "Widget A",
+    "Category of Product": "Electronics",
+    "Sales": 100,
+    "Revenue": 2000,
+    "Discount": 0,
+    "Profit": 500,
+    "Region": "North",
+    "Salesperson": "John Doe",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST001"
+  },
+  {
+    "Sale Date": "02/20/2023",
+    "Transaction ID": "TID002",
+    "Date": "02/20/2023",
+    "Product": "Widget B",
+    "Category of Product": "Home Goods",
+    "Sales": 150,
+    "Revenue": 3750,
+    "Discount": "5%",
+    "Profit": 750,
+    "Region": "South",
+    "Salesperson": "Jane Smith",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST002"
+  },
+  {
+    "Sale Date": "03/10/2023",
+    "Transaction ID": "TID003",
+    "Date": "03/10/2023",
+    "Product": "Widget A",
+    "Category of Product": "Electronics",
+    "Sales": 120,
+    "Revenue": 2400,
+    "Discount": 0,
+    "Profit": 600,
+    "Region": "East",
+    "Salesperson": "Emily Davis",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST003"
+  },
+  {
+    "Sale Date": "04/05/2023",
+    "Transaction ID": "TID004",
+    "Date": "04/05/2023",
+    "Product": "Widget C",
+    "Category of Product": "Toys",
+    "Sales": 130,
+    "Revenue": 1950,
+    "Discount": "10%",
+    "Profit": 390,
+    "Region": "West",
+    "Salesperson": "Michael Brown",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST004"
+  },
+  {
+    "Sale Date": "05/09/2023",
+    "Transaction ID": "TID005",
+    "Date": "05/09/2023",
+    "Product": "Widget B",
+    "Category of Product": "Home Goods",
+    "Sales": 160,
+    "Revenue": 4000,
+    "Discount": 0,
+    "Profit": 800,
+    "Region": "North",
+    "Salesperson": "Jessica Wilson",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST005"
+  },
+  {
+    "Sale Date": "05/20/2023",
+    "Transaction ID": "TID006",
+    "Date": "05/20/2023",
+    "Product": "Widget D",
+    "Category of Product": "Stationery",
+    "Sales": 110,
+    "Revenue": 2200,
+    "Discount": "5%",
+    "Profit": 440,
+    "Region": "South",
+    "Salesperson": "Alice Johnson",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST006"
+  },
+  {
+    "Sale Date": "06/15/2024",
+    "Transaction ID": "TID007",
+    "Date": "06/15/2024",
+    "Product": "Widget A",
+    "Category of Product": "Electronics",
+    "Sales": 90,
+    "Revenue": 1800,
+    "Discount": 0,
+    "Profit": 450,
+    "Region": "East",
+    "Salesperson": "David Wilson",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST007"
+  },
+  {
+    "Sale Date": "07/10/2024",
+    "Transaction ID": "TID008",
+    "Date": "07/10/2024",
+    "Product": "Widget C",
+    "Category of Product": "Toys",
+    "Sales": 140,
+    "Revenue": 2100,
+    "Discount": "15%",
+    "Profit": 315,
+    "Region": "West",
+    "Salesperson": "Christopher Lee",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST008"
+  },
+  {
+    "Sale Date": "08/05/2024",
+    "Transaction ID": "TID009",
+    "Date": "08/05/2024",
+    "Product": "Widget B",
+    "Category of Product": "Home Goods",
+    "Sales": 180,
+    "Revenue": 4500,
+    "Discount": "5%",
+    "Profit": 900,
+    "Region": "North",
+    "Salesperson": "John Doe",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST009"
+  },
+  {
+    "Sale Date": "09/25/2024",
+    "Transaction ID": "TID010",
+    "Date": "09/25/2024",
+    "Product": "Widget E",
+    "Category of Product": "Electronics",
+    "Sales": 150,
+    "Revenue": 3750,
+    "Discount": "10%",
+    "Profit": 750,
+    "Region": "South",
+    "Salesperson": "Jane Smith",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST010"
+  },
+  {
+    "Sale Date": "10/30/2024",
+    "Transaction ID": "TID011",
+    "Date": "10/30/2024",
+    "Product": "Widget D",
+    "Category of Product": "Stationery",
+    "Sales": 125,
+    "Revenue": 2500,
+    "Discount": 0,
+    "Profit": 500,
+    "Region": "East",
+    "Salesperson": "Emily Davis",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST011"
+  },
+  {
+    "Sale Date": "11/14/2024",
+    "Transaction ID": "TID012",
+    "Date": "11/14/2024",
+    "Product": "Widget A",
+    "Category of Product": "Electronics",
+    "Sales": 200,
+    "Revenue": 4000,
+    "Discount": 0,
+    "Profit": 1000,
+    "Region": "West",
+    "Salesperson": "Michael Brown",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST012"
+  },
+  {
+    "Sale Date": "12/01/2024",
+    "Transaction ID": "TID013",
+    "Date": "12/01/2024",
+    "Product": "Widget C",
+    "Category of Product": "Toys",
+    "Sales": 160,
+    "Revenue": 2400,
+    "Discount": "10%",
+    "Profit": 480,
+    "Region": "North",
+    "Salesperson": "Jessica Wilson",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST013"
+  },
+  {
+    "Sale Date": "01/15/2025",
+    "Transaction ID": "TID014",
+    "Date": "01/15/2025",
+    "Product": "Widget E",
+    "Category of Product": "Electronics",
+    "Sales": 140,
+    "Revenue": 3500,
+    "Discount": 0,
+    "Profit": 700,
+    "Region": "South",
+    "Salesperson": "Alice Johnson",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST014"
+  },
+  {
+    "Sale Date": "02/20/2025",
+    "Transaction ID": "TID015",
+    "Date": "02/20/2025",
+    "Product": "Widget B",
+    "Category of Product": "Home Goods",
+    "Sales": 195,
+    "Revenue": 4875,
+    "Discount": "5%",
+    "Profit": 975,
+    "Region": "East",
+    "Salesperson": "David Wilson",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST015"
+  },
+  {
+    "Sale Date": "03/12/2025",
+    "Transaction ID": "TID016",
+    "Date": "03/12/2025",
+    "Product": "Widget A",
+    "Category of Product": "Electronics",
+    "Sales": 135,
+    "Revenue": 2700,
+    "Discount": 0,
+    "Profit": 675,
+    "Region": "North",
+    "Salesperson": "John Doe",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST016"
+  },
+  {
+    "Sale Date": "04/07/2025",
+    "Transaction ID": "TID017",
+    "Date": "04/07/2025",
+    "Product": "Widget C",
+    "Category of Product": "Toys",
+    "Sales": 180,
+    "Revenue": 2700,
+    "Discount": "10%",
+    "Profit": 540,
+    "Region": "South",
+    "Salesperson": "Jane Smith",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST017"
+  },
+  {
+    "Sale Date": "05/25/2025",
+    "Transaction ID": "TID018",
+    "Date": "05/25/2025",
+    "Product": "Widget D",
+    "Category of Product": "Stationery",
+    "Sales": 160,
+    "Revenue": 3200,
+    "Discount": "5%",
+    "Profit": 640,
+    "Region": "East",
+    "Salesperson": "Emily Davis",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST018"
+  },
+  {
+    "Sale Date": "06/12/2025",
+    "Transaction ID": "TID019",
+    "Date": "06/12/2025",
+    "Product": "Widget A",
+    "Category of Product": "Electronics",
+    "Sales": 175,
+    "Revenue": 3500,
+    "Discount": 0,
+    "Profit": 875,
+    "Region": "North",
+    "Salesperson": "John Doe",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST019"
+  },
+  {
+    "Sale Date": "07/17/2025",
+    "Transaction ID": "TID020",
+    "Date": "07/17/2025",
+    "Product": "Widget B",
+    "Category of Product": "Home Goods",
+    "Sales": 150,
+    "Revenue": 3750,
+    "Discount": "5%",
+    "Profit": 750,
+    "Region": "South",
+    "Salesperson": "Jessica Wilson",
+    "Payment Method": "Debit Card",
+    "Customer ID": "CUST020"
+  },
+  {
+    "Sale Date": "08/21/2025",
+    "Transaction ID": "TID021",
+    "Date": "08/21/2025",
+    "Product": "Widget E",
+    "Category of Product": "Electronics",
+    "Sales": 200,
+    "Revenue": 5000,
+    "Discount": "10%",
+    "Profit": 1000,
+    "Region": "East",
+    "Salesperson": "Alice Johnson",
+    "Payment Method": "Cash",
+    "Customer ID": "CUST021"
+  },
+  {
+    "Sale Date": "09/15/2025",
+    "Transaction ID": "TID022",
+    "Date": "09/15/2025",
+    "Product": "Widget C",
+    "Category of Product": "Toys",
+    "Sales": 190,
+    "Revenue": 2850,
+    "Discount": 0,
+    "Profit": 570,
+    "Region": "West",
+    "Salesperson": "David Wilson",
+    "Payment Method": "Credit Card",
+    "Customer ID": "CUST022"
+  }
+]
