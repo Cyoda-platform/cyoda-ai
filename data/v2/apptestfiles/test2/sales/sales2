@@ -14,7 +14,7 @@
       "Payment Method": "Credit Card",
       "Customer ID": "CUST001",
       "links": {
-        "transactionId": "cyoda-ai/data/v2/apptestfiles/test2/sales/sales2/TID001"
+        "transactionId": "/TID001"
       }
     },
     {
@@ -32,7 +32,7 @@
       "Payment Method": "Debit Card",
       "Customer ID": "CUST002",
       "links": {
-        "transactionId": "cyoda-ai/data/v2/apptestfiles/test2/sales/sales2/TID002"
+        "transactionId": "/TID002"
       }
     }
     }
