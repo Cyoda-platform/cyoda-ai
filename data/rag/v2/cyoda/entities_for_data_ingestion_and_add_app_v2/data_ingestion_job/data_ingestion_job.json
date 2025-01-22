@@ -1,0 +1,34 @@
+{
+    "job_id": "job_001",
+    "job_name": "Daily Data Ingestion Job",
+    "scheduled_time": "2023-10-01T05:00:00Z",
+    "status": "completed",
+    "start_time": "2023-10-01T05:00:00Z",
+    "end_time": "2023-10-01T05:05:00Z",
+    "total_records_processed": 100,
+    "successful_records": 95,
+    "failed_records": 5,
+    "failure_reason": [
+        "Timeout while fetching data",
+        "API limit reached"
+    ],
+    "raw_data_entity": {"technical_id": "raw_data_entity_001"},
+    "aggregated_data_entity": {"technical_id": "aggregated_data_entity_id"},
+    "report_entity_id": "report_entity_001",
+    "summary": {
+        "average_processing_time_ms": 200,
+        "max_processing_time_ms": 400,
+        "min_processing_time_ms": 150
+    },
+    "data_source": {
+        "source_name": "External Activities API",
+        "source_url": "https://fakerestapi.azurewebsites.net/api/v1/Activities",
+        "data_retrieval_method": "GET"
+    },
+    "recipients": [
+        {
+            "name": "Admin User",
+            "email": "admin@example.com"
+        }
+    ]
+}

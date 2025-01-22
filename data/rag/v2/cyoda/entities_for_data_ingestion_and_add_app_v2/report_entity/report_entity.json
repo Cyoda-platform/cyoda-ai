@@ -1,0 +1,26 @@
+{
+    "report_id": "report_001",
+    "generated_at": "2023-10-01T10:00:00Z",
+    "report_title": "Monthly Data Analysis",
+    "total_entries": 150,
+    "successful_ingests": 145,
+    "failed_ingests": 5,
+    "percentage_success": 96.67,
+    "data_summary": [
+        {
+            "activity_id": 1,
+            "title": "Activity 1",
+            "due_date": "2025-01-22T21:36:27.6587562+00:00",
+            "completed": false
+        },
+        {
+            "activity_id": 2,
+            "title": "Activity 2",
+            "due_date": "2025-01-22T22:36:27.6587592+00:00",
+            "completed": true
+        }
+    ],
+    "comments": "This report summarizes the data ingestion and processing activities for the month. It highlights the number of successful and failed ingests, along with details on specific activities processed.",
+    "admin_email": "admin@example.com",
+    "notification_status": "Sent"
+}
