@@ -26,7 +26,7 @@ class CrudRepository(Repository):
     @abstractmethod
     def delete(self, meta, entity: Any) -> None:
         """
-        Deletes a given entity.
+        Deletes a given entity1.
         """
         pass
 
@@ -54,14 +54,14 @@ class CrudRepository(Repository):
     @abstractmethod
     def delete_by_key(self, meta, key: Any) -> None:
         """
-        Deletes the entity with the given key.
+        Deletes the entity1 with the given key.
         """
         pass
 
     @abstractmethod
     def exists_by_key(self, meta, key: Any) -> bool:
         """
-        Returns whether an entity with the given key exists.
+        Returns whether an entity1 with the given key exists.
         """
         pass
 
@@ -82,28 +82,28 @@ class CrudRepository(Repository):
     @abstractmethod
     def find_by_key(self, meta, key: Any) -> Optional[Any]:
         """
-        Retrieves an entity by its key.
+        Retrieves an entity1 by its key.
         """
         pass
 
     @abstractmethod
     def find_by_id(self, meta, uuid: Any) -> Optional[Any]:
         """
-        Retrieves an entity by its technical id.
+        Retrieves an entity1 by its technical id.
         """
         pass
 
     @abstractmethod
     def find_all_by_criteria(self, meta, criteria: Any) -> Optional[Any]:
         """
-        Retrieves an entity by its technical id.
+        Retrieves an entity1 by its technical id.
         """
         pass
 
     @abstractmethod
     def save(self, meta, entity: Any) -> Any:
         """
-        Saves a given entity.
+        Saves a given entity1.
         """
         pass
 

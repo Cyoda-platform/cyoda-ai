@@ -60,15 +60,15 @@ def clean_data(processing_step, raw_data):
 
 def process_event(token, data, processor_name):
     previous_version_id = data['payload']['data'].get('previous_version_id')
-    # If this is the first transition we take data from the original insurance entity
+    # If this is the first transition we take data from the original insurance entity1
     meta = {"token":token, "entity_model": ENTITY_PROCESSED_NAME, "entity_version": ENTITY_VERSION}
     if previous_version_id == "0":
         raw_data = data['payload']['data']
-    # Else we retrieve the data saved in the previous transition with the insurance_processed entity.
+    # Else we retrieve the data saved in the previous transition with the insurance_processed entity1.
     else:
         raw_data = repository.find_by_id(meta, previous_version_id)
     cleaned_data = clean_data(processor_name, raw_data)
-    # Save new entity with cleaned data
+    # Save new entity1 with cleaned data
 
     response = repository.save(meta, cleaned_data)
     return response

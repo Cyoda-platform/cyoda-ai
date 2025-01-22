@@ -42,12 +42,12 @@ def perform_analysis(meta, data):
     analysis_results['high_usage_periods'] = high_usage_periods
     analysis_results['outliers'] = outliers
 
-    # Save the energy_analysis_report entity with the analysis results
+    # Save the energy_analysis_report entity1 with the analysis results
     save_energy_analysis_report(meta, analysis_results)
 
 
 def save_energy_analysis_report(meta, analysis_results):
-    # Logic to save the energy_analysis_report entity
+    # Logic to save the energy_analysis_report entity1
     # Example structure for saving
     energy_analysis_report = {"energy_analysis_report": {
         "main_consumers": analysis_results['main_consumers'],

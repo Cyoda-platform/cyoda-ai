@@ -111,16 +111,14 @@
         #Example response should be like {{\"code\": \"all code here\"}} where code has a string value, not an object!"
         "entity/send_hello_world_email_job/workflow/workflow.py":
                 import logging
-                import unittest
-                from unittest.mock import patch
+                import asyncio
                 from common.config.config import ENTITY_VERSION
-                from common.app_init import entity_service
+                from app_init.app_init import entity_service
 
                 logging.basicConfig(level=logging.INFO)
                 logger = logging.getLogger(__name__)
 
-
-                def send_email_process(meta, data):
+                async def send_email_process(meta, data):
                     logger.info("Starting process to send email.")
                     try:
                         email_details = data["entity"]["email_details"]
@@ -138,7 +136,8 @@
                             "status": "SENT",
                             "attachments": email_details["attachments"],
                         }
-                        entity_service.add_item(
+                        # Save the email entity asynchronously
+                        await entity_service.add_item(
                             meta["token"], "email_entity", ENTITY_VERSION, email_entity_data
                         )
                         logger.info("Email entity saved successfully.")
@@ -146,11 +145,12 @@
                         logger.error(f"Error in send_email_process: {e}")
                         raise
 
-
                 # Test example with mocks
+                import unittest
+                from unittest.mock import AsyncMock, patch
+
                 class TestSendEmailProcess(unittest.TestCase):
-                #This is correct mock, common.app_init.entity_service without .add_item will not work!
-                    @patch("common.app_init.entity_service.add_item")
+                    @patch("common.app_init.entity_service.add_item", new_callable=AsyncMock)
                     def test_send_email_process(self, mock_entity_service):
                         mock_entity_service.return_value = None
                         meta = {"token": "test_token"}
@@ -164,44 +164,43 @@
                                 }
                             }
                         }
-                        send_email_process(meta, data)
+                        # Run the async function using asyncio.run
+                        asyncio.run(send_email_process(meta, data))
                         mock_entity_service.assert_called_once()
 
-
-                # Uncomment the line below to run the tests when this script is executed directly
                 if __name__ == '__main__':
-                     unittest.main()
+                    unittest.main()
 
         #Generate the scheduler file for {entity.get("entity_name")}  based on the user suggestions if there are any, if not you can proceed. Example response should be like {{\"code\": \"all code here\"}} where code has a string value, not an object! This function should save a job entity with data model $data to cyoda. Besides, it should not do any logic. Also generate tests with mocks for external services or functions so that the user can try out the functions right away in isolated environment. User says: ",
         "entity/send_hello_world_email_job/logic.py":
                 import logging
-
                 from common.auth.auth import authenticate
                 from common.config.config import ENTITY_VERSION
                 from common.service.entity_service_interface import EntityService
-                from common.app_init import entity_service
+                from app_init.app_init import entity_service
 
                 logging.basicConfig(level=logging.INFO)
                 logger = logging.getLogger(__name__)
-
 
                 class SendHelloWorldEmailJobScheduler:
                     def __init__(self, entity_service: EntityService):
                         self.entity_service = entity_service
 
-                    def schedule_job(self, token: str, data: dict) -> dict:
-                        # Save a job entity with data model $data to cyoda
-                        job_entity = self.entity_service.add_item(
+                    async def schedule_job(self, token: str, data: dict) -> dict:
+                        """
+                        Schedule a job asynchronously.
+                        :param token: Authentication token.
+                        :param data: Job data to save.
+                        :return: The job entity saved.
+                        """
+                        job_entity = await self.entity_service.add_item(
                             token, "send_hello_world_email_job", ENTITY_VERSION, data
                         )
                         return job_entity
 
-
-
-                #Test Code
+                # Test Code
                 import unittest
-                from unittest.mock import MagicMock
-
+                from unittest.mock import AsyncMock, MagicMock
 
                 class TestSendHelloWorldEmailJobScheduler(unittest.TestCase):
                     def setUp(self):
@@ -237,17 +236,16 @@
                         }
                         self.mock_service.add_item.return_value = test_data
 
-                        result = self.scheduler.schedule_job(token, test_data)
+                        # Run the async method with asyncio.run()
+                        result = asyncio.run(self.scheduler.schedule_job(token, test_data))
 
                         self.mock_service.add_item.assert_called_once_with(
                             token, "send_hello_world_email_job", ENTITY_VERSION, test_data
                         )
                         self.assertEqual(result, test_data)
 
-
                 if __name__ == "__main__":
-                   unittest.main()
-
+                    unittest.main()
 
 
 
