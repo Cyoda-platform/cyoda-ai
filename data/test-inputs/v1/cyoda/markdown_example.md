@@ -1,22 +1,13 @@
-stateDiagram-v2
-    [*] --> None
-    None --> data_ingested : Automated Transition
-    data_ingested --> data_aggregated : Automated Transition
-    data_aggregated --> report_sent : Automated Transition
+flowchart TD
+    A[None] --> B[ingest_data_process]
+    B --> C[data_ingested]
+    C --> D[aggregate_raw_data]
+    D --> E[data_aggregated]
+    E --> F[generate_report_process]
+    F --> G[report_sent]
 
-    state data_ingested {
-        [*] --> ingest_data_process : Process
-    }
+    classDef automated fill:#ffcc00,stroke:#ffcc00;
+    classDef manual fill:#ffffff,stroke:#000000;
 
-    state data_aggregated {
-        [*] --> aggregate_raw_data : Process
-    }
-
-    state report_sent {
-        [*] --> generate_report_process : Process
-    }
-    
-    None : Manual Transition
-    data_ingested : Manual Transition
-    data_aggregated : Manual Transition
-    report_sent : Manual Transition
+    class A,B,C,D,E,F automated;
+    class G manual;
