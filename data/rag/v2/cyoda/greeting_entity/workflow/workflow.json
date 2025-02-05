@@ -1,0 +1,100 @@
+{
+    "name": "greeting_entity_workflow",
+    "description": "Workflow to generate greeting messages based on provided names.",
+    "workflow_criteria": {
+        "externalized_criteria": [],
+        "condition_criteria": [
+            {
+                "name": "greeting_entity",
+                "description": "Workflow criteria",
+                "condition": {
+                    "group_condition_operator": "AND",
+                    "conditions": [
+                        {
+                            "field_name": "entityModelName",
+                            "is_meta_field": true,
+                            "operation": "equals",
+                            "value": "greeting_entity",
+                            "value_type": "strings"
+                        },
+                        {
+                            "field_name": "entityModelVersion",
+                            "is_meta_field": true,
+                            "operation": "equals",
+                            "value": "1000",
+                            "value_type": "strings"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "transitions": [
+        {
+            "name": "send_greeting",
+            "description": "Generate a greeting message based on the provided name.",
+            "start_state": "None",
+            "start_state_description": "Initial state before greeting is sent.",
+            "end_state": "Greeting Sent",
+            "end_state_description": "Greeting message has been successfully generated.",
+            "automated": true,
+            "transition_criteria": {
+                "externalized_criteria": [],
+                "condition_criteria": []
+            },
+            "processes": {
+                "schedule_transition_processors": [],
+                "externalized_processors": [
+                    {
+                        "name": "generate_greeting",
+                        "description": "Process to create a personalized greeting.",
+                        "calculation_nodes_tags": "dbd5087c-e402-11ef-9f6f-40c2ba0ac9eb",
+                        "attach_entity": true,
+                        "calculation_response_timeout_ms": "120000",
+                        "retry_policy": "NONE",
+                        "sync_process": false,
+                        "new_transaction_for_async": true,
+                        "none_transactional_for_async": false,
+                        "processor_criteria": {
+                            "externalized_criteria": [],
+                            "condition_criteria": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "check_name",
+            "description": "Check if the name is provided.",
+            "start_state": "None",
+            "start_state_description": "Initial state before checking the name.",
+            "end_state": "Error State",
+            "end_state_description": "Error message generated due to missing name.",
+            "automated": true,
+            "transition_criteria": {
+                "externalized_criteria": [],
+                "condition_criteria": []
+            },
+            "processes": {
+                "schedule_transition_processors": [],
+                "externalized_processors": [
+                    {
+                        "name": "notify_error",
+                        "description": "Process to generate error notification.",
+                        "calculation_nodes_tags": "dbd5087c-e402-11ef-9f6f-40c2ba0ac9eb",
+                        "attach_entity": true,
+                        "calculation_response_timeout_ms": "120000",
+                        "retry_policy": "NONE",
+                        "sync_process": false,
+                        "new_transaction_for_async": true,
+                        "none_transactional_for_async": false,
+                        "processor_criteria": {
+                            "externalized_criteria": [],
+                            "condition_criteria": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
