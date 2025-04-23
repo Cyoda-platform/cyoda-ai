@@ -1,1 +1,38 @@
+= Configuring Schema in Trino UI and JDBC Client
 
+== Step 1: Add Schema in Trino UI
+
+. Go to your environment at `/cyoda-sass/trino UI`
+
+. Click the **"Add Schema"** button
+
+. Enter a schema name
+
+. Select tables using **"Manage Tables"**
+
+. Click **"Save"** to create your schema
+
+
+== Step 2: Configure Trino JDBC Client
+
+[source,text]
+jdbc:trino://<host>:<port>/<catalog>/<schema>
+
+
+. Set connection properties:
+
+== Step 3: Verify Schema
+
+Once connected via JDBC:
+
+- Run the following SQL to see all schemas:
+
+[source,sql]
+SHOW SCHEMAS;
+
+- Or list tables in your schema:
+
+[source,sql]
+SHOW TABLES FROM your_schema;
+
+You should now see your newly created schema and its tables.
