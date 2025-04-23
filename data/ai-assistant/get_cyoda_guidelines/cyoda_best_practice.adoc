@@ -1,1 +1,89 @@
+= Cyoda Best Practice Guidelines: Entity-Centric, Workflow-Driven Systems
 
+== 1. What Is an Entity?
+
+At the heart of Cyoda's architecture is the *Entity*: a domain object that represents a real-world "thing" with evolving state over time — such as a customer, a transaction, or a risk case.
+
+*Key principles of entities:*
+- *Persistent*: An entity has a life span. It exists independently of transient system behavior.
+
+- *Structured State*: It evolves through a defined set of states.
+
+- *Contextualized*: Its current state reflects its full operational context.
+
+In Cyoda, *every problem is approached as an entity problem*, meaning the system's purpose is to create, observe, evolve, and act upon entities in meaningful ways.
+
+== 2. Why Entities Are Key in Cyoda
+
+Cyoda is not just a data platform — it's a *process platform*. Entities serve as the unifying structure for:
+
+- *Data*: facts about the world
+
+- *State*: where things stand now
+
+- *Behavior*: how things change
+
+This approach allows Cyoda systems to be:
+- *Decoupled*: Business logic is localized within entities
+
+- *Composable*: Entities can reference or trigger one another
+
+- *Auditable*: Every state change is captured and traceable
+
+== 3. What Is a Workflow?
+
+A *workflow* is the behavioral model of an entity, often represented as a *finite-state machine (FSM)*. It defines:
+
+- *States*: Possible statuses of the entity
+
+- *Transitions*: Changes from one state to another
+
+- *Triggers and Processes*: Events causing transitions, and logic that runs during them
+
+
+Workflows define *how business logic unfolds over time* in a structured, visual, and deterministic way.
+
+== 4. Role of Event-Driven Architecture
+
+In Cyoda’s event-driven model:
+- *Events* (e.g. "document uploaded") trigger entity transitions
+
+- Transitions invoke *processes* (e.g. business rules, messaging)
+
+- Everything is tied together via the entity’s *workflow*
+
+*Advantages:*
+- *Loose coupling*
+
+- *Responsiveness*
+
+- *Scalability*
+
+== 5. Putting It All Together in Cyoda
+
+The Cyoda method:
+- Model your domain as an *entity*
+
+- Define its behavior in a *workflow*
+
+- Let *events* drive change
+
+- Store everything in the *entity database* — data, state, and process
+
+== 6. Guiding Practices
+
+- Always think in terms of *stateful entities*
+
+- Prefer *FSM workflows* over procedural code
+
+- Use *event triggers* for process logic
+
+- Keep *rules* close to the entity
+
+- *Visualize workflows* for stakeholder alignment
+
+== Recommended Reading
+
+- https://medium.com/@paul_42036/entity-workflows-for-event-driven-architectures-4d491cf898a5
+
+- https://medium.com/@paul_42036/whats-an-entity-database-11f8538b631a
