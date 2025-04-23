@@ -3,22 +3,33 @@
 == Structure
 
 Create a JSON with:
+
 - `name`: Workflow identifier
+
 - `description`: Brief summary
+
 - `transitions`: Array of state transitions
+
 
 == Transition Fields
 
 Each transition includes:
 - `name`: Unique identifier
+
 - `description`: Description
+
 - `start_state`: Origin (first is `"None"`)
+
 - `start_state_description`: Description of origin
+
 - `end_state`: Destination
+
 - `end_state_description`: Description of destination
+
 - `automated`: `true` or `false`
+
 - `processes` (optional):
-+
+
 [source,json]
 ----
 "processes": {
