@@ -1,1 +1,49 @@
+= Adding an Entity Model in Your Project
+
+To define a new entity in your project, follow these steps:
+
+== 1. Locate the `entity` Directory
+
+Navigate to the root of your project and find the `entity/` directory.
+
+== 2. Create a Directory for Your Entity
+
+Create a new subdirectory inside `entity/` with the name of your entity.  
+Example:
+[source,shell]
+----
+mkdir entity/customer
+----
+
+== 3. Add a JSON Data Model
+
+Inside the new entity directory, create a `.json` file that describes the entity's data model.  
+Example path:
+[source,shell]
+----
+entity/customer/customer.json
+----
+
+This file should define the fields and structure for your entity.
+
+== 4. Automatic Registration
+
+Your entity will be *automatically registered* in the system when you first add data for it. No manual registration is required.
+
+== 5. Optional: Add Static Code Representation
+
+You may optionally define the same model using code:
+- *Python*: Add a `pydantic` model
+- *Java*: Add a POJO (Plain Old Java Object)
+
+This can be useful for validation, IDE support, and integration.
+
+== Summary
+
+[horizontal]
+Directory → `entity/<entity_name>/`  
+Model File → `*.json` (describes the schema)  
+Optional Code → Pydantic / POJO  
+Registration → Automatic on first data addition
+
 
