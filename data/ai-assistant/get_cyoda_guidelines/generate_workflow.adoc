@@ -1,1 +1,80 @@
-txt
+= Workflow FSM JSON Config Guide
+
+== Structure
+
+Create a JSON with:
+- `name`: Workflow identifier
+- `description`: Brief summary
+- `transitions`: Array of state transitions
+
+== Transition Fields
+
+Each transition includes:
+- `name`: Unique identifier
+- `description`: Description
+- `start_state`: Origin (first is `"None"`)
+- `start_state_description`: Description of origin
+- `end_state`: Destination
+- `end_state_description`: Description of destination
+- `automated`: `true` or `false`
+- `processes` (optional):
++
+[source,json]
+----
+"processes": {
+  "schedule_transition_processors": [],
+  "externalized_processors": [
+    {
+      "name": "process_transition_name",
+      "description": ""
+    }
+  ]
+}
+----
+
+== FSM Rules
+
+* Start from `"None"` state
+* Each state (except `"None"`) must be reached by exactly one transition
+* Each transition must define both `start_state` and `end_state`
+* One process per transition preferred (named `process_<transition_name>`)
+* Processes listed in `externalized_processors`
+
+== JSON Example
+
+[source,json]
+----
+{
+  "name": "happy_message_workflow",
+  "description": "Workflow for sending a happy message",
+  "transitions": [
+    {
+      "name": "spark_happy_message",
+      "description": "Spark the happy message",
+      "start_state": "None",
+      "start_state_description": "Initial state",
+      "end_state": "Happy_message_sparked",
+      "end_state_description": "A happy message has been sparked",
+      "automated": true
+    },
+    {
+      "name": "send_happy_message",
+      "description": "Send the happy message",
+      "start_state": "Happy_message_sparked",
+      "start_state_description": "A happy message has been sparked",
+      "end_state": "Message_sent",
+      "end_state_description": "The happy message has been sent",
+      "automated": true,
+      "processes": {
+        "schedule_transition_processors": [],
+        "externalized_processors": [
+          {
+            "name": "process_send_happy_message",
+            "description": ""
+          }
+        ]
+      }
+    }
+  ]
+}
+----
