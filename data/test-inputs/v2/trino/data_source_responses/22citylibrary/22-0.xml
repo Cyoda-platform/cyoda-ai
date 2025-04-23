@@ -1,0 +1,77 @@
+<library>
+    <libraryId>lib-001</libraryId>
+    <name>Central City Library</name>
+    <establishedDate>1980-04-01</establishedDate>
+    <isOpen>true</isOpen>
+    <location>
+        <address>123 Library St.</address>
+        <city>Metropolis</city>
+        <country>Fictionland</country>
+    </location>
+    <collections>
+        <collection>
+            <collectionId>coll-001</collectionId>
+            <collectionName>Science Fiction</collectionName>
+            <description>Futuristic and speculative fiction books</description>
+            <isActive>true</isActive>
+        </collection>
+        <collection>
+            <collectionId>coll-002</collectionId>
+            <collectionName>History</collectionName>
+            <description>Books on historical events and figures</description>
+            <isActive>true</isActive>
+        </collection>
+    </collections>
+    <books>
+        <book>
+            <bookId>book-001</bookId>
+            <title>Dune</title>
+            <author>
+                <firstName>Frank</firstName>
+                <lastName>Herbert</lastName>
+            </author>
+            <publishedYear>1965</publishedYear>
+            <genre>Science Fiction</genre>
+            <genre>Adventure</genre>
+            <pages>412</pages>
+            <availableCopies>3</availableCopies>
+            <reviews>
+                <review>
+                    <reviewId>review-001</reviewId>
+                    <reader>SciFiLover</reader>
+                    <rating>5</rating>
+                    <comment>A timeless classic.</comment>
+                </review>
+            </reviews>
+        </book>
+        <book>
+            <bookId>book-002</bookId>
+            <title>The Guns of August</title>
+            <author>
+                <firstName>Barbara</firstName>
+                <lastName>Tuchman</lastName>
+            </author>
+            <publishedYear>1962</publishedYear>
+            <genre>History</genre>
+            <pages>511</pages>
+            <availableCopies>2</availableCopies>
+            <reviews/>
+        </book>
+    </books>
+    <members>
+        <member>
+            <memberId>member-001</memberId>
+            <name>Alice Smith</name>
+            <membershipDate>2015-08-23</membershipDate>
+            <borrowedBooks>
+                <bookId>book-001</bookId>
+            </borrowedBooks>
+        </member>
+        <member>
+            <memberId>member-002</memberId>
+            <name>Bob Johnson</name>
+            <membershipDate>2018-02-17</membershipDate>
+            <borrowedBooks/>
+        </member>
+    </members>
+</library>

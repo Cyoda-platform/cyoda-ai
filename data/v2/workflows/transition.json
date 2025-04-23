@@ -1,0 +1,15 @@
+{
+    "@bean": "com.cyoda.core.model.stateMachine.dto.TransitionDto",
+    "name": "",
+    "description": "",
+    "startStateId": "noneState",
+    "endStateId": "",
+    "active": true,
+    "automated": true,
+    "criteriaIds": [
+    ],
+    "endProcessesIds": [
+    ],
+    "entityClassName": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+    "workflowId": ""
+}

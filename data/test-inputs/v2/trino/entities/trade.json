@@ -1,0 +1,111 @@
+{
+  "tradingPlatform": {
+    "platformId": "platform-001",
+    "name": "Global Trade Network",
+    "version": "2.3.1",
+    "users": [
+      {
+        "userId": "user-001",
+        "username": "trader_99",
+        "contactDetails": {
+          "email": "trader99@example.com",
+          "phone": "+12055551234"
+        },
+        "accountStatus": "active",
+        "tradingPreferences": {
+          "preferredOrderType": "market",
+          "maxTradeSize": 10000,
+          "riskTolerance": "high"
+        },
+        "trades": [
+          {
+            "tradeId": "trade-001",
+            "asset": {
+              "assetId": "asset-001",
+              "symbol": "AAPL",
+              "name": "Apple Inc.",
+              "type": "stock"
+            },
+            "order": {
+              "orderId": "order-001",
+              "type": "buy",
+              "quantity": 10,
+              "price": 150.50,
+              "timestamp": "2024-04-01T10:00:00Z"
+            },
+            "execution": {
+              "status": "completed",
+              "executionPrice": 150.75,
+              "timestamp": "2024-04-01T10:01:00Z"
+            }
+          }
+        ],
+        "portfolio": [
+          {
+            "assetId": "asset-001",
+            "symbol": "AAPL",
+            "quantity": 10,
+            "averageCost": 148.50
+          },
+          {
+            "assetId": "asset-002",
+            "symbol": "TSLA",
+            "quantity": 5,
+            "averageCost": 700.00
+          }
+        ]
+      },
+      {
+        "userId": "user-002",
+        "username": "investor_101",
+        "contactDetails": {
+          "email": "investor101@example.com",
+          "phone": "+12055554321"
+        },
+        "accountStatus": "inactive",
+        "portfolio": [
+          {
+            "assetId": "asset-003",
+            "symbol": "GOOGL",
+            "quantity": 20,
+            "averageCost": 2500.00
+          }
+        ],
+        "trades": []
+      }
+    ],
+    "market": {
+      "assets": [
+        {
+          "assetId": "asset-001",
+          "symbol": "AAPL",
+          "name": "Apple Inc.",
+          "currentPrice": 150.75,
+          "marketCap": 2500000000000,
+          "dividendYield": 0.006
+        },
+        {
+          "assetId": "asset-002",
+          "symbol": "TSLA",
+          "name": "Tesla Inc.",
+          "currentPrice": 700.00,
+          "marketCap": 700000000000,
+          "dividendYield": null
+        },
+        {
+          "assetId": "asset-003",
+          "symbol": "GOOGL",
+          "name": "Alphabet Inc.",
+          "currentPrice": 2500.00,
+          "marketCap": 1700000000000,
+          "dividendYield": null
+        }
+      ],
+      "marketConditions": {
+        "volatilityIndex": 25,
+        "marketTrend": "bullish",
+        "lastUpdated": "2024-04-01T09:00:00Z"
+      }
+    }
+  }
+}

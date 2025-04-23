@@ -1,0 +1,13 @@
+{
+    "@bean": "com.cyoda.core.model.stateMachine.dto.WorkflowDto",
+    "name": "test_automated_v3",
+    "metaData": {
+        "documentLink": ""
+    },
+    "description": "",
+    "active": false,
+    "useDecisionTree": false,
+    "decisionTrees": [],
+    "criteriaIds": [],
+    "entityClassName": "com.cyoda.tdb.model.treenode.TreeNodeEntity"
+}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StreamingService>
+  <serviceID>service-001</serviceID>
+  <serviceName>CineMagic</serviceName>
+  <launchYear>2020</launchYear>
+  <serviceActive>true</serviceActive>
+  <headquarters>Los Angeles, CA</headquarters>
+  <country>USA</country>
+  <SubscriptionPlans>
+    <SubscriptionPlan>
+      <planID>plan-001</planID>
+      <planName>Basic</planName>
+      <monthlyCost>9.99</monthlyCost>
+      <videoResolution>720p</videoResolution>
+      <planFeatures>
+        <feature>Limited Ads</feature>
+        <feature>Standard Library Access</feature>
+      </planFeatures>
+      <planActive>true</planActive>
+    </SubscriptionPlan>
+    <SubscriptionPlan>
+      <planID>plan-002</planID>
+      <planName>Premium</planName>
+      <monthlyCost>14.99</monthlyCost>
+      <videoResolution>1080p</videoResolution>
+      <planFeatures>
+        <feature>No Ads</feature>
+        <feature>Premium Library Access</feature>
+        <feature>Offline Viewing</feature>
+      </planFeatures>
+      <planActive>true</planActive>
+    </SubscriptionPlan>
+  </SubscriptionPlans>
+  <Movies>
+    <Movie>
+      <movieID>movie-001</movieID>
+      <movieTitle>Inception</movieTitle>
+      <releaseDate>2010</releaseDate>
+      <genres>
+        <genre>Sci-Fi</genre>
+        <genre>Action</genre>
+      </genres>
+      <runtimeMinutes>148</runtimeMinutes>
+      <userRating>8.8</userRating>
+      <director>
+        <firstName>Christopher</firstName>
+        <lastName>Nolan</lastName>
+      </director>
+      <cast>
+        <actor>
+          <actorID>actor-001</actorID>
+          <actorName>Leonardo DiCaprio</actorName>
+          <characterName>Dom Cobb</characterName>
+        </actor>
+        <actor>
+          <actorID>actor-002</actorID>
+          <actorName>Joseph Gordon-Levitt</actorName>
+          <characterName>Arthur</characterName>
+        </actor>
+      </cast>
+      <reviews>
+        <review>
+          <reviewID>rev-001</reviewID>
+          <reviewer>User123</reviewer>
+          <reviewRating>5</reviewRating>
+          <reviewText>A masterpiece!</reviewText>
+        </review>
+        <review>
+          <reviewID>rev-002</reviewID>
+          <reviewer>FilmBuff88</reviewer>
+          <reviewRating>4</reviewRating>
+          <reviewText>Visually stunning.</reviewText>
+        </review>
+      </reviews>
+    </Movie>
+    <Movie>
+      <movieID>movie-002</movieID>
+      <movieTitle>The Matrix</movieTitle>
+      <releaseDate>1999</releaseDate>
+      <genres>
+        <genre>Sci-Fi</genre>
+        <genre>Action</genre>
+      </genres>
+      <runtimeMinutes>136</runtimeMinutes>
+      <userRating>8.7</userRating>
+      <director>
+        <firstName>Lana</firstName>
+        <lastName>Wachowski</lastName>
+      </director>
+      <cast>
+        <actor>
+          <actorID>actor-003</actorID>
+          <actorName>Keanu Reeves</actorName>
+          <characterName>Neo</characterName>
+        </actor>
+        <actor>
+          <actorID>actor-004</actorID>
+          <actorName>Laurence Fishburne</actorName>
+          <characterName>Morpheus</characterName>
+        </actor>
+      </cast>
+      <reviews/>
+    </Movie>
+  </Movies>
+  <Users>
+    <User>
+      <userID>user-001</userID>
+      <userName>movieFanatic</userName>
+      <userEmail>fanatic@example.com</userEmail>
+      <subscriptionPlan>plan-002</subscriptionPlan>
+      <viewingHistory>
+        <movieID>movie-001</movieID>
+        <movieID>movie-002</movieID>
+      </viewingHistory>
+      <accountCreationDate>2021-07-15</accountCreationDate>
+    </User>
+    <User>
+      <userID>user-002</userID>
+      <userName>casualViewer</userName>
+      <userEmail>casual.viewer@example.com</userEmail>
+      <subscriptionPlan>plan-001</subscriptionPlan>
+      <viewingHistory/>
+      <accountCreationDate>2023-01-22</accountCreationDate>
+    </User>
+  </Users>
+</StreamingService>

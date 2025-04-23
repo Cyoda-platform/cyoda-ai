@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The name of the parameter."
+      },
+      "defaultValue": {
+        "type": "string",
+        "description": "The default value for the parameter."
+      },
+      "secure": {
+        "type": "boolean",
+        "description": "Indicates whether the parameter is secure."
+      },
+      "required": {
+        "type": "boolean",
+        "description": "Indicates whether the parameter is required."
+      },
+      "template": {
+        "type": "boolean",
+        "description": "Indicates whether the parameter is a template."
+      },
+      "templateValue": {
+        "type": "string",
+        "description": "The template value for the parameter, if applicable."
+      },
+      "excludeFromCacheKey": {
+        "type": "boolean",
+        "description": "Indicates whether the parameter is excluded from the cache key."
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+            "PATH_VARIABLE", 
+            "REQUEST_BODY_VARIABLE",
+            "REQUEST_PARAM", 
+            "HEADER_PARAM",
+            "TEMPLATE_VARIABLE", 
+            "CUSTOM_PARAM"
+          ],
+        "description": "The type of the parameter, indicating where it is used in the request."
+      },
+      "optionValues": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "A list of option values for the parameter."
+      }
+    },
+    "required": ["name", "secure", "required", "template", "excludeFromCacheKey", "type", "optionValues"],
+    "additionalProperties": false
+  }

@@ -1,0 +1,143 @@
+**Writing a JavaScript Nashorn script to map the given input to the given Cyoda target entity**
+
+Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
+
+Here's an example of how to map an input to an entity with a Javascript Nashorn script:
+
+Example input in json:
+{
+  "id": "tender-001",
+  "name": "Simple Tender",
+  "types": [
+    "TypeA"
+  ],
+  "contactUser": "contact@example.com",
+  "systemAccount": true,
+  "date": "2024-08-18T12:00:00Z",
+  "deadlineDate": "2024-09-01T12:00:00Z",
+  "deadlineLengthDays": 14,
+  "category": "General",
+  "awardedValue": 10000,
+  "purchaser": "Purchaser A",
+  "employeeId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "notices": [
+    {
+      "name": "Notice 1",
+      "id": "notice-001",
+      "sid": "sid-001",
+      "date": "2024-08-18T12:00:00Z",
+      "type": "Initial",
+      "srcId": "src-001",
+      "srcUrl": "http://example.com/notice-001",
+      "data": "Notice data 1"
+    }
+  ],
+  "purchaserNoticeMap": {
+    "Purchaser A": [
+      {
+        "name": "Notice 1",
+        "id": "notice-001",
+        "sid": "sid-001",
+        "date": "2024-08-18T12:00:00Z",
+        "type": "Initial",
+        "srcId": "src-001",
+        "srcUrl": "http://example.com/notice-001",
+        "data": "Notice data 1"
+      }
+    ]
+  }
+}
+
+Example input in csv:
+Project Name,Types,Contact User,System Account,Project Date,Deadline Date,Deadline Length Days,Category,Awarded Value,Purchaser,Notice Name 1,Notice ID 1,Notice SID 1,Notice Date 1,Notice Type 1,Notice Src ID 1,Notice Src URL 1,Notice Data 1,Notice Name 2,Notice ID 2,Notice SID 2,Notice Date 2,Notice Type 2,Notice Src ID 2,Notice Src URL 2,Notice Data 2
+Construction of New Office Building,"Construction, Development",John Doe,True,2024-03-28,2024-04-30,33,Construction Services,185000,ABC Corporation,Pre-Bid Conference,NW20240328002,S003,2024-03-28,Conference,SRC003,https://example.com/notice/NW20240328002,"Pre-bid conference scheduled on March 28th, 2024 at 2:00 PM to discuss project specifications.",Site Visit,NW20240328003,S004,2024-03-30,Visit,SRC004,https://example.com/notice/NW20240328003,"Mandatory site visit scheduled on March 30th, 2024 at 10:00 AM for all prospective contractors."
+Renovation of Public Library,"Building, Maintenance",Jane Roe,False,2023-12-15,2024-01-15,31,Maintenance Services,190000,XYZ Industries,Post-Award Meeting,PR20231215001,S004,2023-12-15,Meeting,SRC004,https://example.org/notice/PR20231215001,"Post-award meeting scheduled on December 15th, 2023 at 3:00 PM to finalize contract details.",Project Inspection,PR20231215002,S005,2023-12-20,Inspection,SRC005,https://example.org/notice/PR20231215002,"Project inspection scheduled on December 20th, 2023 at 9:00 AM to evaluate work progress."
+
+Example target entity model:
+{
+  "$": {
+    "#.purchaserNoticeMap": "OBJECT",
+    ".awardedValue": "DOUBLE",
+    ".category": "STRING",
+    ".contactUser": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".deadlineDate": "ZONED_DATE_TIME",
+    ".deadlineLengthDays": "INTEGER",
+    ".employeeId": "TIME_UUID_TYPE",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".purchaser": "STRING",
+    ".systemAccount": "BOOLEAN",
+    ".types[*]": "(STRING x 1)"
+  },
+  "$.notices[*]": {
+    "#": "ARRAY_ELEMENT",
+    ".data": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".sid": "STRING",
+    ".srcId": "STRING",
+    ".srcUrl": "STRING",
+    ".type": "STRING"
+  },
+  "$.purchaserNoticeMap.Purchaser A[*]": {
+    "#": "ARRAY_ELEMENT",
+    ".data": "STRING",
+    ".date": "ZONED_DATE_TIME",
+    ".id": "STRING",
+    ".name": "STRING",
+    ".sid": "STRING",
+    ".srcId": "STRING",
+    ".srcUrl": "STRING",
+    ".type": "STRING"
+  }
+}
+
+Instruction aa13bcb3-c3d3-4244-b5e6-02feffefd68d
+
+**Writing a JavaScript Nashorn script to map the given input to the given entity** Instruction
+
+Example object initialization. Always initialize Java objects similar way or according to the docs:
+package net.cyoda.saas.model is the same for all classes you do not know.
+
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+var notice = new Notice();
+```
+```Javascript Nashorn
+//this is the correct format to initialize a cyoda object.
+var entity = Java.type('net.cyoda.saas.model.TenderEntity');
+var entity = new TenderEntity();
+```
+
+Do NOT initialize target entity (net.cyoda.saas.model.TenderEntity in this case)
+
+So, writing a JavaScript Nashorn script to map the given input to given tender_entity entity will result into this output:
+Expected code output:
+```Javascript Nashorn
+//Do NOT initialize entity (net.cyoda.saas.model.TenderEntity in this case)
+entity.setDate(input.date);
+entity.setDeadlineDate(input.deadlineDate);
+entity.setDeadlineLengthDays(input.deadlineLengthDays);
+entity.setName(input.title);
+entity.setCategory(input.category);
+entity.setAwardedValue(input.awardedValue);
+
+var ArrayList = Java.type("java.util.ArrayList");
+var notices = new ArrayList();
+//this is how you should initialize objects with javascript
+var Notice = Java.type('net.cyoda.saas.model.Notice');
+
+// Add notices from input
+for (var i = 0; i < input.notices.length; i++) {
+    var notice = new Notice();
+    notice.setId(input.notices[i].id != null ? input.notices[i].id : 0);
+    notice.setDate(input.notices[i].date != null ? input.notices[i].date : "00-00-00");
+    notice.setType(input.notices[i].type != null ? input.notices[i].type : "Unknown type");
+    notices.add(notice);
+}
+
+entity.setNotices(notices);
+```

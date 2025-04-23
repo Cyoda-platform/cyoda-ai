@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TenderingSystem>
+  <Tenders>
+    <Tender>
+      <tenderID>TND001</tenderID>
+      <tenderTitle>New Community Center Construction</tenderTitle>
+      <tenderDetails>Construct a new community center in the downtown area.</tenderDetails>
+      <releaseDate>2024-01-15</releaseDate>
+      <submissionDate>2024-02-15</submissionDate>
+      <tenderState>Open</tenderState>
+      <Requirements>
+        <requiredDocs>
+          <doc>Company Profile</doc>
+          <doc>Project Proposal</doc>
+          <doc>Financial Statements</doc>
+        </requiredDocs>
+        <eligibility>
+          <minExperienceYears>5</minExperienceYears>
+          <requiredCerts>
+            <cert>ISO 9001</cert>
+            <cert>LEED</cert>
+          </requiredCerts>
+        </eligibility>
+      </Requirements>
+      <contractAwarded>false</contractAwarded>
+      <Participants>
+        <Participant>
+          <participantID>P001</participantID>
+          <companyName>BuildRight LLC</companyName>
+          <contactName>Alice Green</contactName>
+          <contactEmail>alice.green@buildright.com</contactEmail>
+          <contactPhone>+1234567890</contactPhone>
+          <Bid>
+            <bidValue currency="USD">120000</bidValue>
+            <submissionTimestamp>2024-02-10T10:00:00Z</submissionTimestamp>
+            <bidState>Pending</bidState>
+          </Bid>
+        </Participant>
+        <Participant>
+          <participantID>P002</participantID>
+          <companyName>ConstructIt Inc.</companyName>
+          <contactName>John Doe</contactName>
+          <contactEmail>john.doe@constructit.com</contactEmail>
+          <contactPhone>+1234567888</contactPhone>
+          <Bid>
+            <bidValue currency="USD">115000</bidValue>
+            <submissionTimestamp>2024-02-12T14:30:00Z</submissionTimestamp>
+            <bidState>Pending</bidState>
+          </Bid>
+        </Participant>
+      </Participants>
+      <Evaluation>
+        <criteria>
+          <criterion>
+            <criterionName>Price</criterionName>
+            <weight>0.40</weight>
+          </criterion>
+          <criterion>
+            <criterionName>Experience</criterionName>
+            <weight>0.30</weight>
+          </criterion>
+          <criterion>
+            <criterionName>Approach</criterionName>
+            <weight>0.30</weight>
+          </criterion>
+        </criteria>
+      </Evaluation>
+    </Tender>
+    <Tender>
+      <tenderID>TND002</tenderID>
+      <tenderTitle>Office Furniture Supply</tenderTitle>
+      <tenderDetails>Supply office furniture for the new municipal building.</tenderDetails>
+      <releaseDate>2024-01-25</releaseDate>
+      <submissionDate>2024-03-01</submissionDate>
+      <tenderState>Open</tenderState>
+      <Requirements>
+        <requiredDocs>
+          <doc>Catalog</doc>
+          <doc>Warranty Details</doc>
+        </requiredDocs>
+        <eligibility>
+          <minExperienceYears>3</minExperienceYears>
+          <requiredCerts/>
+        </eligibility>
+      </Requirements>
+      <contractAwarded>false</contractAwarded>
+      <Participants/>
+      <Evaluation>
+        <criteria>
+          <criterion>
+            <criterionName>Quality</criterionName>
+            <weight>0.50</weight>
+          </criterion>
+          <criterion>
+            <criterionName>Delivery</criterionName>
+            <weight>0.25</weight>
+          </criterion>
+          <criterion>
+            <criterionName>Cost</criterionName>
+            <weight>0.25</weight>
+          </criterion>
+        </criteria>
+        <evaluationMethod>Weighted Scoring</evaluationMethod>
+      </Evaluation>
+    </Tender>
+  </Tenders>
+</TenderingSystem>

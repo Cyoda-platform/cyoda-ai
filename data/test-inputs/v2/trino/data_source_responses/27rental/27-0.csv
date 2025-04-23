@@ -1,0 +1,3 @@
+rentalId,storeName,city,state,movieId,title,director,releaseYear,genre,rentalPrice,customerId,name,email,rentedMovies
+rental-001,CineMagic Rentals,Los Angeles,CA,movie-001,Inception,Christopher Nolan,2010,Sci-Fi,3.99,cust-001,Alice Smith,alice.smith@example.com,"movie-001"
+rental-001,CineMagic Rentals,Los Angeles,CA,movie-002,The Matrix,Lana Wachowski,1999,Action,2.99,cust-002,Bob Johnson,bob.johnson@example.com,"movie-002"

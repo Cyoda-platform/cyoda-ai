@@ -1,0 +1,248 @@
+##chat
+"Hello! What application would you like to build? Could you, please, share your ideas?"
+##you
+""Hello! I'd like to build a data ingestion app that ingests data from https://api.opendata.esett.com""
+##chat
+"Pushing changes for entity/app_design.json"
+##chat
+"{
+  "can_proceed": false,
+  "questions_to_answer": [
+    "What specific type of data are you looking to ingest from the API?",
+    "How often do you want to schedule the data ingestion (e.g., daily, hourly)?",
+    "Do you have any specific transformations or processing that need to be applied to the ingested data?",
+    "What format do you want the ingested data to be stored in?",
+    "Are there any authentication or API key requirements to access the API?"
+  ]
+}"
+##chat
+"Please answer the question or validate"
+##chat
+"Finishing iteration"
+##chat
+"Generating Cyoda design: please wait"
+##chat
+"Pushing changes for entity/app_design.json"
+##chat
+"Finishing iteration with result:"
+##chat
+"{
+  "entities": [
+    {
+      "depends_on_entity": "None",
+      "entity_name": "data_ingestion_job",
+      "entity_source": "SCHEDULED",
+      "entity_type": "JOB",
+      "entity_workflow": {
+        "class_name": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+        "name": "data_ingestion_workflow",
+        "transitions": [
+          {
+            "criteria": {
+              "description": "Triggered by a scheduled job to ingest data.",
+              "name": "scheduled_ingestion"
+            },
+            "description": "Start the data ingestion process from the API.",
+            "end_state": "data_ingested",
+            "end_state_description": "Data has been successfully ingested.",
+            "name": "start_data_ingestion",
+            "process": {
+              "adds_new_entites": "raw_data_entity",
+              "description": "Process to ingest raw data from the specified API.",
+              "name": "ingest_raw_data"
+            },
+            "start_state": "None",
+            "start_state_description": "Initial state before data ingestion."
+          }
+        ]
+      }
+    },
+    {
+      "depends_on_entity": "data_ingestion_job",
+      "entity_name": "raw_data_entity",
+      "entity_source": "ENTITY_EVENT",
+      "entity_type": "EXTERNAL_SOURCES_PULL_BASED_RAW_DATA",
+      "entity_workflow": {
+        "class_name": "com.cyoda.tdb.model.treenode.TreeNodeEntity",
+        "name": "raw_data_processing_workflow",
+        "transitions": []
+      }
+    }
+  ]
+}"
+
+##chat
+"Let's set up a connection to ingest data from an external source. Could you please provide the
+configuration details? You can either share a link to the relevant API documentation (e.g., Swagger
+or OpenAPI) or offer instructions for configuring the connection. If applicable, please include any
+additional details such as specific endpoints, default parameters, or other relevant information."
+
+##you
+"please use this api doc to formulate code
+...
+  "info": {
+    "title": "eSett open data API",
+    "version": "0.0.1"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/EXP01/BalanceResponsibleParties": {
+      "get": {
+        "description": "Returns list of BRPs",
+        "parameters": [
+          {
+            "description": "BRP Code, free text search",
+            "in": "query",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Country 2 letter ISO code",
+            "example": "FI",
+            "in": "query",
+            "name": "country",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "BRP Name, free text search",
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+,
+  "servers": [
+    {
+      "url": "https://api.opendata.esett.com"
+    }
+  ]""
+##chat
+"Pushing changes for entity/raw_data_entity/connections/connections.py"
+##chat
+"{
+  "can_proceed": false,
+  "code": "import requests\n\nclass ExternalDataSource:\n    BASE_URL = 'https://api.opendata.esett.com/EXP01/'\n\n    @staticmethod\n    def get_balance_responsible_parties(code=None, country=None, name=None):\n        url = f'{ExternalDataSource.BASE_URL}BalanceResponsibleParties'\n        params = {}\n        if code:\n            params['code'] = code\n        if country:\n            params['country'] = country\n        if name:\n            params['name'] = name\n        response = requests.get(url, params=params)\n        return response.json()\n\n    @staticmethod\n    def ingest_data(code=None, country=None, name=None):\n        data = ExternalDataSource.get_balance_responsible_parties(code, country, name)\n        return data\n\nif __name__ == '__main__':\n    # Example test\n    result = ExternalDataSource.ingest_data(code='example_code', country='FI', name='example_name')\n    print(result)"
+}"
+##chat
+"Please answer the question or validate"
+##chat
+"Finishing iteration"
+##chat
+"Pushing changes for entity/raw_data_entity/connections/connections.py"
+##chat
+"{
+  "can_proceed": false,
+  "code": "import requests\n\nclass ExternalDataSource:\n    BASE_URL = 'http://example.com/api/'\n\n    @staticmethod\n    def get_endpoint_one(param1, param2):\n        url = f'{ExternalDataSource.BASE_URL}endpoint_one'\n        response = requests.get(url, params={'param1': param1, 'param2': param2})\n        return response.json()\n\n    @staticmethod\n    def get_endpoint_two(param1):\n        url = f'{ExternalDataSource.BASE_URL}endpoint_two'\n        response = requests.get(url, params={'param1': param1})\n        return response.json()\n\n    @staticmethod\n    def get_endpoint_three():\n        url = f'{ExternalDataSource.BASE_URL}endpoint_three'\n        response = requests.get(url)\n        return response.json()\n\n    @staticmethod\n    def ingest_data(param1, param2):\n        data_one = ExternalDataSource.get_endpoint_one(param1, param2)\n        data_two = ExternalDataSource.get_endpoint_two(param1)\n        data_three = ExternalDataSource.get_endpoint_three()\n        return {'data_one': data_one, 'data_two': data_two, 'data_three': data_three}\n\nif __name__ == '__main__':\n    # Example test\n    result = ExternalDataSource.ingest_data('value1', 'value2')\n    print(result)"
+}"
+##chat
+"Please answer the question or validate"
+##chat
+"Finishing iteration"
+##chat
+"Generating Cyoda design: please wait"
+##chat
+"Please specify the schema for raw_data_entity."
+##you
+""[{'brpCode': '7080005051286', 'brpName': 'Å Energi Vannkraft AS', 'country': 'FI', 'businessId': '882973972', 'codingScheme': 'GS1', 'validityStart': '2016-12-31T23:00:00', 'validityEnd': '2026-12-31T23:00:00'}]""
+##chat
+"Pushing changes for entity/raw_data_entity/raw_data_entity.json"
+##chat
+"Let's generate the entity schema. Would you like to specify the data for entity: {'entity_name':
+'data_ingestion_job', 'entity_type': 'JOB', 'entity_source': 'SCHEDULED', 'depends_on_entity':
+'None', 'entity_workflow': {'name': 'data_ingestion_workflow', 'class_name':
+'com.cyoda.tdb.model.treenode.TreeNodeEntity', 'transitions': [{'name': 'start_data_ingestion',
+'description': 'Start the data ingestion process from the API.', 'start_state': 'None',
+'start_state_description': 'Initial state before data ingestion.', 'end_state': 'data_ingested',
+'end_state_description': 'Data has been successfully ingested.', 'criteria': {'name':
+'scheduled_ingestion', 'description': 'Triggered by a scheduled job to ingest data.'}, 'process':
+{'name': 'ingest_raw_data', 'description': 'Process to ingest raw data from the specified API.',
+'adds_new_entites': 'raw_data_entity'}}]}}"
+##you
+"yes, don't forget connection parameters"
+##chat
+"Pushing changes for entity/data_ingestion_job/data_ingestion_job.json"
+##chat
+"Finishing iteration with result:"
+##chat
+"{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "entity": {
+    "end_time": "2023-10-01T09:30:00Z",
+    "error_count": 0,
+    "ingested_records": 100,
+    "job_id": "job_001",
+    "source": {
+      "api_name": "BalanceResponsibleParties",
+      "parameters": {
+        "code": "7080005051286",
+        "country": "FI",
+        "name": "Å Energi Vannkraft AS"
+      }
+    },
+    "start_time": "2023-10-01T09:00:00Z",
+    "status": "completed",
+    "timestamp": "2023-10-01T09:31:00Z"
+  }
+}"
+##chat
+"Would you like to edit the model?"
+##chat
+"Finishing iteration"
+##chat
+"Generating Cyoda design: please wait"
+##chat
+"Would you like to add any changes to entity workflow {'entity_name': 'data_ingestion_job',
+'entity_type': 'JOB', 'entity_source': 'SCHEDULED', 'depends_on_entity': 'None', 'entity_workflow':
+{'name': 'data_ingestion_workflow', 'class_name': 'com.cyoda.tdb.model.treenode.TreeNodeEntity',
+'transitions': [{'name': 'start_data_ingestion', 'description': 'Start the data ingestion process
+from the API.', 'start_state': 'None', 'start_state_description': 'Initial state before data
+ingestion.', 'end_state': 'data_ingested', 'end_state_description': 'Data has been successfully
+ingested.', 'criteria': {'name': 'scheduled_ingestion', 'description': 'Triggered by a scheduled job
+to ingest data.'}, 'process': {'name': 'ingest_raw_data', 'description': 'Process to ingest raw data
+from the specified API.', 'adds_new_entites': 'raw_data_entity'}}]}}"
+##chat
+"Finishing iteration"
+##chat
+"Generating Cyoda design: please wait"
+##chat
+"Would you like to specify any details for generating processors functions?"
+"Pushing changes for entity/data_ingestion_job/workflow/workflow.py"
+##chat
+"Finishing iteration with result:"
+##chat
+"{
+  "code": "import logging\nfrom common.config.config import ENTITY_VERSION\nfrom logic.app_init import entity_service\nfrom entity.raw_data_entity.connections.connections import ExternalDataSource\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\ndef ingest_raw_data(meta, data):\n    logger.info('Starting raw data ingestion process.')\n    try:\n        # Ingest data using the external API\n        ingested_data = ExternalDataSource.ingest_data(\n            code=data['source']['parameters']['code'],\n            country=data['source']['parameters']['country'],\n            name=data['source']['parameters']['name']\n        )\n        logger.info('Data ingestion successful.')\n\n        # Prepare the raw_data_entity for saving\n        raw_data_entity = {\n            'brpCode': ingested_data[0]['brpCode'],\n            'brpName': ingested_data[0]['brpName'],\n            'country': ingested_data[0]['country'],\n            'businessId': ingested_data[0]['businessId'],\n            'codingScheme': ingested_data[0]['codingScheme'],\n            'validityStart': ingested_data[0]['validityStart'],\n            'validityEnd': ingested_data[0]['validityEnd']\n        }\n\n        # Save the raw_data_entity\n        entity_service.add_item(meta['token'], 'raw_data_entity', ENTITY_VERSION, raw_data_entity)\n        logger.info('Raw data entity saved successfully.')\n\n    except Exception as e:\n        logger.error(f'Error during data ingestion: {e}')\n        raise\n\n# Test example with mocks\nif __name__ == '__main__':\n    import unittest\n    from unittest.mock import patch, MagicMock\n\n    class TestIngestRawData(unittest.TestCase):\n        @patch('entity.raw_data_entity.connections.connections.ExternalDataSource')\n        @patch('logic.app_init.entity_service')\n        def test_ingest_raw_data(self, mock_entity_service, mock_external_source):\n            mock_external_source.ingest_data.return_value = [{'brpCode': '7080005051286', 'brpName': '\\u00c5 Energi Vannkraft AS', 'country': 'FI', 'businessId': '882973972', 'codingScheme': 'GS1', 'validityStart': '2016-12-31T23:00:00', 'validityEnd': '2026-12-31T23:00:00'}]\n            mock_entity_service.add_item = MagicMock()\n            meta = {'token': 'test_token'}\n            data = {'source': {'parameters': {'code': '7080005051286', 'country': 'FI', 'name': '\\u00c5 Energi Vannkraft AS'}}}\n\n            ingest_raw_data(meta, data)\n\n            mock_external_source.ingest_data.assert_called_once_with(code='7080005051286', country='FI', name='\\u00c5 Energi Vannkraft AS')\n            mock_entity_service.add_item.assert_called_once()\n\n    unittest.main()"
+}"
+##chat
+"Let's generate the logic to schedule saving the entity data_ingestion_job. Would you like to specify
+any details?"
+##you
+""i rely on your logic""
+##chat
+"{
+  "error": "JSON validation failed after retries.",
+  "success": "false"
+}"
+##chat
+"Would you like to edit the code?"
+##you
+"validation fails because you are trying to return json schema, while you are expected to return json object which satisfies this schema.
+example return object:
+{'can_proceed': "false',
+ 'code': 'all code here'}"
+##chat
+"Pushing changes for entity/data_ingestion_job/logic.py"
+##chat
+"{
+  "can_proceed": false,
+  "code": "import logging\nimport json\nfrom common.service.entity_service_interface import EntityService\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n\nclass DataIngestionJobScheduler:\n    def __init__(self, entity_service: EntityService):\n        self.entity_service = entity_service\n\n    def schedule_job(self, token: str, data: dict) -> dict:\n        # Save a job entity with data model $data to cyoda\n        job_entity = self.entity_service.add_item(token, 'data_ingestion_job', 'v1', data)\n        return job_entity\n\n# Test Code\nimport unittest\nfrom unittest.mock import MagicMock\n\nclass TestDataIngestionJobScheduler(unittest.TestCase):\n    def setUp(self):\n        self.mock_service = MagicMock(spec=EntityService)\n        self.scheduler = DataIngestionJobScheduler(self.mock_service)\n\n    def test_schedule_job(self):\n        token = 'my_token'\n        test_data = {\n            'job_id': 'job_001',\n            'status': 'completed',\n            'start_time': '2023-10-01T09:00:00Z',\n            'end_time': '2023-10-01T09:30:00Z',\n            'source': {\n                'api_name': 'BalanceResponsibleParties',\n                'parameters': {\n                    'code': '7080005051286',\n                    'country': 'FI',\n                    'name': '\\u00c5 Energi Vannkraft AS'\n                }\n            },\n            'ingested_records': 100,\n            'error_count': 0,\n            'timestamp': '2023-10-01T09:31:00Z'\n        }\n        self.mock_service.add_item.return_value = test_data\n\n        result = self.scheduler.schedule_job(token, test_data)\n\n        self.mock_service.add_item.assert_called_once_with(token, 'data_ingestion_job', 'v1', test_data)\n        self.assertEqual(result, test_data)\n\nif __name__ == '__main__':\n    unittest.main()"
+}"
+
+##chat
+"Finished"

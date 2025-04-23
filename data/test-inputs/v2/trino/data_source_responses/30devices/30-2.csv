@@ -1,0 +1,3 @@
+storeId,storeName,city,deviceId,deviceName,manufacturer,price,customerId,customerName,dateOfTransaction
+store-001,Tech Hub,San Francisco,device-001,Smartphone X,BrandA,799.99,cust-001,Alice Green,2024-01-15
+store-001,Tech Hub,San Francisco,device-002,Laptop Pro,BrandB,1299.99,cust-002,David Jones,2024-01-20

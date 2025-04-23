@@ -1,0 +1,42 @@
+{
+    "movieRental": {
+        "rentalId": "rental-001",
+        "storeName": "CineMagic Rentals",
+        "location": {
+            "city": "Los Angeles",
+            "state": "CA"
+        },
+        "movies": [
+            {
+                "movieId": "movie-001",
+                "title": "Inception",
+                "director": "Christopher Nolan",
+                "releaseYear": 2010,
+                "genre": "Sci-Fi",
+                "rentalPrice": 3.99
+            },
+            {
+                "movieId": "movie-002",
+                "title": "The Matrix",
+                "director": "Lana Wachowski",
+                "releaseYear": 1999,
+                "genre": "Action",
+                "rentalPrice": 2.99
+            }
+        ],
+        "customers": [
+            {
+                "customerId": "cust-001",
+                "name": "Alice Smith",
+                "email": "alice.smith@example.com",
+                "rentedMovies": ["movie-001"]
+            },
+            {
+                "customerId": "cust-002",
+                "name": "Bob Johnson",
+                "email": "bob.johnson@example.com",
+                "rentedMovies": ["movie-002"]
+            }
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "deviceManagement": {
+        "storeId": "store-001",
+        "storeName": "Tech Hub",
+        "location": {
+            "city": "San Francisco",
+            "state": "CA",
+            "country": "USA"
+        },
+        "devices": [
+            {
+                "deviceId": "device-001",
+                "deviceName": "Smartphone X",
+                "brand": "BrandA",
+                "category": "Mobile",
+                "price": 799.99,
+                "stockQuantity": 50,
+                "features": ["5G", "128GB Storage", "12MP Camera"],
+                "warranty": {
+                    "period": "2 years",
+                    "coverage": "Damage and Manufacturers Defect"
+                }
+            },
+            {
+                "deviceId": "device-002",
+                "deviceName": "Laptop Pro",
+                "brand": "BrandB",
+                "category": "Computer",
+                "price": 1299.99,
+                "stockQuantity": 30,
+                "features": ["16GB RAM", "512GB SSD", "Retina Display"],
+                "warranty": {
+                    "period": "1 year",
+                    "coverage": "Manufacturers Defect"
+                }
+            }
+        ],
+        "customers": [
+            {
+                "customerId": "cust-001",
+                "fullName": "Alice Green",
+                "email": "alice.green@example.com",
+                "purchasedDevices": ["device-001"]
+            },
+            {
+                "customerId": "cust-002",
+                "fullName": "David Jones",
+                "email": "david.jones@example.com",
+                "purchasedDevices": ["device-002"]
+            }
+        ],
+        "sales": [
+            {
+                "saleId": "sale-001",
+                "deviceId": "device-001",
+                "customerId": "cust-001",
+                "saleDate": "2024-01-15",
+                "price": 799.99,
+                "warrantyStart": "2024-01-15",
+                "warrantyEnd": "2026-01-15"
+            },
+            {
+                "saleId": "sale-002",
+                "deviceId": "device-002",
+                "customerId": "cust-002",
+                "saleDate": "2024-01-20",
+                "price": 1299.99,
+                "warrantyStart": "2024-01-20",
+                "warrantyEnd": "2025-01-20"
+            }
+        ]
+    }
+}

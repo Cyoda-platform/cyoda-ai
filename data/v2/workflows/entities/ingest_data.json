@@ -1,0 +1,13 @@
+{
+    "chat_id": "",
+    "workflow_name": "",
+    "entityName": "",
+    "modelVersion": "",
+    "dataFormat": "",
+    "converter": "",
+    "entityType": "",
+    "schema_data_ds_id": "",
+    "schema_data_operation": "",  
+    "ingestion_data_ds_id": "",
+    "ingestion_data_operation": ""
+}

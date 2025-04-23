@@ -1,0 +1,132 @@
+{
+  "educationalPlatform": {
+    "platformIdentifier": "platform-001",
+    "title": "LearnOnline",
+    "trainingCourses": [
+      {
+        "courseIdentifier": "course-001",
+        "courseTitle": "Full Stack Development",
+        "overview": "Learn to build web applications from scratch.",
+        "durationInWeeks": 12,
+        "startDate": "2024-01-10",
+        "endDate": "2024-03-31",
+        "cost": 499.99,
+        "activeStatus": true,
+        "facilitator": {
+          "facilitatorId": "instructor-001",
+          "givenName": "Alice",
+          "surname": "Johnson",
+          "contactEmail": "alice.johnson@learnonline.com",
+          "yearsOfExperience": 8
+        },
+        "curricula": [
+          {
+            "moduleId": "module-001",
+            "moduleTitle": "Introduction to Web Development",
+            "length": "2 weeks",
+            "learningMaterials": [
+              {
+                "materialId": "resource-001",
+                "materialTitle": "HTML Basics",
+                "mediaType": "Video",
+                "link": "https://learnonline.com/html-basics"
+              },
+              {
+                "materialId": "resource-002",
+                "materialTitle": "CSS Styling",
+                "mediaType": "Article",
+                "link": "https://learnonline.com/css-styling"
+              }
+            ]
+          },
+          {
+            "moduleId": "module-002",
+            "moduleTitle": "JavaScript Fundamentals",
+            "length": "3 weeks",
+            "learningMaterials": [
+              {
+                "materialId": "resource-003",
+                "materialTitle": "JavaScript for Beginners",
+                "mediaType": "Video",
+                "link": "https://learnonline.com/javascript-beginners"
+              },
+              {
+                "materialId": "resource-004",
+                "materialTitle": "Project: Build a Game",
+                "mediaType": "Repository",
+                "link": "https://github.com/learnonline/game-project"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "courseIdentifier": "course-002",
+        "courseTitle": "Digital Marketing Mastery",
+        "overview": "Master the art of digital marketing strategies.",
+        "durationInWeeks": 8,
+        "startDate": "2024-02-01",
+        "endDate": "2024-03-31",
+        "cost": null,
+        "activeStatus": false,
+        "facilitator": {
+          "facilitatorId": "instructor-002",
+          "givenName": "Bob",
+          "surname": "Smith",
+          "contactEmail": null,
+          "yearsOfExperience": 5
+        },
+        "curricula": []
+      }
+    ],
+    "learners": [
+      {
+        "learnerId": "student-001",
+        "givenName": "John",
+        "surname": "Doe",
+        "contactEmail": "john.doe@example.com",
+        "registrationDate": "2023-08-15",
+        "finishedCourses": [
+          {
+            "courseIdentifier": "course-001",
+            "completionDate": "2024-04-01",
+            "grade": "A"
+          }
+        ]
+      },
+      {
+        "learnerId": "student-002",
+        "givenName": "Jane",
+        "surname": "Doe",
+        "contactEmail": "jane.doe@example.com",
+        "registrationDate": "2023-09-10",
+        "finishedCourses": [],
+        "ongoingCourses": [
+          {
+            "courseIdentifier": "course-002",
+            "enrollmentDate": "2024-01-15",
+            "status": "In Progress"
+          }
+        ]
+      }
+    ],
+    "courseFeedback": [
+      {
+        "feedbackId": "review-001",
+        "learnerId": "student-001",
+        "courseIdentifier": "course-001",
+        "rating": 4.5,
+        "response": "Great course! Learned a lot.",
+        "reviewDate": "2024-04-02"
+      },
+      {
+        "feedbackId": "review-002",
+        "learnerId": "student-002",
+        "courseIdentifier": "course-002",
+        "rating": 5,
+        "response": "Excited to start!",
+        "reviewDate": "2024-01-16"
+      }
+    ]
+  }
+}

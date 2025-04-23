@@ -1,0 +1,62 @@
+{
+    "@bean": "com.cyoda.core.model.stateMachine.dto.ProcessDto",
+    "name": "test",
+    "description": "",
+    "newTransactionForAsync": true,
+    "syncProcess": false,
+    "processorClassName": "net.cyoda.saas.externalize.processor.ExternalizedProcessor",
+    "isTemplate": false,
+    "parameters": [
+        {
+            "name": "Tags for filtering calculation nodes (separated by ',' or ';')",
+            "valueType": "STRING",
+            "value": {
+                "@type": "String",
+                "value": "test"
+            }
+        },
+        {
+            "name": "Attach entity",
+            "valueType": "STRING",
+            "value": {
+                "@type": "String",
+                "value": "true"
+            }
+        },
+        {
+            "name": "Calculation response timeout (ms)",
+            "valueType": "INTEGER",
+            "value": {
+                "@type": "Integer",
+                "value": "5000"
+            }
+        },
+        {
+            "name": "Retry policy",
+            "valueType": "STRING",
+            "value": {
+                "@type": "String",
+                "value": "FIXED"
+            },
+            "availableValues": [
+                {
+                    "@bean": "com.cyoda.core.model.stateMachine.dto.ParamAvailableValueDto",
+                    "displayValue": "FIXED",
+                    "value": {
+                        "@type": "String",
+                        "value": "FIXED"
+                    }
+                },
+                {
+                    "@bean": "com.cyoda.core.model.stateMachine.dto.ParamAvailableValueDto",
+                    "displayValue": "NONE",
+                    "value": {
+                        "@type": "String",
+                        "value": "NONE"
+                    }
+                }
+            ]
+        }
+    ],
+    "entityClassName": "com.cyoda.tdb.model.treenode.TreeNodeEntity"
+}

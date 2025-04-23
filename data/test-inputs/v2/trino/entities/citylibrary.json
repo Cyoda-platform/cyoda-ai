@@ -1,0 +1,76 @@
+{
+    "library": {
+        "libraryId": "lib-001",
+        "name": "Central City Library",
+        "establishedDate": "1980-04-01",
+        "isOpen": true,
+        "location": {
+            "address": "123 Library St.",
+            "city": "Metropolis",
+            "country": "Fictionland"
+        },
+        "collections": [
+            {
+                "collectionId": "coll-001",
+                "collectionName": "Science Fiction",
+                "description": "Futuristic and speculative fiction books",
+                "isActive": true
+            },
+            {
+                "collectionId": "coll-002",
+                "collectionName": "History",
+                "description": "Books on historical events and figures",
+                "isActive": true
+            }
+        ],
+        "books": [
+            {
+                "bookId": "book-001",
+                "title": "Dune",
+                "author": {
+                    "firstName": "Frank",
+                    "lastName": "Herbert"
+                },
+                "publishedYear": 1965,
+                "genre": ["Science Fiction", "Adventure"],
+                "pages": 412,
+                "availableCopies": 3,
+                "reviews": [
+                    {
+                        "reviewId": "review-001",
+                        "reader": "SciFiLover",
+                        "rating": 5,
+                        "comment": "A timeless classic."
+                    }
+                ]
+            },
+            {
+                "bookId": "book-002",
+                "title": "The Guns of August",
+                "author": {
+                    "firstName": "Barbara",
+                    "lastName": "Tuchman"
+                },
+                "publishedYear": 1962,
+                "genre": ["History"],
+                "pages": 511,
+                "availableCopies": 2,
+                "reviews": []
+            }
+        ],
+        "members": [
+            {
+                "memberId": "member-001",
+                "name": "Alice Smith",
+                "membershipDate": "2015-08-23",
+                "borrowedBooks": ["book-001"]
+            },
+            {
+                "memberId": "member-002",
+                "name": "Bob Johnson",
+                "membershipDate": "2018-02-17",
+                "borrowedBooks": []
+            }
+        ]
+    }
+}

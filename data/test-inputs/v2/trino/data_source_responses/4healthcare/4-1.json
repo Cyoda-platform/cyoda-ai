@@ -1,0 +1,110 @@
+{
+  "healthcareNetwork": {
+    "networkId": "health-002",
+    "networkName": "Vitality Health System",
+    "foundedYear": 2015,
+    "facilityLocation": {
+      "street": "123 Wellness Ave",
+      "city": "Vitality Town",
+      "state": "TX",
+      "postalCode": "75002"
+    },
+    "clinicalDepartments": [
+      {
+        "deptIdentifier": "dept-001",
+        "deptTitle": "Cardiology",
+        "departmentHead": {
+          "physicianId": "doc-001",
+          "givenName": "Anna",
+          "surname": "Stevens",
+          "contactEmail": "anna.stevens@vitalitysystem.com",
+          "contactNumber": null
+        },
+        "teamMembers": [
+          {
+            "memberId": "staff-001",
+            "completeName": "Mark Johnson",
+            "jobTitle": "Nurse",
+            "yearsOfExperience": 5,
+            "areasOfExpertise": null
+          },
+          {
+            "memberId": "staff-002",
+            "completeName": "Sara Lee",
+            "jobTitle": "Technician",
+            "yearsOfExperience": 3,
+            "areasOfExpertise": ["ECG", "Stress Testing"]
+          }
+        ],
+        "treatments": [
+          {
+            "treatmentId": "service-001",
+            "treatmentName": "Cardiac Evaluation",
+            "fee": 200.00
+          },
+          {
+            "treatmentId": "service-002",
+            "treatmentName": "Echocardiogram",
+            "fee": null
+          }
+        ]
+      },
+      {
+        "deptIdentifier": "dept-002",
+        "deptTitle": "Pediatrics",
+        "departmentHead": {
+          "physicianId": "doc-002",
+          "givenName": "David",
+          "surname": "Smith",
+          "contactEmail": null,
+          "contactNumber": "+1234567890"
+        },
+        "teamMembers": [
+          {
+            "memberId": "staff-003",
+            "completeName": "Linda Brown",
+            "jobTitle": "Pediatric Nurse",
+            "yearsOfExperience": 8,
+            "areasOfExpertise": ["Child Nutrition", null]
+          }
+        ],
+        "treatments": [
+          {
+            "treatmentId": "service-003",
+            "treatmentName": "Child Health Assessment",
+            "fee": 150.00
+          }
+        ]
+      }
+    ],
+    "clients": [
+      {
+        "clientId": "pat-001",
+        "givenName": "Emily",
+        "surname": "Davis",
+        "patientAge": 30,
+        "patientGender": "Female",
+        "healthHistory": ["Hypertension", "High Cholesterol"],
+        "currentPrescriptions": null
+      },
+      {
+        "clientId": "pat-002",
+        "givenName": "Michael",
+        "surname": "Green",
+        "patientAge": 45,
+        "patientGender": "Male",
+        "healthHistory": [],
+        "currentPrescriptions": ["Aspirin"]
+      },
+      {
+        "clientId": "pat-003",
+        "givenName": "Laura",
+        "surname": "Smith",
+        "patientAge": 25,
+        "patientGender": "Female",
+        "healthHistory": ["Anxiety"],
+        "currentPrescriptions": ["Lexapro"]
+      }
+    ]
+  }
+}
