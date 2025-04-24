@@ -1,0 +1,57 @@
+
+= Starting the Application and Validating the Prototype
+
+== First Prototype Ready for Validation
+
+We have completed the first prototype based on your functional requirements.
+
+Follow the instructions below to start the application, validate the API, and observe workflow processor behavior.
+
+== 1. Run the Application
+
+To launch the app, run:
+
+[source,python]
+----
+python app.py
+----
+
+This starts the local HTTP API server and also initializes the gRPC client for receiving workflow calculation requests.
+
+== 2. Validate the API
+
+Once the app is running, open your browser and go to:
+
+- http://localhost:8000/docs (Swagger UI)
+
+- http://localhost:8000/scalar (Scalar schema viewer)
+
+
+You can find request and response examples in:
+
+[source,shell]
+----
+entity/functional_requirement.md
+----
+
+== 3. Observe Workflow Behavior
+
+- When you save data to an entity (e.g., through the API), its workflow will automatically be triggered.
+
+- If the workflow transition includes an *externalized processor*, the system will:
+  * Send a *calculation request* to your app via gRPC
+
+  * Dispatch the corresponding processor function (from `workflow.py`)
+
+  * Automatically persist the updated entity
+
+== Summary
+
+[horizontal]
+App Entry Point → `python entity/prototype.py`  
+API Docs → `/docs`, `/scalar`  
+Examples → `entity/functional_requirement.md`  
+Workflow Trigger → On entity data change  
+Processor Handling → Via gRPC client, dispatched automatically  
+
+Let us know once you've validated the behavior or need further changes!
