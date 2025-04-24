@@ -1,1 +1,79 @@
+= Registering Workflow Externalized Processors
+
+After defining your entities and workflows, you can implement *externalized processors* to handle automated transition logic.
+
+== 1. Overview
+
+An *externalized processor* is a function that is:
+- Triggered by the Cyoda gRPC server when a specific workflow transition occurs
+
+- Responsible for modifying and returning the updated entity
+
+- Automatically persisted — no need to call the entity service
+
+== 2. How It Works
+
+. Your application comes preconfigured with a *gRPC client* (in the `commons` module)
+
+. A *bi-directional streaming connection* is established with your Cyoda environment
+
+. When a transition is triggered that has an external processor defined, you receive a calculation request
+
+. The request contains the *entity data*
+
+. The corresponding function is *dispatched* by the workflow dispatcher
+
+. You perform your logic and *return the updated entity*
+
+
+== 3. Where to Define Your Processor
+
+Locate the following file in your project:
+[source,shell]
+----
+entity/<your_entity_name>/workflow/workflow.py
+----
+
+== 4. Define the Processor Function
+
+Create a function whose name matches the one specified in your workflow JSON under `externalized_processors`.
+
+Example JSON snippet:
+[source,json]
+----
+"externalized_processors": [
+  {
+    "name": "process_set_booked_at",
+    "description": ""
+  }
+]
+----
+
+Example function in Python:
+[source,python]
+----
+def process_set_booked_at(entity):
+    # Set the booking timestamp on the entity
+    entity["booked_at"] = time.time()
+    return entity
+----
+
+== 5. Notes
+
+- The function receives the entity as a Python dictionary
+
+- It should return the updated entity
+
+- No explicit persistence is needed — the gRPC server handles that
+
+== Summary
+
+[horizontal]
+Trigger → Workflow transition with external processor  
+Location → `entity/<name>/workflow/workflow.py`  
+Naming → Must match `process_<transition_name>`  
+Input → Entity dict  
+Output → Modified entity  
+Persistence → Done by gRPC server  
+
 
