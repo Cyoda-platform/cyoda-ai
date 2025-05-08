@@ -5,7 +5,7 @@
   "side_bar": {
     "links": {
       "home": "Home",
-      "history": "History  ( Loading … )",
+      "history": "History",
       "settings": "Settings",
       "about": "About"
     },
@@ -33,5 +33,8 @@
       "Learn what Cyoda is in under a minute",
       "Create an app that pulls weather data from a public API"
     ]
+  },
+  "common": {
+    "loading": "Loading"
   }
 }
