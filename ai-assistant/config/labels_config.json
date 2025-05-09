@@ -22,7 +22,9 @@
     "h1": "BUILD BEAUTIFULLY",
     "h2": "Build, deploy and scale data-intensive operational services",
     "title": "What would you like to build today?",
-    "el_id_2954_8": "Start with a lightweight and production-ready microservice"
+    "input": {
+      "placeholder": "Start with a lightweight and production-ready microservice"
+    }
   },
   "examples": {
     "title": "Try one of these",
