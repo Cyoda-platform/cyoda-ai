@@ -30,11 +30,11 @@
     "title": "Try one of these",
     "items": {
       "clickable": [
-        "Build a fun 'Purrfect Pets' API app with live cat data",
+        "Build a fun 'Purrfect Pets' API app with Petstore API data",
         "Set up a custom workflow to automate daily tasks",
         "Ask Cyoda for the latest data handling guidelines",
         "Learn what Cyoda is in under a minute",
-        "Create an app that pulls weather data from a public API"
+        "Build an app that pulls weather data from a public API"
       ],
       "readonly": "+10к different requests"
     }
